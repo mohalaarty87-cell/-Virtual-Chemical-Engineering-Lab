@@ -37,8 +37,8 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenAuthorInfo }) => {
           <Building2 className="w-3.5 h-3.5 text-cyan-400 inline" />
           <span>
             {lang === 'ar'
-              ? 'قسم الهندسة الكيمياوية والصناعات النفطية - كلية العمارة الجامعة'
-              : 'Chemical Engineering & Petroleum Industries Dept. - Al-Amara University College'}
+              ? 'قسم الهندسة الكيمياوية والصناعات النفطية - جامعة البصرة'
+              : 'Chemical Engineering & Petroleum Industries Dept. - University of Basrah'}
           </span>
         </div>
 

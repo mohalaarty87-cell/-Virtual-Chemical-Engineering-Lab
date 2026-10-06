@@ -297,7 +297,7 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
           <div className="text-xs text-slate-400 flex items-center gap-2">
             <span className="font-semibold text-cyan-400">ENG ALAA MOHAMMED</span>
             <span>·</span>
-            <span>كلية العمارة الجامعة 2026</span>
+            <span>جامعة البصرة 2026</span>
           </div>
 
           <div className="flex items-center gap-2">

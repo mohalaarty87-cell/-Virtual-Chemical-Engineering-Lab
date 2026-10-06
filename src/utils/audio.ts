@@ -172,8 +172,8 @@ class VoiceNarrator {
   playIntro(lang: 'ar' | 'en' = 'ar') {
     const text =
       lang === 'ar'
-        ? 'مرحباً بكم في المختبر الافتراضي للهندسة الكيمياوية. إشراف وإعداد المهندس علاء محمد، قسم الهندسة الكيمياوية والصناعات النفطية، كلية العمارة الجامعة. استكشفوا واحداً وثلاثين محاكياً تفاعلياً.'
-        : 'Welcome to the Virtual Chemical Engineering Laboratory, supervised and developed by Engineer Alaa Mohammed, Department of Chemical Engineering and Petroleum Industries, Al-Amara University College.';
+        ? 'مرحباً بكم في المختبر الافتراضي للهندسة الكيمياوية. إشراف وإعداد المهندس علاء محمد، قسم الهندسة الكيمياوية والصناعات النفطية، جامعة البصرة. استكشفوا واحداً وثلاثين محاكياً تفاعلياً.'
+        : 'Welcome to the Virtual Chemical Engineering Laboratory, supervised and developed by Engineer Alaa Mohammed, Department of Chemical Engineering and Petroleum Industries, University of Basrah.';
     this.speak(text, lang, 0.95);
   }
 }

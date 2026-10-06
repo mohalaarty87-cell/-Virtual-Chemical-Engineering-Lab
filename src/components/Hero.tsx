@@ -43,7 +43,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, totalSimulators }) => {
         <span className="text-slate-600">·</span>
         <span className="flex items-center gap-1.5">
           <GraduationCap className="w-4 h-4 text-indigo-400" />
-          {lang === 'ar' ? 'كلية العمارة الجامعة 2026' : 'Al-Amara University College 2026'}
+          {lang === 'ar' ? 'جامعة البصرة 2026' : 'University of Basrah 2026'}
         </span>
       </div>
 
