@@ -1,0 +1,884 @@
+<!doctype html>
+<!-- © 2026 Dr. Dheyaa J. Jasim (د. ضياء جمعة جاسم), Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College. Work ID: DJJ-VLAB-CSTR-2026. All rights reserved. For educational use; no republication or sale without written permission. -->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Dr. Dheyaa J. Jasim (د. ضياء جمعة جاسم)">
+<meta name="copyright" content="© 2026 Dr. Dheyaa J. Jasim. All rights reserved.">
+<meta name="dcterms.rights" content="All rights reserved. For educational use; no republication or sale without written permission.">
+<meta name="dcterms.identifier" content="DJJ-VLAB-CSTR-2026">
+<script type="application/ld+json" data-ip="djj">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "محاكي المفاعل الخزاني ثلاثي الأبعاد (CSTR)", "identifier": "DJJ-VLAB-CSTR-2026", "inLanguage": ["ar", "en"], "copyrightYear": 2026, "author": {"@type": "Person", "name": "Dr. Dheyaa J. Jasim", "alternateName": "د. ضياء جمعة جاسم", "affiliation": {"@type": "CollegeOrUniversity", "name": "Al-Amarah University College", "department": "Department of Chemical Engineering and Petroleum Industries"}}, "copyrightHolder": {"@type": "Person", "name": "Dr. Dheyaa J. Jasim"}, "usageInfo": "All rights reserved. For educational use; no republication or sale without written permission."}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>محاكي المفاعل الخزاني ثلاثي الأبعاد (CSTR)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e4eaee; --stage-a:#f3f6f8; --stage-b:#d2dce2; --panel:#f7f9fa; --ink:#1b2830; --muted:#5a6a75;
+  --line:#c9d4db; --chip:#ffffff; --accent:#b85f1e; --accent-ink:#ffffff; --cool:#2f76b3; --tint:#edf2f5;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#11171c; --stage-a:#223039; --stage-b:#10161b; --panel:#172027; --ink:#e1e8ed; --muted:#94a4af;
+    --line:#2c3a44; --chip:#21303a; --accent:#e0873d; --accent-ink:#1a1108; --cool:#5d9fd5; --tint:#1e2a32;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11171c; --stage-a:#223039; --stage-b:#10161b; --panel:#172027; --ink:#e1e8ed; --muted:#94a4af;
+  --line:#2c3a44; --chip:#21303a; --accent:#e0873d; --accent-ink:#1a1108; --cool:#5d9fd5; --tint:#1e2a32;
+}
+html{height:100%; scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0; height:100%; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans Arabic","Segoe UI",Tahoma,"Noto Sans Arabic",Arial,sans-serif; font-size:15px; line-height:1.7}
+button{font:inherit; color:inherit}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+.app{display:grid; grid-template-columns:minmax(300px,370px) 1fr; height:100%}
+.panel{background:var(--panel); border-inline-end:1px solid var(--line); overflow-y:auto; display:flex; flex-direction:column}
+.ph{padding:22px 22px 14px}
+.ph h1{margin:0; font-size:21px; line-height:1.4; font-weight:700}
+.ph .sub{margin:2px 0 0; color:var(--muted); font-size:13.5px; direction:ltr; text-align:right}
+
+.card{margin:0 16px; padding:16px 18px; background:var(--tint); border-radius:12px; border:1px solid var(--line)}
+.card h2{margin:0; font-size:18px; font-weight:600; line-height:1.45}
+.card .en{margin:0 0 8px; color:var(--muted); font-size:13px; direction:ltr; text-align:right}
+.card p{margin:6px 0}
+.card .eq{margin-top:10px; padding:8px 10px; border-inline-start:3px solid var(--accent); background:var(--panel); border-radius:0 6px 6px 0; font-size:14px; unicode-bidi:plaintext}
+.card .head{display:flex; gap:10px; align-items:flex-start}
+.card .head .num{flex:none; margin-top:3px}
+.card .act{margin-top:12px; display:flex; gap:8px; flex-wrap:wrap}
+.card .act button{background:var(--chip); border:1px solid var(--line); border-radius:8px; padding:5px 12px; cursor:pointer; font-size:13.5px}
+.card .act button:hover{border-color:var(--accent)}
+
+.num{display:inline-grid; place-items:center; width:24px; height:24px; border-radius:50%; font-size:12.5px; font-weight:600;
+  background:var(--chip); border:1.5px solid var(--ink); line-height:1; font-variant-numeric:tabular-nums}
+
+.mix{padding:18px 22px 6px}
+.mix h3,.parts h3{margin:0 0 6px; font-size:15px; font-weight:600}
+.rpm{display:flex; align-items:center; gap:12px}
+.rpm input{flex:1; accent-color:var(--accent)}
+.rpm output{min-width:86px; font-weight:600; font-variant-numeric:tabular-nums}
+.readout{display:grid; grid-template-columns:1fr auto; gap:2px 12px; margin:10px 0 4px; font-size:14px}
+.readout dt{color:var(--muted)}
+.readout dd{margin:0; font-weight:600; font-variant-numeric:tabular-nums; direction:ltr; text-align:left}
+.fine{font-size:12.5px; color:var(--muted); margin:6px 0 0}
+
+.parts{padding:14px 14px 8px}
+.parts h3{padding:10px 8px 2px; color:var(--muted); font-size:13px}
+.parts ul{list-style:none; margin:0; padding:0}
+.parts li button{display:flex; align-items:center; gap:10px; width:100%; text-align:right; background:none; border:0;
+  padding:5px 8px; border-radius:8px; cursor:pointer; font-size:14.5px}
+.parts li button:hover{background:var(--tint)}
+.parts li button[aria-current="true"]{background:var(--tint); box-shadow:inset -3px 0 0 var(--accent)}
+.parts li button[aria-current="true"] .num{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.lang{display:inline-block; cursor:pointer; background:none; font:inherit; margin-top:8px; font-size:13.5px; color:var(--accent); text-decoration:none; border:1px solid var(--line); border-radius:8px; padding:2px 10px}
+.lang:hover{border-color:var(--accent)}
+.credit{margin-top:auto; padding:14px 22px 20px; font-size:12.5px; color:var(--muted); border-top:1px solid var(--line)}
+.credit b{color:var(--ink); font-weight:600}
+
+.stage{position:relative; overflow:hidden; background:radial-gradient(ellipse 70% 65% at 50% 42%, var(--stage-a), var(--stage-b))}
+#c{display:block; width:100%; height:100%; touch-action:none; cursor:grab}
+#c:active{cursor:grabbing}
+.labels{position:absolute; inset:0; pointer-events:none}
+.lbl{direction:ltr; position:absolute; left:0; top:0; pointer-events:auto; display:flex; align-items:center; gap:6px; padding:0; border:0; background:none; cursor:pointer; white-space:nowrap}
+.lbl .t{direction:rtl; display:none; background:var(--chip); border:1px solid var(--line); border-radius:6px; padding:1px 8px; font-size:12.5px; box-shadow:0 1px 3px rgba(20,30,40,.18)}
+.labels.names .lbl .t,.lbl.on .t{display:inline-block}
+.lbl .num{box-shadow:0 1px 3px rgba(20,30,40,.25)}
+.lbl.on .num{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.lbl.on .t{border-color:var(--accent)}
+.labels.off .lbl:not(.on){display:none}
+
+.ovl{position:absolute; top:14px; inset-inline-start:16px; pointer-events:none; display:flex; flex-direction:column; align-items:flex-start; gap:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 12px; background:color-mix(in srgb,var(--panel) 82%,transparent); border:1px solid var(--line); border-radius:10px; padding:5px 12px; font-size:13px}
+.legend span{display:inline-flex; align-items:center; gap:6px}
+.legend i{width:11px; height:11px; border-radius:50%; display:inline-block; box-shadow:0 0 0 1.5px rgba(255,255,255,.7)}
+.legend b{font-weight:500}
+.tb.rx{background:#1f8a4c; color:#fff; border-color:#1f8a4c; font-weight:600}
+.tb.rx[aria-pressed="true"]{background:#b3362b; border-color:#b3362b; color:#fff}
+.rxbar{display:flex; height:12px; border-radius:6px; overflow:hidden; margin:8px 0 4px; background:var(--line)}
+.rxbar div{transition:width .25s linear}
+.brand{ background:color-mix(in srgb,var(--panel) 82%,transparent); border:1px solid var(--line); border-inline-start:4px solid var(--accent); border-radius:10px; padding:8px 14px 9px}
+.brand .who{font-size:17px; font-weight:700; line-height:1.4}
+.brand .en{font-size:13px; color:var(--muted); direction:ltr; text-align:right}
+.brand .org{font-size:12.5px; color:var(--muted)}
+.hint{position:absolute; top:14px; inset-inline-end:16px; max-width:300px; font-size:13px; color:var(--muted); pointer-events:none}
+.toolbar{position:absolute; bottom:14px; inset-inline:14px; display:flex; flex-wrap:wrap; gap:8px; justify-content:center; pointer-events:none}
+.toolbar > *{pointer-events:auto}
+.tb{background:var(--chip); border:1px solid var(--line); border-radius:9px; padding:6px 13px; cursor:pointer; font-size:13.5px; box-shadow:0 1px 3px rgba(20,30,40,.12)}
+.tb:hover{border-color:var(--accent)}
+.tb[aria-pressed="true"]{background:var(--ink); color:var(--panel); border-color:var(--ink)}
+.seg{display:inline-flex; background:var(--chip); border:1px solid var(--line); border-radius:9px; padding:2px; box-shadow:0 1px 3px rgba(20,30,40,.12)}
+.seg button{border:0; background:none; padding:4px 11px; border-radius:7px; cursor:pointer; font-size:13.5px}
+.seg button[aria-pressed="true"]{background:var(--ink); color:var(--panel)}
+.loading{position:absolute; inset:0; display:grid; place-items:center; color:var(--muted); font-size:15px; padding:20px; text-align:center}
+
+html[dir="ltr"] .ph .sub,html[dir="ltr"] .card .en,html[dir="ltr"] .brand .en{direction:rtl; text-align:left}
+html[dir="ltr"] .readout dd{text-align:right}
+html[dir="rtl"] #oReg{direction:rtl}
+html[dir="ltr"] .parts li button{text-align:left}
+html[dir="ltr"] .parts li button[aria-current="true"]{box-shadow:inset 3px 0 0 var(--accent)}
+html[dir="ltr"] .lbl .t{direction:ltr}
+html[dir="ltr"] .card .eq{border-radius:0 6px 6px 0}
+html[dir="rtl"] .card .eq{border-radius:6px 0 0 6px}
+@media (max-width:820px){
+  html,body{height:auto}
+  .app{grid-template-columns:1fr; height:auto}
+  .stage{order:-1; height:66svh; min-height:380px}
+  .panel{border-inline-end:0; overflow:visible}
+  .hint{display:none}
+  .ovl{top:10px; inset-inline-start:10px}
+  .brand{padding:6px 10px}
+  .legend{font-size:12px; padding:4px 9px}
+  .brand .who{font-size:15px}
+  .brand .org{display:none}
+  .toolbar{bottom:10px; gap:6px}
+  .tb,.seg button{font-size:12.5px}
+}
+@media (max-width:820px){
+  .stage{height:auto; min-height:0; display:flex; flex-direction:column}
+  #c{height:60svh; min-height:340px; flex:none}
+  .toolbar{position:static; inset:auto; padding:10px 10px 12px; background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+  .labels{bottom:auto; height:max(60svh,340px)}
+}
+.tb.pr{font-weight:600}
+.tb.dz{border-color:#5b3a8c; color:#5b3a8c} .tb.dz[aria-pressed="true"]{background:#5b3a8c; color:#fff}
+.tb.ch{border-color:#c0621c; color:#c0621c} .tb.ch[aria-pressed="true"]{background:#c0621c; color:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tb.dz{color:#b89be6;border-color:#8a6cc0} :root:not([data-theme="light"]) .tb.ch{color:#f0a060;border-color:#d07a38}}
+.fwarn{border-radius:10px; padding:6px 12px; font-size:13.5px; font-weight:600; max-width:360px; color:#fff; box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.fwarn[hidden]{display:none}
+.fwarn.dz{background:#5b3a8c} .fwarn.ch{background:#c0621c}
+.card.pcard{border-inline-start:4px solid var(--pc)}
+.card.pcard h2{color:var(--pc)}
+.card ul{margin:6px 0; padding-inline-start:20px}
+.card li{margin:2px 0}
+.card h4{margin:10px 0 2px; font-size:14.5px}
+.presenter{position:absolute; top:12px; inset-inline-end:12px; width:min(290px,calc(100% - 24px)); display:flex; gap:9px; align-items:flex-start; background:color-mix(in srgb,var(--panel) 94%,transparent); border:1px solid var(--line); border-radius:12px; padding:8px 9px; box-shadow:0 4px 16px rgba(10,20,30,.2); z-index:5}
+.presenter[hidden]{display:none}
+.pv{position:relative; flex:none; width:52px; height:52px}
+.pv img{width:52px; height:52px; border-radius:50%; object-fit:cover; object-position:50% 30%; position:relative; z-index:1; border:2px solid var(--panel)}
+.pv .ring{position:absolute; inset:-3px; border-radius:50%; background:conic-gradient(#1f8a4c,#1f78c8,#1f8a4c); opacity:.35}
+.presenter.talking .pv img{animation:talk 2.4s ease-in-out infinite}
+.presenter.talking .pv .ring{opacity:1; animation:spin 3s linear infinite}
+@keyframes talk{0%,100%{transform:translateY(0) scale(1)}25%{transform:translateY(-1px) scale(1.02) rotate(-.6deg)}50%{transform:translateY(0) scale(1.005)}75%{transform:translateY(-1px) scale(1.015) rotate(.6deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pv .bars{position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); display:flex; gap:2px; z-index:2; background:var(--panel); border-radius:6px; padding:2px 4px; border:1px solid var(--line)}
+.pv .bars i{display:block; width:2px; height:4px; background:#1f8a4c; border-radius:2px}
+.presenter.talking .bars i{animation:bar .9s ease-in-out infinite}
+.presenter.talking .bars i:nth-child(2){animation-delay:.15s}.presenter.talking .bars i:nth-child(3){animation-delay:.3s}.presenter.talking .bars i:nth-child(4){animation-delay:.45s}.presenter.talking .bars i:nth-child(5){animation-delay:.6s}
+@keyframes bar{0%,100%{height:3px}50%{height:10px}}
+.pb{flex:1; min-width:0}
+.pn{font-weight:700; font-size:12.5px; line-height:1.3}
+.pn span{font-weight:500; color:var(--muted); font-size:11.5px; margin-inline-start:4px}
+.pt{font-size:12.5px; line-height:1.6; margin:3px 0 5px; max-height:4.9em; overflow-y:auto}
+.pc{display:flex; gap:4px}
+.pc .ic{background:var(--chip); border:1px solid var(--line); border-radius:7px; width:28px; height:24px; padding:0; font-size:11px; line-height:1; cursor:pointer}
+.pc .ic:hover{border-color:var(--accent)}
+html[dir="rtl"] .pc .flip{transform:scaleX(-1)}
+.pw{margin-top:4px; font-size:11px; color:#c0621c}
+.pbtn{position:absolute; top:12px; inset-inline-end:12px; z-index:5; width:46px; height:46px; border-radius:50%; padding:0; border:2px solid #1f8a4c; background:var(--panel); cursor:pointer; box-shadow:0 3px 10px rgba(10,20,30,.2)}
+.pbtn img{width:100%; height:100%; border-radius:50%; object-fit:cover; object-position:50% 30%}
+.pbtn span{position:absolute; bottom:-3px; inset-inline-end:-3px; width:18px; height:18px; border-radius:50%; background:#1f8a4c; color:#fff; font-size:9px; display:grid; place-items:center}
+.pbtn[hidden]{display:none}
+.stage.tour .hint{display:none}
+@media (max-width:820px){.presenter{top:8px; inset-inline-end:8px; width:min(270px,calc(100% - 16px))}.pbtn{top:8px}.stage.tour .ovl{display:none}}
+.stage .hint{inset-inline-end:70px}
+.wm{position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:6;pointer-events:none;user-select:none;font:600 11px/1.2 "IBM Plex Sans Arabic",system-ui,sans-serif;color:#fff;opacity:.5;text-shadow:0 0 3px rgba(0,0,0,.85),0 0 1px #000;white-space:nowrap;letter-spacing:.2px}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="panel">
+    <header class="ph">
+      <h1 data-t="h1">المفاعل الخزاني المستمر ذو الخلاط</h1>
+      <p class="sub" data-t="sub">Continuous Stirred-Tank Reactor (CSTR)</p>
+      <button class="lang" data-lang-toggle lang="en">English</button>
+    </header>
+
+    <section class="card" id="card" aria-live="polite"></section>
+
+    <section class="mix">
+      <h3 data-t="speed">سرعة الخلاط</h3>
+      <div class="rpm">
+        <input type="range" id="rpm" min="30" max="300" step="10" value="120" aria-label="سرعة الخلاط بالدورة في الدقيقة">
+        <output id="rpmOut">120 دورة/د</output>
+      </div>
+      <dl class="readout">
+        <dt data-t="dRe">رقم رينولدز للخلط Re</dt><dd id="oRe">–</dd>
+        <dt data-t="dReg">نظام الجريان</dt><dd id="oReg">–</dd>
+        <dt data-t="dP">القدرة المستهلكة P</dt><dd id="oP">–</dd>
+        <dt data-t="dTip">السرعة المحيطية لطرف الشفرة</dt><dd id="oTip">–</dd>
+      </dl>
+      <p class="fine" data-t="fine">بافتراض ماء عند 25°م، قطر خزان 1.2 م، قطر مروحة 0.4 م، و Np ≈ 5 لتوربين رشتون و 1.3 للمروحة المائلة. Re = ρND²/μ و P = Np·ρ·N³·D⁵</p>
+    </section>
+
+    <section class="mix">
+      <h3 data-t="rxH">التفاعل A + B → C</h3>
+      <div class="rxbar" aria-hidden="true"><div id="barA" style="background:#e23b32;width:50%"></div><div id="barB" style="background:#f2c21b;width:50%"></div><div id="barC" style="background:#22b45a;width:0"></div></div>
+      <dl class="readout">
+        <dt data-t="dA">نسبة المادة A</dt><dd id="oA">–</dd>
+        <dt data-t="dB">نسبة المادة B</dt><dd id="oB">–</dd>
+        <dt data-t="dC">نسبة الناتج C</dt><dd id="oC">–</dd>
+        <dt data-t="dX">التحويل النظري X = kτ/(1+kτ)</dt><dd id="oX">–</dd>
+        <dt data-t="dXa"></dt><dd id="oXa">–</dd>
+      </dl>
+      <p class="fine" data-t="rxFine">نموذج توضيحي مبسّط: التغذية تدخل باستمرار (A أحمر، B أصفر)، وعند بدء التفاعل تتحول الجزيئات إلى الناتج C (أخضر) بثابت سرعة k = 0.35 s⁻¹، مع زمن مكوث τ = 6 s. تستقر نسبة C عند قيمة التحويل النظري للمفاعل الخزاني، وعند إيقاف التفاعل يُغسل الناتج تدريجياً خارج المفاعل.</p>
+    </section>
+
+
+    <footer class="credit" data-t="credit">إعداد: <b>د. ضياء جمعة جاسم</b> (Dheyaa J. Jasim)<br>قسم الهندسة الكيمياوية والصناعات النفطية، كلية العمارة الجامعة</footer>
+  </aside>
+
+  <main class="stage" id="stage">
+    <canvas id="c" aria-label="نموذج ثلاثي الأبعاد للمفاعل الخزاني"></canvas>
+<div class="wm" aria-hidden="true">© 2026 د. ضياء جمعة جاسم · Dr. Dheyaa J. Jasim</div>
+    <div class="labels" id="labels"></div>
+    <div class="ovl">
+    <div class="fwarn" id="fwarn" hidden></div><div class="brand"><div class="who" data-t="who">إعداد: د. ضياء جمعة جاسم</div><div class="en" data-t="whoAlt">Dr. Dheyaa J. Jasim</div><div class="org" data-t="org">قسم الهندسة الكيمياوية والصناعات النفطية، كلية العمارة الجامعة</div></div>
+    <div class="legend" aria-hidden="true"><span><i style="background:#e23b32"></i><b data-t="spA">المادة A</b></span><span><i style="background:#f2c21b"></i><b data-t="spB">المادة B</b></span><span><i style="background:#22b45a"></i><b data-t="spC">المادة C (الناتج)</b></span><span><i style="background:#1d5fd1"></i><b data-t="spCool">مائع التبريد</b></span></div></div>
+    <div class="hint" data-t="hint"></div>
+    <div class="toolbar">
+      <button class="tb rx" id="bRx" aria-pressed="false">بدء التفاعل</button>
+      <button class="tb pr dz" id="bDead" aria-pressed="false"></button>
+      <button class="tb pr ch" id="bChan" aria-pressed="false"></button>
+      <button class="tb" data-lang-toggle lang="en">English</button>
+      <div class="seg" role="group" aria-label="وظيفة السحب">
+        <button data-drag="rotate" aria-pressed="true" data-t="dRot">تدوير</button>
+        <button data-drag="pan" aria-pressed="false" data-t="dPan">تحريك</button>
+      </div>
+      <div class="seg" role="group" aria-label="طريقة العرض">
+        <button data-mode="full" aria-pressed="false" data-t="full">كامل</button>
+        <button data-mode="cut" aria-pressed="true" data-t="cut">مقطع</button>
+        <button data-mode="ghost" aria-pressed="false" data-t="ghost">شفاف</button>
+      </div>
+      <button class="tb" id="bExplode" aria-pressed="false">تفكيك الأجزاء</button>
+      <button class="tb" id="bSpin" aria-pressed="false">إيقاف الخلاط</button>
+      <button class="tb" id="bLabels">الملصقات: أرقام</button>
+      <div class="seg" role="group" aria-label="زاوية النظر">
+        <button data-view="iso" data-t="iso">منظور</button>
+        <button data-view="front" data-t="front">أمامي</button>
+        <button data-view="top" data-t="top">علوي</button>
+      </div>
+    </div>
+    <div class="loading" id="loading">جارٍ تحميل النموذج… Loading…</div>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+const loadingEl=document.getElementById('loading');
+if(!window.THREE||!THREE.OrbitControls){loadingEl.textContent='تعذّر تحميل مكتبة الرسم ثلاثي الأبعاد. تحقق من الاتصال بالإنترنت ثم أعد تحميل الصفحة. / The 3D library could not load; check your connection and reload.';return;}
+
+/* ---------- content ---------- */
+const INFO_AR={
+ shell:{ar:'وعاء المفاعل',en:'Reactor vessel (shell)',d:'الحيّز الذي يجري فيه التفاعل: جسم أسطواني من الفولاذ المقاوم للصدأ (316L) مع رأسين إهليلجيين بنسبة 2:1 يتحملان الضغط الداخلي بسماكة أقل مما يحتاجه الرأس المسطح.',n:'بافتراض الخلط التام تكون خواص الخارج مساوية لخواص ما في الوعاء. معادلة التصميم: V = F_A0·X / (−r_A)'},
+ liquid:{ar:'خليط التفاعل',en:'Reaction mixture (liquid holdup)',d:'السائل المحتوى داخل الوعاء، وحجمه هو حجم التفاعل V. يبقى المستوى ثابتاً في التشغيل المستقر لأن التدفق الداخل يساوي الخارج. النقاط المتحركة تمثل مسارات الجريان التي يولدها الخلاط.',n:'زمن المكوث τ = V / v₀'},
+ manway:{ar:'فتحة التفتيش',en:'Manway',d:'فتحة واسعة بغطاء مثبت بالبراغي تسمح بدخول العامل لتنظيف الوعاء وفحصه وتركيب الأجزاء الداخلية وصيانتها.',n:''},
+ sight:{ar:'زجاجة الرؤية',en:'Sight glass',d:'نافذة من زجاج مقوّى لمراقبة سطح السائل والرغوة ولون الخليط أثناء التشغيل دون فتح الوعاء.',n:''},
+ legs:{ar:'أرجل الإسناد',en:'Support legs with lugs',d:'تحمل وزن الوعاء والسائل ومنظومة الخلط وتنقله إلى الأساس عبر ألواح قاعدية مثبتة بمسامير. تُربط بالوعاء بألواح تقوية ملحومة.',n:''},
+ motor:{ar:'المحرك الكهربائي',en:'Electric motor',d:'يوفر القدرة اللازمة لتدوير الخلاط. محرك حثّي مغلق يُبرَّد بالزعانف الخارجية والمروحة العلوية، وصندوق الأطراف على جانبه لتوصيل الكهرباء.',n:'القدرة في الجريان المضطرب: P = Np·ρ·N³·D⁵'},
+ gearbox:{ar:'صندوق التروس',en:'Gearbox (speed reducer)',d:'يخفض سرعة المحرك (نحو 1450 دورة/دقيقة) إلى سرعة الخلط المطلوبة ويرفع العزم المنقول إلى العمود بالنسبة نفسها.',n:'العزم T = P / (2πN)'},
+ seal:{ar:'مانع التسرب وحامل المحامل',en:'Mechanical seal & bearing lantern',d:'الحامل يسند المحامل التي تثبت العمود، ومانع التسرب الميكانيكي يمنع خروج المواد أو الأبخرة من نقطة دخول العمود إلى الوعاء.',n:''},
+ shaft:{ar:'عمود الخلاط',en:'Agitator shaft',d:'ينقل العزم من صندوق التروس إلى المراوح. يُصمم ليتحمل الالتواء والانحناء، وتُختار سرعة التشغيل بعيداً عن سرعته الحرجة.',n:''},
+ rushton:{ar:'توربين رشتون',en:'Rushton turbine (6 flat blades)',d:'قرص تُثبت عليه ست شفرات عمودية مسطحة. يدفع السائل شعاعياً نحو الجدار فتتكون حلقتا دوران فوقه وتحته، مع قص عالٍ مناسب لتشتيت الغاز والتفاعلات السريعة.',n:'D/T ≈ 1/3، ورقم القدرة Np ≈ 5 في الجريان المضطرب'},
+ pbt:{ar:'مروحة الشفرات المائلة 45°',en:'Pitched-blade turbine (45°)',d:'أربع شفرات مائلة تدفع السائل محورياً نحو الأسفل، فتربط الجزء العلوي بالسفلي وتمنع تكون مناطق ميتة قرب السطح.',n:'Np ≈ 1.3'},
+ baffles:{ar:'الحواجز الجدارية',en:'Wall baffles (×4)',d:'أربعة ألواح عمودية تمنع دوران السائل ككتلة واحدة وتكوّن الدوامة، فتحول الحركة الدورانية إلى خلط فعّال في كامل الحجم.',n:'عرض الحاجز ≈ T/12 مع فجوة صغيرة عن الجدار لمنع ترسب المواد خلفه'},
+ jacket:{ar:'القميص الحراري',en:'Heat-transfer jacket',d:'غلاف خارجي يحيط بالوعاء يجري فيه مائع التبريد لإزالة حرارة التفاعل الطارد، أو مائع التسخين للتفاعل الماص.',n:'Q = U·A·(T − Tc)، و A مساحة الجدار المبلل المغطى بالقميص'},
+ coolant:{ar:'مائع التبريد',en:'Coolant (jacket side)',d:'ماء التبريد الذي يملأ الفراغ الحلقي بين جدار الوعاء والقميص. يدخل بارداً من الأسفل (أزرق داكن) ويلتف حول الوعاء صاعداً نحو المخرج العلوي، ويفتح لونه كلما امتص حرارة التفاعل. يُرى جريانه في وضعي «مقطع» و«شفاف».',n:'Q = ṁc·Cp·(Tc,out − Tc,in) = U·A·ΔT_lm'},
+ coolIn:{ar:'مدخل مائع التبريد',en:'Coolant inlet',d:'يدخل المائع من أسفل القميص ويصعد نحو المخرج العلوي، فيملأ القميص كاملاً ويطرد فقاعات الهواء. يُضبط تدفقه بصمام تحكم مرتبط بمجس حرارة المفاعل.',n:''},
+ coolOut:{ar:'مخرج مائع التبريد',en:'Coolant outlet',d:'يخرج المائع من أعلى القميص بعد أن امتص الحرارة. فرق درجتي حرارة الدخول والخروج يعطي كمية الحرارة المزالة.',n:'Q = ṁc·Cp·(Tc,out − Tc,in)'},
+ feedA:{ar:'فوهة التغذية A',en:'Feed nozzle A with dip pipe',d:'تدخل منها المادة المتفاعلة الأولى. أنبوب الغمر الداخلي يوصل التغذية قرب سطح السائل ويمنع تناثر الرذاذ.',n:'F_A0 = C_A0 · v₀'},
+ feedB:{ar:'فوهة التغذية B',en:'Feed nozzle B',d:'لإدخال المادة المتفاعلة الثانية أو المذيب أو المحفز.',n:''},
+ outlet:{ar:'فوهة المنتج وصمام التصريف',en:'Product outlet & drain valve',d:'يخرج منها تيار المنتج من أسفل الوعاء، ويُستخدم الصمام أيضاً لتفريغ المفاعل كاملاً عند الصيانة.',n:'بافتراض الخلط التام: C_A,out = C_A داخل المفاعل'},
+ thermo:{ar:'مجس درجة الحرارة',en:'Thermowell & temperature transmitter',d:'غلاف معدني مغمور في السائل يحمي المتحسس (مزدوجة حرارية أو RTD). إشارته تُستخدم للتحكم بتدفق مائع التبريد في القميص.',n:''},
+ level:{ar:'مرسل المستوى الراداري',en:'Radar level transmitter',d:'يقيس ارتفاع سطح السائل بموجات رادارية من دون تلامس، ويُستخدم لضبط تدفق الخارج وإبقاء حجم التفاعل ثابتاً.',n:''},
+ gauge:{ar:'مقياس الضغط',en:'Pressure gauge',d:'يعرض ضغط الفراغ العلوي للوعاء محلياً للمشغل.',n:''},
+ relief:{ar:'صمام الأمان',en:'Pressure relief valve',d:'يفتح تلقائياً إذا تجاوز الضغط الحد التصميمي فيحمي الوعاء من التمزق، كما في حالة انفلات التفاعل الطارد.',n:''}
+};
+const INFO_EN={
+ shell:{ar:'Reactor vessel (shell)',en:'وعاء المفاعل',d:'The space where the reaction takes place: a 316L stainless-steel cylinder closed by two 2:1 elliptical heads, which withstand internal pressure with a thinner wall than a flat head would need.',n:'Perfect mixing means the outlet has the same properties as the vessel contents. Design equation: V = F_A0·X / (−r_A)'},
+ liquid:{ar:'Reaction mixture',en:'خليط التفاعل',d:'The liquid held in the vessel; its volume is the reaction volume V. At steady state the level stays constant because inflow equals outflow. The moving dots trace the circulation loops produced by the agitator.',n:'Space time τ = V / v₀'},
+ manway:{ar:'Manway',en:'فتحة التفتيش',d:'A large bolted opening that lets a worker enter the vessel for cleaning, inspection, and installing or servicing internals.',n:''},
+ sight:{ar:'Sight glass',en:'زجاجة الرؤية',d:'A toughened-glass window for watching the liquid surface, foam and mixture colour during operation without opening the vessel.',n:''},
+ legs:{ar:'Support legs with lugs',en:'أرجل الإسناد',d:'Carry the weight of the vessel, liquid and drive, and transfer it to the foundation through bolted base plates. They are joined to the vessel by welded gusset plates.',n:''},
+ motor:{ar:'Electric motor',en:'المحرك الكهربائي',d:'Supplies the power to turn the agitator. A totally enclosed induction motor cooled by external fins and a top fan, with a terminal box on its side for the power supply.',n:'Turbulent-regime power: P = Np·ρ·N³·D⁵'},
+ gearbox:{ar:'Gearbox (speed reducer)',en:'صندوق التروس',d:'Reduces the motor speed (about 1450 rpm) to the required mixing speed and raises the torque delivered to the shaft by the same ratio.',n:'Torque T = P / (2πN)'},
+ seal:{ar:'Mechanical seal & bearing lantern',en:'مانع التسرب وحامل المحامل',d:'The lantern holds the bearings that support the shaft; the mechanical seal stops liquid or vapour escaping where the shaft enters the vessel.',n:''},
+ shaft:{ar:'Agitator shaft',en:'عمود الخلاط',d:'Transmits torque from the gearbox to the impellers. It is sized for torsion and bending, and the operating speed is kept away from its critical speed.',n:''},
+ rushton:{ar:'Rushton turbine',en:'توربين رشتون',d:'A disc carrying six flat vertical blades. It throws liquid radially toward the wall, forming two circulation loops above and below it, with high shear suited to gas dispersion and fast reactions.',n:'D/T ≈ 1/3; power number Np ≈ 5 in turbulent flow'},
+ pbt:{ar:'Pitched-blade turbine (45°)',en:'مروحة الشفرات المائلة 45°',d:'Four inclined blades pump liquid axially downward, linking the upper and lower regions and preventing dead zones near the surface.',n:'Np ≈ 1.3'},
+ baffles:{ar:'Wall baffles (×4)',en:'الحواجز الجدارية',d:'Four vertical plates that stop the liquid rotating as a solid body and forming a vortex, turning swirl into effective mixing throughout the volume.',n:'Baffle width ≈ T/12, with a small gap from the wall so solids do not settle behind it'},
+ jacket:{ar:'Heat-transfer jacket',en:'القميص الحراري',d:'An outer shell around the vessel through which coolant flows to remove the heat of an exothermic reaction, or heating fluid for an endothermic one.',n:'Q = U·A·(T − Tc), where A is the wetted wall area covered by the jacket'},
+ coolant:{ar:'Coolant (jacket side)',en:'مائع التبريد',d:'Cooling water filling the annular gap between the vessel wall and the jacket. It enters cold at the bottom (dark blue), spirals around the vessel up to the top outlet, and lightens as it absorbs the heat of reaction. Its flow is visible in Cutaway and X-ray modes.',n:'Q = ṁc·Cp·(Tc,out − Tc,in) = U·A·ΔT_lm'},
+ coolIn:{ar:'Coolant inlet',en:'مدخل مائع التبريد',d:'Coolant enters at the bottom of the jacket and rises to the top outlet, filling the jacket completely and sweeping out air pockets. Its flow is set by a control valve linked to the reactor temperature sensor.',n:''},
+ coolOut:{ar:'Coolant outlet',en:'مخرج مائع التبريد',d:'Coolant leaves the top of the jacket after absorbing heat. The difference between inlet and outlet temperatures gives the heat removed.',n:'Q = ṁc·Cp·(Tc,out − Tc,in)'},
+ feedA:{ar:'Feed nozzle A',en:'فوهة التغذية A',d:'Inlet for the first reactant. The internal dip pipe delivers the feed near the liquid surface and prevents splashing.',n:'F_A0 = C_A0 · v₀'},
+ feedB:{ar:'Feed nozzle B',en:'فوهة التغذية B',d:'Inlet for the second reactant, a solvent or a catalyst.',n:''},
+ outlet:{ar:'Product outlet & drain valve',en:'فوهة المنتج وصمام التصريف',d:'The product stream leaves from the bottom of the vessel; the valve is also used to drain the reactor completely for maintenance.',n:'Perfect mixing: C_A,out = C_A in the reactor'},
+ thermo:{ar:'Thermowell & temperature transmitter',en:'مجس درجة الحرارة',d:'A metal sleeve immersed in the liquid that protects the sensor (thermocouple or RTD). Its signal controls the coolant flow to the jacket.',n:''},
+ level:{ar:'Radar level transmitter',en:'مرسل المستوى الراداري',d:'Measures the liquid height with radar waves without contact, used to control the outflow and keep the reaction volume constant.',n:''},
+ gauge:{ar:'Pressure gauge',en:'مقياس الضغط',d:'Shows the vessel headspace pressure locally to the operator.',n:''},
+ relief:{ar:'Pressure relief valve',en:'صمام الأمان',d:'Opens automatically if pressure exceeds the design limit, protecting the vessel from rupture, for example during a runaway exothermic reaction.',n:''}
+};
+let INFO=INFO_AR;
+const GT_EN=['Vessel','Agitation system','Heat transfer','Feed and discharge','Instruments and safety'];
+const GROUPS=[
+ ['جسم المفاعل',['shell','liquid','manway','sight','legs']],
+ ['منظومة الخلط',['motor','gearbox','seal','shaft','rushton','pbt','baffles']],
+ ['التبادل الحراري',['jacket','coolant','coolIn','coolOut']],
+ ['التغذية والتصريف',['feedA','feedB','outlet']],
+ ['القياس والأمان',['thermo','level','gauge','relief']]
+];
+const ORDER=GROUPS.flatMap(g=>g[1]);
+const NUM={};ORDER.forEach((k,i)=>NUM[k]=i+1);
+const INTERNAL=['liquid','coolant','shaft','rushton','pbt','baffles'];
+
+/* ---------- renderer / scene ---------- */
+const deg=Math.PI/180, V3=THREE.Vector3, V2=THREE.Vector2;
+const R=1,H=2.6,HD=0.5,YL=2.15,YIMP=0.5,YPBT=1.45;
+const P=(r,a,y)=>new V3(r*Math.cos(a*deg),y,r*Math.sin(a*deg));
+const RAD=a=>new V3(Math.cos(a*deg),0,Math.sin(a*deg));
+const UP=new V3(0,1,0);
+const headY=r=>H+HD*Math.sqrt(Math.max(0,1-(r/R)**2));
+const C=h=>new THREE.Color(h).convertSRGBToLinear();
+
+const stage=document.getElementById('stage'),canvas=document.getElementById('c');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+renderer.outputEncoding=THREE.sRGBEncoding;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.0;
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.localClippingEnabled=true;renderer.setClearColor(0x000000,0);
+
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(36,1,0.05,120);
+const HOME={pos:new V3(5.6,3.8,6.4),tgt:new V3(0,1.3,0)};
+camera.position.copy(HOME.pos);
+const controls=new THREE.OrbitControls(camera,canvas);
+controls.target.copy(HOME.tgt);controls.enableDamping=true;controls.dampingFactor=.08;
+controls.minDistance=1.6;controls.maxDistance=20;controls.enablePan=true;controls.screenSpacePanning=true;controls.panSpeed=1.1;
+controls.mouseButtons={LEFT:THREE.MOUSE.ROTATE,MIDDLE:THREE.MOUSE.DOLLY,RIGHT:THREE.MOUSE.PAN};
+controls.touches={ONE:THREE.TOUCH.ROTATE,TWO:THREE.TOUCH.DOLLY_PAN};
+canvas.addEventListener('contextmenu',e=>e.preventDefault());
+controls.update();
+
+/* procedural studio environment for metal reflections */
+(function(){
+ const pm=new THREE.PMREMGenerator(renderer);const es=new THREE.Scene();
+ const g=new THREE.SphereGeometry(20,48,24);const pos=g.attributes.position;const cols=[];
+ const lo=new THREE.Color(0x4a525a),mid=new THREE.Color(0xb8c2ca),hi=new THREE.Color(0xf2f6f9);
+ for(let i=0;i<pos.count;i++){const y=pos.getY(i)/20;const c=y<0?lo.clone().lerp(mid,y+1):mid.clone().lerp(hi,y);cols.push(c.r,c.g,c.b);}
+ g.setAttribute('color',new THREE.Float32BufferAttribute(cols,3));
+ es.add(new THREE.Mesh(g,new THREE.MeshBasicMaterial({side:THREE.BackSide,vertexColors:true})));
+ const pl=(w,h,p,int)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(int,int,int),side:THREE.DoubleSide}));m.position.copy(p);m.lookAt(0,0,0);es.add(m);};
+ pl(14,4,new V3(0,14,6),3.2);pl(6,10,new V3(-15,4,-4),2.2);pl(6,10,new V3(15,5,2),1.6);
+ scene.environment=pm.fromScene(es,0.04).texture;pm.dispose();
+})();
+
+scene.add(new THREE.HemisphereLight(0xeef3f7,0x3a4550,0.55));
+const sun=new THREE.DirectionalLight(0xffffff,1.25);sun.position.set(5,10,6);sun.castShadow=true;
+sun.shadow.mapSize.set(2048,2048);const sc=sun.shadow.camera;sc.left=-6;sc.right=6;sc.top=7;sc.bottom=-6;sc.near=1;sc.far=30;sun.shadow.bias=-0.0004;sun.shadow.normalBias=0.02;
+scene.add(sun);
+const fill=new THREE.DirectionalLight(0xdfe8ff,0.35);fill.position.set(-6,3,-4);scene.add(fill);
+
+/* ---------- materials ---------- */
+const std=(hex,met,rough,extra)=>new THREE.MeshStandardMaterial(Object.assign({color:C(hex),metalness:met,roughness:rough,side:THREE.DoubleSide},extra||{}));
+const M={
+ steel:std(0xd4dbe0,.9,.24),steelDark:std(0x8e989f,.85,.36),brushed:std(0xb9c2c9,.85,.4),
+ jacket:std(0xa9b9c4,.8,.33),paint:std(0x2f5f86,.25,.48),paintGrey:std(0x566570,.35,.5),
+ black:std(0x2b3035,.3,.6),red:std(0xb3362b,.2,.42),orange:std(0xc9772c,.2,.45),blue:std(0x2f76b3,.2,.45),
+ white:std(0xf3f3ee,0,.5),glass:std(0x9fd6ea,0,.05,{transparent:true,opacity:.42}),
+ liquid:new THREE.MeshStandardMaterial({color:C(0x3f94b8),metalness:0,roughness:.12,transparent:true,opacity:.3,depthWrite:false,side:THREE.DoubleSide})
+};
+
+/* ---------- helpers ---------- */
+function add(g,geo,mat,pos){const m=new THREE.Mesh(geo,mat);if(pos)m.position.copy(pos);g.add(m);return m;}
+function cylY(g,r,y0,y1,mat,seg,x,z,rTop){const h=y1-y0;return add(g,new THREE.CylinderGeometry(rTop==null?r:rTop,r,h,seg||40),mat,new V3(x||0,(y0+y1)/2,z||0));}
+function pipe(g,p1,p2,r,mat,seg){const d=new V3().subVectors(p2,p1),L=d.length();const m=add(g,new THREE.CylinderGeometry(r,r,L,seg||28),mat);m.position.copy(p1).addScaledVector(d,.5);m.quaternion.setFromUnitVectors(UP,d.normalize());return m;}
+function ball(g,p,r,mat){return add(g,new THREE.SphereGeometry(r,28,18),mat,p);}
+function box(g,w,h,d,p,mat,ry){const m=add(g,new THREE.BoxGeometry(w,h,d),mat,p);if(ry)m.rotation.y=ry;return m;}
+function flange(g,p,dir,rd,n,mat,th){const f=new THREE.Group();f.position.copy(p);f.quaternion.setFromUnitVectors(UP,dir.clone().normalize());
+ add(f,new THREE.CylinderGeometry(rd,rd,th||.035,48),mat||M.steel);
+ const bg=new THREE.CylinderGeometry(.011,.011,(th||.035)+.04,8);
+ for(let i=0;i<n;i++){const a=(i+.5)/n*Math.PI*2;add(f,bg,M.steelDark,new V3(Math.cos(a)*rd*.8,0,Math.sin(a)*rd*.8));}
+ g.add(f);return f;}
+function ring(g,r,y,h,mat){return add(g,new THREE.CylinderGeometry(r,r,h,128,1,true),mat,new V3(0,y,0));}
+function band(g,p1,p2,r,mat){return pipe(g,p1,p2,r,mat);}
+function vesselProfile(r,hd,top){const pts=[],N=36;
+ for(let i=0;i<=N;i++){const t=i/N*Math.PI/2;pts.push(new V2(Math.max(1e-4,r*Math.sin(t)),-hd*Math.cos(t)));}
+ pts.push(new V2(r,top));
+ for(let i=1;i<=N;i++){const t=i/N*Math.PI/2;pts.push(new V2(Math.max(1e-4,r*Math.cos(t)),top+hd*Math.sin(t)));}
+ return pts;}
+
+/* ---------- explode groups ---------- */
+const EG={},EOFF={vessel:new V3(),drive:new V3(0,1.9,0),agitator:new V3(-3.1,.35,0),baffles:new V3(3.1,.15,0),support:new V3(0,-2.7,0)};
+for(const k in EOFF){EG[k]=new THREE.Group();scene.add(EG[k]);}
+const parts={};
+function part(key,eg,anchor){const g=new THREE.Group();EG[eg].add(g);parts[key]={key,group:g,anchor,mats:[]};return g;}
+
+/* ===== VESSEL ===== */
+{const g=part('shell','vessel',P(1.02,52,2.35));
+ add(g,new THREE.LatheGeometry(vesselProfile(1,HD,H),128),M.steel);
+ add(g,new THREE.LatheGeometry(vesselProfile(.975,.4875,H),128),M.brushed);
+ const np=box(g,.3,.17,.012,P(1.008,205,2.3),M.white);np.rotation.y=Math.PI/2-205*deg;}
+{const g=part('liquid','vessel',P(.35,-30,1.95));
+ const pts=[];const N=32;for(let i=0;i<=N;i++){const t=i/N*Math.PI/2;pts.push(new V2(Math.max(1e-4,.97*Math.sin(t)),-.485*Math.cos(t)));}
+ pts.push(new V2(.97,YL));pts.push(new V2(1e-4,YL));
+ add(g,new THREE.LatheGeometry(pts,96),M.liquid);}
+{const a=270,r=.45,g=part('manway','vessel',P(r,a,3.36));const yb=headY(r)-.06;
+ cylY(g,.2,yb,3.2,M.steel,48,P(r,a,0).x,P(r,a,0).z);
+ cylY(g,.26,3.2,3.235,M.steel,56,P(r,a,0).x,P(r,a,0).z);
+ cylY(g,.26,3.24,3.28,M.brushed,56,P(r,a,0).x,P(r,a,0).z);
+ const c=P(r,a,0);const bg=new THREE.CylinderGeometry(.013,.013,.1,8);
+ for(let i=0;i<12;i++){const t=i/12*Math.PI*2;add(g,bg,M.steelDark,new V3(c.x+Math.cos(t)*.225,3.245,c.z+Math.sin(t)*.225));}
+ const hd=add(g,new THREE.TorusGeometry(.07,.013,10,24,Math.PI),M.steelDark,new V3(c.x,3.28,c.z));hd.rotation.y=-a*deg;
+ box(g,.08,.06,.1,P(r+.27,a,3.24),M.steelDark,-a*deg);}
+{const a=110,y=2.3,g=part('sight','vessel',P(1.28,a,y+.08));
+ pipe(g,P(.97,a,y),P(1.13,a,y),.09,M.steel);flange(g,P(1.14,a,y),RAD(a),.16,8,M.steel);
+ pipe(g,P(1.158,a,y),P(1.175,a,y),.1,M.glass);
+ const ring=new THREE.Mesh(new THREE.TorusGeometry(.12,.025,10,40),M.steel);ring.position.copy(P(1.18,a,y));ring.lookAt(P(3,a,y));g.add(ring);}
+{const g=part('legs','support',P(1.32,45,-.6));
+ [45,135,225,315].forEach(a=>{const ry=-a*deg,tg=new V3(-Math.sin(a*deg),0,Math.cos(a*deg));
+  box(g,.11,2.6,.11,P(1.3,a,-.15),M.paintGrey,ry);
+  [-1,1].forEach(s=>box(g,.26,.34,.018,P(1.2,a,1.0).addScaledVector(tg,s*.07),M.paintGrey,ry));
+  box(g,.3,.03,.2,P(1.22,a,1.18),M.paintGrey,ry);
+  box(g,.3,.03,.3,P(1.3,a,-1.44),M.paintGrey,ry);
+  [[.1,.1],[-.1,.1],[.1,-.1],[-.1,-.1]].forEach(o=>{const p=P(1.3,a,-1.41);p.x+=o[0];p.z+=o[1];cylY(g,.012,-1.44,-1.39,M.steelDark,8,p.x,p.z);});});
+ const floor=new THREE.Mesh(new THREE.PlaneGeometry(40,40),new THREE.ShadowMaterial({opacity:.2}));floor.rotation.x=-Math.PI/2;floor.position.y=-1.47;floor.receiveShadow=true;floor.userData.noPick=true;EG.support.add(floor);
+ const grid=new THREE.GridHelper(12,24,0x7d8d99,0x7d8d99);grid.material.transparent=true;grid.material.opacity=.22;grid.position.y=-1.465;EG.support.add(grid);}
+
+/* ===== DRIVE ===== */
+{const g=part('seal','drive',new V3(.2,3.52,.05));
+ cylY(g,.16,3.02,3.16,M.steel,48);cylY(g,.22,3.16,3.195,M.steel,48);
+ cylY(g,.1,3.2,3.34,M.brushed,40);cylY(g,.19,3.34,3.38,M.steel,48);
+ [45,135,225,315].forEach(a=>{const p=P(.15,a,0);cylY(g,.02,3.38,3.68,M.steel,12,p.x,p.z);});
+ cylY(g,.07,3.38,3.68,M.steelDark,32);cylY(g,.19,3.68,3.72,M.steel,48);}
+{const g=part('gearbox','drive',new V3(0,3.95,.24));
+ box(g,.52,.4,.42,new V3(0,3.93,0),M.paint);
+ box(g,.56,.04,.46,new V3(0,3.745,0),M.paint);box(g,.56,.03,.46,new V3(0,4.115,0),M.paint);
+ [-.14,0,.14].forEach(x=>box(g,.02,.3,.44,new V3(x,3.93,0),M.paint));
+ cylY(g,.02,3.9,3.95,M.steelDark,12,.265,0);
+ const plug=pipe(g,new V3(0,3.86,.21),new V3(0,3.86,.24),.025,M.orange);
+ cylY(g,.17,4.13,4.19,M.paint,40);}
+{const g=part('motor','drive',new V3(.16,4.55,.16));
+ cylY(g,.19,4.19,4.78,M.paint,48);
+ const fg=new THREE.BoxGeometry(.045,.5,.012);
+ for(let i=0;i<28;i++){const a=i/28*360;const m=add(g,fg,M.paint,P(.205,a,4.49));m.rotation.y=-a*deg;}
+ cylY(g,.2,4.78,4.92,M.paintGrey,48,0,0,.185);
+ cylY(g,.12,4.92,4.93,M.black,32);
+ box(g,.14,.15,.14,new V3(0,4.45,-.27),M.paint);box(g,.05,.04,.05,new V3(0,4.4,-.36),M.black);
+ const eye=add(g,new THREE.TorusGeometry(.04,.012,10,24),M.steelDark,new V3(0,4.98,0));
+ box(g,.1,.06,.004,new V3(.1,4.5,.2),M.white,Math.PI/4);}
+
+/* ===== AGITATOR ===== */
+const spinners=[];
+{const g=part('shaft','agitator',new V3(.05,2.6,0));const s=new THREE.Group();g.add(s);spinners.push(s);
+ cylY(s,.035,.3,3.72,M.steel,24);cylY(s,.06,3.52,3.62,M.steelDark,24);ball(s,new V3(0,.3,0),.035,M.steel);}
+{const g=part('rushton','agitator',new V3(.3,YIMP,.12));const s=new THREE.Group();g.add(s);spinners.push(s);
+ cylY(s,.25,YIMP-.01,YIMP+.01,M.steel,64);cylY(s,.06,YIMP-.065,YIMP+.065,M.steelDark,32);
+ for(let i=0;i<6;i++){const a=i*60;box(s,.165,.13,.012,P(.25,a,YIMP),M.steel,-a*deg);}
+ [0,120,240].forEach(a=>{const p=P(.09,a,YIMP+.02);cylY(s,.012,YIMP+.01,YIMP+.03,M.steelDark,8,p.x,p.z);});}
+{const g=part('pbt','agitator',new V3(.3,YPBT,.12));const s=new THREE.Group();g.add(s);spinners.push(s);
+ cylY(s,.05,YPBT-.06,YPBT+.06,M.steelDark,32);
+ for(let i=0;i<4;i++){const a=i*90;const pv=new THREE.Group();pv.position.y=YPBT;pv.rotation.y=-a*deg;
+  const b=add(pv,new THREE.BoxGeometry(.27,.11,.012),M.steel,new V3(.195,0,0));b.rotation.x=Math.PI/4;
+  add(pv,new THREE.BoxGeometry(.05,.03,.03),M.steelDark,new V3(.06,0,0));s.add(pv);}}
+{const g=part('baffles','baffles',P(.87,90,1.7));
+ [0,90,180,270].forEach(a=>{box(g,.16,2.35,.018,P(.87,a,1.255),M.brushed,-a*deg);
+  [.35,1.25,2.15].forEach(y=>box(g,.08,.05,.04,P(.94,a,y),M.steelDark,-a*deg));});}
+
+/* ===== HEAT TRANSFER ===== */
+{const g=part('jacket','support',P(1.14,62,1.0));const rj=1.13,hj=.62,t0=Math.asin(.17/rj),pts=[];
+ for(let i=0;i<=30;i++){const t=t0+(Math.PI/2-t0)*i/30;pts.push(new V2(rj*Math.sin(t),-hj*Math.cos(t)));}
+ pts.push(new V2(rj,1.9));pts.push(new V2(1.0,1.9));
+ add(g,new THREE.LatheGeometry(pts,128),M.jacket);}
+{const a=160,y=.15,g=part('coolIn','support',P(1.62,a,y+.12));
+ pipe(g,P(1.08,a,y),P(1.6,a,y),.05,M.steel);flange(g,P(1.6,a,y),RAD(a),.11,6);
+ band(g,P(1.33,a,y),P(1.42,a,y),.056,M.blue);}
+{const a=320,y=1.75,g=part('coolOut','support',P(1.62,a,y+.12));
+ pipe(g,P(1.08,a,y),P(1.6,a,y),.05,M.steel);flange(g,P(1.6,a,y),RAD(a),.11,6);
+ band(g,P(1.33,a,y),P(1.42,a,y),.056,M.red);}
+
+{const g=part('coolant','support',P(1.07,75,.85));const pts=[],t0o=Math.asin(.17/1.125),t0i=Math.asin(.17/1.006);
+ for(let i=0;i<=30;i++){const t=t0o+(Math.PI/2-t0o)*i/30;pts.push(new V2(1.125*Math.sin(t),-.615*Math.cos(t)));}
+ pts.push(new V2(1.125,1.87));pts.push(new V2(1.006,1.87));
+ for(let i=0;i<=30;i++){const t=Math.PI/2-(Math.PI/2-t0i)*i/30;pts.push(new V2(1.006*Math.sin(t),-.503*Math.cos(t)));}
+ pts.push(pts[0].clone());
+ add(g,new THREE.LatheGeometry(pts,128),new THREE.MeshStandardMaterial({color:C(0x2a6fd6),metalness:0,roughness:.15,transparent:true,opacity:.4,depthWrite:false,side:THREE.DoubleSide}));}
+function arrow(g,p,dir,mat){const c=add(g,new THREE.ConeGeometry(.07,.16,24),mat,p);c.quaternion.setFromUnitVectors(UP,dir.clone().normalize());return c;}
+arrow(parts.coolIn.group,P(1.82,160,.15),RAD(160).negate(),M.blue);
+arrow(parts.coolOut.group,P(1.78,320,1.75),RAD(320),M.blue);
+
+/* ===== FEED / OUTLET ===== */
+function feed(key,a){const r=.55,yb=headY(r)-.05;const g=part(key,'vessel',P(1.34,a,3.62));
+ pipe(g,P(r,a,yb),P(r,a,3.5),.045,M.steel);flange(g,P(r,a,3.2),UP,.1,6);
+ ball(g,P(r,a,3.5),.045,M.steel);pipe(g,P(r,a,3.5),P(1.3,a,3.5),.045,M.steel);
+ flange(g,P(1.3,a,3.5),RAD(a),.1,6);band(g,P(.9,a,3.5),P(1.0,a,3.5),.051,M.orange);
+ pipe(g,P(r,a,2.3),P(r,a,yb+.02),.034,M.brushed);}
+feed('feedA',30);feed('feedB',150);
+{const g=part('outlet','vessel',new V3(.2,-1.02,.15));
+ pipe(g,new V3(0,-.46,0),new V3(0,-1.0,0),.055,M.steel);flange(g,new V3(0,-.66,0),UP,.12,6);
+ flange(g,new V3(0,-.99,0),UP,.11,6);
+ ball(g,new V3(0,-1.08,0),.1,M.steel);flange(g,new V3(0,-1.17,0),UP,.11,6);
+ cylY(g,.02,-1.08,-.96,M.steelDark,12,0,.0);
+ box(g,.34,.025,.04,new V3(.16,-.96,0),M.red);
+ pipe(g,new V3(0,-1.18,0),new V3(0,-1.25,0),.055,M.steel);ball(g,new V3(0,-1.25,0),.055,M.steel);
+ pipe(g,new V3(0,-1.25,0),new V3(1.75,-1.25,0),.055,M.steel);flange(g,new V3(1.75,-1.25,0),new V3(1,0,0),.12,6);
+ band(g,new V3(1.1,-1.25,0),new V3(1.2,-1.25,0),.061,M.orange);}
+
+/* ===== INSTRUMENTS ===== */
+{const a=20,y=1.1,g=part('thermo','vessel',P(1.56,a,y+.1));
+ pipe(g,P(.5,a,y),P(1.3,a,y),.022,M.steel);ball(g,P(.5,a,y),.022,M.steel);
+ pipe(g,P(1.1,a,y),P(1.26,a,y),.05,M.steel);flange(g,P(1.27,a,y),RAD(a),.1,4);
+ pipe(g,P(1.29,a,y),P(1.34,a,y),.025,M.steelDark);
+ pipe(g,P(1.34,a,y),P(1.48,a,y),.075,M.paintGrey);pipe(g,P(1.48,a,y),P(1.51,a,y),.065,M.steelDark);
+ pipe(g,P(1.41,a,y-.07),P(1.41,a,y-.12),.018,M.black);}
+{const a=90,r=.6,yb=headY(r)-.05,g=part('level','vessel',P(r,a,3.46));
+ pipe(g,P(r,a,yb),P(r,a,3.1),.07,M.steel);flange(g,P(r,a,3.11),UP,.14,6);
+ pipe(g,P(r,a,3.13),P(r,a,3.3),.085,M.paintGrey);
+ const d=ball(g,P(r,a,3.3),.085,M.paintGrey);d.scale.y=.6;
+ pipe(g,P(r+.08,a,3.2),P(r+.13,a,3.2),.018,M.black);
+ const cone=add(g,new THREE.ConeGeometry(.065,.16,32,1,true),M.steel,P(r,a,2.93));cone.rotation.x=Math.PI;}
+{const a=330,r=.6,yb=headY(r)-.05,g=part('gauge','vessel',P(r+.05,a,3.52));
+ pipe(g,P(r,a,yb),P(r,a,3.33),.014,M.steel);cylY(g,.022,3.18,3.24,M.steelDark,6,P(r,a,0).x,P(r,a,0).z);
+ pipe(g,P(r-.02,a,3.42),P(r+.035,a,3.42),.09,M.black);
+ pipe(g,P(r+.035,a,3.42),P(r+.038,a,3.42),.078,M.white);
+ const ng=new THREE.Group();ng.position.copy(P(r+.041,a,3.42));ng.lookAt(P(3,a,3.42));
+ const nd=add(ng,new THREE.BoxGeometry(.006,.06,.003),M.red,new V3(.012,.018,0));nd.rotation.z=-.6;g.add(ng);}
+{const a=210,r=.6,yb=headY(r)-.05,g=part('relief','vessel',P(r,a,3.62));
+ pipe(g,P(r,a,yb),P(r,a,3.1),.04,M.steel);flange(g,P(r,a,3.1),UP,.09,4);
+ ball(g,P(r,a,3.19),.065,M.steel);pipe(g,P(r,a,3.19),P(.86,a,3.19),.032,M.steel);
+ pipe(g,P(r,a,3.24),P(r,a,3.46),.035,M.red);pipe(g,P(r,a,3.46),P(r,a,3.51),.045,M.red);
+ pipe(g,P(r-.05,a,3.4),P(r+.05,a,3.4),.008,M.steelDark);}
+
+/* ---------- finalize: per-part materials, pick list ---------- */
+const pickables=[];
+for(const key in parts){const pt=parts[key],cache=new Map();
+ pt.group.traverse(o=>{if(!o.isMesh)return;if(!cache.has(o.material)){const c=o.material.clone();cache.set(o.material,c);pt.mats.push(c);}
+  o.material=cache.get(o.material);o.userData.key=key;o.castShadow=key!=='liquid';o.receiveShadow=true;if(key!=='liquid')pickables.push(o);});}
+
+/* ---------- flow particles ---------- */
+const NP=650,pPos=new Float32Array(NP*3),pData=[];
+for(let i=0;i<NP;i++){const up=Math.random()<.64;
+ pData.push({up,t:Math.random()*Math.PI*2,th:Math.random()*Math.PI*2,a:.15+Math.random()*.18,b:up?.34+Math.random()*.42:.14+Math.random()*.18,rc:.53+Math.random()*.06,sp:.7+Math.random()*.6});}
+const pGeo=new THREE.BufferGeometry();pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));
+const SP_COL=[C(0xe23b32),C(0xf2c21b),C(0x22b45a)]; /* A red, B yellow, C green */
+const pCol=new Float32Array(NP*3),species=new Uint8Array(NP);
+function setSp(i,s){species[i]=s;const c=SP_COL[s];pCol[i*3]=c.r;pCol[i*3+1]=c.g;pCol[i*3+2]=c.b;}
+for(let i=0;i<NP;i++)setSp(i,i%2);
+pGeo.setAttribute('color',new THREE.BufferAttribute(pCol,3));
+const BALL=(function(){const cv=document.createElement('canvas');cv.width=cv.height=64;const x=cv.getContext('2d');
+ const g=x.createRadialGradient(24,22,2,32,32,31);g.addColorStop(0,'#ffffff');g.addColorStop(.35,'#e6e6e6');g.addColorStop(.85,'#8a8a8a');g.addColorStop(1,'#5c5c5c');
+ x.fillStyle=g;x.beginPath();x.arc(32,32,30,0,Math.PI*2);x.fill();const t=new THREE.CanvasTexture(cv);t.encoding=THREE.sRGBEncoding;return t;})();
+const particles=new THREE.Points(pGeo,new THREE.PointsMaterial({vertexColors:true,size:.06,map:BALL,alphaTest:.5,depthWrite:true}));
+/* simplified CSTR kinetics: each A/B particle converts to C at rate k; continuous flow replaces any particle
+   with fresh feed (A or B) at rate 1/tau, so the steady C fraction equals X = k*tau/(1+k*tau) */
+const K_RX=.35,TAU=6;let reacting=false;
+let dead=false,chan=false,dk=0,bk=0;const FD=.38,FB=.35;
+const isDead=i=>(i%100)<38;
+function stepReaction(dt){let ch=false;
+ for(let i=0;i<NP;i++){
+  if(isDead(i)&&dk>.5)continue; /* stagnant fluid: no exchange with the flow */
+  const tauA=TAU*(1-FD*dk)/(1-FB*bk);
+  if(Math.random()<dt/tauA){const f=Math.random()<.5?0:1;if(species[i]!==f){setSp(i,f);ch=true;}continue;}
+  if(reacting&&species[i]<2&&Math.random()<K_RX*dt){setSp(i,2);ch=true;}}
+ if(ch)pGeo.attributes.color.needsUpdate=true;}
+EG.vessel.add(particles);
+function stepParticles(dt,k){
+ for(let i=0;i<NP;i++){const p=pData[i];
+  const sh=1-.3*dk,a=p.a*sh,b=p.b*sh;
+  p.t+=dt*k*p.sp*(p.up?1:-1)*(.9/(b+.35));
+  const r=p.rc*(1-.08*dk)+a*Math.cos(p.t),zc=p.up?YIMP+b:YIMP-b,y=zc+b*Math.sin(p.t);
+  p.th+=dt*k*.55*(.35/Math.max(r,.15));
+  let X=r*Math.cos(p.th),Y=y,Z=r*Math.sin(p.th);
+  if(dk>0&&isDead(i)){ /* stagnant pocket positions */
+   if(p.dz===undefined){p.dz=Math.random()<.6?0:1;p.dr=p.dz?.72+Math.random()*.2:.7+Math.random()*.22;p.dth=Math.random()*Math.PI*2;p.dy=Math.random();}
+   p.dth+=dt*.04;const dr=p.dr,dy=p.dz?1.86+.2*p.dy:-.485*Math.sqrt(Math.max(0,1-(dr/.97)**2))+.05+.13*p.dy;
+   const e=dk*dk*(3-2*dk);X+= (dr*Math.cos(p.dth)-X)*e;Y+=(dy-Y)*e;Z+=(dr*Math.sin(p.dth)-Z)*e;}
+  pPos[i*3]=X;pPos[i*3+1]=Y;pPos[i*3+2]=Z;
+  if(dk>0||p.grey){const c=SP_COL[species[i]];let g=isDead(i)?dk*.75:0;p.grey=g>0;
+   pCol[i*3]=c.r+(.09-c.r)*g;pCol[i*3+1]=c.g+(.08-c.g)*g;pCol[i*3+2]=c.b+(.1-c.b)*g;}}
+ pGeo.attributes.position.needsUpdate=true;pGeo.attributes.color.needsUpdate=true;}
+stepParticles(0,0);
+
+/* ---------- coolant particles in the jacket ---------- */
+const NC=1400,cPos=new Float32Array(NC*3),cCol=new Float32Array(NC*3),cData=[];
+const COLD=C(0x0b3fb0),WARM=C(0x7fc4ff),TJ=7;
+function newCool(d,u){d.u=u;d.D=Math.random()<.5?160:-200;d.A=(Math.random()*2-1)*110;d.r=1.015+Math.random()*.1;d.sp=.8+Math.random()*.4;}
+for(let i=0;i<NC;i++){const d={};newCool(d,Math.random());cData.push(d);}
+const cGeo=new THREE.BufferGeometry();cGeo.setAttribute('position',new THREE.BufferAttribute(cPos,3));cGeo.setAttribute('color',new THREE.BufferAttribute(cCol,3));
+const coolPts=new THREE.Points(cGeo,new THREE.PointsMaterial({vertexColors:true,size:.06,map:BALL,alphaTest:.5,depthWrite:true}));
+coolPts.userData.noPick=true;EG.support.add(coolPts);
+const ctmp=new THREE.Color();
+function stepCool(dt){for(let i=0;i<NC;i++){const d=cData[i];d.u+=dt*d.sp/TJ;if(d.u>1)newCool(d,0);
+ const u=d.u,th=(160+d.D*u+d.A*Math.sin(Math.PI*u))*deg,y=.12+1.62*u;
+ cPos[i*3]=d.r*Math.cos(th);cPos[i*3+1]=y;cPos[i*3+2]=d.r*Math.sin(th);
+ ctmp.copy(COLD).lerp(WARM,u);cCol[i*3]=ctmp.r;cCol[i*3+1]=ctmp.g;cCol[i*3+2]=ctmp.b;}
+ cGeo.attributes.position.needsUpdate=true;cGeo.attributes.color.needsUpdate=true;}
+stepCool(0);
+
+/* ---------- dead zones and bypass channel ---------- */
+const DZM=new THREE.MeshStandardMaterial({color:C(0x4b2f78),metalness:0,roughness:.6,transparent:true,opacity:0,depthWrite:false,side:THREE.DoubleSide});
+const dzGroup=new THREE.Group();EG.vessel.add(dzGroup);
+{const t1=new THREE.Mesh(new THREE.TorusGeometry(.8,.17,20,96),DZM);t1.rotation.x=Math.PI/2;t1.position.y=-.1;t1.scale.z=.75;dzGroup.add(t1);
+ const t2=new THREE.Mesh(new THREE.TorusGeometry(.83,.13,20,96),DZM);t2.rotation.x=Math.PI/2;t2.position.y=1.98;t2.scale.z=.8;dzGroup.add(t2);
+ [0,90,180,270].forEach(a=>{const b=new THREE.Mesh(new THREE.BoxGeometry(.1,1.9,.2),DZM);b.position.copy(P(.92,a+12,1.0));b.rotation.y=-(a+12)*deg;dzGroup.add(b);});}
+const BYP=[P(.55,30,2.3),P(.74,30,1.8),P(.82,30,.9),P(.8,30,.15),P(.5,30,-.33),new V3(0,-.49,0),new V3(0,-1.25,0),new V3(1.75,-1.25,0)];
+const chCurve=new THREE.CatmullRomCurve3(BYP.slice(0,6));
+const CHM=new THREE.MeshStandardMaterial({color:C(0xe0782a),metalness:0,roughness:.5,transparent:true,opacity:0,depthWrite:false,side:THREE.DoubleSide});
+const chMesh=new THREE.Mesh(new THREE.TubeGeometry(chCurve,80,.075,16,false),CHM);EG.vessel.add(chMesh);
+const chArrows=[];[.2,.45,.7,.92].forEach(u=>{const a=new THREE.Mesh(new THREE.ConeGeometry(.06,.15,16),new THREE.MeshStandardMaterial({color:C(0xe0782a),transparent:true,opacity:0}));
+ a.position.copy(chCurve.getPointAt(u));a.quaternion.setFromUnitVectors(new V3(0,1,0),chCurve.getTangentAt(u));EG.vessel.add(a);chArrows.push(a);});
+const NBY=260,byPos=new Float32Array(NBY*3),byCol=new Float32Array(NBY*3),byS=[];
+const byL=[0];for(let i=1;i<BYP.length;i++)byL.push(byL[i-1]+BYP[i].distanceTo(BYP[i-1]));const byTot=byL[byL.length-1];
+for(let i=0;i<NBY;i++){byS.push(Math.random()*byTot);const c=SP_COL[i%2];byCol.set([c.r,c.g,c.b],i*3);}
+const byGeo=new THREE.BufferGeometry();byGeo.setAttribute('position',new THREE.BufferAttribute(byPos,3));byGeo.setAttribute('color',new THREE.BufferAttribute(byCol,3));
+const byPts=new THREE.Points(byGeo,new THREE.PointsMaterial({vertexColors:true,size:.065,map:BALL,alphaTest:.5,depthWrite:true}));byPts.frustumCulled=false;EG.vessel.add(byPts);
+function stepBypass(dt){for(let i=0;i<NBY;i++){byS[i]=(byS[i]+dt*1.1)%byTot;const s_=byS[i];let k=1;while(k<byL.length-1&&byL[k]<s_)k++;
+ const a=BYP[k-1],b=BYP[k],u=(s_-byL[k-1])/(byL[k]-byL[k-1]);const j=(i%7-3)*.012;
+ byPos[i*3]=a.x+(b.x-a.x)*u+j;byPos[i*3+1]=a.y+(b.y-a.y)*u+((i*13)%7-3)*.01;byPos[i*3+2]=a.z+(b.z-a.z)*u-j;}
+ byGeo.attributes.position.needsUpdate=true;}
+stepBypass(0);
+
+/* ---------- view state ---------- */
+const cutPlane=new THREE.Plane(new V3(0,0,-1),0);
+let mode='cut',exploded=false,explodeK=0,spin=true,labelMode='num',selected=null,fly=null;
+const reduced=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduced)spin=false;
+
+function applyMode(){
+ const clip=mode==='cut'?[cutPlane]:[];
+ ['shell','jacket','liquid','coolant'].forEach(k=>parts[k].mats.forEach(m=>{m.clippingPlanes=clip;m.clipShadows=true;m.needsUpdate=true;}));
+ ['shell','jacket'].forEach(k=>parts[k].mats.forEach(m=>{const gh=mode==='ghost';m.transparent=gh;m.opacity=gh?.14:1;m.depthWrite=!gh;m.needsUpdate=true;}));
+ coolPts.material.clippingPlanes=clip;coolPts.material.needsUpdate=true;
+ DZM.clippingPlanes=clip;DZM.needsUpdate=true;
+ document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===mode));}
+applyMode();
+
+function setHighlight(key,on){if(!key)return;parts[key].mats.forEach(m=>{m.emissive=on?C(0xd9742a):new THREE.Color(0);m.emissiveIntensity=on?.55:0;});}
+
+/* ---------- language ---------- */
+const T={
+ ar:{title:'محاكي المفاعل الخزاني ثلاثي الأبعاد (CSTR)',h1:'المفاعل الخزاني المستمر ذو الخلاط',sub:'Continuous Stirred-Tank Reactor (CSTR)',
+  speed:'سرعة الخلاط',dRe:'رقم رينولدز للخلط Re',dReg:'نظام الجريان',dP:'القدرة المستهلكة P',dTip:'السرعة المحيطية لطرف الشفرة',
+  fine:'بافتراض ماء عند 25°م، قطر خزان 1.2 م، قطر مروحة 0.4 م، و Np ≈ 5 لتوربين رشتون و 1.3 للمروحة المائلة. Re = ρND²/μ و P = Np·ρ·N³·D⁵',
+  credit:'إعداد: <b>د. ضياء جمعة جاسم</b> (Dheyaa J. Jasim)<br>قسم الهندسة الكيمياوية والصناعات النفطية، كلية العمارة الجامعة<br>© 2026 د. ضياء جمعة جاسم. جميع الحقوق محفوظة. للاستخدام التعليمي؛ لا يجوز إعادة النشر أو البيع دون إذن كتابي.',
+  who:'إعداد: د. ضياء جمعة جاسم',whoAlt:'Dr. Dheyaa J. Jasim',org:'قسم الهندسة الكيمياوية والصناعات النفطية، كلية العمارة الجامعة',
+  hint:'اسحب بالزر الأيسر للتدوير وبالزر الأيمن لتحريك الجهاز في أي اتجاه، واستخدم العجلة للتكبير والتصغير، وانقر على أي جزء لمعرفة وظيفته.',dRot:'تدوير',dPan:'تحريك',
+  full:'كامل',cut:'مقطع',ghost:'شفاف',iso:'منظور',front:'أمامي',top:'علوي',other:'English',otherLang:'en',
+  pick:'<h2>اختر جزءاً من المفاعل</h2><p>انقر على أي جزء في النموذج أو على رقمه لعرض اسمه بالعربية والإنجليزية ووظيفته في المفاعل.</p><p class="fine">وضع «مقطع» يقص نصف الوعاء المواجه لك دائماً، فأدِر النموذج لرؤية الداخل من أي جهة.</p>',
+  focus:'تقريب الكاميرا من الجزء',clear:'إلغاء التحديد',explode:'تفكيك الأجزاء',assemble:'تجميع الأجزاء',stop:'إيقاف الخلاط',start:'تشغيل الخلاط',
+  labels:'الملصقات: ',LT:{num:'أرقام',name:'أسماء',off:'مخفية'},rpm:' دورة/د',dXa:'التحويل الفعلي',dzBtn:'المناطق الميتة (Dead zones)',dzOff:'إنهاء المناطق الميتة',chBtn:'الجريان المختصر (Channeling)',chOff:'إنهاء الجريان المختصر',
+  dzWarn:'⚠ مناطق ميتة: نحو 38% من الحجم لا يشارك في الخلط',chWarn:'⚠ جريان مختصر: نحو 35% من التغذية تخرج دون تفاعل',
+  dzCard:'<h2>المناطق الميتة (Dead zones)</h2><p class="en">Dead / stagnant zones</p><p>أجزاء من السائل لا تصلها حلقات الدوران التي يولدها الخلاط، فيبقى السائل فيها راكداً مدة طويلة ولا يتبادل مع باقي المفاعل.</p><h4>ما تراه الآن في النموذج</h4><ul><li>مناطق بنفسجية شفافة في زاوية القاع، وقرب سطح السائل عند الجدار، وخلف الحواجز.</li><li>جزيئات داكنة شبه ساكنة فيها، لا تتجدد ولا تشارك في التفاعل.</li><li>حلقات الدوران تنكمش ولا تصل إلى الجدران.</li><li>ينخفض التحويل الفعلي عن النظري لأن الحجم الفعّال صار أصغر.</li></ul><h4>أسبابها</h4><ul><li>سرعة تقليب منخفضة أو مروحة صغيرة القطر.</li><li>موضع غير مناسب للمروحة، أو غياب الحواجز الجدارية.</li><li>لزوجة عالية للسائل، أو مستوى سائل أعلى من مدى تأثير المروحة.</li></ul><h4>علاجها</h4><ul><li>زيادة سرعة الخلاط أو قطر المروحة، وإضافة مروحة ثانية للمستويات العالية.</li><li>ضبط موضع المروحة (نحو T/3 من القاع) وتركيب الحواجز.</li></ul><p class="eq">الحجم الفعّال Va = V(1 − fd) ، و τa = Va/v₀ ، و X = kτa/(1 + kτa)</p>',
+  chCard:'<h2>الجريان المختصر (Channeling / Bypassing)</h2><p class="en">Short-circuiting of the feed</p><p>جزء من التغذية يسلك مساراً مباشراً من فوهة الدخول إلى فوهة الخروج قبل أن يختلط بمحتوى المفاعل، فيخرج دون أن يتفاعل تقريباً.</p><h4>ما تراه الآن في النموذج</h4><ul><li>قناة برتقالية شفافة تمتد من أنبوب التغذية على طول الجدار إلى فوهة القاع.</li><li>جزيئات حمراء وصفراء (مواد متفاعلة لم تتفاعل) تندفع فيها وتخرج مباشرة من خط المنتج.</li><li>ينخفض التحويل الفعلي في تيار الخروج رغم أن محتوى المفاعل نفسه يتفاعل.</li></ul><h4>أسبابه</h4><ul><li>فوهتا الدخول والخروج متقاربتان أو على الجهة نفسها.</li><li>إدخال التغذية قرب الجدار بعيداً عن منطقة المروحة.</li><li>تقليب ضعيف أو تدفق تغذية عالٍ جداً.</li></ul><h4>علاجه</h4><ul><li>إيصال أنبوب التغذية إلى منطقة المروحة ذات القص العالي.</li><li>إبعاد فوهة الخروج عن الدخول، وزيادة شدة الخلط.</li></ul><p class="eq">إذا تجاوز الجزء fb من التغذية المفاعل: X_out = (1 − fb) · kτ′/(1 + kτ′) ، حيث τ′ = V / [(1 − fb)v₀]</p>',turb:'مضطرب',rxStart:'بدء التفاعل',rxStop:'إيقاف التفاعل',spA:'المادة A',spB:'المادة B',spC:'المادة C (الناتج)',spCool:'مائع التبريد',rxH:'التفاعل A + B → C',dA:'نسبة المادة A',dB:'نسبة المادة B',dC:'نسبة الناتج C',dX:'التحويل النظري X = kτ/(1+kτ)',rxFine:'نموذج توضيحي مبسّط: التغذية تدخل باستمرار (A أحمر، B أصفر)، وعند بدء التفاعل تتحول الجزيئات إلى الناتج C (أخضر) بثابت سرعة k = 0.35 s⁻¹، مع زمن مكوث τ = 6 s. تستقر نسبة C عند قيمة التحويل النظري للمفاعل الخزاني، وعند إيقاف التفاعل يُغسل الناتج تدريجياً خارج المفاعل.',lam:'طباقي',trans:'انتقالي'},
+ en:{title:'3D Continuous Stirred-Tank Reactor (CSTR) Simulator',h1:'Continuous Stirred-Tank Reactor (CSTR)',sub:'المفاعل الخزاني المستمر ذو الخلاط',
+  speed:'Agitator speed',dRe:'Mixing Reynolds number Re',dReg:'Flow regime',dP:'Power draw P',dTip:'Impeller tip speed',
+  fine:'Assumes water at 25 °C, tank diameter 1.2 m, impeller diameter 0.4 m, Np ≈ 5 for the Rushton turbine and 1.3 for the pitched-blade turbine. Re = ρND²/μ and P = Np·ρ·N³·D⁵',
+  credit:'Prepared by <b>Dr. Dheyaa J. Jasim</b><br>Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College<br>© 2026 Dr. Dheyaa J. Jasim. All rights reserved. For educational use; no republication or sale without written permission.',
+  who:'Prepared by Dr. Dheyaa J. Jasim',whoAlt:'د. ضياء جمعة جاسم',org:'Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College',
+  hint:'Left-drag to rotate, right-drag to move the unit in any direction, scroll to zoom in and out, and click any part to see its function.',dRot:'Rotate',dPan:'Move',
+  full:'Whole',cut:'Cutaway',ghost:'X-ray',iso:'Perspective',front:'Front',top:'Top',other:'العربية',otherLang:'ar',
+  pick:'<h2>Select a reactor part</h2><p>Click any part in the model or its number to see its English and Arabic names and its role in the reactor.</p><p class="fine">Cutaway mode always removes the half of the vessel facing you, so rotate the model to look inside from any side.</p>',
+  focus:'Zoom to this part',clear:'Clear selection',explode:'Explode parts',assemble:'Assemble parts',stop:'Stop agitator',start:'Start agitator',
+  labels:'Labels: ',LT:{num:'numbers',name:'names',off:'hidden'},rpm:' rpm',dXa:'Actual conversion',dzBtn:'Dead zones',dzOff:'End dead zones',chBtn:'Channeling (bypass)',chOff:'End channeling',
+  dzWarn:'⚠ Dead zones: about 38% of the volume is not mixed',chWarn:'⚠ Channeling: about 35% of the feed leaves unreacted',
+  dzCard:'<h2>Dead zones</h2><p class="en">المناطق الميتة</p><p>Regions of liquid that the circulation loops from the impeller do not reach. Liquid there stays stagnant for a long time and hardly exchanges with the rest of the reactor.</p><h4>What the model shows now</h4><ul><li>Translucent purple regions at the bottom corner, near the liquid surface at the wall, and behind the baffles.</li><li>Dark, almost still particles inside them that are not renewed and take no part in the reaction.</li><li>The circulation loops shrink and no longer reach the walls.</li><li>Actual conversion falls below the ideal value because the effective volume is smaller.</li></ul><h4>Causes</h4><ul><li>Low agitator speed or a small impeller.</li><li>Poor impeller position, or no wall baffles.</li><li>High liquid viscosity, or a liquid level beyond the reach of the impeller.</li></ul><h4>Remedies</h4><ul><li>Raise the agitator speed or impeller diameter, and add a second impeller for tall levels.</li><li>Place the impeller at about T/3 from the bottom and fit baffles.</li></ul><p class="eq">Effective volume Va = V(1 − fd), τa = Va/v₀, X = kτa/(1 + kτa)</p>',
+  chCard:'<h2>Channeling (bypassing)</h2><p class="en">الجريان المختصر</p><p>Part of the feed takes a direct path from the inlet to the outlet before mixing with the reactor contents, so it leaves almost unreacted.</p><h4>What the model shows now</h4><ul><li>A translucent orange channel from the feed dip pipe along the wall to the bottom outlet.</li><li>Red and yellow particles (unreacted A and B) rushing through it and straight out of the product line.</li><li>The outlet conversion drops even though the reactor contents themselves keep reacting.</li></ul><h4>Causes</h4><ul><li>Inlet and outlet nozzles too close or on the same side.</li><li>Feed introduced near the wall, away from the impeller zone.</li><li>Weak agitation or a very high feed rate.</li></ul><h4>Remedies</h4><ul><li>Extend the feed pipe into the high-shear impeller zone.</li><li>Move the outlet away from the inlet and increase mixing intensity.</li></ul><p class="eq">If a fraction fb of the feed bypasses: X_out = (1 − fb) · kτ′/(1 + kτ′), where τ′ = V / [(1 − fb)v₀]</p>',turb:'Turbulent',rxStart:'Start reaction',rxStop:'Stop reaction',spA:'Species A',spB:'Species B',spC:'Product C',spCool:'Coolant',rxH:'Reaction A + B → C',dA:'Fraction of A',dB:'Fraction of B',dC:'Fraction of product C',dX:'Theoretical conversion X = kτ/(1+kτ)',rxFine:'Simplified teaching model: feed enters continuously (A red, B yellow). When the reaction starts, particles turn into product C (green) with rate constant k = 0.35 s⁻¹ and space time τ = 6 s. The C fraction settles at the theoretical CSTR conversion; when the reaction stops, the product is gradually washed out of the reactor.',lam:'Laminar',trans:'Transitional'}
+};
+let lang='ar';try{const q=new URLSearchParams(location.search).get('lang');const sv=localStorage.getItem('cstr-lang');if(q==='en'||q==='ar')lang=q;else if(sv==='en'||sv==='ar')lang=sv;}catch(e){}
+const L=()=>T[lang];
+
+/* ---------- UI: parts list, labels, card ---------- */
+const listEl=document.getElementById('parts'),labelsEl=document.getElementById('labels'),cardEl=document.getElementById('card');
+const listBtns={},labelEls={};
+function buildList(){if(!listEl)return;listEl.innerHTML='';
+ GROUPS.forEach(([title,keys],gi)=>{const h=document.createElement('h3');h.textContent=lang==='ar'?title:GT_EN[gi];listEl.appendChild(h);
+  const ul=document.createElement('ul');keys.forEach(k=>{const li=document.createElement('li'),b=document.createElement('button');
+   b.innerHTML=`<span class="num">${NUM[k]}</span><span>${INFO[k].ar}</span>`;b.onclick=()=>select(k);
+   if(k===selected)b.setAttribute('aria-current','true');li.appendChild(b);ul.appendChild(li);listBtns[k]=b;});
+  listEl.appendChild(ul);});}
+ORDER.forEach(k=>{const b=document.createElement('button');b.className='lbl';b.type='button';
+ b.innerHTML=`<span class="num">${NUM[k]}</span><span class="t"></span>`;
+ b.onclick=e=>{e.stopPropagation();select(k);};labelsEl.appendChild(b);labelEls[k]=b;});
+function updateLabels(){ORDER.forEach(k=>{labelEls[k].querySelector('.t').textContent=INFO[k].ar;labelEls[k].setAttribute('aria-label',INFO[k].ar);});}
+
+function renderCard(){
+ const pm=dead?'dz':chan?'ch':'';cardEl.classList.toggle('pcard',!!pm&&!selected);cardEl.style.setProperty('--pc',pm==='dz'?'#5b3a8c':'#c0621c');
+ if(!selected){cardEl.innerHTML=pm==='dz'?L().dzCard:pm==='ch'?L().chCard:L().pick;return;}
+ const i=INFO[selected];
+ cardEl.innerHTML=`<div class="head"><span class="num">${NUM[selected]}</span><div><h2>${i.ar}</h2><p class="en">${i.en}</p></div></div><p>${i.d}</p>${i.n?`<p class="eq">${i.n}</p>`:''}<div class="act"><button id="bFocus">${L().focus}</button><button id="bClear">${L().clear}</button></div>`;
+ document.getElementById('bFocus').onclick=()=>focusPart(selected);
+ document.getElementById('bClear').onclick=()=>select(null);}
+function select(k){
+ if(selected){setHighlight(selected,false);labelEls[selected].classList.remove('on');listBtns[selected]&&listBtns[selected].removeAttribute('aria-current');}
+ selected=(k===selected)?null:k;
+ if(selected){setHighlight(selected,true);labelEls[selected].classList.add('on');listBtns[selected]&&listBtns[selected].setAttribute('aria-current','true');
+  if(INTERNAL.includes(selected)&&mode==='full'&&!exploded){mode='cut';applyMode();}}
+ renderCard();}
+
+/* ---------- camera moves ---------- */
+function flyTo(pos,tgt){fly={p0:camera.position.clone(),t0:controls.target.clone(),p1:pos,t1:tgt,e:0,d:reduced?0.001:0.9};}
+function focusPart(k){const b=new THREE.Box3().setFromObject(parts[k].group),c=b.getCenter(new V3()),s=b.getSize(new V3()).length();
+ const dir=camera.position.clone().sub(controls.target).normalize();flyTo(c.clone().addScaledVector(dir,Math.max(1.3,s*1.7)),c);}
+function view(v){const f=exploded?1.45:1,t=exploded?new V3(0,.8,0):HOME.tgt.clone();
+ const off=v==='front'?new V3(0,.3,8.2):v==='top'?new V3(0,9.5,.35):HOME.pos.clone().sub(HOME.tgt);
+ flyTo(t.clone().add(off.multiplyScalar(f)),t);}
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>view(b.dataset.view));
+function setDrag(m){const pan=m==='pan';
+ controls.mouseButtons.LEFT=pan?THREE.MOUSE.PAN:THREE.MOUSE.ROTATE;controls.mouseButtons.RIGHT=pan?THREE.MOUSE.ROTATE:THREE.MOUSE.PAN;
+ controls.touches.ONE=pan?THREE.TOUCH.PAN:THREE.TOUCH.ROTATE;canvas.style.cursor=pan?'move':'';
+ document.querySelectorAll('[data-drag]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.drag===m));}
+document.querySelectorAll('[data-drag]').forEach(b=>b.onclick=()=>setDrag(b.dataset.drag));
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;applyMode();});
+const bExplode=document.getElementById('bExplode'),bSpin=document.getElementById('bSpin'),bLabels=document.getElementById('bLabels');
+function syncExplode(){bExplode.setAttribute('aria-pressed',exploded);bExplode.textContent=exploded?L().assemble:L().explode;}
+bExplode.onclick=()=>{exploded=!exploded;syncExplode();view('iso');};
+function syncSpin(){bSpin.setAttribute('aria-pressed',!spin);bSpin.textContent=spin?L().stop:L().start;}
+bSpin.onclick=()=>{spin=!spin;syncSpin();};
+const LM=['num','name','off'];
+function syncLabelsBtn(){bLabels.textContent=L().labels+L().LT[labelMode];}
+bLabels.onclick=()=>{labelMode=LM[(LM.indexOf(labelMode)+1)%3];syncLabelsBtn();
+ labelsEl.classList.toggle('names',labelMode==='name');labelsEl.classList.toggle('off',labelMode==='off');};
+
+/* ---------- agitation readouts ---------- */
+const rpmEl=document.getElementById('rpm');let rpm=+rpmEl.value;
+function readouts(){rpm=+rpmEl.value;const N=rpm/60,D=.4,rho=1000,mu=.001;
+ const Re=rho*N*D*D/mu,Pw=(5+1.3)*rho*N**3*D**5,tip=Math.PI*N*D;
+ document.getElementById('rpmOut').textContent=rpm+L().rpm;
+ document.getElementById('oRe').textContent=Math.round(Re).toLocaleString('en-US');
+ document.getElementById('oReg').textContent=Re>1e4?L().turb:Re<10?L().lam:L().trans;
+ document.getElementById('oP').textContent=Pw<1000?Pw.toFixed(0)+' W':(Pw/1000).toFixed(2)+' kW';
+ document.getElementById('oTip').textContent=tip.toFixed(2)+' m/s';}
+rpmEl.oninput=readouts;
+
+const bRx=document.getElementById('bRx');let rxTimer=0;
+function syncRx(){bRx.setAttribute('aria-pressed',reacting);bRx.textContent=reacting?L().rxStop:L().rxStart;}
+bRx.onclick=()=>{reacting=!reacting;syncRx();if(!reacting&&(dead||chan)){dead=chan=false;syncProblems();renderCard();}
+ if(reacting){if(exploded){exploded=false;syncExplode();view('iso');}if(mode==='full'){mode='cut';applyMode();}}};
+const bDead=document.getElementById('bDead'),bChan=document.getElementById('bChan'),fwarn=document.getElementById('fwarn');
+function syncProblems(){bDead.setAttribute('aria-pressed',dead);bDead.textContent=dead?L().dzOff:L().dzBtn;
+ bChan.setAttribute('aria-pressed',chan);bChan.textContent=chan?L().chOff:L().chBtn;}
+function problemOn(){if(!reacting){reacting=true;syncRx();}if(exploded){exploded=false;syncExplode();view('iso');}if(mode==='full'){mode='cut';applyMode();}if(selected)select(null);}
+bDead.onclick=()=>{dead=!dead;if(dead){chan=false;problemOn();}syncProblems();renderCard();};
+bChan.onclick=()=>{chan=!chan;if(chan){dead=false;problemOn();}syncProblems();renderCard();};
+function updateRx(){const n=[0,0,0];for(let i=0;i<NP;i++){if(dk>.5&&isDead(i))continue;n[species[i]]++;}
+ const tot=n[0]+n[1]+n[2]||1,f=n.map(v=>v/tot);
+ ['A','B','C'].forEach((k,j)=>{document.getElementById('bar'+k).style.width=(f[j]*100).toFixed(1)+'%';document.getElementById('o'+k).textContent=(f[j]*100).toFixed(0)+' %';});
+ document.getElementById('oX').textContent=reacting?(K_RX*TAU/(1+K_RX*TAU)*100).toFixed(0)+' %':'0 %';
+ const fb=FB*bk,ta=TAU*(1-FD*dk)/(1-fb),xa=(1-fb)*K_RX*ta/(1+K_RX*ta);
+ document.getElementById('oXa').textContent=reacting?(xa*100).toFixed(0)+' %':'0 %';
+ const w=dk>.3?'dz':bk>.3?'ch':'';fwarn.hidden=!w;fwarn.className='fwarn '+w;if(w)fwarn.textContent=w==='dz'?L().dzWarn:L().chWarn;}
+function setLang(l){lang=l;INFO=l==='ar'?INFO_AR:INFO_EN;
+ document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';document.title=L().title;
+ document.querySelectorAll('[data-t]').forEach(el=>{el.innerHTML=L()[el.dataset.t];});
+ document.querySelectorAll('[data-lang-toggle]').forEach(b=>{b.textContent=L().other;b.lang=L().otherLang;});
+ buildList();updateLabels();renderCard();syncExplode();syncSpin();syncLabelsBtn();readouts();syncRx();syncProblems();updateRx();
+ try{localStorage.setItem('cstr-lang',l);}catch(e){}
+ requestAnimationFrame(resize);}
+document.querySelectorAll('[data-lang-toggle]').forEach(b=>b.onclick=()=>setLang(lang==='ar'?'en':'ar'));
+
+/* ---------- picking ---------- */
+const ray=new THREE.Raycaster(),mouse=new V2();let downXY=null;
+canvas.addEventListener('pointerdown',e=>{downXY=[e.clientX,e.clientY];});
+canvas.addEventListener('pointerup',e=>{if(!downXY)return;const moved=Math.hypot(e.clientX-downXY[0],e.clientY-downXY[1]);downXY=null;if(moved>6)return;
+ const r=canvas.getBoundingClientRect();mouse.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);
+ ray.setFromCamera(mouse,camera);const hits=ray.intersectObjects(pickables,false);
+ for(const h of hits){const k=h.object.userData.key;
+  if(['shell','jacket','coolant'].includes(k)){if(mode==='ghost'&&!exploded)continue;if(mode==='cut'&&cutPlane.distanceToPoint(h.point)<0)continue;}
+  if(k!==selected)select(k);return;}
+ if(selected)select(null);});
+
+/* ---------- resize ---------- */
+function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+{const ro=new ResizeObserver(resize);ro.observe(stage);ro.observe(canvas);}resize();
+setLang(lang);
+
+/* ---------- loop ---------- */
+const clock=new THREE.Clock(),tmp=new V3(),dirH=new V3();
+const ease=u=>u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;
+function frame(){
+ const dt=Math.min(clock.getDelta(),.05);
+ if(fly){fly.e+=dt;const u=ease(Math.min(1,fly.e/fly.d));camera.position.lerpVectors(fly.p0,fly.p1,u);controls.target.lerpVectors(fly.t0,fly.t1,u);if(fly.e>=fly.d)fly=null;}
+ controls.update();
+ explodeK+=((exploded?1:0)-explodeK)*Math.min(1,dt*(reduced?60:4));
+ const ek=explodeK;for(const k in EG)EG[k].position.copy(EOFF[k]).multiplyScalar(ek);
+ parts.liquid.group.visible=particles.visible=ek<.04;
+ const w=spin?rpm/60*Math.PI*2:0;spinners.forEach(s=>s.rotation.y-=w*dt);
+ if(spin&&particles.visible)stepParticles(dt,rpm/120*1.3);
+ dk+=((dead?1:0)-dk)*Math.min(1,dt*.7);bk+=((chan?1:0)-bk)*Math.min(1,dt*.9);if(dk<.002)dk=0;if(bk<.002)bk=0;
+ const pulse=.5+.5*Math.sin(clock.elapsedTime*3);DZM.opacity=dk*(.18+.14*pulse);dzGroup.visible=dk>0&&particles.visible;
+ CHM.opacity=bk*(.22+.12*pulse);chMesh.visible=bk>0&&particles.visible;chArrows.forEach(a=>{a.material.opacity=bk;a.visible=bk>0&&particles.visible;});
+ byPts.visible=bk>.05&&particles.visible;if(byPts.visible)stepBypass(dt*(.4+.6*bk));
+ if(dk>0&&!(spin&&particles.visible))stepParticles(0,0);
+ stepReaction(dt);stepCool(dt);rxTimer+=dt;if(rxTimer>.25){rxTimer=0;updateRx();}
+ dirH.subVectors(controls.target,camera.position);dirH.y=0;
+ if(dirH.lengthSq()>1e-4){dirH.normalize();cutPlane.normal.copy(dirH);cutPlane.constant=0;}
+ renderer.render(scene,camera);
+ const cw=canvas.clientWidth,ch=canvas.clientHeight;
+ for(const k of ORDER){const el=labelEls[k],pt=parts[k];
+  let show=pt.group.visible;
+  if(INTERNAL.includes(k)&&mode==='full'&&ek<.5&&k!==selected)show=false;
+  if(show){tmp.copy(pt.anchor);pt.group.localToWorld(tmp);tmp.project(camera);if(tmp.z>1||tmp.z<-1)show=false;}
+  if(!show){el.style.visibility='hidden';continue;}
+  el.style.visibility='visible';
+  el.style.transform=`translate(${(tmp.x*.5+.5)*cw}px,${(-tmp.y*.5+.5)*ch}px) translate(-12px,-50%)`;}
+ requestAnimationFrame(frame);}
+/* ================= presenter: narrated guided tour (Arabic / English) ================= */
+(function(){
+const CFG={btn:"bRx",isOn:()=>reacting,tour:[[null, "السَّلامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ. أَنا الدُّكْتورْ ضِياءْ جُمْعَة جاسِمْ، تَدْريسِيٌّ في قِسْمِ الهَنْدَسَةِ الكيمْياوِيَّةِ وَالصِّناعاتِ النِّفْطِيَّةِ في كُلِّيَّةِ العَمارَةِ الجامِعَة، وَأُدَرِّسُ مادَّتَيِ انْتِقالِ الكُتْلَةِ وَتَصْميمِ المُفاعِلات. أَهْلاً بِكُمْ في هذا المُحاكي ثُلاثِيِّ الأَبْعادِ لِلْمُفاعِلِ الخَزّانِيِّ المُسْتَمِرِّ ذي الخَلّاط. سَأُعَرِّفُكُمْ عَلى أَجْزائِهِ الرَّئيسَة، ثُمَّ نُشاهِدُ مَعاً كَيْفَ تَتَحَوَّلُ المادَّتانِ المُتَفاعِلَتانِ إِلى النّاتِج.", "Hello and welcome. I am Doctor Dheyaa J. Jasim, a lecturer in the Department of Chemical Engineering and Petroleum Industries at Al-Amarah University College, where I teach Mass Transfer and Reactor Design. Welcome to this three-dimensional simulator of the continuous stirred-tank reactor. I will introduce its main parts, and then we will watch together how the two reactants turn into the product."], ["shell", "هذا هُوَ وِعاءُ المُفاعِل، يَحْدُثُ فيهِ التَّفاعُل. نَفْتَرِضُ فيهِ الخَلْطَ التّامّ، أَيْ أَنَّ التَّرْكيزَ وَالحَرارَةَ مُتَساوِيانِ في كُلِّ نُقْطَةٍ داخِلَه، وَأَنَّ تَرْكيبَ التَّيّارِ الخارِجِ يُساوي تَرْكيبَ ما في الوِعاء.", "This is the reactor vessel where the reaction takes place. We assume perfect mixing: concentration and temperature are the same everywhere inside, and the outlet stream has the same composition as the vessel contents."], ["motor", "في الأَعْلى المُحَرِّكُ الكَهْرَبائِيُّ وَصُنْدوقُ التُّروس، يُديرانِ عَمودَ الخَلّاطِ بِالسُّرْعَةِ المَطْلوبَة.", "At the top are the electric motor and the gearbox, which turn the agitator shaft at the required speed."], ["rushton", "وَهذا تُرْبينُ رَشْتون، قُرْصٌ عَلَيْهِ سِتُّ شَفَراتٍ مُسْتَقيمَة، يَدْفَعُ السّائِلَ نَحْوَ الجِدار، فَتَتَكَوَّنُ حَلْقَتا دَوَرانٍ فَوْقَهُ وَتَحْتَه.", "This is the Rushton turbine, a disc with six flat blades. It pushes the liquid toward the wall, forming two circulation loops above and below it."], ["pbt", "وَفَوْقَهُ مِرْوَحَةُ الشَّفَراتِ المائِلَة، تَدْفَعُ السّائِلَ نَحْوَ الأَسْفَل، فَتَرْبِطُ الجُزْءَ العُلْوِيَّ بِالسُّفْلِيّ.", "Above it is the pitched-blade turbine, which pumps liquid downward and links the upper and lower regions."], ["baffles", "هذِهِ الحَواجِزُ الجِدارِيَّةُ الأَرْبَعَة، تَمْنَعُ دَوَرانَ السّائِلِ كَكُتْلَةٍ واحِدَةٍ وَتَكَوُّنَ الدَّوّامَة، فَيَتَحَوَّلُ الدَّوَرانُ إِلى خَلْطٍ فَعّال.", "These are the four wall baffles. They stop the liquid rotating as one mass and forming a vortex, turning the swirl into effective mixing."], ["jacket", "وَهذا القَميصُ الحَرارِيّ، يَجْري فيهِ ماءُ التَّبْريدِ الأَزْرَقُ حَوْلَ الوِعاءِ لِإِزالَةِ حَرارَةِ التَّفاعُل.", "This is the jacket. Blue cooling water flows through it around the vessel to remove the heat of reaction."], ["feedA", "تَدْخُلُ المادَّةُ الأُولى مِنْ فوهَةِ التَّغْذِيَةِ هذِه، وَالمادَّةُ الثّانِيَةُ مِنَ الفوهَةِ المُقابِلَة.", "The first reactant enters through this feed nozzle, and the second through the nozzle opposite."], ["outlet", "وَمِنَ الأَسْفَلِ يَخْرُجُ تَيّارُ المُنْتَجِ عَبْرَ هذا الصِّمام.", "The product stream leaves at the bottom through this valve."], ["thermo", "أَمّا مِجَسُّ الحَرارَةِ فَيَقيسُ حَرارَةَ الخَليط، وَبِإِشارَتِهِ نَتَحَكَّمُ بِتَدَفُّقِ ماءِ التَّبْريد.", "The temperature sensor measures the mixture temperature, and its signal controls the cooling water flow."], [null, "لاحِظوا الآنَ أَنَّ المادَّةَ الحَمْراءَ وَالصَّفْراءَ تَتَحَوَّلانِ إِلى النّاتِجِ الأَخْضَر، وَأَنَّ نِسْبَةَ النّاتِجِ تَسْتَقِرُّ عِنْدَ قيمَةِ التَّحْويلِ النَّظَرِيّ. جَرِّبوا بَعْدَ ذلِكَ زِرَّيِ المَناطِقِ المَيِّتَةِ وَالجَرَيانِ المُخْتَصَر، وَراقِبوا كَيْفَ يَنْخَفِضُ التَّحْويلُ الفِعْلِيّ. بِالتَّوْفيقِ لِلْجَميع.", "Notice now how the red and yellow reactants turn into the green product, and how the product fraction settles at the theoretical conversion. Then try the dead-zone and channeling buttons and watch the actual conversion fall. Good luck to you all."]]};
+const strip=t=>t.replace(/[\u064B-\u0652\u0670]/g,'');
+const PUI={ar:{name:'د. ضياء جمعة جاسم',prev:'السابق',pause:'إيقاف مؤقت',resume:'متابعة',next:'التالي',close:'إغلاق',open:'شرح الدكتور ضياء',noVoice:'لا يتوفر صوت عربي في هذا المتصفح، لذلك يظهر الشرح مكتوباً فقط. جرّب Edge أو Chrome.',noMale:'لا يتوفر صوت عربي رجالي في هذا الجهاز، فاستُخدم أقرب صوت متاح بنبرة أخفض. جرّب Microsoft Edge (أصوات مثل حامد وشاكر) أو أضف صوتاً عربياً رجالياً من إعدادات النظام.'},
+ en:{name:'Dr. Dheyaa J. Jasim',prev:'Previous',pause:'Pause',resume:'Resume',next:'Next',close:'Close',open:'Tour with Dr. Dheyaa',noVoice:'No English voice is available in this browser, so the tour is shown as text only. Try Edge or Chrome.'}};
+const PU=()=>PUI[lang];
+const wrap=document.createElement('div');
+wrap.innerHTML=`<div class="presenter" id="presenter" hidden><div class="pv"><div class="ring"></div><img src="data:image/jpeg;base64,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" alt=""><div class="bars"><i></i><i></i><i></i><i></i><i></i></div></div>
+ <div class="pb"><div class="pn">x <span id="pStep"></span></div><div class="pt" id="pText"></div>
+ <div class="pc"><button id="pPrev" class="ic flip">⏮</button><button id="pPlay" class="ic">❚❚</button><button id="pNext" class="ic flip">⏭</button><button id="pClose" class="ic">✕</button></div><div class="pw" id="pWarn" hidden></div></div></div>
+ <button class="pbtn" id="pOpen"><img alt=""><span>▶</span></button>`;
+while(wrap.firstChild)stage.appendChild(wrap.firstChild);
+const presenter=document.getElementById('presenter'),pText=document.getElementById('pText'),pStep=document.getElementById('pStep'),pPlay=document.getElementById('pPlay'),pOpen=document.getElementById('pOpen'),pWarn=document.getElementById('pWarn');
+pOpen.querySelector('img').src=presenter.querySelector('.pv img').src;
+let tIdx=-1,tPaused=false,tTimer=null,tToken=0,arVoice=null,enVoice=null,arMale=false;
+const synth=window.speechSynthesis||null;
+function pickVoice(){if(!synth)return;const v=synth.getVoices();
+ const ar=v.filter(x=>/^ar/i.test(x.lang)),ML=/hamed|naayf|shakir|bassel|fahed|taim|rami|moaz|hamdan|\bali\b|saleh|laith|hedi|ismael|jamal|omar|abdullah|maged|majed|tarik|\bmale\b/i,FL=/zariyah|salma|hoda|rana|noura|sana|layla|laila|amal|hala|fatima|maryam|amany|amina|iman|mouna|reem|aysha|\bfemale\b/i,sa=x=>(ML.test(x.name)?100:0)-(FL.test(x.name)?100:0)+(/natural|neural|online/i.test(x.name)?8:0)+(/google/i.test(x.name)?2:0)+(/ar[-_]SA/i.test(x.lang)?1:0);arVoice=ar.sort((a,b)=>sa(b)-sa(a))[0]||null;arMale=!!(arVoice&&ML.test(arVoice.name)&&!FL.test(arVoice.name));
+ const en=v.filter(x=>/^en/i.test(x.lang)),se=x=>(/natural|neural|online/i.test(x.name)?8:0)+(/google/i.test(x.name)?4:0)+(/ryan|guy|george|daniel|david|arthur|male/i.test(x.name)?3:0)+(/en[-_]GB/i.test(x.lang)?2:0);
+ enVoice=en.sort((a,b)=>se(b)-se(a))[0]||null;}
+if(synth){pickVoice();synth.onvoiceschanged=pickVoice;}
+function chunks(t){return t.split(/(?<=[.،,:;!?؟])\s+/).reduce((a,s)=>{if(a.length&&(a[a.length-1]+' '+s).length<170)a[a.length-1]+=' '+s;else a.push(s);return a;},[]);}
+function speak(text,done){const tok=++tToken;presenter.classList.add('talking');const fin=()=>{if(tok!==tToken)return;presenter.classList.remove('talking');done();};
+ const vv=lang==='ar'?arVoice:enVoice;
+ if(synth&&vv){synth.cancel();if(lang==='ar'&&!arMale){pWarn.hidden=false;pWarn.textContent=PU().noMale;}const parts=chunks(text);let i=0;
+  const next=()=>{if(tok!==tToken)return;if(i>=parts.length){fin();return;}const u=new SpeechSynthesisUtterance(parts[i++]);u.voice=vv;u.lang=vv.lang;u.rate=lang==='ar'&&!arMale?.95:1;u.pitch=lang==='ar'&&!arMale?.72:1;
+   u.onend=()=>setTimeout(next,120);u.onerror=()=>setTimeout(next,120);synth.speak(u);};next();}
+ else{pWarn.hidden=false;pWarn.textContent=PU().noVoice;tTimer=setTimeout(fin,Math.max(5000,text.split(/\s+/).length*420));}}
+function showStep(i){clearTimeout(tTimer);if(synth)synth.cancel();pWarn.hidden=true;tIdx=i;const [k,ar,en]=CFG.tour[i],say=lang==='ar'?ar:en;
+ pText.textContent=lang==='ar'?strip(ar):en;pText.dir=lang==='ar'?'rtl':'ltr';pText.lang=lang;pStep.textContent='('+(i+1)+' / '+CFG.tour.length+')';pText.scrollTop=0;
+ if(k){if(selected!==k)select(k);focusPart(k);}else{if(selected)select(null);view('iso');}
+ if(!tPaused)speak(say,()=>{if(tIdx<CFG.tour.length-1)tTimer=setTimeout(()=>showStep(tIdx+1),700);});}
+function syncPresenter(){presenter.querySelector('.pn').firstChild.textContent=PU().name+' ';
+ [['pPrev',PU().prev],['pNext',PU().next],['pClose',PU().close]].forEach(([id,t])=>{const b=document.getElementById(id);b.title=t;b.setAttribute('aria-label',t);});
+ pPlay.textContent=tPaused?'▶':'❚❚';pPlay.title=tPaused?PU().resume:PU().pause;pPlay.setAttribute('aria-label',pPlay.title);pOpen.title=PU().open;pOpen.setAttribute('aria-label',PU().open);presenter.querySelector('.pv img').alt=PU().name;}
+function startTour(){presenter.hidden=false;pOpen.hidden=true;stage.classList.add('tour');tPaused=false;syncPresenter();if(mode==='full'){mode='cut';applyMode();}showStep(0);}
+function stopTour(){tToken++;clearTimeout(tTimer);if(synth)synth.cancel();presenter.classList.remove('talking');presenter.hidden=true;pOpen.hidden=false;stage.classList.remove('tour');}
+document.getElementById('pNext').onclick=()=>{if(tIdx<CFG.tour.length-1)showStep(tIdx+1);};
+document.getElementById('pPrev').onclick=()=>{if(tIdx>0)showStep(tIdx-1);};
+document.getElementById('pClose').onclick=stopTour;pOpen.onclick=startTour;
+pPlay.onclick=()=>{tPaused=!tPaused;syncPresenter();if(tPaused){tToken++;clearTimeout(tTimer);if(synth)synth.cancel();presenter.classList.remove('talking');}else showStep(tIdx);};
+const runBtn=document.getElementById(CFG.btn),oldRun=runBtn.onclick;
+runBtn.onclick=e=>{if(oldRun)oldRun.call(runBtn,e);if(CFG.isOn())startTour();else stopTour();};
+const oldSetLang=setLang;setLang=function(l){oldSetLang(l);syncPresenter();if(!presenter.hidden&&tIdx>=0)showStep(tIdx);};
+syncPresenter();
+})();
+
+loadingEl.remove();
+requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

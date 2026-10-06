@@ -1,0 +1,753 @@
+<!doctype html>
+<!-- © 2026 Dr. Dheyaa J. Jasim (د. ضياء جمعة جاسم), Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College. Work ID: DJJ-VLAB-MANOMETER_SECOND_ORDER-2026. All rights reserved. For educational use; no republication or sale without written permission. -->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Dr. Dheyaa J. Jasim (د. ضياء جمعة جاسم)">
+<meta name="copyright" content="© 2026 Dr. Dheyaa J. Jasim. All rights reserved.">
+<meta name="dcterms.rights" content="All rights reserved. For educational use; no republication or sale without written permission.">
+<meta name="dcterms.identifier" content="DJJ-VLAB-MANOMETER_SECOND_ORDER-2026">
+<script type="application/ld+json" data-ip="djj">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "محاكي النظام ناقص التخميد: مانومتر U | Underdamped Second-Order System: U-tube Manometer", "identifier": "DJJ-VLAB-MANOMETER_SECOND_ORDER-2026", "inLanguage": ["ar", "en"], "copyrightYear": 2026, "author": {"@type": "Person", "name": "Dr. Dheyaa J. Jasim", "alternateName": "د. ضياء جمعة جاسم", "affiliation": {"@type": "CollegeOrUniversity", "name": "Al-Amarah University College", "department": "Department of Chemical Engineering and Petroleum Industries"}}, "copyrightHolder": {"@type": "Person", "name": "Dr. Dheyaa J. Jasim"}, "usageInfo": "All rights reserved. For educational use; no republication or sale without written permission."}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>محاكي النظام ناقص التخميد: مانومتر U | Underdamped Second-Order System: U-tube Manometer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e4eaee; --stage-a:#f3f6f8; --stage-b:#d2dce2; --panel:#f7f9fa; --ink:#1b2830; --muted:#5a6a75;
+  --line:#c9d4db; --chip:#ffffff; --accent:#b85f1e; --accent-ink:#ffffff; --cool:#2f76b3; --tint:#edf2f5;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#11171c; --stage-a:#223039; --stage-b:#10161b; --panel:#172027; --ink:#e1e8ed; --muted:#94a4af;
+    --line:#2c3a44; --chip:#21303a; --accent:#e0873d; --accent-ink:#1a1108; --cool:#5d9fd5; --tint:#1e2a32;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11171c; --stage-a:#223039; --stage-b:#10161b; --panel:#172027; --ink:#e1e8ed; --muted:#94a4af;
+  --line:#2c3a44; --chip:#21303a; --accent:#e0873d; --accent-ink:#1a1108; --cool:#5d9fd5; --tint:#1e2a32;
+}
+html{height:100%; scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0; height:100%; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans Arabic","Segoe UI",Tahoma,"Noto Sans Arabic",Arial,sans-serif; font-size:15px; line-height:1.7}
+button{font:inherit; color:inherit}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+.app{display:grid; grid-template-columns:minmax(300px,370px) 1fr; height:100%}
+.panel{background:var(--panel); border-inline-end:1px solid var(--line); overflow-y:auto; display:flex; flex-direction:column}
+.ph{padding:22px 22px 14px}
+.ph h1{margin:0; font-size:21px; line-height:1.4; font-weight:700}
+.ph .sub{margin:2px 0 0; color:var(--muted); font-size:13.5px; direction:ltr; text-align:right}
+
+.card{margin:0 16px; padding:16px 18px; background:var(--tint); border-radius:12px; border:1px solid var(--line)}
+.card h2{margin:0; font-size:18px; font-weight:600; line-height:1.45}
+.card .en{margin:0 0 8px; color:var(--muted); font-size:13px; direction:ltr; text-align:right}
+.card p{margin:6px 0}
+.card .eq{margin-top:10px; padding:8px 10px; border-inline-start:3px solid var(--accent); background:var(--panel); border-radius:0 6px 6px 0; font-size:14px; unicode-bidi:plaintext}
+.card .head{display:flex; gap:10px; align-items:flex-start}
+.card .head .num{flex:none; margin-top:3px}
+.card .act{margin-top:12px; display:flex; gap:8px; flex-wrap:wrap}
+.card .act button{background:var(--chip); border:1px solid var(--line); border-radius:8px; padding:5px 12px; cursor:pointer; font-size:13.5px}
+.card .act button:hover{border-color:var(--accent)}
+
+.num{display:inline-grid; place-items:center; width:24px; height:24px; border-radius:50%; font-size:12.5px; font-weight:600;
+  background:var(--chip); border:1.5px solid var(--ink); line-height:1; font-variant-numeric:tabular-nums}
+
+.mix{padding:18px 22px 6px}
+.mix h3,.parts h3{margin:0 0 6px; font-size:15px; font-weight:600}
+.rpm{display:flex; align-items:center; gap:12px}
+.rpm input{flex:1; accent-color:var(--accent)}
+.rpm output{min-width:86px; font-weight:600; font-variant-numeric:tabular-nums}
+.readout{display:grid; grid-template-columns:1fr auto; gap:2px 12px; margin:10px 0 4px; font-size:14px}
+.readout dt{color:var(--muted)}
+.readout dd{margin:0; font-weight:600; font-variant-numeric:tabular-nums; direction:ltr; text-align:left}
+.fine{font-size:12.5px; color:var(--muted); margin:6px 0 0}
+
+.parts{padding:14px 14px 8px}
+.parts h3{padding:10px 8px 2px; color:var(--muted); font-size:13px}
+.parts ul{list-style:none; margin:0; padding:0}
+.parts li button{display:flex; align-items:center; gap:10px; width:100%; text-align:right; background:none; border:0;
+  padding:5px 8px; border-radius:8px; cursor:pointer; font-size:14.5px}
+.parts li button:hover{background:var(--tint)}
+.parts li button[aria-current="true"]{background:var(--tint); box-shadow:inset -3px 0 0 var(--accent)}
+.parts li button[aria-current="true"] .num{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.lang{display:inline-block; cursor:pointer; background:none; font:inherit; margin-top:8px; font-size:13.5px; color:var(--accent); text-decoration:none; border:1px solid var(--line); border-radius:8px; padding:2px 10px}
+.lang:hover{border-color:var(--accent)}
+.credit{margin-top:auto; padding:14px 22px 20px; font-size:12.5px; color:var(--muted); border-top:1px solid var(--line)}
+.credit b{color:var(--ink); font-weight:600}
+
+.stage{position:relative; overflow:hidden; background:radial-gradient(ellipse 70% 65% at 50% 42%, var(--stage-a), var(--stage-b))}
+#c{display:block; width:100%; height:100%; touch-action:none; cursor:grab}
+#c:active{cursor:grabbing}
+.labels{position:absolute; inset:0; pointer-events:none}
+.lbl{direction:ltr; position:absolute; left:0; top:0; pointer-events:auto; display:flex; align-items:center; gap:6px; padding:0; border:0; background:none; cursor:pointer; white-space:nowrap}
+.lbl .t{direction:rtl; display:none; background:var(--chip); border:1px solid var(--line); border-radius:6px; padding:1px 8px; font-size:12.5px; box-shadow:0 1px 3px rgba(20,30,40,.18)}
+.labels.names .lbl .t,.lbl.on .t{display:inline-block}
+.lbl .num{box-shadow:0 1px 3px rgba(20,30,40,.25)}
+.lbl.on .num{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.lbl.on .t{border-color:var(--accent)}
+.labels.off .lbl:not(.on){display:none}
+
+.ovl{position:absolute; top:14px; inset-inline-start:16px; pointer-events:none; display:flex; flex-direction:column; align-items:flex-start; gap:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 12px; background:color-mix(in srgb,var(--panel) 82%,transparent); border:1px solid var(--line); border-radius:10px; padding:5px 12px; font-size:13px}
+.legend span{display:inline-flex; align-items:center; gap:6px}
+.legend i{width:11px; height:11px; border-radius:50%; display:inline-block; box-shadow:0 0 0 1.5px rgba(255,255,255,.7)}
+.legend b{font-weight:500}
+.tb.rx{background:#1f8a4c; color:#fff; border-color:#1f8a4c; font-weight:600}
+.tb.rx[aria-pressed="true"]{background:#b3362b; border-color:#b3362b; color:#fff}
+.rxbar{display:flex; height:12px; border-radius:6px; overflow:hidden; margin:8px 0 4px; background:var(--line)}
+.rxbar div{transition:width .25s linear}
+.brand{ background:color-mix(in srgb,var(--panel) 82%,transparent); border:1px solid var(--line); border-inline-start:4px solid var(--accent); border-radius:10px; padding:8px 14px 9px}
+.brand .who{font-size:17px; font-weight:700; line-height:1.4}
+.brand .en{font-size:13px; color:var(--muted); direction:ltr; text-align:right}
+.brand .org{font-size:12.5px; color:var(--muted)}
+.hint{position:absolute; top:14px; inset-inline-end:16px; max-width:300px; font-size:13px; color:var(--muted); pointer-events:none}
+.toolbar{position:absolute; bottom:14px; inset-inline:14px; display:flex; flex-wrap:wrap; gap:8px; justify-content:center; pointer-events:none}
+.toolbar > *{pointer-events:auto}
+.tb{background:var(--chip); border:1px solid var(--line); border-radius:9px; padding:6px 13px; cursor:pointer; font-size:13.5px; box-shadow:0 1px 3px rgba(20,30,40,.12)}
+.tb:hover{border-color:var(--accent)}
+.tb[aria-pressed="true"]{background:var(--ink); color:var(--panel); border-color:var(--ink)}
+.seg{display:inline-flex; background:var(--chip); border:1px solid var(--line); border-radius:9px; padding:2px; box-shadow:0 1px 3px rgba(20,30,40,.12)}
+.seg button{border:0; background:none; padding:4px 11px; border-radius:7px; cursor:pointer; font-size:13.5px}
+.seg button[aria-pressed="true"]{background:var(--ink); color:var(--panel)}
+.loading{position:absolute; inset:0; display:grid; place-items:center; color:var(--muted); font-size:15px; padding:20px; text-align:center}
+
+html[dir="ltr"] .ph .sub,html[dir="ltr"] .card .en,html[dir="ltr"] .brand .en{direction:rtl; text-align:left}
+html[dir="ltr"] .readout dd{text-align:right}
+html[dir="rtl"] #oReg{direction:rtl}
+html[dir="ltr"] .parts li button{text-align:left}
+html[dir="ltr"] .parts li button[aria-current="true"]{box-shadow:inset 3px 0 0 var(--accent)}
+html[dir="ltr"] .lbl .t{direction:ltr}
+html[dir="ltr"] .card .eq{border-radius:0 6px 6px 0}
+html[dir="rtl"] .card .eq{border-radius:6px 0 0 6px}
+@media (max-width:820px){
+  html,body{height:auto}
+  .app{grid-template-columns:1fr; height:auto}
+  .stage{order:-1; height:66svh; min-height:380px}
+  .panel{border-inline-end:0; overflow:visible}
+  .hint{display:none}
+  .ovl{top:10px; inset-inline-start:10px}
+  .brand{padding:6px 10px}
+  .legend{font-size:12px; padding:4px 9px}
+  .brand .who{font-size:15px}
+  .brand .org{display:none}
+  .toolbar{bottom:10px; gap:6px}
+  .tb,.seg button{font-size:12.5px}
+}
+.prof-h{margin-top:14px !important}
+.prof{display:grid; grid-template-columns:auto 1fr auto; gap:3px 8px; align-items:center; font-size:12.5px; font-variant-numeric:tabular-nums}
+.prof .k{color:var(--muted)}
+.prof .tr{height:9px; background:var(--line); border-radius:5px; overflow:hidden}
+.prof .tr div{height:100%; border-radius:5px; transition:width .3s}
+.prof .v{direction:ltr}
+.legend i.grad{width:34px; border-radius:6px; background:linear-gradient(90deg,#f2c21b,#e23b32)}
+html[dir="rtl"] .legend i.grad{background:linear-gradient(270deg,#f2c21b,#e23b32)}
+.legend i.bub{background:transparent; box-shadow:inset 0 0 0 2px #e9844a}
+@media (max-width:820px){
+  .stage{height:auto; min-height:0; display:flex; flex-direction:column}
+  #c{height:60svh; min-height:340px; flex:none}
+  .toolbar{position:static; inset:auto; padding:10px 10px 12px; background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+  .labels{bottom:auto; height:max(60svh,340px)}
+}
+.tb.fl{border-color:#b3362b; color:#b3362b; font-weight:600}
+.tb.fl[aria-pressed="true"]{background:#b3362b; color:#fff}
+.fwarn{background:#b3362b; color:#fff; border-radius:10px; padding:6px 12px; font-size:13.5px; font-weight:600; max-width:340px; box-shadow:0 2px 8px rgba(120,20,10,.3)}
+.fwarn[hidden]{display:none}
+.card.fcard{border-color:#b3362b; border-inline-start:4px solid #b3362b}
+.card.fcard h2{color:#b3362b}
+.card ul{margin:6px 0; padding-inline-start:20px}
+.card li{margin:2px 0}
+.card h4{margin:10px 0 2px; font-size:14.5px}
+#chart svg{width:100%; height:auto; display:block}
+#chart text{font-size:10px; fill:var(--muted); font-family:inherit}
+.ch-leg{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--muted); margin-top:4px}
+.ch-leg i{display:inline-block; width:16px; height:3px; border-radius:2px; vertical-align:middle; margin-inline-end:5px}
+.fwarn.ok{background:#1f8a4c}
+.legend i.sw{width:34px; border-radius:6px; background:linear-gradient(90deg,#ff3b1f,#1f5fff)}
+.legend i.gw{width:34px; border-radius:6px; background:linear-gradient(90deg,#9be38a,#f4f4f4)}
+html[dir="rtl"] .legend i.sw{background:linear-gradient(270deg,#ff3b1f,#1f5fff)}
+html[dir="rtl"] .legend i.gw{background:linear-gradient(270deg,#9be38a,#f4f4f4)}
+.pkseg{display:flex; width:100%}
+.pkseg button{flex:1; padding:6px 3px; font-size:12.5px}
+#chart2 svg{width:100%;height:auto;display:block;margin-top:8px}#chart2 text{font-size:10px;fill:var(--muted);font-family:inherit}
+#chart svg,#chart2 svg,#chart3 svg{width:100%;height:auto;display:block;margin-top:8px}#chart text,#chart2 text,#chart3 text{font-size:10px;fill:var(--muted);font-family:inherit}
+.fwarn.bad{background:#c8352e}
+
+#tbl table{width:100%;border-collapse:collapse;font-size:11px;margin-top:6px}#tbl th,#tbl td{border:1px solid rgba(128,128,128,.35);padding:2px 4px;text-align:center}#tbl th{background:rgba(31,78,120,.25)}#tbl .osc{color:#c8352e;font-weight:700}
+
+#tbl .sc{max-height:170px;overflow:auto;border:1px solid rgba(128,128,128,.35)}#tbl .sc table{margin:0}
+.presenter{position:absolute; top:12px; inset-inline-end:12px; width:min(290px,calc(100% - 24px)); display:flex; gap:9px; align-items:flex-start; background:color-mix(in srgb,var(--panel) 94%,transparent); border:1px solid var(--line); border-radius:12px; padding:8px 9px; box-shadow:0 4px 16px rgba(10,20,30,.2); z-index:5}
+.presenter[hidden]{display:none}
+.pv{position:relative; flex:none; width:52px; height:52px}
+.pv img{width:52px; height:52px; border-radius:50%; object-fit:cover; object-position:50% 30%; position:relative; z-index:1; border:2px solid var(--panel)}
+.pv .ring{position:absolute; inset:-3px; border-radius:50%; background:conic-gradient(#1f8a4c,#1f78c8,#1f8a4c); opacity:.35}
+.presenter.talking .pv img{animation:talk 2.4s ease-in-out infinite}
+.presenter.talking .pv .ring{opacity:1; animation:spin 3s linear infinite}
+@keyframes talk{0%,100%{transform:translateY(0) scale(1)}25%{transform:translateY(-1px) scale(1.02) rotate(-.6deg)}50%{transform:translateY(0) scale(1.005)}75%{transform:translateY(-1px) scale(1.015) rotate(.6deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pv .bars{position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); display:flex; gap:2px; z-index:2; background:var(--panel); border-radius:6px; padding:2px 4px; border:1px solid var(--line)}
+.pv .bars i{display:block; width:2px; height:4px; background:#1f8a4c; border-radius:2px}
+.presenter.talking .bars i{animation:bar .9s ease-in-out infinite}
+.presenter.talking .bars i:nth-child(2){animation-delay:.15s}.presenter.talking .bars i:nth-child(3){animation-delay:.3s}.presenter.talking .bars i:nth-child(4){animation-delay:.45s}.presenter.talking .bars i:nth-child(5){animation-delay:.6s}
+@keyframes bar{0%,100%{height:3px}50%{height:10px}}
+.pb{flex:1; min-width:0}
+.pn{font-weight:700; font-size:12.5px; line-height:1.3}
+.pn span{font-weight:500; color:var(--muted); font-size:11.5px; margin-inline-start:4px}
+.pt{font-size:12.5px; line-height:1.6; margin:3px 0 5px; max-height:4.9em; overflow-y:auto}
+.pc{display:flex; gap:4px}
+.pc .ic{background:var(--chip); border:1px solid var(--line); border-radius:7px; width:28px; height:24px; padding:0; font-size:11px; line-height:1; cursor:pointer}
+.pc .ic:hover{border-color:var(--accent)}
+html[dir="rtl"] .pc .flip{transform:scaleX(-1)}
+.pw{margin-top:4px; font-size:11px; color:#c0621c}
+.pbtn{position:absolute; top:12px; inset-inline-end:12px; z-index:5; width:46px; height:46px; border-radius:50%; padding:0; border:2px solid #1f8a4c; background:var(--panel); cursor:pointer; box-shadow:0 3px 10px rgba(10,20,30,.2)}
+.pbtn img{width:100%; height:100%; border-radius:50%; object-fit:cover; object-position:50% 30%}
+.pbtn span{position:absolute; bottom:-3px; inset-inline-end:-3px; width:18px; height:18px; border-radius:50%; background:#1f8a4c; color:#fff; font-size:9px; display:grid; place-items:center}
+.pbtn[hidden]{display:none}
+.stage.tour .hint{display:none}
+@media (max-width:820px){.presenter{top:8px; inset-inline-end:8px; width:min(270px,calc(100% - 16px))}.pbtn{top:8px}.stage.tour .ovl{display:none}}
+.stage .hint{inset-inline-end:70px}
+.wm{position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:6;pointer-events:none;user-select:none;font:600 11px/1.2 "IBM Plex Sans Arabic",system-ui,sans-serif;color:#fff;opacity:.5;text-shadow:0 0 3px rgba(0,0,0,.85),0 0 1px #000;white-space:nowrap;letter-spacing:.2px}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="panel">
+    <header class="ph">
+      <h1 data-t="h1"></h1>
+      <p class="sub" data-t="sub"></p>
+      <button class="lang" data-lang-toggle>English</button>
+    </header>
+    <section class="card" id="card" aria-live="polite"></section>
+    <section class="mix">
+      <h3 data-t="opMode"></h3>
+      <div class="seg pkseg" role="group">
+        <button data-md="step" aria-pressed="true"></button>
+        <button data-md="puls" aria-pressed="false"></button>
+      </div>
+      <h3 data-t="opA" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="pa" min="1" max="4" step="1" value="2" aria-label="Valve position A"><output id="paOut">–</output></div>
+      <h3 data-t="opB" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="pb" min="1" max="4" step="1" value="3" aria-label="Valve position B"><output id="pbOut">–</output></div>
+      <h3 data-t="opD" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="dd" min="2" max="12" step="0.1" value="7" aria-label="Tube diameter"><output id="ddOut">–</output></div>
+      <h3 data-t="opMu" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="mu" min="1.5" max="60" step="0.5" value="16" aria-label="Viscosity"><output id="muOut">–</output></div>
+      <h3 data-t="opL" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="ll" min="30" max="80" step="1" value="48" aria-label="Column length"><output id="llOut">–</output></div>
+      <h3 data-t="opFp" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="fp" min="0.1" max="3" step="0.05" value="0.8" aria-label="Pulsation frequency"><output id="fpOut">–</output></div>
+      <h3 data-t="opAm" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="am" min="2" max="40" step="1" value="15" aria-label="Pulsation amplitude"><output id="amOut">–</output></div>
+      <h3 data-t="opSm" style="margin-top:12px"></h3>
+      <div class="seg pkseg" role="group">
+        <button data-sm="0.1" aria-pressed="true">0.1 s</button>
+        <button data-sm="0.5" aria-pressed="false">0.5 s</button>
+        <button data-sm="1" aria-pressed="false">1 s</button>
+      </div>
+      <h3 data-t="opRe" style="margin-top:10px"></h3>
+      <div class="seg pkseg" role="group">
+        <button data-re="ideal" aria-pressed="false"></button>
+        <button data-re="real" aria-pressed="true"></button>
+      </div>
+      <h3 data-t="opSpd" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="sd" min="-1.3" max="0.3" step="0.05" value="-0.3" aria-label="Simulation speed"><output id="sdOut">–</output></div>
+      <dl class="readout">
+        <dt data-t="dSig"></dt><dd id="oSig">–</dd>
+        <dt data-t="dPar"></dt><dd id="oPar">–</dd>
+        <dt data-t="dTh"></dt><dd id="oTh">–</dd>
+        <dt data-t="dEx"></dt><dd id="oEx">–</dd>
+        <dt data-t="dFr"></dt><dd id="oFr">–</dd>
+        <dt data-t="dPu"></dt><dd id="oPu">–</dd>
+        <dt data-t="dCal"></dt><dd id="oCal">–</dd>
+        <dt data-t="dDes"></dt><dd id="oDes">–</dd>
+        <dt data-t="dTm"></dt><dd id="oTm">–</dd>
+      </dl>
+      <h3 class="prof-h" data-t="chH"></h3>
+      <div id="chart"></div>
+      <div id="chart2"></div>
+      <div id="chart3"></div>
+      <div id="chart4"></div>
+      <div id="chart5"></div>
+      <div id="tbl"></div>
+      <p class="fine" data-t="fine"></p>
+    </section>
+    <footer class="credit" data-t="credit"></footer>
+  </aside>
+  <main class="stage" id="stage">
+    <canvas id="c" aria-label="3D U-tube manometer on an orifice meter"></canvas>
+<div class="wm" aria-hidden="true">© 2026 د. ضياء جمعة جاسم · Dr. Dheyaa J. Jasim</div>
+    <div class="labels" id="labels"></div>
+    <div class="ovl">
+      <div class="brand"><div class="who" data-t="who"></div><div class="en" data-t="whoAlt"></div><div class="org" data-t="org"></div></div>
+      <div class="fwarn" id="fwarn" hidden></div>
+      <div class="legend" aria-hidden="true">
+        <span><i style="background:#9e9e9e"></i><b data-t="lgHg"></b></span>
+        <span><i style="background:#2979ff"></i><b data-t="lgW"></b></span>
+        <span><i style="background:#ffb300"></i><b data-t="lgQ"></b></span>
+      </div>
+    </div>
+    <div class="hint" data-t="hint"></div>
+    <div class="toolbar">
+      <button class="tb rx" id="bRun" aria-pressed="false"></button>
+      <button class="tb" id="bStep"></button>
+        <button class="tb" id="bZ7"></button>
+        <button class="tb" id="bMan"></button>
+      <button class="tb" id="bReset"></button>
+      
+      <button class="tb" data-lang-toggle>English</button>
+      <div class="seg" role="group">
+        <button data-drag="rotate" aria-pressed="true" data-t="dRot"></button>
+        <button data-drag="pan" aria-pressed="false" data-t="dPan"></button>
+      </div>
+      <div class="seg" role="group">
+        <button data-mode="full" aria-pressed="false" data-t="full"></button>
+        <button data-mode="cut" aria-pressed="true" data-t="cut"></button>
+        <button data-mode="ghost" aria-pressed="false" data-t="ghost"></button>
+      </div>
+      <button class="tb" id="bExplode" aria-pressed="false"></button>
+      <button class="tb" id="bLabels"></button>
+      <div class="seg" role="group">
+        <button data-view="iso" data-t="iso"></button>
+        <button data-view="front" data-t="front"></button>
+        <button data-view="top" data-t="top"></button>
+      </div>
+    </div>
+    <div class="loading" id="loading">جارٍ تحميل النموذج… Loading…</div>
+  </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+const loadingEl=document.getElementById('loading');
+if(!window.THREE||!THREE.OrbitControls){loadingEl.textContent='تعذّر تحميل مكتبة الرسم ثلاثي الأبعاد. تحقق من الاتصال بالإنترنت ثم أعد تحميل الصفحة. / The 3D library could not load; check your connection and reload.';return;}
+
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+/* ---------- U-tube manometer (mercury under water) on an orifice meter: ρm·L·x'' + (32 μ L/d²)·x' + c·|x'|x' + 2 Δρ g x = ΔP(t) ; Δh = 2x ---------- */
+const MN={g:9.81,rhoHg:13600,rhoW:1000,mu:.016,L:.48,d:.007,tauv:.25,ct:3000,pipeD:.025,d0:.012,Cd:.61,Qpos:[8,12,16,20]};
+function manoPar(P){P=Object.assign({},MN,P||{});const dr=P.rhoHg-P.rhoW,tau=Math.sqrt(P.rhoHg*P.L/(2*dr*P.g)),zeta=8*P.mu*P.L/(dr*P.g*P.d*P.d*tau),K=1/(2*dr*P.g),
+ /* the manual's formulas exactly as printed (with ρ = ρHg − ρH2O in both) */
+ tauM=Math.sqrt(P.L/(2*P.g)),zetaM=16*P.mu*P.L/(P.g*P.d*P.d*dr)*Math.sqrt(P.L/(2*P.g)),
+ wn=1/tau,wd=zeta<1?wn*Math.sqrt(1-zeta*zeta):0;return {P,dr,tau,zeta,K,tauM,zetaM,wn,wd};}
+/* theory of the second-order system (lecture 7) */
+function stepSecond(t,tau,z){if(t<=0)return 0;if(z<1){const wn=1/tau,wd=wn*Math.sqrt(1-z*z);return 1-Math.exp(-z*wn*t)*(Math.cos(wd*t)+z/Math.sqrt(1-z*z)*Math.sin(wd*t));}
+ if(Math.abs(z-1)<1e-9)return 1-(1+t/tau)*Math.exp(-t/tau);const s=Math.sqrt(z*z-1),p1=(z-s)/tau,p2=(z+s)/tau;return 1-(p2*Math.exp(-p1*t)-p1*Math.exp(-p2*t))/(p2-p1);}
+function theoryMetrics(tau,z){if(z>=1)return {over:0,decay:0,rise:NaN,period:NaN,peak:NaN,natPeriod:2*Math.PI*tau};const wd=Math.sqrt(1-z*z)/tau,os=Math.exp(-Math.PI*z/Math.sqrt(1-z*z));
+ return {over:os*100,decay:os*os,rise:(Math.PI-Math.acos(z))/wd,period:2*Math.PI/wd,peak:Math.PI/wd,natPeriod:2*Math.PI*tau,settle5:NaN};}
+/* orifice: ΔP = ρw/2 · (Q/(Cd·A0))² · (1 − β⁴) */
+function dpOfQ(P,Qlpm){const q=Qlpm/60000,A0=Math.PI*P.d0*P.d0/4,b=P.d0/P.pipeD;return .5*P.rhoW*Math.pow(q/(P.Cd*A0),2)*(1-Math.pow(b,4));}
+/* time integration (RK4) of the manometer driven by a flow program Q(t) with an optional valve/line lag and turbulent friction */
+function Mano(par,real){const q=manoPar(par),P=q.P,rho=P.rhoHg,o={q,x:0,v:0,Qv:0,t:0};
+ o.rest=function(Qlpm){o.Qv=Qlpm;const dp=dpOfQ(P,Qlpm);o.x=dp/(2*q.dr*P.g);o.v=0;};
+ const acc=(x,v,dp)=>(dp-2*q.dr*P.g*x-32*P.mu*P.L*v/(P.d*P.d)-(real?P.ct*Math.abs(v)*v:0))/(rho*P.L);
+ o.step=function(Qcmd,dt){const tv=real?P.tauv:0;if(tv>0)o.Qv+=dt*(Qcmd-o.Qv)/tv;else o.Qv=Qcmd;const dp=dpOfQ(P,o.Qv),x=o.x,v=o.v;
+  const k1x=v,k1v=acc(x,v,dp),k2x=v+.5*dt*k1v,k2v=acc(x+.5*dt*k1x,v+.5*dt*k1v,dp),k3x=v+.5*dt*k2v,k3v=acc(x+.5*dt*k2x,v+.5*dt*k2v,dp),k4x=v+dt*k3v,k4v=acc(x+dt*k3x,v+dt*k3v,dp);
+  o.x+=dt/6*(k1x+2*k2x+2*k3x+k4x);o.v+=dt/6*(k1v+2*k2v+2*k3v+k4v);o.t+=dt;return o.x;};return o;}
+/* run a step between two valve positions; record at a chosen interval */
+function runStep(par,posA,posB,Tend,dtRec,real,dt){dt=dt||.002;const m=Mano(par,real),P=m.q.P,QA=P.Qpos[posA-1],QB=P.Qpos[posB-1];m.rest(QA);const x0=m.x,n=Math.round(Tend/dt),stepRec=Math.max(1,Math.round(dtRec/dt)),t=[],h=[];
+ for(let i=0;i<=n;i++){if(i%stepRec===0){t.push(i*dt);h.push(2*m.x*1000);}m.step(QB,dt);}return {t,h,x0,xf:null,QA,QB,q:m.q};}
+/* measured quantities from a record (Δh in mm): overshoot, decay ratio, rise time, period */
+function peaks(t,y,yf){const pk=[];for(let i=1;i<y.length-1;i++)if(y[i]>y[i-1]&&y[i]>=y[i+1]&&y[i]>yf)pk.push([t[i],y[i]]);return pk;}
+function measure(t,y,y0,yf){const D=yf-y0,s=Math.sign(D)||1,z=y.map(v=>(v-y0)/D);let pkv=-1e9,tp=0;for(let i=0;i<z.length;i++)if(z[i]>pkv){pkv=z[i];tp=t[i];}
+ const over=Math.max(0,(pkv-1)*100);let tr=NaN;for(let i=1;i<z.length;i++)if(z[i]>=1){tr=t[i-1]+(1-z[i-1])/(z[i]-z[i-1])*(t[i]-t[i-1]);break;}
+ const pk=[];for(let i=1;i<z.length-1;i++)if(z[i]>z[i-1]&&z[i]>=z[i+1]&&z[i]>1)pk.push([t[i],z[i]-1]);
+ const decay=pk.length>=2?pk[1][1]/pk[0][1]:NaN,period=pk.length>=2?pk[1][0]-pk[0][0]:NaN;let ts=NaN;for(let i=z.length-1;i>=0;i--)if(Math.abs(z[i]-1)>.05){ts=i<z.length-1?t[i+1]:NaN;break;}
+ return {over,decay,period,rise:tr,peakT:tp,settle:ts,peaks:pk.length};}
+/* frequency response of the manometer as an instrument: G = 1/(τ²s² + 2ζτs + 1) */
+function bodeMano(tau,z,n){n=n||200;const w=[],mag=[],ph=[];for(let i=0;i<n;i++){const ww=Math.pow(10,-1+2.6*i/(n-1)),u=ww*tau,re=1-u*u,im=2*z*u;w.push(ww);mag.push(1/Math.hypot(re,im));ph.push(-Math.atan2(im,re)*180/Math.PI);}return {w,mag,ph};}
+const arSecond=(u,z)=>1/Math.hypot(1-u*u,2*z*u);
+function resonance(tau,z){if(z>=Math.SQRT1_2)return {wr:0,Mr:1};const wr=Math.sqrt(1-2*z*z)/tau,Mr=1/(2*z*Math.sqrt(1-z*z));return {wr,Mr};}
+function bandwidth5(tau,z){for(let i=0;i<4000;i++){const w=1e-3*Math.pow(1e4,i/4000);if(Math.abs(arSecond(w*tau,z)-1)>.05)return w;}return Infinity;}
+/* diameter of the tube that gives a wanted damping ratio (ζ ∝ μ/d²) */
+const dForZeta=(P,zt)=>{const q=manoPar(P);return Math.sqrt(8*q.P.mu*q.P.L/(q.dr*q.P.g*q.tau*zt));};
+
+
+let MODE='step',PA=2,PB=3,DD=7,MU=16,LL=48,FP=.8,AM=15,SAMP=.1,REAL=true,SPEED=.5,running=true,selected=null,showMan=false;const PORTS=[];
+let SIM=null,HIST=[],T_SIM=0,stepped=false,T_STEP=0,recAcc=0,REC=null,RECR=null,RECF=null,dialA=0,swT=0;
+const par=()=>({d:DD/1000,mu:MU/1000,L:LL/100}),QP=()=>MN.Qpos;
+/* ================= content ================= */
+const INFO_AR={
+ supply:{ar:'خزان الماء والمضخة',en:'Water tank and pump',d:'خزان فيه الماء، وتدفعه المضخة في الأنبوب بتدفق ثابت لكل وضع من أوضاع الصمام. يمر الماء بالفتحة (الأوريفيس) ثم بمقياس التدفق ثم إلى خزان الاستقبال، ويُعاد منه إلى الخزان الأول.',n:'Q ثابت لكل وضع'},
+ valve:{ar:'صمام الأوضاع الأربعة',en:'Four-position valve',d:'صمام بقرص مرقَّم من 1 إلى 4 يغيّر التدفق في الأنبوب بخطوات (في المحاكي: 8 و12 و16 و20 L/min). بالانتقال بين وضعين تحدث «خطوة» في التدفق، فتتغير فرق الضغط على الفتحة بخطوة مماثلة. الخطوة الصاعدة من 2 إلى 3، والهابطة من 3 إلى 2، كما في الدليل.',n:'خطوة في Q ← خطوة في ΔP'},
+ orifice:{ar:'الفتحة (الأوريفيس) ومأخذا الضغط',en:'Orifice and pressure taps',d:'لوح بفتحة صغيرة يُحدث فرق ضغط يتناسب مع مربع التدفق، ويُنقل الضغطان من قبل الفتحة وبعدها بأنبوبين رفيعين إلى أعلى ساقي المانومتر. وقبل الفتحة الضغط أعلى فيدفع الزئبق نزولاً في الساق اليسرى وصعوداً في اليمنى.',n:'ΔP = (ρw/2)·(Q/(Cd·A₀))²·(1 − β⁴)'},
+ utube:{ar:'مانومتر الأنبوب U',en:'U-tube manometer',d:'أنبوب زجاجي ملأه الزئبق في الأسفل والماء فوقه. عند خطوة في ΔP يتحرك عمود الزئبق كله كجسم واحد: القصور الذاتي (الكتلة ρ·A·L) والنابض (فرق الارتفاع 2h بوزن الزئبق والماء) والاحتكاك (لزوجة بوازوي) يشكّلون نظاماً من الرتبة الثانية ناقص التخميد، فيتذبذب المستوى حول قيمته النهائية.',n:'ρm·L·h″ + (32μL/d²)·h′ + 2Δρ·g·h = ΔP'},
+ scale:{ar:'مسطرة القراءة',en:'Reading ruler',d:'مسطرة بتدريج 1 cm خلف الساقين تقرأ منها فرق الارتفاع Δh = 2h. وتأخذ القراءة اليدوية عدة أعشار من الثانية، لذلك لا تلتقط الذبذبة السريعة (الدورة نحو 1 s) إلا إذا كان الفاصل أقل من ربع الدورة؛ جرّب فاصل 1 s لترى الاهتزاز يختفي من القراءات.',n:'Δh = h_right − h_left = 2h'},
+ meter:{ar:'مقياس التدفق',en:'Flowmeter',d:'مقياس تدفق رقمي على الأنبوب يعطي Q لكل وضع من الصمام، وهو ما يُستعمل مع قراءة المانومتر لرسم منحنى المعايرة Q مقابل ΔP، وهو قطع مكافئ لأن ΔP ∝ Q².',n:'ΔP = k·Q²'},
+ pc:{ar:'ساعة الإيقاف والحاسوب',en:'Stopwatch and computer',d:'تُسجَّل القراءات بالثواني بالساعة، ويعرض الحاسوب المنحنى الحي. في الشريط الجانبي: تسجيل بالفاصل الذي تختاره، وجدول القراءات، ومخطط بودي للمانومتر كأداة قياس.',n:'t ، Δh'}
+};
+const INFO_EN={
+ supply:{ar:'Water tank and pump',en:'خزان الماء والمضخة',d:'A tank of water, and the pump drives it through the pipe at a constant flow for each valve position. The water passes the orifice, then the flowmeter, and goes to a receiving tank from which it returns to the first one.',n:'Q constant for each position'},
+ valve:{ar:'Four-position valve',en:'صمام الأوضاع الأربعة',d:'A valve with a dial numbered 1 to 4 that changes the pipe flow in steps (in the simulator: 8, 12, 16 and 20 L/min). Moving between two positions makes a step in the flow, and so a similar step in the pressure difference across the orifice. The rising step is from 2 to 3 and the falling one from 3 to 2, as in the manual.',n:'a step in Q → a step in ΔP'},
+ orifice:{ar:'Orifice and pressure taps',en:'الفتحة (الأوريفيس) ومأخذا الضغط',d:'A plate with a small hole that makes a pressure difference proportional to the square of the flow. The pressures before and after the orifice are carried by two thin tubes to the tops of the manometer legs. The pressure before the orifice is higher, so it pushes the mercury down in the left leg and up in the right one.',n:'ΔP = (ρw/2)·(Q/(Cd·A₀))²·(1 − β⁴)'},
+ utube:{ar:'U-tube manometer',en:'مانومتر الأنبوب U',d:'A glass tube with mercury at the bottom and water above it. At a step in ΔP the whole mercury column moves as one body: the inertia (mass ρ·A·L), the spring (the height difference 2h under the weight of mercury and water) and the friction (Poiseuille viscosity) make an underdamped second-order system, so the level oscillates about its final value.',n:'ρm·L·h″ + (32μL/d²)·h′ + 2Δρ·g·h = ΔP'},
+ scale:{ar:'Reading ruler',en:'مسطرة القراءة',d:'A ruler graduated in 1 cm behind the legs from which you read the height difference Δh = 2h. A manual reading takes several tenths of a second, so it does not catch the fast oscillation (period about 1 s) unless the interval is less than a quarter of the period; try an interval of 1 s to see the oscillation vanish from the readings.',n:'Δh = h_right − h_left = 2h'},
+ meter:{ar:'Flowmeter',en:'مقياس التدفق',d:'A digital flowmeter on the pipe gives Q for each valve position, and it is used with the manometer reading to plot the calibration curve Q against ΔP, a parabola because ΔP ∝ Q².',n:'ΔP = k·Q²'},
+ pc:{ar:'Stopwatch and computer',en:'ساعة الإيقاف والحاسوب',d:'The readings are timed in seconds with the stopwatch, and the computer shows the live trend. The side panel holds the recording at the interval you choose, the table of readings, and the Bode diagram of the manometer as a measuring instrument.',n:'t, Δh'}
+};
+let INFO=INFO_AR;
+const ORDER=['supply','valve','orifice','utube','scale','meter','pc'];const NUM={};ORDER.forEach((k,i)=>NUM[k]=i+1);
+const T={
+ ar:{title:'محاكي النظام ناقص التخميد: مانومتر الأنبوب U',h1:'نظام الرتبة الثانية: مانومتر U مع فتحة',sub:'Second-order underdamped system (Exp. 3): a U-tube manometer on an orifice meter, with its frequency response and damping design',
+  opMode:'نمط الدخل',md_step:'خطوة في التدفق',md_puls:'تدفق نابض (جيبي)',opA:'وضع الصمام قبل الخطوة (1–4)',opB:'وضع الصمام بعد الخطوة (1–4)',opD:'قطر الأنبوب d (mm)',opMu:'لزوجة السائل μ (mPa·s) — الدليل: 16',opL:'طول عمود السائل L (cm)',opFp:'تردد النبض (Hz)',opAm:'سعة النبض (% من Q)',opSm:'فاصل التسجيل',opRe:'نموذج النبات',re_ideal:'مثالي (خطي)',re_real:'واقعي (تأخر الصمام + احتكاك مضطرب)',opSpd:'سرعة المحاكاة (حركة بطيئة)',
+  dSig:'Δh الآن (mm) ، Q (L/min)',dPar:'τ ، ζ المشتقة ، ζ بصيغة الدليل المطبوعة ، ω_n',dTh:'نظرياً: التجاوز ، نسبة الاضمحلال ، زمن الصعود ، الدورة ، الدورة الطبيعية',dEx:'من التسجيل: خطوة صاعدة ثم هابطة (تجاوز ، اضمحلال ، دورة)',dFr:'الاستجابة الترددية: ω_r ، M_r ، حدّ ±5%',dPu:'التدفق النابض: نسبة السعة والطور عند التردد المختار',dCal:'المعايرة: ΔP = k·Q²',dDes:'القطر اللازم لـ ζ = 0.7 (السائل نفسه)',dTm:'الزمن',
+  step:'تطبيق الخطوة A ← B',stepBack:'العودة إلى A',z7:'اضبط التخميد ζ = 0.7',manOn:'أظهر منحنى صيغة الدليل المطبوعة',manOff:'أخفِ منحنى صيغة الدليل المطبوعة',reset:'إعادة التهيئة',
+  chH:'المنحنيات: الحي، التسجيل، بودي، أثر ζ، المعايرة، وجدول القراءات',chT:'Δh مع الزمن (حي)',chTx:'الزمن (s)',chR:'التسجيل بالفاصل المختار (الخطوة الصاعدة)',chRx:'الزمن (s)',chB:'مخطط بودي للمانومتر كأداة قياس',chBx:'التردد ω (rad/s)',chZ:'أثر معامل التخميد ζ على الخطوة',chZx:'t/τ',chK:'منحنى المعايرة: Δh مقابل Q',chKx:'Q (L/min)',
+  lgHg:'الزئبق',lgW:'الماء',lgQ:'التدفق',cTh:'النظرية (مشتقة)',cPr:'بصيغة الدليل المطبوعة',cRec:'القراءات المسجلة',cFine:'الحقيقة (0.01 s)',cAR:'المقدار (dB)',cPh:'الطور (°)',cNow:'ζ الحالية',
+  tT:'جدول القراءات (الخطوة الصاعدة)',tMin:'t (s)',tCal:'معايرة الفتحة',tPos:'وضع',tQ:'Q (L/min)',tDP:'ΔP (Pa)',tDh:'Δh (mm)',
+  fine:'محاكاة للتجربة 3 (نظام الرتبة الثانية ناقص التخميد بمانومتر U موصول بفتحة) بحسب دليل مختبر السيطرة على العمليات (الجامعة التكنولوجية، إعداد سناء وثيق ونسمة بلاسم، إشراف د. زيدون محسن)، مع تحليل من كتاب المحاضرات (د. زيدون محسن شكور): النظام من الرتبة الثانية (المحاضرة 7)، والاستجابة الترددية ومخططات بودي (13). ما أُخذ من الدليل: معادلة توازن القوى (3) ودالة التحويل h(s)/ΔP(s)، والمعطيات L = 0.48 m وμ = 0.016 kg/m·s وd = 7 mm، وأوضاع الصمام 1–4 والخطوة الصاعدة والهابطة، وh_Hg = 2h والتسجيل بالثواني، وحساب التجاوز ونسبة الاضمحلال وزمن الصعود والدورة والدورة الطبيعية، ومنحنى المعايرة Q–ΔP مع ΔP = ρ·g·2h. ما افترضته لأن الدليل لا يعطيه، فهو افتراضي وليس قياساً على الجهاز: تدفقات الأوضاع 8 و12 و16 و20 L/min، وأنبوب 25 mm وفتحة 12 mm ومعامل تصريف 0.61، وزئبق 13600 kg/m³ تحته ماء 1000 kg/m³، وفي «النموذج الواقعي» تأخر للصمام والخط 0.25 s واحتكاك مضطرب c = 3000 Pa/(m/s)². تنبيه على الدليل: صيغة معامل التخميد المطبوعة φ = [16μL/(g·d²·ρ)]·√(L/2g) غير متسقة أبعادياً، فجزؤها الأول وحدته ثانية وضربه في √(L/2g) (ثانية) يعطي ثانية² بينما φ بلا أبعاد. والصحيح الناتج عن معادلة القوى (3) نفسها: φ = 8μL/(ρ·g·d²·τ) مع τ = √(ρm·L/(2Δρ·g)). وبمعطيات الدليل تعطي المطبوعة φ = 0.0032 (تجاوز متوقع 99%) والمشتقة φ = 0.062 (تجاوز 82%). كذلك μ = 0.016 يبلغ نحو عشرة أضعاف لزوجة الزئبق الحقيقية (0.0016 تقريباً)، ولو استُعملت لصار φ نحو 0.006، فالأرقام هنا للمعطيات كما كُتبت. التحقق: التكامل العددي يطابق الحل التحليلي لنظام الرتبة الثانية إلى 2×10⁻⁸ mm، والتجاوز المحاكى 82.16% يطابق النظرية 82.16%، ونسبة الاضمحلال 0.6748 مقابل 0.6750، والذروة الرنينية M_r = 8.03 تطابق 1/(2ζ√(1−ζ²))، والقطر الذي يعطي ζ = 0.7 يتحقق منه الحساب العكسي. وفاصل التسجيل 1 s مع دورة 1.02 s يخفي الاهتزاز تماماً.',
+  credit:'إعداد: <b>د. ضياء جمعة جاسم</b> (Dheyaa J. Jasim)<br>قسم الهندسة الكيمياوية والصناعات النفطية، كلية العمارة الجامعة<br>© 2026 د. ضياء جمعة جاسم. جميع الحقوق محفوظة. للاستخدام التعليمي؛ لا يجوز إعادة النشر أو البيع دون إذن كتابي.',
+  who:'إعداد: د. ضياء جمعة جاسم',whoAlt:'Dr. Dheyaa J. Jasim',org:'قسم الهندسة الكيمياوية والصناعات النفطية، كلية العمارة الجامعة',
+  hint:'اسحب بالزر الأيسر للتدوير وبالزر الأيمن لتحريك الجهاز، واستخدم العجلة للتكبير والتصغير، وانقر على أي جزء لمعرفة وظيفته.',
+  dRot:'تدوير',dPan:'تحريك',full:'كامل',cut:'مقطع',ghost:'شفاف',iso:'منظور',front:'أمامي',top:'علوي',other:'English',otherLang:'en',
+  pick:'<h2>لماذا يتذبذب الزئبق؟</h2><p>عند تغيير وضع الصمام تقفز ΔP فجأة، فيتحرك عمود الزئبق كله بقصوره الذاتي ويتجاوز موضع الاتزان ثم يعود، لأن وزن الزئبق يعمل كنابض والاحتكاك ضعيف. اضغط «تطبيق الخطوة» وشاهد الساقين.</p><p>زد اللزوجة أو صغّر القطر لتزيد التخميد، وجرّب «اضبط التخميد ζ = 0.7» لأسرع استقرار بتجاوز صغير، ثم جرّب التدفق النابض قرب التردد الرنيني لترى المانومتر يضخم النبض.</p>',
+  focus:'تقريب الكاميرا من الجزء',clear:'إلغاء التحديد',explode:'تفكيك الأجزاء',assemble:'تجميع الأجزاء',run:'تشغيل المحاكاة',stopRun:'إيقاف مؤقت',
+  wIdle:'اضغط «تطبيق الخطوة» لنقل الصمام من الوضع {a} إلى {b}.',wSamp:'⚠ فاصل التسجيل {s} s أكبر من ثلث الدورة ({p} s): تضيع الذبذبة من القراءات.',wLow:'⚠ التخميد ضعيف جداً (ζ = {z}): يطول الاهتزاز. زد اللزوجة أو صغّر القطر.',wRes:'⚠ تردد النبض قريب من الرنين: يضخم المانومتر النبض {m} مرة.',wPOk:'النبض عند {f} Hz: يظهر في القراءة بنسبة {r}% من حقيقته.',wOk:'استقر المستوى عند Δh = {h} mm.',wRun:'الاستجابة قيد التشكل: Δh = {h} mm.',wDamp:'ζ = {z}: تجاوز متوقع {o}%.',
+  labels:'الملصقات: ',LT:{num:'أرقام',name:'أسماء',off:'مخفية'}},
+ en:{title:'Underdamped Second-Order System Simulator: U-tube Manometer',h1:'Second-order system: U-tube manometer on an orifice',sub:'النظام ناقص التخميد (التجربة 3): مانومتر U على فتحة، مع الاستجابة الترددية وتصميم التخميد',
+  opMode:'Input type',md_step:'Step in flow',md_puls:'Pulsating (sine) flow',opA:'Valve position before the step (1–4)',opB:'Valve position after the step (1–4)',opD:'Tube diameter d (mm)',opMu:'Liquid viscosity μ (mPa·s) — manual: 16',opL:'Length of the liquid column L (cm)',opFp:'Pulsation frequency (Hz)',opAm:'Pulsation amplitude (% of Q)',opSm:'Recording interval',opRe:'Plant model',re_ideal:'Ideal (linear)',re_real:'Realistic (valve lag + turbulent friction)',opSpd:'Simulation speed (slow motion)',
+  dSig:'Δh now (mm), Q (L/min)',dPar:'τ, derived ζ, ζ by the printed manual formula, ω_n',dTh:'Theory: overshoot, decay ratio, rise time, period, natural period',dEx:'From the recording: rising then falling step (overshoot, decay, period)',dFr:'Frequency response: ω_r, M_r, ±5% limit',dPu:'Pulsating flow: amplitude ratio and phase at the chosen frequency',dCal:'Calibration: ΔP = k·Q²',dDes:'Diameter needed for ζ = 0.7 (same liquid)',dTm:'Time',
+  step:'Apply the step A → B',stepBack:'Return to A',z7:'Set the damping ζ = 0.7',manOn:'Show the printed-manual formula curve',manOff:'Hide the printed-manual formula curve',reset:'Reset',
+  chH:'Curves: live, recording, Bode, effect of ζ, calibration and the table of readings',chT:'Δh against time (live)',chTx:'Time (s)',chR:'Recording at the chosen interval (rising step)',chRx:'Time (s)',chB:'Bode diagram of the manometer as an instrument',chBx:'Frequency ω (rad/s)',chZ:'Effect of the damping ratio ζ on the step',chZx:'t/τ',chK:'Calibration curve: Δh against Q',chKx:'Q (L/min)',
+  lgHg:'Mercury',lgW:'Water',lgQ:'Flow',cTh:'Theory (derived)',cPr:'By the printed manual formula',cRec:'Recorded readings',cFine:'The truth (0.01 s)',cAR:'Magnitude (dB)',cPh:'Phase (°)',cNow:'Current ζ',
+  tT:'Table of readings (rising step)',tMin:'t (s)',tCal:'Orifice calibration',tPos:'Position',tQ:'Q (L/min)',tDP:'ΔP (Pa)',tDh:'Δh (mm)',
+  fine:'A simulation of experiment 3 (an underdamped second-order system with a U-tube manometer on an orifice) according to the Process Control Laboratory manual (University of Technology, prepared by Sana Wathiq and Nesma Balasim, supervised by Dr. Zaidoon Mohsin), with analysis from the lecture book (Dr. Zaidoon M. Shakoor): the second-order system (lecture 7) and frequency response with Bode diagrams (13). Taken from the manual: the force-balance equation (3) and the transfer function h(s)/ΔP(s), the data L = 0.48 m, μ = 0.016 kg/m·s and d = 7 mm, valve positions 1–4 with the rising and falling steps, h_Hg = 2h and recording in seconds, calculating overshoot, decay ratio, rise time, period and natural period, and the Q–ΔP calibration curve with ΔP = ρ·g·2h. What I assumed because the manual does not give it, so it is assumed and not measured on the apparatus: the position flows 8, 12, 16 and 20 L/min, a 25 mm pipe with a 12 mm orifice and a discharge coefficient of 0.61, mercury of 13600 kg/m³ under water of 1000 kg/m³, and in the “realistic model” a valve-and-line lag of 0.25 s and turbulent friction c = 3000 Pa/(m/s)². A note on the manual: the printed damping-ratio formula φ = [16μL/(g·d²·ρ)]·√(L/2g) is not dimensionally consistent: its first factor has units of seconds and multiplying it by √(L/2g) (seconds) gives seconds², whereas φ is dimensionless. The correct one that follows from the force balance (3) itself is φ = 8μL/(ρ·g·d²·τ) with τ = √(ρm·L/(2Δρ·g)). With the manual’s data the printed one gives φ = 0.0032 (an expected overshoot of 99%) and the derived one φ = 0.062 (82% overshoot). Also μ = 0.016 is about ten times the real viscosity of mercury (roughly 0.0016), and with it φ would be about 0.006, so the numbers here are for the data as written. Verification: the numerical integration matches the analytic second-order solution to 2×10⁻⁸ mm, the simulated overshoot of 82.16% matches the theory (82.16%), the decay ratio is 0.6748 against 0.6750, the resonance peak M_r = 8.03 matches 1/(2ζ√(1−ζ²)), and the diameter that gives ζ = 0.7 checks by the inverse calculation. A recording interval of 1 s with a period of 1.02 s hides the oscillation completely.',
+  credit:'Prepared by <b>Dr. Dheyaa J. Jasim</b><br>Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College<br>© 2026 Dr. Dheyaa J. Jasim. All rights reserved. For educational use; no republication or sale without written permission.',
+  who:'Prepared by Dr. Dheyaa J. Jasim',whoAlt:'د. ضياء جمعة جاسم',org:'Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College',
+  hint:'Left-drag to rotate, right-drag to move the unit, scroll to zoom in and out, and click any part to see its function.',
+  dRot:'Rotate',dPan:'Move',full:'Whole',cut:'Cutaway',ghost:'X-ray',iso:'Perspective',front:'Front',top:'Top',other:'العربية',otherLang:'ar',
+  pick:'<h2>Why does the mercury oscillate?</h2><p>When the valve position changes, ΔP jumps suddenly and the whole mercury column moves by its inertia and overshoots the equilibrium before coming back, because the weight of the mercury acts as a spring and the friction is weak. Press “Apply the step” and watch the two legs.</p><p>Raise the viscosity or shrink the diameter to add damping, try “Set the damping ζ = 0.7” for the fastest settling with a small overshoot, and then try the pulsating flow near the resonant frequency to see the manometer amplify the pulsation.</p>',
+  focus:'Zoom to this part',clear:'Clear selection',explode:'Explode parts',assemble:'Assemble parts',run:'Run the simulation',stopRun:'Pause',
+  wIdle:'Press “Apply the step” to move the valve from position {a} to {b}.',wSamp:'⚠ The recording interval {s} s is longer than a third of the period ({p} s): the oscillation is lost from the readings.',wLow:'⚠ The damping is very low (ζ = {z}): the oscillation lasts long. Raise the viscosity or shrink the diameter.',wRes:'⚠ The pulsation frequency is near resonance: the manometer amplifies the pulsation {m} times.',wPOk:'Pulsation at {f} Hz: it shows in the reading at {r}% of its true size.',wOk:'The level has settled at Δh = {h} mm.',wRun:'The response is developing: Δh = {h} mm.',wDamp:'ζ = {z}: expected overshoot {o}%.',
+  labels:'Labels: ',LT:{num:'numbers',name:'names',off:'hidden'}}
+};
+/* ================= renderer ================= */
+const V3=THREE.Vector3,V2=THREE.Vector2,UP=new V3(0,1,0);
+const C=h=>new THREE.Color(h).convertSRGBToLinear();
+const stage=document.getElementById('stage'),canvas=document.getElementById('c');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.shadowMap.enabled=true;renderer.localClippingEnabled=true;renderer.setClearColor(0,0);
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(36,1,.05,160);
+const HOME={pos:new V3(5.3,5.0,19.0),tgt:new V3(5.3,3.6,0)};camera.position.copy(HOME.pos);
+const controls=new THREE.OrbitControls(camera,canvas);
+controls.target.copy(HOME.tgt);controls.enableDamping=true;controls.dampingFactor=.08;controls.minDistance=1;controls.maxDistance=46;
+controls.enablePan=true;controls.screenSpacePanning=true;controls.panSpeed=1.1;
+controls.mouseButtons={LEFT:THREE.MOUSE.ROTATE,MIDDLE:THREE.MOUSE.DOLLY,RIGHT:THREE.MOUSE.PAN};
+controls.touches={ONE:THREE.TOUCH.ROTATE,TWO:THREE.TOUCH.DOLLY_PAN};
+canvas.addEventListener('contextmenu',e=>e.preventDefault());controls.update();
+(function(){const pm=new THREE.PMREMGenerator(renderer),es=new THREE.Scene();
+ const g=new THREE.SphereGeometry(20,48,24),pos=g.attributes.position,cols=[];
+ const lo=new THREE.Color(0x4a525a),mid=new THREE.Color(0xb8c2ca),hi=new THREE.Color(0xf2f6f9);
+ for(let i=0;i<pos.count;i++){const y=pos.getY(i)/20;const c=y<0?lo.clone().lerp(mid,y+1):mid.clone().lerp(hi,y);cols.push(c.r,c.g,c.b);}
+ g.setAttribute('color',new THREE.Float32BufferAttribute(cols,3));es.add(new THREE.Mesh(g,new THREE.MeshBasicMaterial({side:THREE.BackSide,vertexColors:true})));
+ const pl=(w,h,p,k)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(k,k,k),side:THREE.DoubleSide}));m.position.copy(p);m.lookAt(0,0,0);es.add(m);};
+ pl(14,4,new V3(0,14,6),3.2);pl(6,10,new V3(-15,4,-4),2.2);pl(6,10,new V3(15,5,2),1.6);
+ scene.environment=pm.fromScene(es,.04).texture;pm.dispose();})();
+scene.add(new THREE.HemisphereLight(0xeef3f7,0x3a4550,.55));
+const sun=new THREE.DirectionalLight(0xffffff,1.2);sun.position.set(8,16,10);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);
+Object.assign(sun.shadow.camera,{left:-8,right:8,top:11,bottom:-5,near:1,far:50});sun.shadow.camera.updateProjectionMatrix();sun.shadow.bias=-.0004;sun.shadow.normalBias=.03;scene.add(sun);
+const fill=new THREE.DirectionalLight(0xdfe8ff,.35);fill.position.set(-8,5,-6);scene.add(fill);
+
+
+const std=(hex,met,rough,extra)=>new THREE.MeshStandardMaterial(Object.assign({color:C(hex),metalness:met,roughness:rough,side:THREE.DoubleSide},extra||{}));
+const M={steel:std(0xd4dbe0,.9,.25),steelDark:std(0x8e989f,.85,.36),brushed:std(0xb9c2c9,.85,.4),
+ paint:std(0x2f5f86,.25,.48),paintGrey:std(0x5b6873,.35,.55),yellowPaint:std(0xd9a91c,.2,.5),black:std(0x2b3035,.3,.6),
+ red:std(0xb3362b,.2,.42),orange:std(0xc9772c,.2,.45),blue:std(0x2f7fe6,.2,.45),purple:std(0x7b2fbf,.2,.45),grey:std(0x9aa3aa,.2,.5),white:std(0xf3f3ee,0,.5),
+ ceramic:std(0xd8d2c6,0,.75),saddleC:std(0xeae6dc,0,.6),gasBand:std(0xff6a00,.2,.45),cyan:std(0x14c8f0,.2,.45),navy:std(0x1a2cb0,.2,.45),glass:std(0x9fd6ea,0,.05,{transparent:true,opacity:.42})};
+const meshTex=(function(){const cv=document.createElement('canvas');cv.width=cv.height=64;const x=cv.getContext('2d');x.fillStyle='#8f989f';x.fillRect(0,0,64,64);
+ x.strokeStyle='#d9dfe3';x.lineWidth=1.2;for(let i=-64;i<128;i+=5){x.beginPath();x.moveTo(i,0);x.lineTo(i+64,64);x.stroke();x.beginPath();x.moveTo(i,64);x.lineTo(i+64,0);x.stroke();}
+ const t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(6,6);t.encoding=THREE.sRGBEncoding;return t;})();
+M.mesh=new THREE.MeshStandardMaterial({map:meshTex,metalness:.6,roughness:.6,side:THREE.DoubleSide});
+
+function add(g,geo,mat,pos){const m=new THREE.Mesh(geo,mat);if(pos)m.position.copy(pos);g.add(m);return m;}
+function cylY(g,r,y0,y1,mat,x,z,seg,open){return add(g,new THREE.CylinderGeometry(r,r,y1-y0,seg||40,1,!!open),mat,new V3(x||0,(y0+y1)/2,z||0));}
+function pipe(g,p1,p2,r,mat,seg){const d=new V3().subVectors(p2,p1),L=d.length();const m=add(g,new THREE.CylinderGeometry(r,r,L,seg||24),mat);m.position.copy(p1).addScaledVector(d,.5);m.quaternion.setFromUnitVectors(UP,d.normalize());return m;}
+function ball(g,p,r,mat){return add(g,new THREE.SphereGeometry(r,24,16),mat,p);}
+function box(g,w,h,d,p,mat,ry){const m=add(g,new THREE.BoxGeometry(w,h,d),mat,p);if(ry)m.rotation.y=ry;return m;}
+function flange(g,p,dir,rd,n,mat){const f=new THREE.Group();f.position.copy(p);f.quaternion.setFromUnitVectors(UP,dir.clone().normalize());
+ add(f,new THREE.CylinderGeometry(rd,rd,.035,40),mat||M.steel);const bg=new THREE.CylinderGeometry(.01,.01,.07,8);
+ for(let i=0;i<n;i++){const a=(i+.5)/n*Math.PI*2;add(f,bg,M.steelDark,new V3(Math.cos(a)*rd*.8,0,Math.sin(a)*rd*.8));}g.add(f);return f;}
+const FLOWS=[];
+function line(g,pts,r,mat,colorFn,speed){for(let i=0;i<pts.length-1;i++)pipe(g,pts[i],pts[i+1],r,mat);for(let i=1;i<pts.length-1;i++)ball(g,pts[i],r,mat);if(colorFn)FLOWS.push({pts,colorFn,speed:speed||.9});}
+function band(g,p1,p2,r,mat){pipe(g,p1,p2,r,mat);}
+function arrow(g,p,dir,mat){const a=add(g,new THREE.ConeGeometry(.07,.16,20),mat,p);a.quaternion.setFromUnitVectors(UP,dir.clone().normalize());return a;}
+function valve(g,p,dir,r){ball(g,p,r*1.9,M.steel);const d=dir.clone().normalize();flange(g,p.clone().addScaledVector(d,r*2.2),d,r*2,6);flange(g,p.clone().addScaledVector(d,-r*2.2),d,r*2,6);
+ cylY(g,r*.35,p.y,p.y+r*4,M.steelDark,p.x,p.z,12);box(g,r*7,r*.5,r*.8,new V3(p.x,p.y+r*4,p.z),M.red);}
+function ctrlValve(g,p,dir,r){ball(g,p,r*1.9,M.steel);const d=dir.clone().normalize();flange(g,p.clone().addScaledVector(d,r*2.2),d,r*2,6);flange(g,p.clone().addScaledVector(d,-r*2.2),d,r*2,6);
+ const up=Math.abs(d.y)>.9?new V3(1,0,0):UP;const top=p.clone().addScaledVector(up,r*5);pipe(g,p,top,r*.4,M.steelDark,12);
+ const dm=add(g,new THREE.SphereGeometry(r*3,28,14,0,Math.PI*2,0,Math.PI/2),M.paint,top);dm.quaternion.setFromUnitVectors(UP,up);dm.scale.y=.55;}
+function pump(g,x,z,y,mat){box(g,.34,.06,.95,new V3(x,.03,z+.3),M.paintGrey);
+ const v=add(g,new THREE.CylinderGeometry(.17,.17,.13,32),mat,new V3(x,y,z));v.rotation.x=Math.PI/2;
+ pipe(g,new V3(x,y,z-.06),new V3(x,y,z-.2),.05,M.steel);flange(g,new V3(x,y,z-.2),new V3(0,0,1),.1,4);pipe(g,new V3(x,y+.1,z),new V3(x,y+.24,z),.045,M.steel);
+ const br=add(g,new THREE.CylinderGeometry(.07,.09,.18,20),M.paintGrey,new V3(x,y,z+.16));br.rotation.x=Math.PI/2;
+ const cp=add(g,new THREE.CylinderGeometry(.05,.05,.07,16),M.orange,new V3(x,y,z+.29));cp.rotation.x=Math.PI/2;
+ const mo=add(g,new THREE.CylinderGeometry(.14,.14,.4,28),mat,new V3(x,y,z+.53));mo.rotation.x=Math.PI/2;
+ const fc=add(g,new THREE.CylinderGeometry(.13,.14,.08,28),M.paintGrey,new V3(x,y,z+.76));fc.rotation.x=Math.PI/2;
+ box(g,.1,.1,.12,new V3(x,y+.17,z+.5),mat);[-1,1].forEach(s=>box(g,.05,y-.1,.3,new V3(x+s*.1,(y-.1)/2+.06,z+.5),M.paintGrey));box(g,.08,y-.12,.08,new V3(x,(y-.12)/2+.06,z),M.paintGrey);}
+function vesselProfile(r,hd,y0,y1){const pts=[],N=32;for(let i=0;i<=N;i++){const t=i/N*Math.PI/2;pts.push(new V2(Math.max(1e-4,r*Math.sin(t)),y0-hd*Math.cos(t)));}
+ pts.push(new V2(r,y1));for(let i=1;i<=N;i++){const t=i/N*Math.PI/2;pts.push(new V2(Math.max(1e-4,r*Math.cos(t)),y1+hd*Math.sin(t)));}return pts;}
+
+function cylX(g,r,x0,x1,mat,y,z,seg,open){const m=add(g,new THREE.CylinderGeometry(r,r,x1-x0,seg||40,1,!!open),mat,new V3((x0+x1)/2,y,z||0));m.rotation.z=Math.PI/2;return m;}
+const bx=(g,x0,x1,y0,y1,z0,z1,mat)=>box(g,x1-x0,y1-y0,z1-z0,new V3((x0+x1)/2,(y0+y1)/2,(z0+z1)/2),mat);
+M.poly=std(0xcfd8dc,.05,.3,{transparent:true,opacity:.26,depthWrite:false,side:THREE.DoubleSide});M.alu=std(0x90a4ae,.7,.4);M.frame=std(0x5f6b73,.5,.5);M.board=std(0xd7dcdf,.1,.8);
+const parts={};const root=new THREE.Group();scene.add(root);
+function part(key,anchor,plane){const g=new THREE.Group();root.add(g);parts[key]={key,group:g,anchor,plane,mats:[]};return g;}
+{const floor=new THREE.Mesh(new THREE.PlaneGeometry(90,90),new THREE.ShadowMaterial({opacity:.18}));floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;scene.add(floor);
+ const sl=new THREE.Mesh(new THREE.BoxGeometry(16.4,.1,5.6),std(0xa9aba8,0,.9));sl.position.set(5.4,-.05,.5);sl.receiveShadow=true;scene.add(sl);}
+const route=(g,pts,rad,mat)=>{line(g,pts,rad,mat);pts.slice(1,-1).forEach(p=>ball(g,p,rad*1.04,mat));};
+function pumpAt(g,x,z,rot,mat){const pg=new THREE.Group();pg.position.set(x,0,z);pg.rotation.y=rot;g.add(pg);pump(pg,0,0,.3,mat);const s=Math.sin(rot),c=Math.cos(rot),S=new V3(x-.2*s,.3,z-.2*c),D=new V3(x,.54,z);PORTS.push(S,D);return {S,D};}
+function faceTex(w,h,draw){const cv=document.createElement('canvas');cv.width=w;cv.height=h;draw(cv.getContext('2d'),w,h);const t=new THREE.CanvasTexture(cv);t.encoding=THREE.sRGBEncoding;return t;}
+const X1=new V3(1,0,0),PATH={},YB=3.0,YT=7.2,XL=3.4,XR=4.6,WB=1.2;
+let HGL=null,HGR=null,WL=null,WR=null,DIAL=null,FMV=null;
+/* ---------- supply tank, pump, the main pipe, the receiving tank ---------- */
+{const g=part('supply',new V3(.4,2.4,.7));
+ cylY(g,.8,.1,1.8,M.poly,-.4,0,40,true);cylY(g,.83,.05,.1,M.steelDark,-.4,0,40);const w=add(g,new THREE.CylinderGeometry(.78,.78,1,32),new THREE.MeshStandardMaterial({color:C(0x2979ff),roughness:.12,transparent:true,opacity:.5,depthWrite:false}),new V3(-.4,.9,0));w.scale.y=1.5;
+ pipe(g,new V3(.4,.3,0),new V3(1.0,.3,0),.05,M.steel);const pm=pumpAt(g,1.2,0,Math.PI/2,M.blue);
+ route(g,[pm.D,new V3(1.2,1.0,0),new V3(9.8,1.0,0)],.05,M.steel);
+ cylY(g,.8,.1,1.6,M.poly,10.6,0,40,true);cylY(g,.83,.05,.1,M.steelDark,10.6,0,40);const w2=add(g,new THREE.CylinderGeometry(.78,.78,1,32),new THREE.MeshStandardMaterial({color:C(0x2979ff),roughness:.12,transparent:true,opacity:.5,depthWrite:false}),new V3(10.6,.7,0));w2.scale.y=1.2;
+ PATH.main=[new V3(.4,.3,0),new V3(1.0,.3,0),pm.D,new V3(1.2,1.0,0),new V3(9.8,1.0,0)];}
+/* ---------- the four-position valve with its dial ---------- */
+{const g=part('valve',new V3(2.4,2.5,.5));
+ valve(g,new V3(2.4,1.0,0),X1,.12);cylY(g,.04,1.1,1.6,M.steelDark,2.4,0,10);
+ const dl=faceTex(256,256,(x,w,h)=>{x.fillStyle='#37474f';x.beginPath();x.arc(128,128,124,0,Math.PI*2);x.fill();x.fillStyle='#ffd54f';x.font='bold 40px sans-serif';x.textAlign='center';x.textBaseline='middle';for(let k=1;k<=4;k++){const a=Math.PI/2+(2.5-k)*.8*-1;const px=128+88*Math.sin((k-2.5)*.8),py=128-88*Math.cos((k-2.5)*.8);x.fillText(String(k),px,py);}});
+ add(g,new THREE.CylinderGeometry(.42,.42,.06,32),M.black,new V3(2.4,1.95,.05)).rotation.x=Math.PI/2;add(g,new THREE.CircleGeometry(.4,32),new THREE.MeshBasicMaterial({map:dl}),new V3(2.4,1.95,.09));
+ const pg=new THREE.Group();pg.position.set(2.4,1.95,.12);g.add(pg);const pr=new THREE.Mesh(new THREE.BoxGeometry(.04,.3,.02),new THREE.MeshBasicMaterial({color:0xd50000}));pr.position.y=.15;pg.add(pr);DIAL=pg;
+ bx(g,2.3,2.5,1.5,1.6,-.05,.05,M.steelDark);}
+/* ---------- the orifice, its flanges, the pressure taps and impulse lines ---------- */
+{const g=part('orifice',new V3(4.0,1.9,.6));
+ [3.9,4.1].forEach(x=>flange(g,new V3(x,1.0,0),X1,.15,14));const ring=add(g,new THREE.TorusGeometry(.1,.03,10,24),M.steelDark,new V3(4.0,1.0,0));ring.rotation.y=Math.PI/2;
+ route(g,[new V3(XL,1.0,0),new V3(XL,1.3,0),new V3(2.7,1.3,0),new V3(2.7,7.6,0),new V3(XL,7.6,0),new V3(XL,YT,0)],.03,M.steel);
+ route(g,[new V3(XR,1.0,0),new V3(XR,1.3,0),new V3(5.3,1.3,0),new V3(5.3,7.6,0),new V3(XR,7.6,0),new V3(XR,YT,0)],.03,M.steel);ball(g,new V3(XL,YT,0),.045,M.steel);ball(g,new V3(XR,YT,0),.045,M.steel);}
+/* ---------- the U-tube: glass, mercury, water above it ---------- */
+const HGM=new THREE.MeshStandardMaterial({color:C(0xaeb6bc),metalness:.95,roughness:.18}),WTM=new THREE.MeshStandardMaterial({color:C(0x2979ff),roughness:.12,transparent:true,opacity:.55,depthWrite:false});
+{const g=part('utube',new V3(4.0,8.1,.5));
+ cylY(g,.075,YB,YT,M.poly,XL,0,20,true);cylY(g,.075,YB,YT,M.poly,XR,0,20,true);cylX(g,.075,XL,XR,M.poly,YB,0,20,true);[XL,XR].forEach(x=>add(g,new THREE.SphereGeometry(.075,16,10),M.poly,new V3(x,YB,0)));
+ cylX(g,.055,XL,XR,HGM,YB,0,16);[XL,XR].forEach(x=>add(g,new THREE.SphereGeometry(.055,14,10),HGM,new V3(x,YB,0)));
+ HGL=add(g,new THREE.CylinderGeometry(.055,.055,1,16),HGM,new V3(XL,YB+.5,0));HGR=add(g,new THREE.CylinderGeometry(.055,.055,1,16),HGM,new V3(XR,YB+.5,0));
+ WL=add(g,new THREE.CylinderGeometry(.055,.055,1,16),WTM,new V3(XL,YB+1.5,0));WR=add(g,new THREE.CylinderGeometry(.055,.055,1,16),WTM,new V3(XR,YB+1.5,0));}
+/* ---------- the ruler behind the legs ---------- */
+{const g=part('scale',new V3(3.0,5.6,.3));
+ const rt=faceTex(256,1024,(x,w,h)=>{x.fillStyle='#eceff1';x.fillRect(0,0,w,h);x.strokeStyle='#263238';x.fillStyle='#263238';x.font='bold 22px sans-serif';const ppu=h/(YT+.1-(YB-.1));for(let k=0;k<=42;k++){const y=h-(k*.1+.1)*ppu;const major=k%5===0;[[0,major?60:30],[w-(major?60:30),w]].forEach(([a,b])=>{x.lineWidth=major?2.4:1.2;x.beginPath();x.moveTo(a,y);x.lineTo(b,y);x.stroke();});if(k%5===0&&k>0){x.fillText(String(k),w/2-14,y+8);}}});
+ add(g,new THREE.PlaneGeometry(1.9,YT-YB+.2),new THREE.MeshBasicMaterial({map:rt}),new V3(4.0,(YT+YB)/2,-.26));bx(g,3.05,4.95,YB-.1,YT+.1,-.3,-.27,M.board);[3.15,4.85].forEach(x=>bx(g,x-.03,x+.03,YB-.1,YT+.1,-.3,-.1,M.frame));}
+/* ---------- the flowmeter with its display ---------- */
+const fmCv=document.createElement('canvas');fmCv.width=256;fmCv.height=100;const fmTex=new THREE.CanvasTexture(fmCv);fmTex.encoding=THREE.sRGBEncoding;
+{const g=part('meter',new V3(6.6,2.3,.5));
+ cylX(g,.18,6.3,6.9,M.blue,1.0,0,24);[6.3,6.9].forEach(x=>flange(g,new V3(x,1.0,0),X1,.22,12));bx(g,6.2,7.0,1.3,1.8,-.15,.15,M.paintGrey);add(g,new THREE.PlaneGeometry(.7,.34),new THREE.MeshBasicMaterial({map:fmTex}),new V3(6.6,1.55,.155));}
+/* ---------- the stopwatch and the computer ---------- */
+const swCv=document.createElement('canvas');swCv.width=200;swCv.height=200;const swTex=new THREE.CanvasTexture(swCv);swTex.encoding=THREE.sRGBEncoding;
+const pcCv=document.createElement('canvas');pcCv.width=512;pcCv.height=320;const pcTex=new THREE.CanvasTexture(pcCv);pcTex.encoding=THREE.sRGBEncoding;
+{const g=part('pc',new V3(10.2,3.0,1.8));
+ bx(g,8.9,11.9,.95,1.05,1.2,2.6,M.alu);[[9.0,1.3],[11.8,1.3],[9.0,2.5],[11.8,2.5]].forEach(([x,z])=>bx(g,x-.04,x+.04,0,.95,z-.04,z+.04,M.frame));
+ box(g,2.0,1.35,.08,new V3(10.9,1.85,1.7),M.black);add(g,new THREE.PlaneGeometry(1.9,1.2),new THREE.MeshBasicMaterial({map:pcTex}),new V3(10.9,1.85,1.745));bx(g,10.8,11.0,1.05,1.2,1.65,1.75,M.steelDark);box(g,.9,.06,.35,new V3(10.9,1.08,2.1),M.black);
+ cylY(g,.35,1.05,1.12,M.steelDark,9.5,1.9,28);const sw=add(g,new THREE.CylinderGeometry(.3,.3,.08,32),M.black,new V3(9.5,1.35,1.9));sw.rotation.x=Math.PI/2;sw.position.y=1.5;add(g,new THREE.CircleGeometry(.27,32),new THREE.MeshBasicMaterial({map:swTex}),new V3(9.5,1.5,1.945));bx(g,9.45,9.55,1.12,1.25,1.85,1.95,M.steelDark);}
+const pickables=[];
+function finalize(){for(const key in parts){const pt=parts[key],cache=new Map();pt.group.traverse(o=>{if(!o.isMesh)return;if(!cache.has(o.material)){const c=o.material.clone();cache.set(o.material,c);pt.mats.push(c);}
+ o.material=cache.get(o.material);o.userData.key=key;o.castShadow=!o.material.transparent;o.receiveShadow=true;pickables.push(o);});}}
+window.__PORTS=PORTS;finalize();
+/* ================= particles ================= */
+const BALL=(function(){const cv=document.createElement('canvas');cv.width=cv.height=64;const x=cv.getContext('2d');
+ const g=x.createRadialGradient(24,22,2,32,32,31);g.addColorStop(0,'#ffffff');g.addColorStop(.35,'#e6e6e6');g.addColorStop(.85,'#8a8a8a');g.addColorStop(1,'#5c5c5c');
+ x.fillStyle=g;x.beginPath();x.arc(32,32,30,0,Math.PI*2);x.fill();const t=new THREE.CanvasTexture(cv);t.encoding=THREE.sRGBEncoding;return t;})();
+function pts(n,size){const pos=new Float32Array(n*3),col=new Float32Array(n*3),g=new THREE.BufferGeometry();
+ g.setAttribute('position',new THREE.BufferAttribute(pos,3));g.setAttribute('color',new THREE.BufferAttribute(col,3));
+ const p=new THREE.Points(g,new THREE.PointsMaterial({vertexColors:true,size,map:BALL,alphaTest:.5,depthWrite:true}));p.frustumCulled=false;scene.add(p);return {p,pos,col,g};}
+const rnd=Math.random;
+function mkPath(p){const L=[0];for(let i=1;i<p.length;i++)L.push(L[i-1]+p[i].distanceTo(p[i-1]));return {p,L,T:L[L.length-1]};}
+function at(P,s,o){s=Math.min(Math.max(s,0),P.T);let k=1;while(k<P.L.length-1&&P.L[k]<s)k++;const a=P.p[k-1],b=P.p[k],u=(s-P.L[k-1])/(P.L[k]-P.L[k-1]||1);return o.set(a.x+(b.x-a.x)*u,a.y+(b.y-a.y)*u,a.z+(b.z-a.z)*u);}
+const CW1=C(0x2979ff),CW2=C(0x00b8d4),_p=new V3(),PM=mkPath(PATH.main),NPL=420,PLP=pts(NPL,.06),pD=[];
+for(let i=0;i<NPL;i++)pD.push({s:rnd()*PM.T,j:[(rnd()-.5)*.05,(rnd()-.5)*.05,(rnd()-.5)*.05],sp:.85+rnd()*.3,c:rnd()<.5});
+/* ================= simulation ================= */
+const Qsel=()=>MODE==='puls'?QP()[PB-1]:null;
+function resetSim(){SIM=Mano(par(),REAL);SIM.rest(MODE==='puls'?QP()[PB-1]:QP()[PA-1]);T_SIM=0;stepped=false;HIST=[];recAcc=0;pushRec();}
+function Qcmd(t){if(MODE==='puls')return QP()[PB-1]*(1+AM/100*Math.sin(2*Math.PI*FP*t));return stepped?QP()[PB-1]:QP()[PA-1];}
+function pushRec(){HIST.push({t:T_SIM,h:2*SIM.x*1000,Q:SIM.Qv});if(HIST.length>2400)HIST.shift();}
+const DTS=.002;
+function simStep(){SIM.step(Qcmd(T_SIM),DTS);T_SIM+=DTS;recAcc+=DTS;if(recAcc>=.02-1e-9){recAcc=0;pushRec();}}
+function doRecord(){REC=runStep(par(),PA,PB,12,SAMP,REAL);RECR=runStep(par(),PB,PA,12,SAMP,REAL);RECF=runStep(par(),PA,PB,12,.01,REAL);}
+function recMeasure(r,up){const n=r.h.length,yf=(r.h[n-1]+r.h[n-2]+r.h[n-3])/3;return up?measure(r.t,r.h,r.h[0],yf):measure(r.t,r.h.map(v=>-v),-r.h[0],-yf);}
+/* ================= screens ================= */
+function drawFM(){const x=fmCv.getContext('2d');x.fillStyle='#0b1a22';x.fillRect(0,0,256,100);x.fillStyle='#7fa3b5';x.font='16px sans-serif';x.fillText('Q  L/min',10,24);x.fillStyle='#ffb300';x.font='bold 46px monospace';x.fillText(SIM.Qv.toFixed(1),10,80);fmTex.needsUpdate=true;}
+function drawSW(){const x=swCv.getContext('2d');x.fillStyle='#10212b';x.fillRect(0,0,200,200);x.fillStyle='#9fd3ea';x.font='bold 34px monospace';x.textAlign='center';x.fillText(T_SIM.toFixed(2),100,112);x.font='16px sans-serif';x.fillStyle='#7fa3b5';x.fillText('s',100,140);x.textAlign='start';swTex.needsUpdate=true;}
+function drawPC(){const x=pcCv.getContext('2d'),W=512,H=320;x.fillStyle='#0b1a22';x.fillRect(0,0,W,H);x.fillStyle='#9fd3ea';x.font='bold 15px sans-serif';x.fillText('U-tube manometer   Δh (mm)',10,20);
+ const L=36,R=W-14,Tp=34,B=H-30,win=12,tmax=Math.max(win,T_SIM),t0=Math.max(0,tmax-win),hi=120;x.strokeStyle='#1d3a4a';x.lineWidth=1;for(let i=0;i<=6;i++){const yy=Tp+(B-Tp)*i/6;x.beginPath();x.moveTo(L,yy);x.lineTo(R,yy);x.stroke();x.fillStyle='#7fa3b5';x.font='11px sans-serif';x.fillText(String(hi-i*20),4,yy+4);}
+ for(let i=0;i<=6;i++){const xx=L+(R-L)*i/6;x.fillText(String(Math.round(t0+win*i/6)),xx-6,H-12);}
+ x.strokeStyle='#00e676';x.lineWidth=2;x.beginPath();let f=true;for(const h of HIST){if(h.t<t0)continue;const px=L+(h.t-t0)/win*(R-L),py=B-Math.min(1,Math.max(0,h.h/hi))*(B-Tp);if(f){x.moveTo(px,py);f=false;}else x.lineTo(px,py);}x.stroke();pcTex.needsUpdate=true;}
+/* ================= modes ================= */
+let mode='cut',fly=null,lang='ar',labelMode='num';
+const reduced=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function applyMode(){
+ for(const k in parts){const pt=parts[k];pt.mats.forEach(m=>{if(m.userData.o0===undefined){m.userData.o0=m.opacity;m.userData.t0=m.transparent;m.userData.dw=m.depthWrite;}
+  const shell=m.userData.t0&&m.userData.o0<.4,gh=mode==='ghost'&&(k==='utube'||k==='supply');
+  m.transparent=gh?true:m.userData.t0;m.opacity=gh?(shell?.05:.14):m.userData.o0;m.depthWrite=gh?false:m.userData.dw;m.needsUpdate=true;});}
+ document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===mode));}
+function setHighlight(k,on){if(!k||!parts[k])return;parts[k].mats.forEach(m=>{if(m.emissive&&m.emissiveIntensity!==undefined&&!(m.userData&&m.userData.keep)){m.emissive=on?C(0xd9742a):new THREE.Color(0);m.emissiveIntensity=on?.45:0;}});}
+/* ================= UI ================= */
+const L_=()=>T[lang];
+const labelsEl=document.getElementById('labels'),cardEl=document.getElementById('card'),labelEls={};
+ORDER.forEach(k=>{const b=document.createElement('button');b.className='lbl';b.type='button';b.innerHTML=`<span class="num">${NUM[k]}</span><span class="t"></span>`;
+ b.onclick=e=>{e.stopPropagation();select(k);};labelsEl.appendChild(b);labelEls[k]=b;});
+function updateLabels(){ORDER.forEach(k=>{labelEls[k].querySelector('.t').textContent=INFO[k].ar;labelEls[k].setAttribute('aria-label',INFO[k].ar);});}
+function renderCard(){if(!selected){cardEl.innerHTML=L_().pick;return;}const i=INFO[selected];
+ cardEl.innerHTML=`<div class="head"><span class="num">${NUM[selected]}</span><div><h2>${i.ar}</h2><p class="en">${i.en}</p></div></div><p>${i.d}</p>${i.n?`<p class="eq">${i.n}</p>`:''}<div class="act"><button id="bFocus">${L_().focus}</button><button id="bClear">${L_().clear}</button></div>`;
+ document.getElementById('bFocus').onclick=()=>focusPart(selected);document.getElementById('bClear').onclick=()=>select(null);}
+function select(k){if(selected){setHighlight(selected,false);labelEls[selected].classList.remove('on');}selected=(k===selected)?null:k;
+ if(selected){setHighlight(selected,true);labelEls[selected].classList.add('on');}renderCard();}
+function flyTo(p_,tgt){fly={p0:camera.position.clone(),t0:controls.target.clone(),p1:p_,t1:tgt,e:0,d:reduced?.001:.9};}
+function focusPart(k){const pt=parts[k];const b=new THREE.Box3().setFromObject(pt.group),c=b.isEmpty()?pt.anchor.clone():b.getCenter(new V3()),s=b.isEmpty()?3:b.getSize(new V3()).length(),dir=camera.position.clone().sub(controls.target).normalize();flyTo(c.clone().addScaledVector(dir,Math.max(3,s*.9)),c);}
+function view(v){const t=HOME.tgt.clone();const off=v==='front'?new V3(0,.6,21):v==='top'?new V3(0,22,.1):HOME.pos.clone().sub(HOME.tgt);flyTo(t.clone().add(off),t);}
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>view(b.dataset.view));
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;applyMode();});
+function setDrag(m){const pan=m==='pan';controls.mouseButtons.LEFT=pan?THREE.MOUSE.PAN:THREE.MOUSE.ROTATE;controls.mouseButtons.RIGHT=pan?THREE.MOUSE.ROTATE:THREE.MOUSE.PAN;
+ controls.touches.ONE=pan?THREE.TOUCH.PAN:THREE.TOUCH.ROTATE;canvas.style.cursor=pan?'move':'';document.querySelectorAll('[data-drag]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.drag===m));}
+document.querySelectorAll('[data-drag]').forEach(b=>b.onclick=()=>setDrag(b.dataset.drag));
+const E_=id=>document.getElementById(id),bExplode=E_('bExplode'),bLabels=E_('bLabels'),bRun=E_('bRun'),bStep=E_('bStep'),bZ7=E_('bZ7'),bMan=E_('bMan'),bReset=E_('bReset'),fwarn=E_('fwarn');
+if(bExplode)bExplode.style.display='none';
+const paEl=E_('pa'),pbEl=E_('pb'),ddEl=E_('dd'),muEl=E_('mu'),llEl=E_('ll'),fpEl=E_('fp'),amEl=E_('am'),sdEl=E_('sd'),chartEl=E_('chart'),chart2El=E_('chart2'),chart3El=E_('chart3'),chart4El=E_('chart4'),chart5El=E_('chart5'),tblEl=E_('tbl');
+function syncBtns(){bRun.setAttribute('aria-pressed',running);bRun.textContent=running?L_().stopRun:L_().run;bStep.textContent=stepped?L_().stepBack:L_().step;bStep.style.display=MODE==='step'?'':'none';bZ7.textContent=L_().z7;bMan.textContent=showMan?L_().manOff:L_().manOn;bReset.textContent=L_().reset;
+ document.querySelectorAll('[data-md]').forEach(b=>{b.textContent=L_()['md_'+b.dataset.md];b.setAttribute('aria-pressed',b.dataset.md===MODE);});
+ document.querySelectorAll('[data-sm]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.sm===SAMP));
+ document.querySelectorAll('[data-re]').forEach(b=>{b.textContent=L_()['re_'+b.dataset.re];b.setAttribute('aria-pressed',(b.dataset.re==='real')===REAL);});}
+function loadAll(){paEl.value=PA;pbEl.value=PB;ddEl.value=DD;muEl.value=MU;llEl.value=LL;fpEl.value=FP;amEl.value=AM;resetSim();doRecord();syncBtns();readouts(true);}
+bRun.onclick=()=>{running=!running;syncBtns();};
+bStep.onclick=()=>{stepped=!stepped;if(stepped)T_STEP=T_SIM;syncBtns();readouts(true);};
+bZ7.onclick=()=>{const d=dForZeta(par(),.7)*1000;DD=Math.min(12,Math.max(2,+d.toFixed(1)));ddEl.value=DD;resetSim();doRecord();readouts(true);};
+bMan.onclick=()=>{showMan=!showMan;syncBtns();charts();};
+bReset.onclick=()=>{DD=7;MU=16;LL=48;FP=.8;AM=15;PA=2;PB=3;SAMP=.1;REAL=true;MODE='step';loadAll();};
+document.querySelectorAll('[data-md]').forEach(b=>b.onclick=()=>{MODE=b.dataset.md;resetSim();doRecord();syncBtns();readouts(true);});
+document.querySelectorAll('[data-sm]').forEach(b=>b.onclick=()=>{SAMP=+b.dataset.sm;doRecord();syncBtns();readouts(true);});
+document.querySelectorAll('[data-re]').forEach(b=>b.onclick=()=>{REAL=b.dataset.re==='real';resetSim();doRecord();syncBtns();readouts(true);});
+const LM=['num','name','off'];function syncLabelsBtn(){bLabels.textContent=L_().labels+L_().LT[labelMode];}
+bLabels.onclick=()=>{labelMode=LM[(LM.indexOf(labelMode)+1)%3];syncLabelsBtn();labelsEl.classList.toggle('names',labelMode==='name');labelsEl.classList.toggle('off',labelMode==='off');};
+const f2=(v,d)=>isFinite(v)?v.toFixed(d===undefined?2:d):'–';
+let cmpT=null;
+function charts(){const W=300,l=34,r=14,iw=W-l-r,Hh=150,t=8,b=26,ih=Hh-t-b,q=manoPar(par()),hA=2*q.K*dpOfQ(q.P,QP()[PA-1])*1000,hB=2*q.K*dpOfQ(q.P,QP()[PB-1])*1000;
+ {const win=12,tmax=Math.max(win,T_SIM),t0=Math.max(0,tmax-win),X=tt=>l+(tt-t0)/win*iw,Y=v=>t+(1-Math.min(120,Math.max(0,v))/120)*ih;let d='',f=true;for(const h of HIST){if(h.t<t0)continue;d+=(f?'M':'L')+X(h.t).toFixed(1)+' '+Y(h.h).toFixed(1);f=false;}
+  let th='';if(MODE==='step'&&stepped){const mk=(tau,z)=>{let s='';for(let k=0;k<=160;k++){const tt=k*(tmax-T_STEP)/160,m=T_STEP+tt;if(m<t0||tt<0)continue;s+=(s?'L':'M')+X(m).toFixed(1)+' '+Y(hA+(hB-hA)*stepSecond(tt,tau,z)).toFixed(1);}return s;};th=`<path d="${mk(q.tau,q.zeta)}" fill="none" stroke="#757575" stroke-width="1.4" stroke-dasharray="5 3"/>`;if(showMan)th+=`<path d="${mk(q.tauM,q.zetaM)}" fill="none" stroke="#d50000" stroke-width="1.2" stroke-dasharray="2 3"/>`;}
+  chartEl.innerHTML=`<div class="ch-leg"><b>${L_().chT}</b></div><svg viewBox="0 0 ${W} ${Hh}" dir="ltr" role="img" aria-label="${L_().chT}" style="color:var(--ink)">${[0,20,40,60,80,100,120].map(v=>`<line x1="${l}" x2="${W-r}" y1="${Y(v)}" y2="${Y(v)}" stroke="currentColor" stroke-opacity=".12"/><text x="${l-4}" y="${Y(v)+3}" text-anchor="end">${v}</text>`).join('')}${[0,.25,.5,.75,1].map(f=>`<text x="${X(t0+win*f)}" y="${Hh-12}" text-anchor="middle">${f2(t0+win*f,0)}</text>`).join('')}<text x="${l+iw/2}" y="${Hh-1}" text-anchor="middle">${L_().chTx}</text>${th}<path d="${d}" fill="none" stroke="#00c853" stroke-width="2.2"/></svg>
+  <div class="ch-leg"><span><i style="background:#00c853"></i>Δh</span><span><i style="background:#757575"></i>${L_().cTh}</span>${showMan?`<span><i style="background:#d50000"></i>${L_().cPr}</span>`:''}</div>`;}
+ if(REC){const X=tt=>l+tt/12*iw,Y=v=>t+(1-Math.min(120,Math.max(0,v))/120)*ih;let pf='',pr='';RECF.t.forEach((tt,i)=>{pf+=(i?'L':'M')+X(tt).toFixed(1)+' '+Y(RECF.h[i]).toFixed(1);});REC.t.forEach((tt,i)=>{pr+=(i?'L':'M')+X(tt).toFixed(1)+' '+Y(REC.h[i]).toFixed(1);});
+  chart2El.innerHTML=`<div class="ch-leg"><b>${L_().chR}</b></div><svg viewBox="0 0 ${W} ${Hh}" dir="ltr" role="img" aria-label="${L_().chR}" style="color:var(--ink)">${[0,20,40,60,80,100,120].map(v=>`<line x1="${l}" x2="${W-r}" y1="${Y(v)}" y2="${Y(v)}" stroke="currentColor" stroke-opacity=".12"/><text x="${l-4}" y="${Y(v)+3}" text-anchor="end">${v}</text>`).join('')}${[0,3,6,9,12].map(v=>`<text x="${X(v)}" y="${Hh-12}" text-anchor="middle">${v}</text>`).join('')}<text x="${l+iw/2}" y="${Hh-1}" text-anchor="middle">${L_().chRx}</text>
+  <path d="${pf}" fill="none" stroke="#9e9e9e" stroke-width="1.2"/><path d="${pr}" fill="none" stroke="#fb8c00" stroke-width="1.6"/>${REC.t.map((tt,i)=>`<circle cx="${X(tt).toFixed(1)}" cy="${Y(REC.h[i]).toFixed(1)}" r="2.2" fill="#fb8c00"/>`).join('')}</svg><div class="ch-leg"><span><i style="background:#fb8c00"></i>${L_().cRec} (${SAMP} s)</span><span><i style="background:#9e9e9e"></i>${L_().cFine}</span></div>`;}
+ {const Hb=220,bd=bodeMano(q.tau,q.zeta,200),wmin=.1,wmax=Math.pow(10,1.6),lx=Math.log10(wmin),lw=Math.log10(wmax)-lx,X=w=>l+(Math.log10(w)-lx)/lw*iw,db=bd.mag.map(v=>20*Math.log10(v)),dmin=-40,dmax=30,Ym=v=>8+(1-(Math.min(dmax,Math.max(dmin,v))-dmin)/(dmax-dmin))*85,Yp=v=>125+(1-(Math.max(-180,Math.min(0,v))+180)/180)*70;let pm='',pp='';bd.w.forEach((w,i)=>{pm+=(i?'L':'M')+X(w).toFixed(1)+' '+Ym(db[i]).toFixed(1);pp+=(i?'L':'M')+X(w).toFixed(1)+' '+Yp(bd.ph[i]).toFixed(1);});const rs=resonance(q.tau,q.zeta);
+  chart3El.innerHTML=`<div class="ch-leg"><b>${L_().chB}</b></div><svg viewBox="0 0 ${W} ${Hb+14}" dir="ltr" role="img" aria-label="${L_().chB}" style="color:var(--ink)">${[-40,-20,0,20].map(v=>`<line x1="${l}" x2="${W-r}" y1="${Ym(v)}" y2="${Ym(v)}" stroke="currentColor" stroke-opacity="${v===0?.5:.12}"/><text x="${l-4}" y="${Ym(v)+3}" text-anchor="end">${v}</text>`).join('')}${[-180,-90,0].map(v=>`<line x1="${l}" x2="${W-r}" y1="${Yp(v)}" y2="${Yp(v)}" stroke="currentColor" stroke-opacity=".12"/><text x="${l-4}" y="${Yp(v)+3}" text-anchor="end">${v}</text>`).join('')}${[.1,1,10].map(w=>`<line x1="${X(w)}" x2="${X(w)}" y1="8" y2="195" stroke="currentColor" stroke-opacity=".08"/><text x="${X(w)}" y="${Hb+2}" text-anchor="middle">${w}</text>`).join('')}
+  <path d="${pm}" fill="none" stroke="#2979ff" stroke-width="2"/><path d="${pp}" fill="none" stroke="#d50000" stroke-width="2"/><line x1="${X(q.wn)}" x2="${X(q.wn)}" y1="8" y2="195" stroke="#2e7d32" stroke-dasharray="4 3"/>${MODE==='puls'?`<line x1="${X(2*Math.PI*FP)}" x2="${X(2*Math.PI*FP)}" y1="8" y2="195" stroke="#fb8c00" stroke-width="2"/>`:''}<text x="${l+iw/2}" y="${Hb+12}" text-anchor="middle">${L_().chBx}</text></svg>
+  <div class="ch-leg"><span><i style="background:#2979ff"></i>${L_().cAR}</span><span><i style="background:#d50000"></i>${L_().cPh}</span><span>ω<sub>n</sub> = ${f2(q.wn,2)}</span></div>`;}
+ {const tauMax=15,X=v=>l+v/tauMax*iw,Y=v=>t+(1-(Math.min(1.9,Math.max(0,v)))/1.9)*ih;const fam=[[.1,'#7e57c2'],[.3,'#26a69a'],[.7,'#2e7d32'],[1,'#8d6e63'],[2,'#607d8b']];let paths='';for(const [z,c] of fam){let d='';for(let k=0;k<=150;k++){const u=k*tauMax/150;d+=(k?'L':'M')+X(u).toFixed(1)+' '+Y(stepSecond(u,1,z)).toFixed(1);}paths+=`<path d="${d}" fill="none" stroke="${c}" stroke-width="1.4"/>`;}
+  let dc='';for(let k=0;k<=150;k++){const u=k*tauMax/150;dc+=(k?'L':'M')+X(u).toFixed(1)+' '+Y(stepSecond(u,1,q.zeta)).toFixed(1);}
+  chart4El.innerHTML=`<div class="ch-leg"><b>${L_().chZ}</b></div><svg viewBox="0 0 ${W} ${Hh}" dir="ltr" role="img" aria-label="${L_().chZ}" style="color:var(--ink)">${[0,.5,1,1.5].map(v=>`<line x1="${l}" x2="${W-r}" y1="${Y(v)}" y2="${Y(v)}" stroke="currentColor" stroke-opacity="${v===1?.4:.12}"/><text x="${l-4}" y="${Y(v)+3}" text-anchor="end">${v}</text>`).join('')}${[0,5,10,15].map(v=>`<text x="${X(v)}" y="${Hh-12}" text-anchor="middle">${v}</text>`).join('')}<text x="${l+iw/2}" y="${Hh-1}" text-anchor="middle">${L_().chZx}</text>${paths}<path d="${dc}" fill="none" stroke="#d50000" stroke-width="2.6"/></svg>
+  <div class="ch-leg">${fam.map(([z,c])=>`<span><i style="background:${c}"></i>ζ=${z}</span>`).join('')}<span><i style="background:#d50000"></i>${L_().cNow} ${f2(q.zeta,3)}</span></div>`;}
+ {const Y=v=>t+(1-Math.min(110,v)/110)*ih,X=v=>l+v/24*iw,k=2*q.K*dpOfQ(q.P,1)*1000;let d='';for(let i=0;i<=60;i++){const Q=i*24/60;d+=(i?'L':'M')+X(Q).toFixed(1)+' '+Y(k*Q*Q).toFixed(1);}
+  chart5El.innerHTML=`<div class="ch-leg"><b>${L_().chK}</b></div><svg viewBox="0 0 ${W} ${Hh}" dir="ltr" role="img" aria-label="${L_().chK}" style="color:var(--ink)">${[0,25,50,75,100].map(v=>`<line x1="${l}" x2="${W-r}" y1="${Y(v)}" y2="${Y(v)}" stroke="currentColor" stroke-opacity=".12"/><text x="${l-4}" y="${Y(v)+3}" text-anchor="end">${v}</text>`).join('')}${[0,8,16,24].map(v=>`<text x="${X(v)}" y="${Hh-12}" text-anchor="middle">${v}</text>`).join('')}<text x="${l+iw/2}" y="${Hh-1}" text-anchor="middle">${L_().chKx}</text><path d="${d}" fill="none" stroke="#6a1b9a" stroke-width="2"/>${QP().map((Q,i)=>`<circle cx="${X(Q).toFixed(1)}" cy="${Y(k*Q*Q).toFixed(1)}" r="${(i+1===PA||i+1===PB)?4.5:3}" fill="${(i+1===PA||i+1===PB)?'#d50000':'#6a1b9a'}"/>`).join('')}</svg><div class="ch-leg"><span>Δh = ${f2(k,4)}·Q² (mm, L/min)</span></div>`;}
+ if(REC){let h=`<p class="ch-leg"><b>${L_().tT}</b> (${SAMP} s)</p><div class="sc"><table><tr><th>${L_().tMin}</th><th>Δh (mm)</th></tr>`;REC.t.slice(0,Math.min(REC.t.length,40)).forEach((tt,i)=>{h+=`<tr><td>${f2(tt,2)}</td><td>${REC.h[i].toFixed(1)}</td></tr>`;});h+=`</table></div><p class="ch-leg" style="margin-top:8px"><b>${L_().tCal}</b></p><table><tr><th>${L_().tPos}</th><th>${L_().tQ}</th><th>${L_().tDP}</th><th>${L_().tDh}</th></tr>`;QP().forEach((Q,i)=>{const dp=dpOfQ(q.P,Q);h+=`<tr><td>${i+1}</td><td>${Q}</td><td>${dp.toFixed(0)}</td><td>${(2*q.K*dp*1000).toFixed(1)}</td></tr>`;});tblEl.innerHTML=h+'</table>';}}
+function readouts(force){const s=(id,t)=>E_(id).textContent=t;PA=+paEl.value;PB=+pbEl.value;const nd=+ddEl.value,nm=+muEl.value,nl=+llEl.value;const chg=(nd!==DD||nm!==MU||nl!==LL);DD=nd;MU=nm;LL=nl;FP=+fpEl.value;AM=+amEl.value;SPEED=Math.pow(10,+sdEl.value);
+ if(chg){resetSim();clearTimeout(cmpT);cmpT=setTimeout(()=>{doRecord();charts();readouts(true);},200);}
+ s('paOut',String(PA)+'  ('+QP()[PA-1]+' L/min)');s('pbOut',String(PB)+'  ('+QP()[PB-1]+' L/min)');s('ddOut',DD.toFixed(1)+' mm');s('muOut',MU.toFixed(1)+' mPa·s');s('llOut',LL+' cm');s('fpOut',FP.toFixed(2)+' Hz');s('amOut',AM+' %');s('sdOut','×'+SPEED.toFixed(2));
+ const q=manoPar(par()),th=theoryMetrics(q.tau,q.zeta),hA=2*q.K*dpOfQ(q.P,QP()[PA-1])*1000,hB=2*q.K*dpOfQ(q.P,QP()[PB-1])*1000;
+ s('oSig',(2*SIM.x*1000).toFixed(1)+' mm ، '+SIM.Qv.toFixed(1)+' L/min');
+ s('oPar','τ = '+f2(q.tau,3)+' s ، ζ = '+f2(q.zeta,4)+' ، ζ(مطبوعة) = '+f2(q.zetaM,5)+' ، ω_n = '+f2(q.wn,2)+' rad/s');
+ s('oTh',q.zeta<1?f2(th.over,1)+' % ، '+f2(th.decay,3)+' ، '+f2(th.rise,3)+' s ، '+f2(th.period,3)+' s ، '+f2(th.natPeriod,3)+' s':(lang==='ar'?'ζ ≥ 1: بلا تجاوز':'ζ ≥ 1: no overshoot')+' ، τ = '+f2(q.tau,3)+' s');
+ if(REC){const upR=hB>=hA?REC:RECR,dnR=hB>=hA?RECR:REC,up=recMeasure(upR,true),dn=recMeasure(dnR,false);
+  s('oEx',(lang==='ar'?'صاعدة: ':'up: ')+f2(up.over,1)+' % ، '+f2(up.decay,3)+' ، '+f2(up.period,3)+' s ؛ '+(lang==='ar'?'هابطة: ':'down: ')+f2(dn.over,1)+' % ، '+f2(dn.decay,3)+' ، '+f2(dn.period,3)+' s');}
+ const rs=resonance(q.tau,q.zeta),bw=bandwidth5(q.tau,q.zeta);s('oFr',(q.zeta<Math.SQRT1_2?'ω_r = '+f2(rs.wr,2)+' rad/s ('+f2(rs.wr/2/Math.PI,2)+' Hz) ، M_r = '+f2(rs.Mr,2):(lang==='ar'?'بلا رنين':'no resonance'))+' ، '+(lang==='ar'?'حتى ':'to ')+f2(bw,2)+' rad/s ('+f2(bw/2/Math.PI,2)+' Hz)');
+ const wp=2*Math.PI*FP,ar=arSecond(wp*q.tau,q.zeta),ph=-Math.atan2(2*q.zeta*wp*q.tau,1-Math.pow(wp*q.tau,2))*180/Math.PI;s('oPu',f2(ar,2)+' ('+f2(20*Math.log10(ar),1)+' dB) ، '+f2(ph,0)+'° '+(lang==='ar'?'عند ':'at ')+FP.toFixed(2)+' Hz');
+ s('oCal','k = '+f2(dpOfQ(q.P,1),1)+' Pa/(L/min)² ؛ Δh = '+f2(2*q.K*dpOfQ(q.P,1)*1000,4)+'·Q² mm');
+ const dz=dForZeta(par(),.7)*1000;s('oDes',f2(dz,2)+' mm'+(dz<2?' (< 2)':'')+(lang==='ar'?' ؛ الآن ζ = ':' ; now ζ = ')+f2(q.zeta,3));
+ s('oTm',T_SIM.toFixed(2)+' s');
+ let w;const per=th.period;if(MODE==='puls'){if(q.zeta<Math.SQRT1_2&&rs.Mr>1.25&&Math.abs(wp-rs.wr)/rs.wr<.25)w=['bad',L_().wRes.replace('{m}',f2(ar,1))];else w=['',L_().wPOk.replace('{f}',FP.toFixed(2)).replace('{r}',f2(ar*100,0))];}
+ else if(isFinite(per)&&SAMP>per/3)w=['mid',L_().wSamp.replace('{s}',SAMP).replace('{p}',f2(per,2))];else if(q.zeta<.1)w=['mid',L_().wLow.replace('{z}',f2(q.zeta,3))];
+ else if(!stepped)w=['',L_().wIdle.replace('{a}',PA).replace('{b}',PB)];else if(Math.abs(2*SIM.x*1000-hB)<.6&&Math.abs(SIM.v)<.002)w=['ok',L_().wOk.replace('{h}',(2*SIM.x*1000).toFixed(1))];else w=['',L_().wRun.replace('{h}',(2*SIM.x*1000).toFixed(1))];
+ fwarn.hidden=false;fwarn.className='fwarn'+(w[0]?' '+w[0]:'');fwarn.style.background=w[0]===''?'#1f78c8':'';fwarn.textContent=w[1];
+ if(force||!charts.t||performance.now()-charts.t>400){charts.t=performance.now();charts();}drawFM();drawSW();drawPC();}
+[paEl,pbEl,fpEl,amEl,sdEl,ddEl,muEl,llEl].forEach(e=>e.oninput=()=>readouts(true));
+function setLang(l){lang=l;INFO=l==='ar'?INFO_AR:INFO_EN;document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';document.title=L_().title;
+ document.querySelectorAll('[data-t]').forEach(el=>{el.innerHTML=L_()[el.dataset.t];});
+ document.querySelectorAll('[data-lang-toggle]').forEach(b=>{b.textContent=L_().other;b.lang=L_().otherLang;});
+ updateLabels();renderCard();syncBtns();syncLabelsBtn();readouts(true);
+ try{localStorage.setItem('mn-lang',l);}catch(e){}requestAnimationFrame(resize);}
+document.querySelectorAll('[data-lang-toggle]').forEach(b=>b.onclick=()=>setLang(lang==='ar'?'en':'ar'));
+const ray=new THREE.Raycaster(),mouse=new V2();let downXY=null;
+canvas.addEventListener('pointerdown',e=>{downXY=[e.clientX,e.clientY];});
+canvas.addEventListener('pointerup',e=>{if(!downXY)return;const mv=Math.hypot(e.clientX-downXY[0],e.clientY-downXY[1]);downXY=null;if(mv>6)return;
+ const r=canvas.getBoundingClientRect();mouse.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(mouse,camera);
+ for(const h of ray.intersectObjects(pickables,false)){const k=h.object.userData.key,pt=parts[k];if(!pt)continue;if(k!==selected)select(k);return;}
+ if(selected)select(null);});
+function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+{const ro=new ResizeObserver(resize);ro.observe(stage);ro.observe(canvas);}resize();
+try{const q=new URLSearchParams(location.search).get('lang'),sv=localStorage.getItem('mn-lang');if(q==='en'||q==='ar')lang=q;else if(sv==='en'||sv==='ar')lang=sv;}catch(e){}
+loadAll();applyMode();setLang(lang);
+/* ================= animation ================= */
+const clock=new THREE.Clock(),tmp=new V3();let rt=0,acc=0;const ease=u=>u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;
+function frame(){const dt=Math.min(clock.getDelta(),.05);
+ if(fly){fly.e+=dt;const u=ease(Math.min(1,fly.e/fly.d));camera.position.lerpVectors(fly.p0,fly.p1,u);controls.target.lerpVectors(fly.t0,fly.t1,u);if(fly.e>=fly.d)fly=null;}
+ controls.update();
+ if(running){acc+=dt*SPEED;let n=Math.floor(acc/DTS);acc-=n*DTS;n=Math.min(n,400);for(let i=0;i<n;i++)simStep();}
+ /* the mercury in the two legs, the water above it, the valve dial */
+ const hl=(LL/100*10-WB)/2,yRest=YB+hl,xs=SIM.x*10,yl=Math.max(YB+.05,Math.min(YT-.3,yRest-xs)),yr=Math.max(YB+.05,Math.min(YT-.3,yRest+xs));
+ HGL.scale.y=yl-YB;HGL.position.y=YB+(yl-YB)/2;HGR.scale.y=yr-YB;HGR.position.y=YB+(yr-YB)/2;WL.scale.y=YT-yl;WL.position.y=yl+(YT-yl)/2;WR.scale.y=YT-yr;WR.position.y=yr+(YT-yr)/2;
+ const tgtPos=MODE==='puls'?PB:(stepped?PB:PA);dialA+=((2.5-tgtPos)*.8-dialA)*Math.min(1,dt*6);DIAL.rotation.z=dialA;
+ const sp=.15+SIM.Qv/20*2.2;for(let i=0;i<NPL;i++){const d=pD[i];if(running)d.s=(d.s+dt*sp*d.sp)%PM.T;at(PM,d.s,_p);PLP.pos[i*3]=_p.x+d.j[0];PLP.pos[i*3+1]=_p.y+d.j[1];PLP.pos[i*3+2]=_p.z+d.j[2];const c=d.c?CW1:CW2;PLP.col[i*3]=c.r;PLP.col[i*3+1]=c.g;PLP.col[i*3+2]=c.b;}
+ PLP.g.attributes.position.needsUpdate=true;PLP.g.attributes.color.needsUpdate=true;
+ rt+=dt;if(rt>.2){rt=0;readouts(false);}
+ renderer.render(scene,camera);
+ const cw=canvas.clientWidth,ch=canvas.clientHeight;
+ for(const k of ORDER){const el=labelEls[k],pt=parts[k];let show=true;
+  if(show){tmp.copy(pt.anchor);tmp.project(camera);if(tmp.z>1||tmp.z<-1)show=false;}
+  if(!show){el.style.visibility='hidden';continue;}el.style.visibility='visible';el.style.transform=`translate(${(tmp.x*.5+.5)*cw}px,${(-tmp.y*.5+.5)*ch}px) translate(-12px,-50%)`;}
+ requestAnimationFrame(frame);}
+/* ================= presenter: narrated guided tour (Arabic / English) ================= */
+(function(){
+const CFG={btn:"bRun",isOn:()=>running,tour:[[null, "السَّلامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ. أَنا الدُّكْتورْ ضِياءْ جُمْعَة جاسِمْ، تَدْريسِيٌّ في قِسْمِ الهَنْدَسَةِ الكيمْياوِيَّةِ وَالصِّناعاتِ النِّفْطِيَّةِ في كُلِّيَّةِ العَمارَةِ الجامِعَة، وَأُدَرِّسُ مادَّتَيِ انْتِقالِ الكُتْلَةِ وَتَصْميمِ المُفاعِلات. أَهْلاً بِكُمْ في هذا المُحاكي ثُلاثِيِّ الأَبْعادِ لِنِظامِ الرُّتْبَةِ الثّانِيَةِ ناقِصِ التَّخْميدِ، مانومِتْرِ الأُنْبوبِ يو. سَأُعَرِّفُكُمْ عَلى أَجْزائِهِ الرَّئيسَة، ثُمَّ نُشاهِدُ مَعاً لِماذا يَتَذَبْذَبُ الزِّئْبَقُ بَعْدَ تَغْييرِ التَّدَفُّق، وَكَيْفَ نَتَحَكَّمُ في تَخْميدِه.", "Hello and welcome. I am Doctor Dheyaa J. Jasim, a lecturer in the Department of Chemical Engineering and Petroleum Industries at Al-Amarah University College, where I teach Mass Transfer and Reactor Design. Welcome to this three-dimensional simulator of the underdamped second-order U-tube manometer. I will introduce its main parts, and then we will watch together why the mercury oscillates after a flow change, and how we control its damping."], ["supply", "تَدْفَعُ المِضَخَّةُ الماءَ في الأُنْبوبِ بِتَدَفُّقٍ ثابِتٍ لِكُلِّ وَضْعٍ مِن أَوْضاعِ الصِّمام.", "The pump drives the water through the pipe at a constant flow for each valve position."], ["valve", "وَبِالانْتِقالِ مِن وَضْعٍ إِلى آخَرَ يَحْدُثُ تَغْييرٌ مُفاجِئٌ في التَّدَفُّق، أَيْ خُطْوَة.", "Moving from one position to another makes a sudden change in the flow, a step."], ["orifice", "عِنْدَ الفُتْحَةِ يَنْشَأُ فَرْقُ ضَغْطٍ يَتَناسَبُ مَعَ مُرَبَّعِ التَّدَفُّق، وَيَنْتَقِلُ إِلى قِمَّتَيِ المانومِتْر.", "At the orifice a pressure difference arises proportional to the square of the flow, and it is carried to the tops of the manometer."], ["utube", "وَهُنا الزِّئْبَق. عَمودُهُ كُلُّهُ يَتَحَرَّكُ كَجِسْمٍ واحِد: لَهُ قُصورٌ ذاتِيٌّ كَالكُتْلَة، وَوَزْنُهُ يَعْمَلُ كَنابِض، وَاللُّزوجَةُ احْتِكاكٌ ضَعيف. لِذلِكَ يَتَجاوَزُ مَوْضِعَ الاتِّزانِ وَيَتَذَبْذَبُ.", "Here is the mercury. Its whole column moves as one body: it has inertia like a mass, its weight acts as a spring, and the viscosity is weak friction. So it overshoots the equilibrium and oscillates."], ["scale", "وَنَقْرَأُ الفَرْقَ في الارْتِفاعِ مِن هذِهِ المِسْطَرَة. وَالدَّوْرَةُ نَحْوُ ثانِيَةٍ، فَإِذا كانَ فاصِلُ القِراءَةِ ثانِيَةً ضاعَتِ الذَّبْذَبَةُ مِنَ القِراءات.", "We read the height difference from this ruler. The period is about one second, so if the reading interval is one second the oscillation is lost from the readings."], ["meter", "وَيُعْطي هذا المِقْياسُ التَّدَفُّقَ، وَمِنْهُ نَرْسُمُ مُنْحَنى المُعايَرَة.", "This meter gives the flow, from which we draw the calibration curve."], ["pc", "وَفي الشَّريطِ الجانِبِيِّ مُخَطَّطُ بودي: يُبَيِّنُ تَضْخيمَ المانومِتْرِ لِلتَّدَفُّقِ النّابِضِ قُرْبَ تَرَدُّدِ الرَّنين.", "The side panel holds the Bode diagram, which shows the manometer amplifying a pulsating flow near the resonant frequency."], [null, "جَرِّبوا الآنَ: اضْغَطوا تَطْبيقَ الخُطْوَةِ وَقارِنوا التَّجاوُزَ بِالنَّظَرِيَّة. ثُمَّ اضْبُطوا التَّخْميدَ عَلى صِفْرٍ فاصِلَةٍ سَبْعَة، وَشاهِدوا كَيْفَ يَتَلاشى الاهْتِزاز. وَجَرِّبوا التَّدَفُّقَ النّابِضَ عِنْدَ تَرَدُّدِ الرَّنين. بِالتَّوْفيقِ لِلْجَميع.", "Now try it yourselves: press apply the step and compare the overshoot with the theory. Then set the damping to zero point seven and watch the oscillation fade. And try the pulsating flow at the resonant frequency. Good luck to you all."]]};
+const strip=t=>t.replace(/[\u064B-\u0652\u0670]/g,'');
+const PUI={ar:{name:'د. ضياء جمعة جاسم',prev:'السابق',pause:'إيقاف مؤقت',resume:'متابعة',next:'التالي',close:'إغلاق',open:'شرح الدكتور ضياء',noVoice:'لا يتوفر صوت عربي في هذا المتصفح، لذلك يظهر الشرح مكتوباً فقط. جرّب Edge أو Chrome.',noMale:'لا يتوفر صوت عربي رجالي في هذا الجهاز، فاستُخدم أقرب صوت متاح بنبرة أخفض. جرّب Microsoft Edge (أصوات مثل حامد وشاكر) أو أضف صوتاً عربياً رجالياً من إعدادات النظام.'},
+ en:{name:'Dr. Dheyaa J. Jasim',prev:'Previous',pause:'Pause',resume:'Resume',next:'Next',close:'Close',open:'Tour with Dr. Dheyaa',noVoice:'No English voice is available in this browser, so the tour is shown as text only. Try Edge or Chrome.'}};
+const PU=()=>PUI[lang];
+const wrap=document.createElement('div');
+wrap.innerHTML=`<div class="presenter" id="presenter" hidden><div class="pv"><div class="ring"></div><img src="data:image/jpeg;base64,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" alt=""><div class="bars"><i></i><i></i><i></i><i></i><i></i></div></div>
+ <div class="pb"><div class="pn">x <span id="pStep"></span></div><div class="pt" id="pText"></div>
+ <div class="pc"><button id="pPrev" class="ic flip">⏮</button><button id="pPlay" class="ic">❚❚</button><button id="pNext" class="ic flip">⏭</button><button id="pClose" class="ic">✕</button></div><div class="pw" id="pWarn" hidden></div></div></div>
+ <button class="pbtn" id="pOpen"><img alt=""><span>▶</span></button>`;
+while(wrap.firstChild)stage.appendChild(wrap.firstChild);
+const presenter=document.getElementById('presenter'),pText=document.getElementById('pText'),pStep=document.getElementById('pStep'),pPlay=document.getElementById('pPlay'),pOpen=document.getElementById('pOpen'),pWarn=document.getElementById('pWarn');
+pOpen.querySelector('img').src=presenter.querySelector('.pv img').src;
+let tIdx=-1,tPaused=false,tTimer=null,tToken=0,arVoice=null,enVoice=null,arMale=false;
+const synth=window.speechSynthesis||null;
+function pickVoice(){if(!synth)return;const v=synth.getVoices();
+ const ar=v.filter(x=>/^ar/i.test(x.lang)),ML=/hamed|naayf|shakir|bassel|fahed|taim|rami|moaz|hamdan|\bali\b|saleh|laith|hedi|ismael|jamal|omar|abdullah|maged|majed|tarik|\bmale\b/i,FL=/zariyah|salma|hoda|rana|noura|sana|layla|laila|amal|hala|fatima|maryam|amany|amina|iman|mouna|reem|aysha|\bfemale\b/i,sa=x=>(ML.test(x.name)?100:0)-(FL.test(x.name)?100:0)+(/natural|neural|online/i.test(x.name)?8:0)+(/google/i.test(x.name)?2:0)+(/ar[-_]SA/i.test(x.lang)?1:0);arVoice=ar.sort((a,b)=>sa(b)-sa(a))[0]||null;arMale=!!(arVoice&&ML.test(arVoice.name)&&!FL.test(arVoice.name));
+ const en=v.filter(x=>/^en/i.test(x.lang)),se=x=>(/natural|neural|online/i.test(x.name)?8:0)+(/google/i.test(x.name)?4:0)+(/ryan|guy|george|daniel|david|arthur|male/i.test(x.name)?3:0)+(/en[-_]GB/i.test(x.lang)?2:0);
+ enVoice=en.sort((a,b)=>se(b)-se(a))[0]||null;}
+if(synth){pickVoice();synth.onvoiceschanged=pickVoice;}
+function chunks(t){return t.split(/(?<=[.،,:;!?؟])\s+/).reduce((a,s)=>{if(a.length&&(a[a.length-1]+' '+s).length<170)a[a.length-1]+=' '+s;else a.push(s);return a;},[]);}
+function speak(text,done){const tok=++tToken;presenter.classList.add('talking');const fin=()=>{if(tok!==tToken)return;presenter.classList.remove('talking');done();};
+ const vv=lang==='ar'?arVoice:enVoice;
+ if(synth&&vv){synth.cancel();if(lang==='ar'&&!arMale){pWarn.hidden=false;pWarn.textContent=PU().noMale;}const parts=chunks(text);let i=0;
+  const next=()=>{if(tok!==tToken)return;if(i>=parts.length){fin();return;}const u=new SpeechSynthesisUtterance(parts[i++]);u.voice=vv;u.lang=vv.lang;u.rate=lang==='ar'&&!arMale?.95:1;u.pitch=lang==='ar'&&!arMale?.72:1;
+   u.onend=()=>setTimeout(next,120);u.onerror=()=>setTimeout(next,120);synth.speak(u);};next();}
+ else{pWarn.hidden=false;pWarn.textContent=PU().noVoice;tTimer=setTimeout(fin,Math.max(5000,text.split(/\s+/).length*420));}}
+function showStep(i){clearTimeout(tTimer);if(synth)synth.cancel();pWarn.hidden=true;tIdx=i;const [k,ar,en]=CFG.tour[i],say=lang==='ar'?ar:en;
+ pText.textContent=lang==='ar'?strip(ar):en;pText.dir=lang==='ar'?'rtl':'ltr';pText.lang=lang;pStep.textContent='('+(i+1)+' / '+CFG.tour.length+')';pText.scrollTop=0;
+ if(k){if(selected!==k)select(k);focusPart(k);}else{if(selected)select(null);view('iso');}
+ if(!tPaused)speak(say,()=>{if(tIdx<CFG.tour.length-1)tTimer=setTimeout(()=>showStep(tIdx+1),700);});}
+function syncPresenter(){presenter.querySelector('.pn').firstChild.textContent=PU().name+' ';
+ [['pPrev',PU().prev],['pNext',PU().next],['pClose',PU().close]].forEach(([id,t])=>{const b=document.getElementById(id);b.title=t;b.setAttribute('aria-label',t);});
+ pPlay.textContent=tPaused?'▶':'❚❚';pPlay.title=tPaused?PU().resume:PU().pause;pPlay.setAttribute('aria-label',pPlay.title);pOpen.title=PU().open;pOpen.setAttribute('aria-label',PU().open);presenter.querySelector('.pv img').alt=PU().name;}
+function startTour(){presenter.hidden=false;pOpen.hidden=true;stage.classList.add('tour');tPaused=false;syncPresenter();if(mode==='full'){mode='cut';applyMode();}showStep(0);}
+function stopTour(){tToken++;clearTimeout(tTimer);if(synth)synth.cancel();presenter.classList.remove('talking');presenter.hidden=true;pOpen.hidden=false;stage.classList.remove('tour');}
+document.getElementById('pNext').onclick=()=>{if(tIdx<CFG.tour.length-1)showStep(tIdx+1);};
+document.getElementById('pPrev').onclick=()=>{if(tIdx>0)showStep(tIdx-1);};
+document.getElementById('pClose').onclick=stopTour;pOpen.onclick=startTour;
+pPlay.onclick=()=>{tPaused=!tPaused;syncPresenter();if(tPaused){tToken++;clearTimeout(tTimer);if(synth)synth.cancel();presenter.classList.remove('talking');}else showStep(tIdx);};
+const runBtn=document.getElementById(CFG.btn),oldRun=runBtn.onclick;
+runBtn.onclick=e=>{if(oldRun)oldRun.call(runBtn,e);if(CFG.isOn())startTour();else stopTour();};
+const oldSetLang=setLang;setLang=function(l){oldSetLang(l);syncPresenter();if(!presenter.hidden&&tIdx>=0)showStep(tIdx);};
+syncPresenter();
+})();
+
+loadingEl.remove();requestAnimationFrame(frame);
+})();
+
+</script>
+</body>
+</html>
