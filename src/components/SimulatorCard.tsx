@@ -1,13 +1,11 @@
 import React from 'react';
+import * as Icons from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import {
-  ExternalLink,
   Volume2,
   Bookmark,
   Paperclip,
   Atom,
-  Flame,
-  Activity,
-  Sliders,
   Eye,
   ArrowLeft,
   ArrowRight,
@@ -34,17 +32,23 @@ export const SimulatorCard: React.FC<SimulatorCardProps> = ({
   onOpenDetails,
   attachments = [],
 }) => {
-  const getCategoryIcon = () => {
-    switch (simulator.category) {
-      case 'reactor':
-        return <Atom className="w-5 h-5 text-amber-300" />;
-      case 'transfer':
-        return <Flame className="w-5 h-5 text-cyan-300" />;
-      case 'phenomena':
-        return <Activity className="w-5 h-5 text-emerald-300" />;
-      case 'control':
-        return <Sliders className="w-5 h-5 text-fuchsia-300" />;
-    }
+  const getSimulatorIcon = () => {
+    const Icon = Icons[simulator.iconName as keyof typeof Icons] as LucideIcon | undefined;
+    const fallbackByCategory: Record<SimulatorItem['category'], LucideIcon> = {
+      reactor: Atom,
+      transfer: Icons.Flame,
+      phenomena: Icons.Activity,
+      control: Icons.SlidersHorizontal,
+    };
+    const IconComponent = Icon ?? fallbackByCategory[simulator.category];
+    const toneByCategory = {
+      reactor: 'text-amber-300 group-hover:text-amber-200',
+      transfer: 'text-cyan-300 group-hover:text-cyan-200',
+      phenomena: 'text-emerald-300 group-hover:text-emerald-200',
+      control: 'text-fuchsia-300 group-hover:text-fuchsia-200',
+    } as const;
+
+    return <IconComponent aria-hidden="true" className={`w-6 h-6 transition-colors ${toneByCategory[simulator.category]}`} strokeWidth={1.8} />;
   };
 
   const handleOpenSimulator = (e: React.MouseEvent) => {
@@ -88,7 +92,7 @@ export const SimulatorCard: React.FC<SimulatorCardProps> = ({
       <div>
         <div className="flex items-start justify-between gap-2 mb-3.5">
           <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/80 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform">
-            {getCategoryIcon()}
+            {getSimulatorIcon()}
           </div>
 
           <div className="flex items-center gap-1.5">
