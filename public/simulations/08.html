@@ -1,0 +1,706 @@
+<!doctype html>
+<!-- © 2026 Dr. Dheyaa J. Jasim (د. ضياء جمعة جاسم), Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College. Work ID: DJJ-VLAB-EVAPORATOR-2026. All rights reserved. For educational use; no republication or sale without written permission. -->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Dr. Dheyaa J. Jasim (د. ضياء جمعة جاسم)">
+<meta name="copyright" content="© 2026 Dr. Dheyaa J. Jasim. All rights reserved.">
+<meta name="dcterms.rights" content="All rights reserved. For educational use; no republication or sale without written permission.">
+<meta name="dcterms.identifier" content="DJJ-VLAB-EVAPORATOR-2026">
+<script type="application/ld+json" data-ip="djj">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "محاكي المبخر ثلاثي التأثير | Triple-Effect Evaporator", "identifier": "DJJ-VLAB-EVAPORATOR-2026", "inLanguage": ["ar", "en"], "copyrightYear": 2026, "author": {"@type": "Person", "name": "Dr. Dheyaa J. Jasim", "alternateName": "د. ضياء جمعة جاسم", "affiliation": {"@type": "CollegeOrUniversity", "name": "Al-Amarah University College", "department": "Department of Chemical Engineering and Petroleum Industries"}}, "copyrightHolder": {"@type": "Person", "name": "Dr. Dheyaa J. Jasim"}, "usageInfo": "All rights reserved. For educational use; no republication or sale without written permission."}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>محاكي المبخر ثلاثي التأثير | Triple-Effect Evaporator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e4eaee; --stage-a:#f3f6f8; --stage-b:#d2dce2; --panel:#f7f9fa; --ink:#1b2830; --muted:#5a6a75;
+  --line:#c9d4db; --chip:#ffffff; --accent:#b85f1e; --accent-ink:#ffffff; --cool:#2f76b3; --tint:#edf2f5;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#11171c; --stage-a:#223039; --stage-b:#10161b; --panel:#172027; --ink:#e1e8ed; --muted:#94a4af;
+    --line:#2c3a44; --chip:#21303a; --accent:#e0873d; --accent-ink:#1a1108; --cool:#5d9fd5; --tint:#1e2a32;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11171c; --stage-a:#223039; --stage-b:#10161b; --panel:#172027; --ink:#e1e8ed; --muted:#94a4af;
+  --line:#2c3a44; --chip:#21303a; --accent:#e0873d; --accent-ink:#1a1108; --cool:#5d9fd5; --tint:#1e2a32;
+}
+html{height:100%; scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0; height:100%; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans Arabic","Segoe UI",Tahoma,"Noto Sans Arabic",Arial,sans-serif; font-size:15px; line-height:1.7}
+button{font:inherit; color:inherit}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+.app{display:grid; grid-template-columns:minmax(300px,370px) 1fr; height:100%}
+.panel{background:var(--panel); border-inline-end:1px solid var(--line); overflow-y:auto; display:flex; flex-direction:column}
+.ph{padding:22px 22px 14px}
+.ph h1{margin:0; font-size:21px; line-height:1.4; font-weight:700}
+.ph .sub{margin:2px 0 0; color:var(--muted); font-size:13.5px; direction:ltr; text-align:right}
+
+.card{margin:0 16px; padding:16px 18px; background:var(--tint); border-radius:12px; border:1px solid var(--line)}
+.card h2{margin:0; font-size:18px; font-weight:600; line-height:1.45}
+.card .en{margin:0 0 8px; color:var(--muted); font-size:13px; direction:ltr; text-align:right}
+.card p{margin:6px 0}
+.card .eq{margin-top:10px; padding:8px 10px; border-inline-start:3px solid var(--accent); background:var(--panel); border-radius:0 6px 6px 0; font-size:14px; unicode-bidi:plaintext}
+.card .head{display:flex; gap:10px; align-items:flex-start}
+.card .head .num{flex:none; margin-top:3px}
+.card .act{margin-top:12px; display:flex; gap:8px; flex-wrap:wrap}
+.card .act button{background:var(--chip); border:1px solid var(--line); border-radius:8px; padding:5px 12px; cursor:pointer; font-size:13.5px}
+.card .act button:hover{border-color:var(--accent)}
+
+.num{display:inline-grid; place-items:center; width:24px; height:24px; border-radius:50%; font-size:12.5px; font-weight:600;
+  background:var(--chip); border:1.5px solid var(--ink); line-height:1; font-variant-numeric:tabular-nums}
+
+.mix{padding:18px 22px 6px}
+.mix h3,.parts h3{margin:0 0 6px; font-size:15px; font-weight:600}
+.rpm{display:flex; align-items:center; gap:12px}
+.rpm input{flex:1; accent-color:var(--accent)}
+.rpm output{min-width:86px; font-weight:600; font-variant-numeric:tabular-nums}
+.readout{display:grid; grid-template-columns:1fr auto; gap:2px 12px; margin:10px 0 4px; font-size:14px}
+.readout dt{color:var(--muted)}
+.readout dd{margin:0; font-weight:600; font-variant-numeric:tabular-nums; direction:ltr; text-align:left}
+.fine{font-size:12.5px; color:var(--muted); margin:6px 0 0}
+
+.parts{padding:14px 14px 8px}
+.parts h3{padding:10px 8px 2px; color:var(--muted); font-size:13px}
+.parts ul{list-style:none; margin:0; padding:0}
+.parts li button{display:flex; align-items:center; gap:10px; width:100%; text-align:right; background:none; border:0;
+  padding:5px 8px; border-radius:8px; cursor:pointer; font-size:14.5px}
+.parts li button:hover{background:var(--tint)}
+.parts li button[aria-current="true"]{background:var(--tint); box-shadow:inset -3px 0 0 var(--accent)}
+.parts li button[aria-current="true"] .num{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.lang{display:inline-block; cursor:pointer; background:none; font:inherit; margin-top:8px; font-size:13.5px; color:var(--accent); text-decoration:none; border:1px solid var(--line); border-radius:8px; padding:2px 10px}
+.lang:hover{border-color:var(--accent)}
+.credit{margin-top:auto; padding:14px 22px 20px; font-size:12.5px; color:var(--muted); border-top:1px solid var(--line)}
+.credit b{color:var(--ink); font-weight:600}
+
+.stage{position:relative; overflow:hidden; background:radial-gradient(ellipse 70% 65% at 50% 42%, var(--stage-a), var(--stage-b))}
+#c{display:block; width:100%; height:100%; touch-action:none; cursor:grab}
+#c:active{cursor:grabbing}
+.labels{position:absolute; inset:0; pointer-events:none}
+.lbl{direction:ltr; position:absolute; left:0; top:0; pointer-events:auto; display:flex; align-items:center; gap:6px; padding:0; border:0; background:none; cursor:pointer; white-space:nowrap}
+.lbl .t{direction:rtl; display:none; background:var(--chip); border:1px solid var(--line); border-radius:6px; padding:1px 8px; font-size:12.5px; box-shadow:0 1px 3px rgba(20,30,40,.18)}
+.labels.names .lbl .t,.lbl.on .t{display:inline-block}
+.lbl .num{box-shadow:0 1px 3px rgba(20,30,40,.25)}
+.lbl.on .num{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.lbl.on .t{border-color:var(--accent)}
+.labels.off .lbl:not(.on){display:none}
+
+.ovl{position:absolute; top:14px; inset-inline-start:16px; pointer-events:none; display:flex; flex-direction:column; align-items:flex-start; gap:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 12px; background:color-mix(in srgb,var(--panel) 82%,transparent); border:1px solid var(--line); border-radius:10px; padding:5px 12px; font-size:13px}
+.legend span{display:inline-flex; align-items:center; gap:6px}
+.legend i{width:11px; height:11px; border-radius:50%; display:inline-block; box-shadow:0 0 0 1.5px rgba(255,255,255,.7)}
+.legend b{font-weight:500}
+.tb.rx{background:#1f8a4c; color:#fff; border-color:#1f8a4c; font-weight:600}
+.tb.rx[aria-pressed="true"]{background:#b3362b; border-color:#b3362b; color:#fff}
+.rxbar{display:flex; height:12px; border-radius:6px; overflow:hidden; margin:8px 0 4px; background:var(--line)}
+.rxbar div{transition:width .25s linear}
+.brand{ background:color-mix(in srgb,var(--panel) 82%,transparent); border:1px solid var(--line); border-inline-start:4px solid var(--accent); border-radius:10px; padding:8px 14px 9px}
+.brand .who{font-size:17px; font-weight:700; line-height:1.4}
+.brand .en{font-size:13px; color:var(--muted); direction:ltr; text-align:right}
+.brand .org{font-size:12.5px; color:var(--muted)}
+.hint{position:absolute; top:14px; inset-inline-end:16px; max-width:300px; font-size:13px; color:var(--muted); pointer-events:none}
+.toolbar{position:absolute; bottom:14px; inset-inline:14px; display:flex; flex-wrap:wrap; gap:8px; justify-content:center; pointer-events:none}
+.toolbar > *{pointer-events:auto}
+.tb{background:var(--chip); border:1px solid var(--line); border-radius:9px; padding:6px 13px; cursor:pointer; font-size:13.5px; box-shadow:0 1px 3px rgba(20,30,40,.12)}
+.tb:hover{border-color:var(--accent)}
+.tb[aria-pressed="true"]{background:var(--ink); color:var(--panel); border-color:var(--ink)}
+.seg{display:inline-flex; background:var(--chip); border:1px solid var(--line); border-radius:9px; padding:2px; box-shadow:0 1px 3px rgba(20,30,40,.12)}
+.seg button{border:0; background:none; padding:4px 11px; border-radius:7px; cursor:pointer; font-size:13.5px}
+.seg button[aria-pressed="true"]{background:var(--ink); color:var(--panel)}
+.loading{position:absolute; inset:0; display:grid; place-items:center; color:var(--muted); font-size:15px; padding:20px; text-align:center}
+
+html[dir="ltr"] .ph .sub,html[dir="ltr"] .card .en,html[dir="ltr"] .brand .en{direction:rtl; text-align:left}
+html[dir="ltr"] .readout dd{text-align:right}
+html[dir="rtl"] #oReg{direction:rtl}
+html[dir="ltr"] .parts li button{text-align:left}
+html[dir="ltr"] .parts li button[aria-current="true"]{box-shadow:inset 3px 0 0 var(--accent)}
+html[dir="ltr"] .lbl .t{direction:ltr}
+html[dir="ltr"] .card .eq{border-radius:0 6px 6px 0}
+html[dir="rtl"] .card .eq{border-radius:6px 0 0 6px}
+@media (max-width:820px){
+  html,body{height:auto}
+  .app{grid-template-columns:1fr; height:auto}
+  .stage{order:-1; height:66svh; min-height:380px}
+  .panel{border-inline-end:0; overflow:visible}
+  .hint{display:none}
+  .ovl{top:10px; inset-inline-start:10px}
+  .brand{padding:6px 10px}
+  .legend{font-size:12px; padding:4px 9px}
+  .brand .who{font-size:15px}
+  .brand .org{display:none}
+  .toolbar{bottom:10px; gap:6px}
+  .tb,.seg button{font-size:12.5px}
+}
+.prof-h{margin-top:14px !important}
+.prof{display:grid; grid-template-columns:auto 1fr auto; gap:3px 8px; align-items:center; font-size:12.5px; font-variant-numeric:tabular-nums}
+.prof .k{color:var(--muted)}
+.prof .tr{height:9px; background:var(--line); border-radius:5px; overflow:hidden}
+.prof .tr div{height:100%; border-radius:5px; transition:width .3s}
+.prof .v{direction:ltr}
+.legend i.grad{width:34px; border-radius:6px; background:linear-gradient(90deg,#f2c21b,#e23b32)}
+html[dir="rtl"] .legend i.grad{background:linear-gradient(270deg,#f2c21b,#e23b32)}
+.legend i.bub{background:transparent; box-shadow:inset 0 0 0 2px #e9844a}
+@media (max-width:820px){
+  .stage{height:auto; min-height:0; display:flex; flex-direction:column}
+  #c{height:60svh; min-height:340px; flex:none}
+  .toolbar{position:static; inset:auto; padding:10px 10px 12px; background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+  .labels{bottom:auto; height:max(60svh,340px)}
+}
+.tb.fl{border-color:#b3362b; color:#b3362b; font-weight:600}
+.tb.fl[aria-pressed="true"]{background:#b3362b; color:#fff}
+.fwarn{background:#b3362b; color:#fff; border-radius:10px; padding:6px 12px; font-size:13.5px; font-weight:600; max-width:340px; box-shadow:0 2px 8px rgba(120,20,10,.3)}
+.fwarn[hidden]{display:none}
+.card.fcard{border-color:#b3362b; border-inline-start:4px solid #b3362b}
+.card.fcard h2{color:#b3362b}
+.card ul{margin:6px 0; padding-inline-start:20px}
+.card li{margin:2px 0}
+.card h4{margin:10px 0 2px; font-size:14.5px}
+#chart svg{width:100%; height:auto; display:block}
+#chart text{font-size:10px; fill:var(--muted); font-family:inherit}
+.ch-leg{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--muted); margin-top:4px}
+.ch-leg i{display:inline-block; width:16px; height:3px; border-radius:2px; vertical-align:middle; margin-inline-end:5px}
+.fwarn.ok{background:#1f8a4c}
+.legend i.sw{width:34px; border-radius:6px; background:linear-gradient(90deg,#ff3b1f,#1f5fff)}
+.legend i.gw{width:34px; border-radius:6px; background:linear-gradient(90deg,#9be38a,#f4f4f4)}
+html[dir="rtl"] .legend i.sw{background:linear-gradient(270deg,#ff3b1f,#1f5fff)}
+html[dir="rtl"] .legend i.gw{background:linear-gradient(270deg,#9be38a,#f4f4f4)}
+.pkseg{display:flex; width:100%}
+.pkseg button{flex:1; padding:6px 3px; font-size:12.5px}
+#chart2 svg{width:100%;height:auto;display:block;margin-top:8px}#chart2 text{font-size:10px;fill:var(--muted);font-family:inherit}
+.presenter{position:absolute; top:12px; inset-inline-end:12px; width:min(290px,calc(100% - 24px)); display:flex; gap:9px; align-items:flex-start; background:color-mix(in srgb,var(--panel) 94%,transparent); border:1px solid var(--line); border-radius:12px; padding:8px 9px; box-shadow:0 4px 16px rgba(10,20,30,.2); z-index:5}
+.presenter[hidden]{display:none}
+.pv{position:relative; flex:none; width:52px; height:52px}
+.pv img{width:52px; height:52px; border-radius:50%; object-fit:cover; object-position:50% 30%; position:relative; z-index:1; border:2px solid var(--panel)}
+.pv .ring{position:absolute; inset:-3px; border-radius:50%; background:conic-gradient(#1f8a4c,#1f78c8,#1f8a4c); opacity:.35}
+.presenter.talking .pv img{animation:talk 2.4s ease-in-out infinite}
+.presenter.talking .pv .ring{opacity:1; animation:spin 3s linear infinite}
+@keyframes talk{0%,100%{transform:translateY(0) scale(1)}25%{transform:translateY(-1px) scale(1.02) rotate(-.6deg)}50%{transform:translateY(0) scale(1.005)}75%{transform:translateY(-1px) scale(1.015) rotate(.6deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pv .bars{position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); display:flex; gap:2px; z-index:2; background:var(--panel); border-radius:6px; padding:2px 4px; border:1px solid var(--line)}
+.pv .bars i{display:block; width:2px; height:4px; background:#1f8a4c; border-radius:2px}
+.presenter.talking .bars i{animation:bar .9s ease-in-out infinite}
+.presenter.talking .bars i:nth-child(2){animation-delay:.15s}.presenter.talking .bars i:nth-child(3){animation-delay:.3s}.presenter.talking .bars i:nth-child(4){animation-delay:.45s}.presenter.talking .bars i:nth-child(5){animation-delay:.6s}
+@keyframes bar{0%,100%{height:3px}50%{height:10px}}
+.pb{flex:1; min-width:0}
+.pn{font-weight:700; font-size:12.5px; line-height:1.3}
+.pn span{font-weight:500; color:var(--muted); font-size:11.5px; margin-inline-start:4px}
+.pt{font-size:12.5px; line-height:1.6; margin:3px 0 5px; max-height:4.9em; overflow-y:auto}
+.pc{display:flex; gap:4px}
+.pc .ic{background:var(--chip); border:1px solid var(--line); border-radius:7px; width:28px; height:24px; padding:0; font-size:11px; line-height:1; cursor:pointer}
+.pc .ic:hover{border-color:var(--accent)}
+html[dir="rtl"] .pc .flip{transform:scaleX(-1)}
+.pw{margin-top:4px; font-size:11px; color:#c0621c}
+.pbtn{position:absolute; top:12px; inset-inline-end:12px; z-index:5; width:46px; height:46px; border-radius:50%; padding:0; border:2px solid #1f8a4c; background:var(--panel); cursor:pointer; box-shadow:0 3px 10px rgba(10,20,30,.2)}
+.pbtn img{width:100%; height:100%; border-radius:50%; object-fit:cover; object-position:50% 30%}
+.pbtn span{position:absolute; bottom:-3px; inset-inline-end:-3px; width:18px; height:18px; border-radius:50%; background:#1f8a4c; color:#fff; font-size:9px; display:grid; place-items:center}
+.pbtn[hidden]{display:none}
+.stage.tour .hint{display:none}
+@media (max-width:820px){.presenter{top:8px; inset-inline-end:8px; width:min(270px,calc(100% - 16px))}.pbtn{top:8px}.stage.tour .ovl{display:none}}
+.stage .hint{inset-inline-end:70px}
+.wm{position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:6;pointer-events:none;user-select:none;font:600 11px/1.2 "IBM Plex Sans Arabic",system-ui,sans-serif;color:#fff;opacity:.5;text-shadow:0 0 3px rgba(0,0,0,.85),0 0 1px #000;white-space:nowrap;letter-spacing:.2px}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="panel">
+    <header class="ph">
+      <h1 data-t="h1"></h1>
+      <p class="sub" data-t="sub"></p>
+      <button class="lang" data-lang-toggle>English</button>
+    </header>
+    <section class="card" id="card" aria-live="polite"></section>
+    <section class="mix">
+      <h3 data-t="opTs"></h3>
+      <div class="rpm"><input type="range" id="ts" min="105" max="140" step="0.5" value="121.1" aria-label="Steam temperature"><output id="tsOut">–</output></div>
+      <h3 data-t="opP3" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="p3" min="8" max="30" step="0.2" value="13.4" aria-label="Last-effect pressure"><output id="p3Out">–</output></div>
+      <h3 data-t="opF" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="ff" min="10000" max="40000" step="500" value="22680" aria-label="Feed rate"><output id="ffOut">–</output></div>
+      <h3 data-t="opXF" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="xf" min="5" max="20" step="0.5" value="10" aria-label="Feed solids"><output id="xfOut">–</output></div>
+      <h3 data-t="opXP" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="xp" min="30" max="60" step="1" value="50" aria-label="Product solids"><output id="xpOut">–</output></div>
+      <h3 data-t="opTF" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="tf" min="20" max="90" step="0.5" value="26.7" aria-label="Feed temperature"><output id="tfOut">–</output></div>
+      <dl class="readout">
+        <dt data-t="dS"></dt><dd id="oS">–</dd>
+        <dt data-t="dE"></dt><dd id="oE">–</dd>
+        <dt data-t="dA"></dt><dd id="oA">–</dd>
+        <dt data-t="dV"></dt><dd id="oV">–</dd>
+        <dt data-t="dX"></dt><dd id="oX">–</dd>
+        <dt data-t="dT"></dt><dd id="oT">–</dd>
+        <dt data-t="dP"></dt><dd id="oP">–</dd>
+        <dt data-t="dB"></dt><dd id="oB">–</dd>
+        <dt data-t="dS1"></dt><dd id="oS1">–</dd>
+      </dl>
+      <h3 class="prof-h" data-t="chH"></h3>
+      <div id="chart"></div>
+      <div id="chart2"></div>
+      <p class="fine" data-t="fine"></p>
+    </section>
+    <footer class="credit" data-t="credit"></footer>
+  </aside>
+  <main class="stage" id="stage">
+    <canvas id="c" aria-label="3D triple-effect evaporator"></canvas>
+<div class="wm" aria-hidden="true">© 2026 د. ضياء جمعة جاسم · Dr. Dheyaa J. Jasim</div>
+    <div class="labels" id="labels"></div>
+    <div class="ovl">
+      <div class="brand"><div class="who" data-t="who"></div><div class="en" data-t="whoAlt"></div><div class="org" data-t="org"></div></div>
+      <div class="fwarn" id="fwarn" hidden></div>
+      <div class="legend" aria-hidden="true">
+        <span><i style="background:#fff176;box-shadow:inset 0 0 0 1px #c9b800"></i><b data-t="lgF"></b></span>
+        <span><i style="background:#ffc400"></i><b data-t="lgL1"></b></span>
+        <span><i style="background:#ff8f00"></i><b data-t="lgL2"></b></span>
+        <span><i style="background:#8d4f1f"></i><b data-t="lgL3"></b></span>
+        <span><i style="background:#ff1744"></i><b data-t="lgS"></b></span>
+        <span><i style="background:#00d5ff"></i><b data-t="lgV"></b></span>
+        <span><i style="background:#1a3cff"></i><b data-t="lgC"></b></span>
+        <span><i style="background:#00c853"></i><b data-t="lgW"></b></span>
+      </div>
+    </div>
+    <div class="hint" data-t="hint"></div>
+    <div class="toolbar">
+      <button class="tb rx" id="bRun" aria-pressed="false"></button>
+      
+      <button class="tb" data-lang-toggle>English</button>
+      <div class="seg" role="group">
+        <button data-drag="rotate" aria-pressed="true" data-t="dRot"></button>
+        <button data-drag="pan" aria-pressed="false" data-t="dPan"></button>
+      </div>
+      <div class="seg" role="group">
+        <button data-mode="full" aria-pressed="false" data-t="full"></button>
+        <button data-mode="cut" aria-pressed="true" data-t="cut"></button>
+        <button data-mode="ghost" aria-pressed="false" data-t="ghost"></button>
+      </div>
+      <button class="tb" id="bExplode" aria-pressed="false"></button>
+      <button class="tb" id="bLabels"></button>
+      <div class="seg" role="group">
+        <button data-view="iso" data-t="iso"></button>
+        <button data-view="front" data-t="front"></button>
+        <button data-view="top" data-t="top"></button>
+      </div>
+    </div>
+    <div class="loading" id="loading">جارٍ تحميل النموذج… Loading…</div>
+  </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+const loadingEl=document.getElementById('loading');
+if(!window.THREE||!THREE.OrbitControls){loadingEl.textContent='تعذّر تحميل مكتبة الرسم ثلاثي الأبعاد. تحقق من الاتصال بالإنترنت ثم أعد تحميل الصفحة. / The 3D library could not load; check your connection and reload.';return;}
+
+/* ================= model: forward-feed multiple-effect evaporator, equal areas (Geankoplis method) ================= */
+const lam=T=>2501-2.44*T,hg=T=>2501+1.82*T,cpL=x=>4.19-2.35*x,BPR=x=>1.78*x+6.22*x*x; /* kJ/kg, °C; sugar solution */
+const Psat=T=>Math.pow(10,8.07131-1730.63/(233.426+T))*.133322,Tsat=P=>1730.63/(8.07131-Math.log10(P/.133322))-233.426;
+const U3=[3123,1987,1136];
+function Ulist(N){if(N===3)return U3;const a=[];for(let i=0;i<N;i++)a.push(N===1?U3[0]:3123+(1136-3123)*i/(N-1));return a;}
+let TS=121.1,P3=13.4,FF=22680,XF=.1,XP=.5,TF=26.7,running=false,SOL=null;
+function design(N,U){const Fs=FF/3600,LP=Fs*XF/XP,Vt=Fs-LP,T3s=Tsat(P3);let V=Array(N).fill(Vt/N),dT=null,res=null;
+ for(let it=0;it<80;it++){const L=[],x=[];let l=Fs;for(let i=0;i<N;i++){l-=V[i];L.push(l);x.push(Fs*XF/l);}
+  const b=x.map(BPR),avail=TS-T3s-b.reduce((a,c)=>a+c,0);if(avail<=1)return {bad:true,avail};
+  if(!dT){const inv=U.map(u=>1/u),si=inv.reduce((a,c)=>a+c,0);dT=inv.map(v=>avail*v/si);}else{const s=dT.reduce((a,c)=>a+c,0);dT=dT.map(d=>d*avail/s);}
+  const T=[],Tc=[];let tc=TS;for(let i=0;i<N;i++){Tc.push(tc);const t=tc-dT[i];T.push(t);tc=t-b[i];}
+  const n=N+1,A=[...Array(n)].map(()=>Array(n).fill(0)),r=Array(n).fill(0),H=i=>hg(T[i]-b[i])+1.884*b[i];
+  for(let i=0;i<N;i++){const hin=i===0?cpL(XF)*TF:cpL(x[i-1])*T[i-1],hout=cpL(x[i])*T[i];r[i]=-(Fs*hin-Fs*hout);
+   for(let k=0;k<i;k++)A[i][1+k]+=hout-hin;A[i][1+i]+=hout-H(i);if(i===0)A[i][0]+=lam(TS);else A[i][i]+=lam(Tc[i]);}
+  for(let k=0;k<N;k++)A[N][1+k]=1;r[N]=Vt;
+  for(let c=0;c<n;c++){let p=c;for(let q=c+1;q<n;q++)if(Math.abs(A[q][c])>Math.abs(A[p][c]))p=q;[A[c],A[p]]=[A[p],A[c]];[r[c],r[p]]=[r[p],r[c]];
+   for(let q=0;q<n;q++)if(q!==c){const f=A[q][c]/A[c][c];for(let k=c;k<n;k++)A[q][k]-=f*A[c][k];r[q]-=f*r[c];}}
+  const z=r.map((v,i)=>v/A[i][i]),S=z[0];V=z.slice(1);if(S<=0||V.some(v=>v<=0))return {bad:true,avail};
+  const Q=[S*lam(TS)*1000].concat(V.slice(0,N-1).map((v,i)=>v*lam(Tc[i+1])*1000)),Ar=Q.map((q,i)=>q/(U[i]*dT[i])),Am=Ar.reduce((a,c)=>a+c,0)/N;
+  res={N,S:S*3600,V:V.map(v=>v*3600),Vt:Vt*3600,x,T,Tc,b,dT,A:Ar,Am,econ:Vt/S,T3s,Q,avail,Qcond:V[N-1]*lam(T[N-1]-b[N-1])};
+  if(Math.max(...Ar.map(a=>Math.abs(a-Am)/Am))<5e-4)break;dT=dT.map((d,i)=>d*Ar[i]/Am);}
+ return res;}
+function solve(){SOL=design(3,U3);SOL.one=design(1,Ulist(1));SOL.byN=[1,2,3,4,5].map(n=>design(n,Ulist(n)));}
+solve();
+
+/* ================= content ================= */
+const EFF_AR=['التأثير الأول','التأثير الثاني','التأثير الثالث'],EFF_EN=['First effect','Second effect','Third effect'];
+function effInfo(i,l){const S=SOL;if(S.bad)return {d:'',n:''};const T=S.T[i].toFixed(1),P=Psat(S.T[i]-S.b[i]).toFixed(1),Tc=S.Tc[i].toFixed(1),x=(S.x[i]*100).toFixed(1);
+ return l==='ar'?{d:`مبخر بأنابيب قصيرة عمودية (كالاندريا). في غلافه السفلي يتكثف ${i?'بخار التأثير السابق':'البخار الحي'} عند ${Tc} °C خارج الأنابيب، فيغلي المحلول داخلها عند ${T} °C تحت ضغط ${P} kPa، ويعود عبر الأنبوب المركزي (Downcomer). يخرج المحلول بتركيز ${x}% ${i<2?'إلى التأثير التالي':'منتجاً نهائياً'}، ويخرج البخار من القمة ${i<2?'ليسخّن التأثير التالي':'إلى المكثف'}.`,n:`ΔT = ${S.dT[i].toFixed(1)} °C ، A = ${S.A[i].toFixed(1)} m² ، U = ${U3[i]} W/m²·K`}
+ :{d:`A short vertical-tube (calandria) evaporator. In its lower shell ${i?'vapour from the previous effect':'live steam'} condenses at ${Tc} °C outside the tubes, so the solution boils inside them at ${T} °C under ${P} kPa and returns through the central downcomer. The solution leaves at ${x}% ${i<2?'for the next effect':'as final product'}, and the vapour leaves at the top ${i<2?'to heat the next effect':'for the condenser'}.`,n:`ΔT = ${S.dT[i].toFixed(1)} °C, A = ${S.A[i].toFixed(1)} m², U = ${U3[i]} W/m²·K`};}
+const INFO_AR={
+ steam:{ar:'البخار الحي',en:'Live steam supply',d:'بخار مشبع من المرجل يدخل غلاف التأثير الأول فقط، وهو الطاقة الوحيدة المشتراة. صمام التحكم يضبط ضغطه، فتتحدد حرارة تكثفه T_s.',n:'q₁ = S·λ_s'},
+ e1:{ar:'التأثير الأول',en:'First effect',d:'',n:''},e2:{ar:'التأثير الثاني',en:'Second effect',d:'',n:''},e3:{ar:'التأثير الثالث',en:'Third effect',d:'',n:''},
+ calandria:{ar:'الكالاندريا (حزمة الأنابيب)',en:'Calandria (tube bundle)',d:'أنابيب عمودية قصيرة بين صفيحتين، يغلي المحلول داخلها ويتكثف البخار خارجها. الفقاعات ترفع المحلول في الأنابيب، ويعود نازلاً عبر الأنبوب المركزي الواسع، فيدور المحلول دوراناً طبيعياً.',n:''},
+ vapour:{ar:'خطوط البخار',en:'Vapour lines',d:'بخار كل تأثير يذهب إلى غلاف التأثير التالي ويتكثف فيه، فيعطيه حرارته الكامنة. هذا هو سر توفير البخار: الكيلوغرام الواحد من البخار الحي يبخّر نحو 2 kg من الماء في ثلاثة تأثيرات.',n:'الاقتصاد = ΣV / S'},
+ liquor:{ar:'خطوط نقل المحلول',en:'Liquor transfer lines',d:'تغذية أمامية: المحلول ينتقل من التأثير الأول إلى الثاني ثم الثالث بفعل فرق الضغط دون مضخات، ويزداد تركيزه ويغمق لونه في كل مرحلة.',n:'L_i = L_{i−1} − V_i'},
+ traps:{ar:'مصائد المتكاثف',en:'Steam traps and condensate',d:'تُخرج الماء المتكاثف من كل غلاف دون أن يفلت البخار معه. المتكاثف الأول نقي يعود إلى المرجل.',n:''},
+ condenser:{ar:'المكثف البارومتري والقاذف',en:'Barometric condenser and ejector',d:'يكثف بخار التأثير الأخير بخلطه مع ماء التبريد، والقاذف البخاري فوقه يسحب الغازات غير القابلة للتكثف، فيبقى التأثير الأخير تحت تفريغ. أنبوبه الطويل (نحو 10 m) يُخرج الماء دون أن يدخل الهواء.',n:'P₃ تحدد أدنى حرارة غليان'},
+ feed:{ar:'التغذية والمنتج',en:'Feed and product',d:'مضخة التغذية تدخل المحلول المخفف إلى التأثير الأول، ومضخة المنتج تسحب المحلول المركز من التأثير الأخير لأنه تحت تفريغ.',n:'F·x_F = L₃·x_P'},
+ instr:{ar:'مقاييس الضغط والحرارة',en:'Pressure and temperature gauges',d:'على كل تأثير مقياس ضغط لفراغ البخار ومقياس حرارة للمحلول. الضغط ينخفض والحرارة تنخفض من تأثير إلى الذي يليه.',n:''}
+};
+const INFO_EN={
+ steam:{ar:'Live steam supply',en:'البخار الحي',d:'Saturated steam from the boiler enters only the first effect’s shell; it is the only purchased energy. The control valve sets its pressure and hence its condensing temperature T_s.',n:'q₁ = S·λ_s'},
+ e1:{ar:'First effect',en:'التأثير الأول',d:'',n:''},e2:{ar:'Second effect',en:'التأثير الثاني',d:'',n:''},e3:{ar:'Third effect',en:'التأثير الثالث',d:'',n:''},
+ calandria:{ar:'Calandria (tube bundle)',en:'الكالاندريا',d:'Short vertical tubes between two tubesheets: the solution boils inside and steam condenses outside. Bubbles lift the liquid up the tubes and it returns down the wide central downcomer, giving natural circulation.',n:''},
+ vapour:{ar:'Vapour lines',en:'خطوط البخار',d:'Each effect’s vapour goes to the next effect’s shell and condenses there, giving up its latent heat. This is where the steam saving comes from: one kilogram of live steam evaporates about 2 kg of water in three effects.',n:'Economy = ΣV / S'},
+ liquor:{ar:'Liquor transfer lines',en:'خطوط نقل المحلول',d:'Forward feed: the solution passes from the first to the second and third effects by pressure difference, without pumps, becoming more concentrated and darker at each stage.',n:'L_i = L_{i−1} − V_i'},
+ traps:{ar:'Steam traps and condensate',en:'مصائد المتكاثف',d:'They release condensate from each shell without letting steam escape. The first-effect condensate is clean and returns to the boiler.',n:''},
+ condenser:{ar:'Barometric condenser and ejector',en:'المكثف البارومتري',d:'Condenses the last effect’s vapour by mixing it with cooling water; the steam ejector on top removes non-condensable gases, keeping the last effect under vacuum. Its long tail pipe (about 10 m) drains the water without letting air in.',n:'P₃ sets the lowest boiling temperature'},
+ feed:{ar:'Feed and product',en:'التغذية والمنتج',d:'The feed pump sends dilute solution to the first effect; the product pump draws concentrated solution from the last effect, which is under vacuum.',n:'F·x_F = L₃·x_P'},
+ instr:{ar:'Pressure and temperature gauges',en:'مقاييس الضغط والحرارة',d:'Each effect has a pressure gauge on the vapour space and a thermometer in the liquid. Pressure and temperature fall from each effect to the next.',n:''}
+};
+let INFO=INFO_AR;
+const ORDER=['steam','e1','e2','e3','calandria','vapour','liquor','traps','condenser','feed','instr'];const NUM={};ORDER.forEach((k,i)=>NUM[k]=i+1);const INTERNAL=['calandria'];
+const T={
+ ar:{title:'محاكي المبخر ثلاثي التأثير',h1:'المبخر ثلاثي التأثير',sub:'Triple-Effect Forward-Feed Evaporator',
+  opTs:'حرارة البخار الحي T_s',opP3:'ضغط التأثير الأخير P₃',opF:'معدل التغذية F',opXF:'تركيز التغذية x_F',opXP:'تركيز المنتج x_P',opTF:'حرارة التغذية T_F',
+  dS:'استهلاك البخار الحي S',dE:'اقتصاد البخار ΣV/S',dA:'مساحة كل تأثير (متساوية) ، المجموع',dV:'التبخير V₁ ، V₂ ، V₃',dX:'التركيز x₁ ، x₂ ، x₃',dT:'حرارة الغليان T₁ ، T₂ ، T₃',dP:'الضغط P₁ ، P₂ ، P₃',dB:'ارتفاع درجة الغليان BPR',dS1:'مبخر أحادي للمهمة نفسها: البخار ، الاقتصاد ، المساحة',
+  chH:'درجات الحرارة عبر التأثيرات: البخار المتكثف والمحلول المغلي',ch2:'أثر عدد التأثيرات: الاقتصاد (يسار) والمساحة الكلية (يمين)',
+  fine:'تغذية أمامية بمساحات متساوية (طريقة Geankoplis، المثال 8.5-1): توزيع ΔT مبدئياً بنسبة 1/U، ثم موازنات الكتلة والطاقة لكل تأثير وحلها مع S، ثم تعديل ΔT_i بنسبة A_i/A_متوسط حتى تتساوى المساحات. محلول سكري: BPR = 1.78x + 6.22x² °C ، c_p = 4.19 − 2.35x kJ/kg·K. البخار: λ ≈ 2501 − 2.44T ، H_g ≈ 2501 + 1.82T kJ/kg ، وضغط التشبع من معادلة أنطوان. U = 3123 ، 1987 ، 1136 W/m²·K. عند القيم الافتراضية: A ≈ 105 m² و S ≈ 8960 kg/h (في المرجع 104.9 m² و 8936 kg/h).',
+  credit:'إعداد: <b>د. ضياء جمعة جاسم</b> (Dheyaa J. Jasim)<br>قسم الهندسة الكيمياوية والصناعات النفطية، كلية العمارة الجامعة<br>© 2026 د. ضياء جمعة جاسم. جميع الحقوق محفوظة. للاستخدام التعليمي؛ لا يجوز إعادة النشر أو البيع دون إذن كتابي.',
+  who:'إعداد: د. ضياء جمعة جاسم',whoAlt:'Dr. Dheyaa J. Jasim',org:'قسم الهندسة الكيمياوية والصناعات النفطية، كلية العمارة الجامعة',
+  lgF:'التغذية',lgL1:'المحلول في التأثير 1',lgL2:'المحلول في التأثير 2',lgL3:'المحلول في التأثير 3 (المنتج)',lgS:'البخار الحي',lgV:'بخار الماء المتصاعد',lgC:'المتكاثف',lgW:'ماء التبريد',
+  hint:'اسحب بالزر الأيسر للتدوير وبالزر الأيمن لتحريك الجهاز، واستخدم العجلة للتكبير والتصغير، وانقر على أي جزء لمعرفة وظيفته.',
+  dRot:'تدوير',dPan:'تحريك',full:'كامل',cut:'مقطع',ghost:'شفاف',iso:'منظور',front:'أمامي',top:'علوي',other:'English',otherLang:'en',
+  pick:'<h2>كيف يوفّر المبخر متعدد التأثيرات البخار؟</h2><p>اضغط «تشغيل المبخر»: البخار الحي (أحمر) يسخّن التأثير الأول فقط. بخار الماء المتصاعد منه (سماوي) يذهب ليسخّن التأثير الثاني ويتكثف (أزرق)، وبخار الثاني يسخّن الثالث. ولأن الضغط ينخفض من تأثير إلى آخر، يغلي المحلول في كل تأثير عند حرارة أقل.</p><p>المحلول أصفر فاتح في التغذية، ثم أصفر في التأثير الأول، وبرتقالي في الثاني، وبني في الثالث مع زيادة تركيزه. وماء التبريد في المكثف أخضر.</p>',
+  focus:'تقريب الكاميرا من الجزء',clear:'إلغاء التحديد',explode:'تفكيك الأجزاء',assemble:'تجميع الأجزاء',run:'تشغيل المبخر',stopRun:'إيقاف المبخر',
+  wBad:'⚠ لا يوجد فرق حرارة كافٍ: ارفع حرارة البخار أو اخفض ضغط التأثير الأخير',wLow:'⚠ فرق الحرارة المتاح صغير ({t} °C): المساحة المطلوبة كبيرة جداً',wOk:'✓ تصميم ممكن: كل كيلوغرام من البخار الحي يبخّر {e} kg من الماء',wX:'⚠ تركيز المنتج يجب أن يكون أعلى من تركيز التغذية',
+  labels:'الملصقات: ',LT:{num:'أرقام',name:'أسماء',off:'مخفية'}},
+ en:{title:'Triple-Effect Evaporator Simulator',h1:'Triple-Effect Evaporator',sub:'المبخر ثلاثي التأثير بتغذية أمامية',
+  opTs:'Live steam temperature T_s',opP3:'Last-effect pressure P₃',opF:'Feed rate F',opXF:'Feed solids x_F',opXP:'Product solids x_P',opTF:'Feed temperature T_F',
+  dS:'Live steam consumption S',dE:'Steam economy ΣV/S',dA:'Area of each effect (equal), total',dV:'Evaporation V₁, V₂, V₃',dX:'Concentration x₁, x₂, x₃',dT:'Boiling temperature T₁, T₂, T₃',dP:'Pressure P₁, P₂, P₃',dB:'Boiling point rise BPR',dS1:'Single effect for the same duty: steam, economy, area',
+  chH:'Temperatures across the effects: condensing steam and boiling liquor',ch2:'Effect of the number of effects: economy (left) and total area (right)',
+  fine:'Forward feed with equal areas (Geankoplis method, Example 8.5-1): ΔT first split in proportion to 1/U, then mass and energy balances for every effect solved together with S, then ΔT_i adjusted by A_i/A_mean until the areas agree. Sugar solution: BPR = 1.78x + 6.22x² °C, c_p = 4.19 − 2.35x kJ/kg·K. Steam: λ ≈ 2501 − 2.44T, H_g ≈ 2501 + 1.82T kJ/kg, saturation pressure from the Antoine equation. U = 3123, 1987, 1136 W/m²·K. At the default values: A ≈ 105 m² and S ≈ 8960 kg/h (reference: 104.9 m² and 8936 kg/h).',
+  credit:'Prepared by <b>Dr. Dheyaa J. Jasim</b><br>Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College<br>© 2026 Dr. Dheyaa J. Jasim. All rights reserved. For educational use; no republication or sale without written permission.',
+  who:'Prepared by Dr. Dheyaa J. Jasim',whoAlt:'د. ضياء جمعة جاسم',org:'Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College',
+  lgF:'Feed',lgL1:'Liquor, effect 1',lgL2:'Liquor, effect 2',lgL3:'Liquor, effect 3 (product)',lgS:'Live steam',lgV:'Water vapour',lgC:'Condensate',lgW:'Cooling water',
+  hint:'Left-drag to rotate, right-drag to move the unit, scroll to zoom in and out, and click any part to see its function.',
+  dRot:'Rotate',dPan:'Move',full:'Whole',cut:'Cutaway',ghost:'X-ray',iso:'Perspective',front:'Front',top:'Top',other:'العربية',otherLang:'ar',
+  pick:'<h2>How does a multiple-effect evaporator save steam?</h2><p>Press “Start evaporator”: live steam (red) heats only the first effect. The water vapour it boils off (cyan) goes to heat the second effect and condenses (blue), and the second effect’s vapour heats the third. Because pressure falls from effect to effect, the liquor boils at a lower temperature in each.</p><p>The liquor is pale yellow in the feed, yellow in the first effect, orange in the second and brown in the third as it concentrates. Cooling water in the condenser is green.</p>',
+  focus:'Zoom to this part',clear:'Clear selection',explode:'Explode parts',assemble:'Assemble parts',run:'Start evaporator',stopRun:'Stop evaporator',
+  wBad:'⚠ Not enough temperature difference: raise the steam temperature or lower the last-effect pressure',wLow:'⚠ Small available temperature difference ({t} °C): the area needed is very large',wOk:'✓ Feasible design: each kilogram of live steam evaporates {e} kg of water',wX:'⚠ Product solids must be higher than feed solids',
+  labels:'Labels: ',LT:{num:'numbers',name:'names',off:'hidden'}}
+};
+
+/* ================= renderer ================= */
+const V3=THREE.Vector3,V2=THREE.Vector2,UP=new V3(0,1,0);
+const C=h=>new THREE.Color(h).convertSRGBToLinear();
+const EX=[-2.7,0,2.7],RC=.55,RV=.62,YB=.8,YT=1.8,YL=2.05,YTOP=3.4,ZB=-1.0,XC=5.4;
+const stage=document.getElementById('stage'),canvas=document.getElementById('c');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.shadowMap.enabled=true;renderer.localClippingEnabled=true;renderer.setClearColor(0,0);
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(36,1,.05,120);
+const HOME={pos:new V3(2.2,4.6,11.6),tgt:new V3(1.2,1.8,0)};camera.position.copy(HOME.pos);
+const controls=new THREE.OrbitControls(camera,canvas);
+controls.target.copy(HOME.tgt);controls.enableDamping=true;controls.dampingFactor=.08;controls.minDistance=1;controls.maxDistance=30;
+controls.enablePan=true;controls.screenSpacePanning=true;controls.panSpeed=1.1;
+controls.mouseButtons={LEFT:THREE.MOUSE.ROTATE,MIDDLE:THREE.MOUSE.DOLLY,RIGHT:THREE.MOUSE.PAN};
+controls.touches={ONE:THREE.TOUCH.ROTATE,TWO:THREE.TOUCH.DOLLY_PAN};
+canvas.addEventListener('contextmenu',e=>e.preventDefault());controls.update();
+(function(){const pm=new THREE.PMREMGenerator(renderer),es=new THREE.Scene();
+ const g=new THREE.SphereGeometry(20,48,24),pos=g.attributes.position,cols=[];
+ const lo=new THREE.Color(0x4a525a),mid=new THREE.Color(0xb8c2ca),hi=new THREE.Color(0xf2f6f9);
+ for(let i=0;i<pos.count;i++){const y=pos.getY(i)/20;const c=y<0?lo.clone().lerp(mid,y+1):mid.clone().lerp(hi,y);cols.push(c.r,c.g,c.b);}
+ g.setAttribute('color',new THREE.Float32BufferAttribute(cols,3));es.add(new THREE.Mesh(g,new THREE.MeshBasicMaterial({side:THREE.BackSide,vertexColors:true})));
+ const pl=(w,h,p,k)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(k,k,k),side:THREE.DoubleSide}));m.position.copy(p);m.lookAt(0,0,0);es.add(m);};
+ pl(14,4,new V3(0,14,6),3.2);pl(6,10,new V3(-15,4,-4),2.2);pl(6,10,new V3(15,5,2),1.6);
+ scene.environment=pm.fromScene(es,.04).texture;pm.dispose();})();
+scene.add(new THREE.HemisphereLight(0xeef3f7,0x3a4550,.55));
+const sun=new THREE.DirectionalLight(0xffffff,1.2);sun.position.set(8,16,10);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);
+Object.assign(sun.shadow.camera,{left:-8,right:8,top:11,bottom:-5,near:1,far:50});sun.shadow.camera.updateProjectionMatrix();sun.shadow.bias=-.0004;sun.shadow.normalBias=.03;scene.add(sun);
+const fill=new THREE.DirectionalLight(0xdfe8ff,.35);fill.position.set(-8,5,-6);scene.add(fill);
+
+
+const std=(hex,met,rough,extra)=>new THREE.MeshStandardMaterial(Object.assign({color:C(hex),metalness:met,roughness:rough,side:THREE.DoubleSide},extra||{}));
+const M={steel:std(0xd4dbe0,.9,.25),steelDark:std(0x8e989f,.85,.36),brushed:std(0xb9c2c9,.85,.4),
+ paint:std(0x2f5f86,.25,.48),paintGrey:std(0x5b6873,.35,.55),yellowPaint:std(0xd9a91c,.2,.5),black:std(0x2b3035,.3,.6),
+ red:std(0xb3362b,.2,.42),orange:std(0xc9772c,.2,.45),blue:std(0x2f7fe6,.2,.45),purple:std(0x7b2fbf,.2,.45),grey:std(0x9aa3aa,.2,.5),white:std(0xf3f3ee,0,.5),
+ ceramic:std(0xd8d2c6,0,.75),saddleC:std(0xeae6dc,0,.6),gasBand:std(0xff6a00,.2,.45),cyan:std(0x14c8f0,.2,.45),navy:std(0x1a2cb0,.2,.45),glass:std(0x9fd6ea,0,.05,{transparent:true,opacity:.42})};
+const meshTex=(function(){const cv=document.createElement('canvas');cv.width=cv.height=64;const x=cv.getContext('2d');x.fillStyle='#8f989f';x.fillRect(0,0,64,64);
+ x.strokeStyle='#d9dfe3';x.lineWidth=1.2;for(let i=-64;i<128;i+=5){x.beginPath();x.moveTo(i,0);x.lineTo(i+64,64);x.stroke();x.beginPath();x.moveTo(i,64);x.lineTo(i+64,0);x.stroke();}
+ const t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(6,6);t.encoding=THREE.sRGBEncoding;return t;})();
+M.mesh=new THREE.MeshStandardMaterial({map:meshTex,metalness:.6,roughness:.6,side:THREE.DoubleSide});
+
+function add(g,geo,mat,pos){const m=new THREE.Mesh(geo,mat);if(pos)m.position.copy(pos);g.add(m);return m;}
+function cylY(g,r,y0,y1,mat,x,z,seg,open){return add(g,new THREE.CylinderGeometry(r,r,y1-y0,seg||40,1,!!open),mat,new V3(x||0,(y0+y1)/2,z||0));}
+function pipe(g,p1,p2,r,mat,seg){const d=new V3().subVectors(p2,p1),L=d.length();const m=add(g,new THREE.CylinderGeometry(r,r,L,seg||24),mat);m.position.copy(p1).addScaledVector(d,.5);m.quaternion.setFromUnitVectors(UP,d.normalize());return m;}
+function ball(g,p,r,mat){return add(g,new THREE.SphereGeometry(r,24,16),mat,p);}
+function box(g,w,h,d,p,mat,ry){const m=add(g,new THREE.BoxGeometry(w,h,d),mat,p);if(ry)m.rotation.y=ry;return m;}
+function flange(g,p,dir,rd,n,mat){const f=new THREE.Group();f.position.copy(p);f.quaternion.setFromUnitVectors(UP,dir.clone().normalize());
+ add(f,new THREE.CylinderGeometry(rd,rd,.035,40),mat||M.steel);const bg=new THREE.CylinderGeometry(.01,.01,.07,8);
+ for(let i=0;i<n;i++){const a=(i+.5)/n*Math.PI*2;add(f,bg,M.steelDark,new V3(Math.cos(a)*rd*.8,0,Math.sin(a)*rd*.8));}g.add(f);return f;}
+const FLOWS=[];
+function line(g,pts,r,mat,colorFn,speed){for(let i=0;i<pts.length-1;i++)pipe(g,pts[i],pts[i+1],r,mat);for(let i=1;i<pts.length-1;i++)ball(g,pts[i],r,mat);if(colorFn)FLOWS.push({pts,colorFn,speed:speed||.9});}
+function band(g,p1,p2,r,mat){pipe(g,p1,p2,r,mat);}
+function arrow(g,p,dir,mat){const a=add(g,new THREE.ConeGeometry(.07,.16,20),mat,p);a.quaternion.setFromUnitVectors(UP,dir.clone().normalize());return a;}
+function valve(g,p,dir,r){ball(g,p,r*1.9,M.steel);const d=dir.clone().normalize();flange(g,p.clone().addScaledVector(d,r*2.2),d,r*2,6);flange(g,p.clone().addScaledVector(d,-r*2.2),d,r*2,6);
+ cylY(g,r*.35,p.y,p.y+r*4,M.steelDark,p.x,p.z,12);box(g,r*7,r*.5,r*.8,new V3(p.x,p.y+r*4,p.z),M.red);}
+function ctrlValve(g,p,dir,r){ball(g,p,r*1.9,M.steel);const d=dir.clone().normalize();flange(g,p.clone().addScaledVector(d,r*2.2),d,r*2,6);flange(g,p.clone().addScaledVector(d,-r*2.2),d,r*2,6);
+ const up=Math.abs(d.y)>.9?new V3(1,0,0):UP;const top=p.clone().addScaledVector(up,r*5);pipe(g,p,top,r*.4,M.steelDark,12);
+ const dm=add(g,new THREE.SphereGeometry(r*3,28,14,0,Math.PI*2,0,Math.PI/2),M.paint,top);dm.quaternion.setFromUnitVectors(UP,up);dm.scale.y=.55;}
+function pump(g,x,z,y,mat){box(g,.34,.06,.95,new V3(x,.03,z+.3),M.paintGrey);
+ const v=add(g,new THREE.CylinderGeometry(.17,.17,.13,32),mat,new V3(x,y,z));v.rotation.x=Math.PI/2;
+ pipe(g,new V3(x,y,z-.06),new V3(x,y,z-.2),.05,M.steel);flange(g,new V3(x,y,z-.2),new V3(0,0,1),.1,4);pipe(g,new V3(x,y+.1,z),new V3(x,y+.24,z),.045,M.steel);
+ const br=add(g,new THREE.CylinderGeometry(.07,.09,.18,20),M.paintGrey,new V3(x,y,z+.16));br.rotation.x=Math.PI/2;
+ const cp=add(g,new THREE.CylinderGeometry(.05,.05,.07,16),M.orange,new V3(x,y,z+.29));cp.rotation.x=Math.PI/2;
+ const mo=add(g,new THREE.CylinderGeometry(.14,.14,.4,28),mat,new V3(x,y,z+.53));mo.rotation.x=Math.PI/2;
+ const fc=add(g,new THREE.CylinderGeometry(.13,.14,.08,28),M.paintGrey,new V3(x,y,z+.76));fc.rotation.x=Math.PI/2;
+ box(g,.1,.1,.12,new V3(x,y+.17,z+.5),mat);[-1,1].forEach(s=>box(g,.05,y-.1,.3,new V3(x+s*.1,(y-.1)/2+.06,z+.5),M.paintGrey));box(g,.08,y-.12,.08,new V3(x,(y-.12)/2+.06,z),M.paintGrey);}
+function vesselProfile(r,hd,y0,y1){const pts=[],N=32;for(let i=0;i<=N;i++){const t=i/N*Math.PI/2;pts.push(new V2(Math.max(1e-4,r*Math.sin(t)),y0-hd*Math.cos(t)));}
+ pts.push(new V2(r,y1));for(let i=1;i<=N;i++){const t=i/N*Math.PI/2;pts.push(new V2(Math.max(1e-4,r*Math.cos(t)),y1+hd*Math.sin(t)));}return pts;}
+
+function cylX(g,r,x0,x1,mat,y,z,seg,open){const m=add(g,new THREE.CylinderGeometry(r,r,x1-x0,seg||40,1,!!open),mat,new V3((x0+x1)/2,y,z||0));m.rotation.z=Math.PI/2;return m;}
+function cylZ(g,r,z0,z1,mat,x,y,seg){const m=add(g,new THREE.CylinderGeometry(r,r,z1-z0,seg||24),mat,new V3(x,y,(z0+z1)/2));m.rotation.x=Math.PI/2;return m;}
+M.lagged=std(0xc9cfd3,.25,.6);M.liq=new THREE.MeshStandardMaterial({color:C(0xe8c060),roughness:.2,transparent:true,opacity:.55,depthWrite:false});
+const parts={};const root=new THREE.Group();scene.add(root);
+function part(key,anchor,plane){const g=new THREE.Group();root.add(g);parts[key]={key,group:g,anchor,plane,mats:[]};return g;}
+{const floor=new THREE.Mesh(new THREE.PlaneGeometry(60,60),new THREE.ShadowMaterial({opacity:.18}));floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;scene.add(floor);
+ const sl=new THREE.Mesh(new THREE.BoxGeometry(12.5,.08,3.2),std(0xa9aba8,0,.9));sl.position.set(1.2,.04,-.2);sl.receiveShadow=true;scene.add(sl);}
+const LIQ=[];
+/* ---------- the three effects: dished bottom and cone, calandria with tube bundle and central downcomer, vapour body, dome ---------- */
+EX.forEach((x,i)=>{const g=part('e'+(i+1),new V3(x+RV,YTOP-.3,.25),true);
+ [[.4,.4],[-.4,.4],[.4,-.4],[-.4,-.4]].forEach(([a,b])=>{box(g,.07,YB+.05,.07,new V3(x+a,(YB+.05)/2,b),M.paintGrey);box(g,.18,.02,.18,new V3(x+a,.09,b),M.paintGrey);});
+ add(g,new THREE.CylinderGeometry(RC,.12,.35,40,1,true),M.steel,new V3(x,YB-.175,0));cylY(g,.07,.42,YB-.35,M.steel,x,0,16);
+ cylY(g,RC,YB,YT,M.lagged,x,0,48,true);[YB,YT].forEach(y=>{cylY(g,RC+.05,y-.03,y+.03,M.steelDark,x,0,48);});
+ cylY(g,RV,YT+.03,YTOP,M.steel,x,0,48,true);add(g,new THREE.CylinderGeometry(RV,RC,.08,48,1,true),M.steel,new V3(x,YT+.07,0));
+ const dm=add(g,new THREE.SphereGeometry(RV,40,16,0,Math.PI*2,0,Math.PI/2),M.steel,new V3(x,YTOP,0));dm.scale.y=.4;
+ cylY(g,.14,YTOP+.2,YTOP+.42,M.steel,x,0,20);cylY(g,.19,YTOP+.4,YTOP+.45,M.steelDark,x,0,20);
+ const sg=add(g,new THREE.CylinderGeometry(.09,.09,.04,20),M.glass,new V3(x,YL+.35,RV+.01));sg.rotation.x=Math.PI/2;const sr=add(g,new THREE.TorusGeometry(.09,.015,8,20),M.steelDark,new V3(x,YL+.35,RV+.01));
+ const lq=add(g,new THREE.CircleGeometry(RV-.02,40),M.liq,new V3(x,YL,0));lq.rotation.x=-Math.PI/2;LIQ.push(lq);});
+{const g=part('calandria',new V3(EX[0]-.2,YB+.5,.4),true);
+ EX.forEach(x=>{const n=[];for(let r=.22;r<.5;r+=.075)for(let a=0;a<Math.PI*2;a+=.075/r*1.4)n.push([x+r*Math.cos(a),r*Math.sin(a)]);
+  const im=new THREE.InstancedMesh(new THREE.CylinderGeometry(.022,.022,YT-YB,8,1,true),M.brushed,n.length),mt=new THREE.Matrix4();n.forEach(([a,b],k)=>{mt.makeTranslation(a,(YB+YT)/2,b);im.setMatrixAt(k,mt);});g.add(im);
+  cylY(g,.15,YB,YT,M.brushed,x,0,32,true);const ts1=add(g,new THREE.RingGeometry(.15,RC,48),M.steelDark,new V3(x,YT,0));ts1.rotation.x=-Math.PI/2;const ts2=add(g,new THREE.RingGeometry(.15,RC,48),M.steelDark,new V3(x,YB,0));ts2.rotation.x=-Math.PI/2;});}
+/* ---------- piping (vapour routes behind the bodies) ---------- */
+const PATH={};
+{const g=part('vapour',new V3((EX[0]+EX[1])/2,YTOP+.85,ZB));
+ for(let i=0;i<3;i++){const x=EX[i],xn=i<2?EX[i+1]:XC,top=YTOP+.42;
+  const pts_=i<2?[new V3(x,top,0),new V3(x,top+.35,0),new V3(x,top+.35,ZB),new V3(xn,top+.35,ZB),new V3(xn,1.4,ZB),new V3(xn,1.4,-RC)]:[new V3(x,top,0),new V3(x,top+.35,0),new V3(XC-.9,top+.35,0),new V3(XC-.9,3.0,0),new V3(XC-.42,3.0,0)];
+  line(g,pts_,.1,M.lagged);pts_.slice(1,-1).forEach(p=>ball(g,p,.105,M.lagged));flange(g,pts_[pts_.length-1],i<2?new V3(0,0,1):new V3(1,0,0),.17,8);PATH['v'+i]=pts_;}}
+{const g=part('steam',new V3(EX[0]-1.6,1.9,ZB));const pts_=[new V3(-4.6,2.6,ZB),new V3(EX[0],2.6,ZB),new V3(EX[0],1.4,ZB),new V3(EX[0],1.4,-RC)];
+ line(g,pts_,.075,M.lagged);ball(g,pts_[1],.078,M.lagged);ball(g,pts_[2],.078,M.lagged);ctrlValve(g,new V3(-3.8,2.6,ZB),new V3(1,0,0),.075);band(g,new V3(-4.5,2.6,ZB),new V3(-4.35,2.6,ZB),.08,M.red);PATH.steam=pts_;
+ const gp=new V3(-3.4,2.6,ZB);pipe(g,gp,gp.clone().add(new V3(0,.2,0)),.012,M.steel);const gc=add(g,new THREE.CylinderGeometry(.08,.08,.03,24),M.black,gp.clone().add(new V3(0,.28,0)));gc.rotation.x=Math.PI/2;}
+{const g=part('liquor',new V3((EX[1]+EX[2])/2,.55,.5));
+ for(let i=0;i<2;i++){const x=EX[i],xn=EX[i+1];const pts_=[new V3(x,.42,0),new V3(x,.25,0),new V3(xn-.95,.25,0),new V3(xn-.95,YL-.1,0),new V3(xn-RV,YL-.1,0)];line(g,pts_,.05,M.steel);pts_.slice(1,-1).forEach(p=>ball(g,p,.052,M.steel));valve(g,new V3(xn-.95,1.0,0),UP,.05);PATH['l'+i]=pts_;}}
+{const g=part('feed',new V3(EX[0]-1.6,.7,.4));pump(g,-4.3,.35,.25,M.blue);const pf=[new V3(-4.3,.5,.35),new V3(-4.3,.5,0),new V3(-4.0,.5,0),new V3(-4.0,YL-.1,0),new V3(EX[0]-RV,YL-.1,0)];line(g,pf,.05,M.steel);pf.slice(1,-1).forEach(p=>ball(g,p,.052,M.steel));PATH.feed=pf;
+ cylY(g,.4,.1,1.1,M.steel,-5.0,.35,32,true);const ft=add(g,new THREE.CircleGeometry(.39,32),std(0xfff176,0,.3,{transparent:true,opacity:.75}),new V3(-5.0,.95,.35));ft.rotation.x=-Math.PI/2;pipe(g,new V3(-4.6,.3,.35),new V3(-4.45,.3,.35),.05,M.steel);
+ const pp=[new V3(EX[2],.42,0),new V3(EX[2],.25,0),new V3(EX[2]+.9,.25,0),new V3(EX[2]+.9,.25,1.0)];line(g,pp,.05,M.steel);PATH.prod=pp;pump(g,EX[2]+.9,1.2,.25,M.blue);
+ cylY(g,.35,.1,.9,M.steel,EX[2]+.9,1.9,32,true);const pt=add(g,new THREE.CircleGeometry(.34,32),std(0x8d4f1f,0,.3,{transparent:true,opacity:.85}),new V3(EX[2]+.9,.7,1.9));pt.rotation.x=-Math.PI/2;pipe(g,new V3(EX[2]+.9,.45,1.35),new V3(EX[2]+.9,.45,1.55),.05,M.steel);}
+{const g=part('traps',new V3(EX[1]+RC+.3,.55,-.5));const hdr=[];
+ EX.forEach((x,i)=>{const a=new V3(x+RC*.7,YB+.12,-RC*.7),b=new V3(x+RC*.7+.25,YB+.12,-RC*.7-.25);pipe(g,a,b,.03,M.steel);box(g,.12,.12,.12,b.clone().add(new V3(0,-.12,0)),M.paint);pipe(g,b.clone().add(new V3(0,-.18,0)),new V3(b.x,.2,b.z),.03,M.steel);hdr.push(new V3(b.x,.2,b.z));PATH['c'+i]=[new V3(x,YB+.3,-RC*.4),a,b,new V3(b.x,.2,b.z),new V3(XC+.6,.2,b.z)];});
+ pipe(g,hdr[0],new V3(XC+.6,.2,hdr[0].z),.035,M.steel);}
+{const g=part('condenser',new V3(XC+.5,4.4,.2));cylY(g,.42,1.6,4.2,M.steel,XC,0,40,true);const cd=add(g,new THREE.SphereGeometry(.42,32,12,0,Math.PI*2,0,Math.PI/2),M.steel,new V3(XC,4.2,0));cd.scale.y=.45;
+ add(g,new THREE.CylinderGeometry(.42,.12,.4,32,1,true),M.steel,new V3(XC,1.4,0));cylY(g,.1,.35,1.2,M.steel,XC,0,16);cylY(g,.45,.1,.6,M.steel,XC,0,32,true);
+ for(let k=0;k<4;k++){const y=2.2+k*.45,tr=add(g,new THREE.BoxGeometry(.6,.03,.5),M.steelDark,new V3(XC+(k%2?.08:-.08),y,0));}
+ line(g,[new V3(XC+1.2,3.7,0),new V3(XC+.42,3.7,0)],.07,M.steel);band(g,new V3(XC+1.1,3.7,0),new V3(XC+.95,3.7,0),.075,M.blue);
+ cylX(g,.05,XC,XC+.5,M.steel,4.45,0,12);add(g,new THREE.ConeGeometry(.08,.3,16),M.steel,new V3(XC+.6,4.45,0)).rotation.z=-Math.PI/2;cylY(g,.04,4.45,4.9,M.steel,XC+.25,0,10);
+ [[.3,.3],[-.3,.3],[.3,-.3],[-.3,-.3]].forEach(([a,b])=>box(g,.06,1.6,.06,new V3(XC+a,.8+.8,b),M.paintGrey));}
+{const g=part('instr',new V3(EX[1]+.2,YTOP+.1,RV+.3));
+ EX.forEach(x=>{const p=new V3(x+.35,YTOP-.25,RV-.12);pipe(g,p,p.clone().add(new V3(0,0,.25)),.012,M.steel);const c=add(g,new THREE.CylinderGeometry(.08,.08,.03,24),M.black,p.clone().add(new V3(0,0,.3)));c.rotation.x=Math.PI/2;
+  const f=add(g,new THREE.CylinderGeometry(.07,.07,.003,24),M.white,p.clone().add(new V3(0,0,.318)));f.rotation.x=Math.PI/2;
+  const q=new V3(x-.35,YL-.05,RV-.1);pipe(g,q,q.clone().add(new V3(0,0,.22)),.014,M.steel);cylZ(g,.03,q.z+.22,q.z+.3,M.paintGrey,q.x,q.y,12);});}
+const pickables=[];
+function finalize(){for(const key in parts){const pt=parts[key],cache=new Map();pt.group.traverse(o=>{if(!o.isMesh)return;if(!cache.has(o.material)){const c=o.material.clone();cache.set(o.material,c);pt.mats.push(c);}
+ o.material=cache.get(o.material);o.userData.key=key;o.castShadow=!o.material.transparent;o.receiveShadow=true;pickables.push(o);});}}
+finalize();
+
+/* ================= particles ================= */
+const BALL=(function(){const cv=document.createElement('canvas');cv.width=cv.height=64;const x=cv.getContext('2d');
+ const g=x.createRadialGradient(24,22,2,32,32,31);g.addColorStop(0,'#ffffff');g.addColorStop(.35,'#e6e6e6');g.addColorStop(.85,'#8a8a8a');g.addColorStop(1,'#5c5c5c');
+ x.fillStyle=g;x.beginPath();x.arc(32,32,30,0,Math.PI*2);x.fill();const t=new THREE.CanvasTexture(cv);t.encoding=THREE.sRGBEncoding;return t;})();
+const cutPlane=new THREE.Plane(new V3(0,0,-1),.001);
+function pts(n,size,clip){const pos=new Float32Array(n*3),col=new Float32Array(n*3),g=new THREE.BufferGeometry();
+ g.setAttribute('position',new THREE.BufferAttribute(pos,3));g.setAttribute('color',new THREE.BufferAttribute(col,3));
+ const p=new THREE.Points(g,new THREE.PointsMaterial({vertexColors:true,size,map:BALL,alphaTest:.5,depthWrite:true}));p.frustumCulled=false;p.userData.clip=clip;scene.add(p);return {p,pos,col,g};}
+/* one clear colour per kind of particle */
+const rnd=Math.random,tC=new THREE.Color(),CST=C(0xff1744),CVA=C(0x00d5ff),CCO=C(0x1a3cff),CCW=C(0x00c853);
+const LQC=[C(0xfff176),C(0xffc400),C(0xff8f00),C(0x8d4f1f)]; /* feed, liquor in effects 1, 2, 3 (= product) */
+const liqCol=x=>tC.copy(LQC[0]);
+function mkPath(p){const L=[0];for(let i=1;i<p.length;i++)L.push(L[i-1]+p[i].distanceTo(p[i-1]));return {p,L,T:L[L.length-1]};}
+function at(P,s,o){s=Math.min(Math.max(s,0),P.T);let k=1;while(k<P.L.length-1&&P.L[k]<s)k++;const a=P.p[k-1],b=P.p[k],u=(s-P.L[k-1])/(P.L[k]-P.L[k-1]||1);return o.set(a.x+(b.x-a.x)*u,a.y+(b.y-a.y)*u,a.z+(b.z-a.z)*u);}
+/* natural circulation inside each effect: up the tubes, across the top, down the central downcomer */
+const NCIR=2100,CP=pts(NCIR,.04,true),cD=[];for(let i=0;i<NCIR;i++)cD.push({e:i%3,u:rnd(),r:.2+rnd()*.28,a:rnd()*6.283,rd:rnd()*.11,sp:.8+rnd()*.4});
+function circPos(d,o){const x=EX[d.e],u=d.u;let y,r,a=d.a;
+ if(u<.45){y=YB+.05+(YT-YB+.15)*(u/.45);r=d.r;}else if(u<.55){const f=(u-.45)/.1;y=YT+.2;r=d.r+(d.rd-d.r)*f;}else if(u<.95){y=YT+.2-(YT-YB+.1)*((u-.55)/.4);r=d.rd;}else{const f=(u-.95)/.05;y=YB+.05;r=d.rd+(d.r-d.rd)*f;}
+ return o.set(x+r*Math.cos(a),y,r*Math.sin(a));}
+/* boiling: vapour bubbles leave the liquid surface and rise to the dome, then follow the vapour line to the next shell, where they condense */
+const NV=1800,VP=pts(NV,.042,false),vD=[];
+const VPA=[0,1,2].map(i=>mkPath(PATH['v'+i]));const CPA=[0,1,2].map(i=>mkPath(PATH['c'+i]));const SPA=mkPath(PATH.steam);
+function vNew(d,e){d.e=e;d.ph=0;d.s=0;const r=Math.sqrt(rnd())*(RV-.08),a=rnd()*6.283;d.x0=EX[e]+r*Math.cos(a);d.z0=r*Math.sin(a);d.y=YL;d.sp=.8+rnd()*.4;d.j=[(rnd()-.5)*.08,(rnd()-.5)*.08,(rnd()-.5)*.08];}
+for(let i=0;i<NV;i++){const d={};vNew(d,i%4===3?-1:i%3);d.ph=rnd()<.5?0:1;d.s=d.e===-1?rnd()*SPA.T:rnd()*2;d.y=YL+rnd()*1.3;vD.push(d);}
+/* liquor flowing between effects, feed and product */
+const NL=900,LP=pts(NL,.042,false),lD=[];const LPA=[mkPath(PATH.feed),mkPath(PATH.l0),mkPath(PATH.l1),mkPath(PATH.prod)];
+for(let i=0;i<NL;i++)lD.push({k:i%4,s:rnd()*LPA[i%4].T,j:[(rnd()-.5)*.05,(rnd()-.5)*.05,(rnd()-.5)*.05],sp:.8+rnd()*.4});
+/* condenser: cooling water cascading over the trays, mixing with the last vapour */
+const NW=700,WP=pts(NW,.036,true),wD=[];for(let i=0;i<NW;i++)wD.push({y:1.2+rnd()*2.5,x:(rnd()-.5)*.6,z:(rnd()-.5)*.5,sp:.7+rnd()*.6});
+const _o=new V3();
+function step(dt,go){const S=SOL,ok=!S.bad,vr=ok?S.V.map(v=>v/S.Vt*3):[1,1,1];
+ for(let i=0;i<NCIR;i++){const d=cD[i];if(go)d.u=(d.u+dt*.12*d.sp)%1;circPos(d,_o);CP.pos[i*3]=_o.x;CP.pos[i*3+1]=_o.y;CP.pos[i*3+2]=_o.z;const c=LQC[d.e+1];CP.col[i*3]=c.r;CP.col[i*3+1]=c.g;CP.col[i*3+2]=c.b;}
+ for(let i=0;i<NV;i++){const d=vD[i];let c=CVA;
+  if(!go){VP.pos[i*3+1]=-50;continue;}
+  if(d.e===-1){ /* live steam from the header into the first shell */ d.s+=dt*.9*d.sp;if(d.s<SPA.T){at(SPA,d.s,_o);_o.add(new V3(d.j[0],d.j[1],d.j[2]));c=CST;}
+   else{const f=d.s-SPA.T;if(f>1.2){d.s=0;}const k=0;_o.set(EX[0]+(d.j[0]*5),1.4-f*.45,-.2+d.j[2]*3);c=f>.3?CCO:CST;}}
+  else if(d.ph===0){d.y+=dt*.55*d.sp*vr[d.e];const top=YTOP+.3;_o.set(d.x0+(EX[d.e]-d.x0)*Math.min(1,(d.y-YL)/(top-YL))+d.j[0],d.y,d.z0*(1-Math.min(1,(d.y-YL)/(top-YL)))+d.j[2]);if(d.y>=top){d.ph=1;d.s=0;}}
+  else if(d.ph===1){d.s+=dt*1.1*d.sp*vr[d.e];const P=VPA[d.e];at(P,d.s,_o);_o.add(new V3(d.j[0],d.j[1],d.j[2]));if(d.s>=P.T){if(d.e<2){d.ph=2;d.s=0;}else{d.ph=3;d.s=0;}}}
+  else if(d.ph===2){ /* condensing in the next shell among the tubes, then out through the trap */ d.s+=dt*.5*d.sp;const n=d.e+1;
+   if(d.s<1){_o.set(EX[n]+d.j[0]*5,1.4-d.s*.5,-RC*.5+d.j[2]*4);c=d.s>.35?CCO:CVA;}else{const P=CPA[n];at(P,(d.s-1)*1.2,_o);c=CCO;if((d.s-1)*1.2>=P.T)vNew(d,d.e);}}
+  else{ /* last vapour into the barometric condenser */ d.s+=dt*.6*d.sp;_o.set(XC+d.j[0]*4,3.0-d.s*1.3,d.j[2]*4);c=d.s>.3?CCO:CVA;if(d.s>1.3)vNew(d,2);}
+  VP.pos[i*3]=_o.x;VP.pos[i*3+1]=_o.y;VP.pos[i*3+2]=_o.z;VP.col[i*3]=c.r;VP.col[i*3+1]=c.g;VP.col[i*3+2]=c.b;}
+ for(let i=0;i<NL;i++){const d=lD[i],P=LPA[d.k];if(go)d.s=(d.s+dt*.35*d.sp)%P.T;at(P,d.s,_o);_o.add(new V3(d.j[0],d.j[1],d.j[2]));const c=LQC[d.k];
+  LP.pos[i*3]=_o.x;LP.pos[i*3+1]=_o.y;LP.pos[i*3+2]=_o.z;LP.col[i*3]=c.r;LP.col[i*3+1]=c.g;LP.col[i*3+2]=c.b;}
+ for(let i=0;i<NW;i++){const d=wD[i];if(go){d.y-=dt*.7*d.sp;if(d.y<.3)d.y=3.7;}WP.pos[i*3]=XC+d.x+Math.sin(d.y*4+i)*.05;WP.pos[i*3+1]=go?d.y:-50;WP.pos[i*3+2]=d.z;WP.col[i*3]=CCW.r;WP.col[i*3+1]=CCW.g;WP.col[i*3+2]=CCW.b;}
+ [CP,VP,LP,WP].forEach(o=>{o.g.attributes.position.needsUpdate=true;o.g.attributes.color.needsUpdate=true;});
+ LIQ.forEach((m,i)=>{m.material.color.copy(LQC[i+1]);});}
+step(0,false);
+
+/* ================= modes ================= */
+let mode='cut',selected=null,fly=null,lang='ar',labelMode='num',exploded=false;
+const reduced=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+const GHOST=['e1','e2','e3','condenser'];
+function applyMode(){
+ for(const k in parts){const pt=parts[k];pt.mats.forEach(m=>{if(m.userData.o0===undefined){m.userData.o0=m.opacity;m.userData.t0=m.transparent;m.userData.dw=m.depthWrite;}
+  const gh=mode==='ghost'&&(GHOST.includes(k)||k==='vapour');m.transparent=gh?true:m.userData.t0;m.opacity=gh?.14:m.userData.o0;m.depthWrite=gh?false:m.userData.dw;
+  m.clippingPlanes=(mode==='cut'&&pt.plane)?[cutPlane]:(mode==='cut'&&k==='condenser'?[cutPlane]:[]);m.clipShadows=true;m.needsUpdate=true;});}
+ [CP,WP].forEach(o=>{o.p.material.clippingPlanes=[];o.p.visible=mode!=='full';o.p.material.needsUpdate=true;});
+ document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===mode));}
+applyMode();
+function setHighlight(k,on){if(!k)return;parts[k].mats.forEach(m=>{if(m.emissive){m.emissive=on?C(0xd9742a):new THREE.Color(0);m.emissiveIntensity=on?.45:0;}});}
+
+/* ================= UI ================= */
+const L=()=>T[lang];
+const labelsEl=document.getElementById('labels'),cardEl=document.getElementById('card'),labelEls={};
+ORDER.forEach(k=>{const b=document.createElement('button');b.className='lbl';b.type='button';b.innerHTML=`<span class="num">${NUM[k]}</span><span class="t"></span>`;
+ b.onclick=e=>{e.stopPropagation();select(k);};labelsEl.appendChild(b);labelEls[k]=b;});
+function info(k){const b=INFO[k];if(/^e[123]$/.test(k)){const e=effInfo(+k[1]-1,lang);return {ar:b.ar,en:b.en,d:e.d,n:e.n};}return b;}
+function updateLabels(){ORDER.forEach(k=>{labelEls[k].querySelector('.t').textContent=INFO[k].ar;labelEls[k].setAttribute('aria-label',INFO[k].ar);});}
+function renderCard(){if(!selected){cardEl.innerHTML=L().pick;return;}const i=info(selected);
+ cardEl.innerHTML=`<div class="head"><span class="num">${NUM[selected]}</span><div><h2>${i.ar}</h2><p class="en">${i.en}</p></div></div><p>${i.d}</p>${i.n?`<p class="eq">${i.n}</p>`:''}<div class="act"><button id="bFocus">${L().focus}</button><button id="bClear">${L().clear}</button></div>`;
+ document.getElementById('bFocus').onclick=()=>focusPart(selected);document.getElementById('bClear').onclick=()=>select(null);}
+function select(k){if(selected){setHighlight(selected,false);labelEls[selected].classList.remove('on');}selected=(k===selected)?null:k;
+ if(selected){setHighlight(selected,true);labelEls[selected].classList.add('on');if(INTERNAL.includes(selected)&&mode==='full'){mode='cut';applyMode();}}renderCard();}
+function flyTo(p_,tgt){fly={p0:camera.position.clone(),t0:controls.target.clone(),p1:p_,t1:tgt,e:0,d:reduced?.001:.9};}
+function focusPart(k){const b=new THREE.Box3().setFromObject(parts[k].group),c=b.getCenter(new V3()),s=b.getSize(new V3()).length(),dir=camera.position.clone().sub(controls.target).normalize();flyTo(c.clone().addScaledVector(dir,Math.max(2.4,s*1.25)),c);}
+function view(v){const t=HOME.tgt.clone();const off=v==='front'?new V3(0,.6,12):v==='top'?new V3(0,13,.1):HOME.pos.clone().sub(HOME.tgt);flyTo(t.clone().add(off),t);}
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>view(b.dataset.view));
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;applyMode();});
+function setDrag(m){const pan=m==='pan';controls.mouseButtons.LEFT=pan?THREE.MOUSE.PAN:THREE.MOUSE.ROTATE;controls.mouseButtons.RIGHT=pan?THREE.MOUSE.ROTATE:THREE.MOUSE.PAN;
+ controls.touches.ONE=pan?THREE.TOUCH.PAN:THREE.TOUCH.ROTATE;canvas.style.cursor=pan?'move':'';document.querySelectorAll('[data-drag]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.drag===m));}
+document.querySelectorAll('[data-drag]').forEach(b=>b.onclick=()=>setDrag(b.dataset.drag));
+const bExplode=document.getElementById('bExplode'),bLabels=document.getElementById('bLabels'),bRun=document.getElementById('bRun'),fwarn=document.getElementById('fwarn');
+if(bExplode)bExplode.style.display='none';
+function syncRun(){bRun.setAttribute('aria-pressed',running);bRun.textContent=running?L().stopRun:L().run;}
+bRun.onclick=()=>{running=!running;syncRun();if(running&&mode==='full'){mode='cut';applyMode();}};
+const LM=['num','name','off'];function syncLabelsBtn(){bLabels.textContent=L().labels+L().LT[labelMode];}
+bLabels.onclick=()=>{labelMode=LM[(LM.indexOf(labelMode)+1)%3];syncLabelsBtn();labelsEl.classList.toggle('names',labelMode==='name');labelsEl.classList.toggle('off',labelMode==='off');};
+
+const E_=id=>document.getElementById(id),tsEl=E_('ts'),p3El=E_('p3'),ffEl=E_('ff'),xfEl=E_('xf'),xpEl=E_('xp'),tfEl=E_('tf'),chartEl=E_('chart'),chart2El=E_('chart2');
+function charts(){const S=SOL;if(S.bad){chartEl.innerHTML='';chart2El.innerHTML='';return;}
+ const W=300,H=160,l=32,r=8,t=8,b=30,iw=W-l-r,ih=H-t-b,tmin=Math.floor((S.T3s-5)/10)*10,tmax=Math.ceil((TS+3)/10)*10,Y=v=>t+(1-(v-tmin)/(tmax-tmin))*ih,cw=iw/3;
+ let g='';for(let i=0;i<3;i++){const x0=l+i*cw+8,bw=(cw-20)/2;
+  g+=`<rect x="${x0}" y="${Y(S.Tc[i])}" width="${bw}" height="${t+ih-Y(S.Tc[i])}" fill="${i?'#00d5ff':'#ff1744'}" stroke="#555" stroke-width=".5"/><rect x="${x0+bw+2}" y="${Y(S.T[i])}" width="${bw}" height="${t+ih-Y(S.T[i])}" fill="${['#ffc400','#ff8f00','#8d4f1f'][i]}" stroke="#555" stroke-width=".5"/>
+  <text x="${x0+bw/2}" y="${Y(S.Tc[i])-3}" text-anchor="middle">${S.Tc[i].toFixed(0)}</text><text x="${x0+bw*1.5+2}" y="${Y(S.T[i])-3}" text-anchor="middle">${S.T[i].toFixed(0)}</text>
+  <text x="${l+i*cw+cw/2}" y="${H-16}" text-anchor="middle">${lang==='ar'?EFF_AR[i]:EFF_EN[i]}</text><text x="${l+i*cw+cw/2}" y="${H-4}" text-anchor="middle">ΔT ${S.dT[i].toFixed(1)}</text>`;}
+ chartEl.innerHTML=`<svg viewBox="0 0 ${W} ${H}" dir="ltr" role="img" aria-label="${L().chH}" style="color:var(--ink)">${[tmin,(tmin+tmax)/2,tmax].map(v=>`<line x1="${l}" x2="${W-r}" y1="${Y(v)}" y2="${Y(v)}" stroke="currentColor" stroke-opacity=".12"/><text x="${l-4}" y="${Y(v)+3}" text-anchor="end">${Math.round(v)}</text>`).join('')}${g}<text x="${l}" y="${t+8}">°C</text></svg>`;
+ const W2=300,H2=150,l2=34,r2=34,t2=10,ih2=H2-t2-28,iw2=W2-l2-r2,X2=n=>l2+(n-1)/4*iw2,ok=S.byN.filter(q=>!q.bad),emax=Math.ceil(Math.max(...ok.map(q=>q.econ))),amax=Math.max(...ok.map(q=>q.Am*q.N))*1.1;
+ const Ye=v=>t2+(1-v/emax)*ih2,Ya=v=>t2+(1-v/amax)*ih2;let pe='',pa='';S.byN.forEach((q,i)=>{if(q.bad)return;pe+=(pe?'L':'M')+X2(i+1)+' '+Ye(q.econ);pa+=(pa?'L':'M')+X2(i+1)+' '+Ya(q.Am*q.N);});
+ chart2El.innerHTML=`<svg viewBox="0 0 ${W2} ${H2}" dir="ltr" role="img" aria-label="${L().ch2}" style="color:var(--ink)"><line x1="${l2}" x2="${W2-r2}" y1="${t2+ih2}" y2="${t2+ih2}" stroke="currentColor" stroke-opacity=".3"/>
+ <path d="${pe}" fill="none" stroke="#1f8a4c" stroke-width="2.6"/><path d="${pa}" fill="none" stroke="#c8352e" stroke-width="2.6" stroke-dasharray="6 3"/>
+ ${S.byN.map((q,i)=>q.bad?'':`<circle cx="${X2(i+1)}" cy="${Ye(q.econ)}" r="${i===2?5:3}" fill="#1f8a4c"/><circle cx="${X2(i+1)}" cy="${Ya(q.Am*q.N)}" r="${i===2?5:3}" fill="#c8352e"/><text x="${X2(i+1)}" y="${H2-14}" text-anchor="middle">${i+1}</text>`).join('')}
+ <text x="${l2-4}" y="${Ye(emax)+3}" text-anchor="end" style="fill:#1f8a4c">${emax}</text><text x="${W2-r2+4}" y="${Ya(amax/1.1)+3}" style="fill:#c8352e">${Math.round(amax/1.1)} m²</text>
+ <text x="${l2+iw2/2}" y="${H2-2}" text-anchor="middle">N</text></svg>`;}
+const fmt=v=>Math.round(v).toLocaleString('en-US');
+function readouts(){TS=+tsEl.value;P3=+p3El.value;FF=+ffEl.value;XF=+xfEl.value/100;XP=+xpEl.value/100;TF=+tfEl.value;const s=(id,t)=>E_(id).textContent=t;
+ s('tsOut',TS.toFixed(1)+' °C ('+Psat(TS).toFixed(0)+' kPa)');s('p3Out',P3.toFixed(1)+' kPa ('+Tsat(P3).toFixed(1)+' °C)');s('ffOut',fmt(FF)+' kg/h');s('xfOut',(XF*100).toFixed(1)+' %');s('xpOut',Math.round(XP*100)+' %');s('tfOut',TF.toFixed(1)+' °C');
+ if(XP<=XF+.01){SOL={bad:true,avail:0,byN:[]};['oS','oE','oA','oV','oX','oT','oP','oB','oS1'].forEach(id=>s(id,'–'));fwarn.hidden=false;fwarn.className='fwarn';fwarn.textContent=L().wX;charts();return;}
+ solve();const S=SOL;
+ if(S.bad){['oS','oE','oA','oV','oX','oT','oP','oB','oS1'].forEach(id=>s(id,'–'));fwarn.hidden=false;fwarn.className='fwarn';fwarn.textContent=L().wBad;charts();if(selected)renderCard();return;}
+ s('oS',fmt(S.S)+' kg/h');s('oE',S.econ.toFixed(2));s('oA',S.Am.toFixed(1)+' m² , '+(S.Am*3).toFixed(0)+' m²');s('oV',S.V.map(fmt).join(' , ')+' kg/h');
+ s('oX',S.x.map(v=>(v*100).toFixed(1)).join(' , ')+' %');s('oT',S.T.map(v=>v.toFixed(1)).join(' , ')+' °C');s('oP',S.T.map((v,i)=>Psat(v-S.b[i]).toFixed(1)).join(' , ')+' kPa');s('oB',S.b.map(v=>v.toFixed(2)).join(' , ')+' °C');
+ const o=S.one;s('oS1',o.bad?'–':fmt(o.S)+' kg/h , '+o.econ.toFixed(2)+' , '+o.Am.toFixed(0)+' m²');
+ const w=S.avail<20?['mid',L().wLow.replace('{t}',S.avail.toFixed(1))]:['ok',L().wOk.replace('{e}',S.econ.toFixed(2))];fwarn.hidden=false;fwarn.className='fwarn '+w[0];fwarn.textContent=w[1];
+ charts();if(selected)renderCard();}
+[tsEl,p3El,ffEl,xfEl,xpEl,tfEl].forEach(e=>e.oninput=readouts);
+
+function setLang(l){lang=l;INFO=l==='ar'?INFO_AR:INFO_EN;document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';document.title=L().title;
+ document.querySelectorAll('[data-t]').forEach(el=>{el.innerHTML=L()[el.dataset.t];});
+ document.querySelectorAll('[data-lang-toggle]').forEach(b=>{b.textContent=L().other;b.lang=L().otherLang;});
+ updateLabels();renderCard();syncRun();syncLabelsBtn();readouts();
+ try{localStorage.setItem('evap-lang',l);}catch(e){}requestAnimationFrame(resize);}
+document.querySelectorAll('[data-lang-toggle]').forEach(b=>b.onclick=()=>setLang(lang==='ar'?'en':'ar'));
+
+const ray=new THREE.Raycaster(),mouse=new V2();let downXY=null;
+canvas.addEventListener('pointerdown',e=>{downXY=[e.clientX,e.clientY];});
+canvas.addEventListener('pointerup',e=>{if(!downXY)return;const mv=Math.hypot(e.clientX-downXY[0],e.clientY-downXY[1]);downXY=null;if(mv>6)return;
+ const r=canvas.getBoundingClientRect();mouse.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(mouse,camera);
+ for(const h of ray.intersectObjects(pickables,false)){const k=h.object.userData.key,pt=parts[k];if(mode==='ghost'&&GHOST.includes(k))continue;if(mode==='cut'&&pt.plane&&cutPlane.distanceToPoint(h.point)<0)continue;if(k!==selected)select(k);return;}
+ if(selected)select(null);});
+
+function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+{const ro=new ResizeObserver(resize);ro.observe(stage);ro.observe(canvas);}resize();
+try{const q=new URLSearchParams(location.search).get('lang'),sv=localStorage.getItem('evap-lang');if(q==='en'||q==='ar')lang=q;else if(sv==='en'||sv==='ar')lang=sv;}catch(e){}
+setLang(lang);
+
+const clock=new THREE.Clock(),tmp=new V3();const ease=u=>u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;
+function frame(){const dt=Math.min(clock.getDelta(),.05);
+ if(fly){fly.e+=dt;const u=ease(Math.min(1,fly.e/fly.d));camera.position.lerpVectors(fly.p0,fly.p1,u);controls.target.lerpVectors(fly.t0,fly.t1,u);if(fly.e>=fly.d)fly=null;}
+ controls.update();step(dt,running);
+ renderer.render(scene,camera);
+ const cw=canvas.clientWidth,ch=canvas.clientHeight;
+ for(const k of ORDER){const el=labelEls[k],pt=parts[k];let show=true;if(INTERNAL.includes(k)&&mode==='full'&&k!==selected)show=false;
+  if(show){tmp.copy(pt.anchor);tmp.project(camera);if(tmp.z>1||tmp.z<-1)show=false;}
+  if(!show){el.style.visibility='hidden';continue;}el.style.visibility='visible';el.style.transform=`translate(${(tmp.x*.5+.5)*cw}px,${(-tmp.y*.5+.5)*ch}px) translate(-12px,-50%)`;}
+ requestAnimationFrame(frame);}
+/* ================= presenter: narrated guided tour (Arabic / English) ================= */
+(function(){
+const CFG={btn:"bRun",isOn:()=>running,tour:[[null, "السَّلامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ. أَنا الدُّكْتورْ ضِياءْ جُمْعَة جاسِمْ، تَدْريسِيٌّ في قِسْمِ الهَنْدَسَةِ الكيمْياوِيَّةِ وَالصِّناعاتِ النِّفْطِيَّةِ في كُلِّيَّةِ العَمارَةِ الجامِعَة، وَأُدَرِّسُ مادَّتَيِ انْتِقالِ الكُتْلَةِ وَتَصْميمِ المُفاعِلات. أَهْلاً بِكُمْ في هذا المُحاكي ثُلاثِيِّ الأَبْعادِ لِلْمُبَخِّرِ ثُلاثِيِّ التَّأْثير. سَأُعَرِّفُكُمْ عَلى أَجْزائِهِ الرَّئيسَة، ثُمَّ نُشاهِدُ مَعاً كَيْفَ يوَفِّرُ هذا المُبَخِّرُ البُخارَ بِاسْتِخْدامِ بُخارِ كُلِّ تَأْثيرٍ لِتَسْخينِ التَّأْثيرِ الَّذي يَليه.", "Hello and welcome. I am Doctor Dheyaa J. Jasim, a lecturer in the Department of Chemical Engineering and Petroleum Industries at Al-Amarah University College, where I teach Mass Transfer and Reactor Design. Welcome to this three-dimensional simulator of a triple-effect evaporator. I will introduce its main parts, and then we will watch together how it saves steam by using the vapour of each effect to heat the next."], ["steam", "يَدْخُلُ البُخارُ الحَيُّ الأَحْمَرُ مِنَ المِرْجَلِ إِلى غِلافِ التَّأْثيرِ الأَوَّلِ فَقَط، وَهُوَ الطّاقَةُ الوَحيدَةُ الَّتي نَشْتَريها.", "Red live steam from the boiler enters only the first effect’s shell; it is the only energy we buy."], ["calandria", "في أَسْفَلِ كُلِّ تَأْثيرٍ حُزْمَةٌ مِنَ الأَنابيبِ العَمودِيَّةِ القَصيرَة. يَتَكَثَّفُ البُخارُ خارِجَها، فَيَغْلي المَحْلولُ داخِلَها وَيَصْعَد، ثُمَّ يَعودُ نازِلاً عَبْرَ الأُنْبوبِ المَرْكَزِيِّ الواسِع.", "At the bottom of each effect is a bundle of short vertical tubes. Steam condenses outside them, so the solution boils inside and rises, then returns down the wide central tube."], ["e1", "في التَّأْثيرِ الأَوَّلِ يَغْلي المَحْلولُ عِنْدَ أَعْلى حَرارَة، وَيَتَصاعَدُ مِنْهُ بُخارُ الماءِ السَّماوِيّ.", "In the first effect the solution boils at the highest temperature, and cyan water vapour rises from it."], ["vapour", "هذا البُخارُ لا يَضيع، بَلْ يَذْهَبُ عَبْرَ هذِهِ الخُطوطِ لِيُسَخِّنَ التَّأْثيرَ الثّاني وَيَتَكَثَّفَ فيهِ، ثُمَّ يُسَخِّنُ بُخارُ الثّاني التَّأْثيرَ الثّالِث. وَلِكَيْ يَنْجَحَ ذلِك، يَكونُ الضَّغْطُ في كُلِّ تَأْثيرٍ أَقَلَّ مِنَ الَّذي قَبْلَه، فَيَغْلي المَحْلولُ عِنْدَ حَرارَةٍ أَقَلّ.", "This vapour is not wasted: it travels through these lines to heat the second effect and condense there, and the second effect’s vapour heats the third. For this to work, the pressure in each effect is lower than in the one before, so the solution boils at a lower temperature."], ["liquor", "أَمّا المَحْلولُ فَيَنْتَقِلُ مِنْ تَأْثيرٍ إِلى آخَرَ بِفَرْقِ الضَّغْط، وَيَزْدادُ تَرْكيزُهُ وَيَغْمَقُ لَوْنُهُ في كُلِّ مَرَّة.", "The solution passes from effect to effect by the pressure difference, becoming more concentrated and darker each time."], ["condenser", "وَيُكَثِّفُ هذا المُكَثِّفُ بُخارَ التَّأْثيرِ الأَخيرِ بِماءِ التَّبْريد، وَيُحافِظُ القاذِفُ فَوْقَهُ عَلى التَّفْريغ.", "This condenser condenses the last effect’s vapour with cooling water, and the ejector above it keeps the vacuum."], [null, "لاحِظوا أَنَّ كُلَّ كيلوغْرامٍ مِنَ البُخارِ الحَيِّ يُبَخِّرُ هُنا نَحْوَ كيلوغْرامَيْنِ مِنَ الماء، بَيْنَما لا يُبَخِّرُ المُبَخِّرُ الأُحادِيُّ إِلّا أَقَلَّ مِنْ كيلوغْرامٍ واحِد. لكِنَّ المِساحَةَ الكُلِّيَّةَ تَزْداد. راقِبوا هذِهِ المُوازَنَةَ في المُنْحَنى الثّاني، وَغَيِّروا حَرارَةَ البُخارِ وَضَغْطَ التَّأْثيرِ الأَخير. بِالتَّوْفيقِ لِلْجَميع.", "Notice that each kilogram of live steam evaporates about two kilograms of water here, whereas a single effect evaporates less than one. But the total area grows. Watch this trade-off in the second chart, and change the steam temperature and the last-effect pressure. Good luck to you all."]]};
+const strip=t=>t.replace(/[\u064B-\u0652\u0670]/g,'');
+const PUI={ar:{name:'د. ضياء جمعة جاسم',prev:'السابق',pause:'إيقاف مؤقت',resume:'متابعة',next:'التالي',close:'إغلاق',open:'شرح الدكتور ضياء',noVoice:'لا يتوفر صوت عربي في هذا المتصفح، لذلك يظهر الشرح مكتوباً فقط. جرّب Edge أو Chrome.',noMale:'لا يتوفر صوت عربي رجالي في هذا الجهاز، فاستُخدم أقرب صوت متاح بنبرة أخفض. جرّب Microsoft Edge (أصوات مثل حامد وشاكر) أو أضف صوتاً عربياً رجالياً من إعدادات النظام.'},
+ en:{name:'Dr. Dheyaa J. Jasim',prev:'Previous',pause:'Pause',resume:'Resume',next:'Next',close:'Close',open:'Tour with Dr. Dheyaa',noVoice:'No English voice is available in this browser, so the tour is shown as text only. Try Edge or Chrome.'}};
+const PU=()=>PUI[lang];
+const wrap=document.createElement('div');
+wrap.innerHTML=`<div class="presenter" id="presenter" hidden><div class="pv"><div class="ring"></div><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCAFtASwDASIAAhEBAxEB/8QAHAAAAAcBAQAAAAAAAAAAAAAAAAECAwQFBgcI/8QARRAAAgEDAwIEAwYEBAUBBwUAAQIDAAQRBRIhMUEGE1FhInGBBxQykaHBQlKx0RUjM3JDYoLh8LIWJDRTosLxCESS0uL/xAAZAQADAQEBAAAAAAAAAAAAAAAAAQIDBAX/xAAnEQACAgEEAwACAgMBAAAAAAAAAQIRAwQSITETQVEiMkJhBRQzcf/aAAwDAQACEQMRAD8A7ZShRCjqznDoUKFAAoUKFAB0KFCgAxRik0dACqFEKOgAUKAFHtpWVQVClYFDFIYmhSsUNtDATRGlbaGKQDdClYFADNBQmixTuz3oxET0BPyFADOKGKkC3kP8DflShZyf/LP1NAEXFDaamixfvsX5mh92CnmRKAIQQ+lDyzU3y4h1mFEfuw6yk0AQ/Jb3pQjx6U+ZrNeuT9aI31oo4jX60AM7B6ilLHnpk/SlHV4U/CqCm215QOMD6UwodWBj0Rz9KWtpIf8AhH6moTeISOhpiTxC38/60CotxZyfyqPmaP7k380YqgbX3PR6bOszE5G8/wDSadhtZZ0qkijFBAdChQoCgUBQoUBQdHiiFKFFjoGKOhQpWAKOgKAosAxQo8UpUzQMSKMCnFhJo38uJcu4Ht3osBsLShGTUS51iC3GFIcgZPIGKo7jxoYWO8KpHTbg/wBaQUzUeS2KS0ZHasOfGNxcNn71KuexAGKVb+KpVdY5bgOuM47/ANadFKLNosW4E8cdfaiCYBAOOOvaqGHVoLgeYrsu4Y3qacZ5osvFciQDpvoodF+9wYAuUVuOn9qYOuYGQoH0qoh1xtxSQBXXgj/zpToNvdZfYshI4GcZ4pNComPrzDoaYfXWP8f61EeTbzHp6NjA5PIpW+958uzt0+dIqhTaxI3QsfkDSDe3T/hjlP0oj/irHHmW8fyXNJa21B/x3+P9q0woVvvn6Qv9SBReXenrsX5vSDpsj/jvrhvkcUX+EQfxtO/zc0goU0Mo5e6gX65pphAv+pqMY9lp0aTZr/wAfmSacWwtk/DbRD/pp8gQWm05fxXkj+yikm607slzL9DVoIUX8MSD5KKPy27cUAVYuID/AKemTv8A7qUJ7j/h6Ui/7iKsvLb1oCE9zToLK8S6mR8NtbR/M0M6uf8AjWw9sVYiGj8j2ooVkkUYoqOggOhQoUACjxRClUWAAKVRCjpAFR0KAGaADwaMDv2pSjNPfBCm+Vgi+poAJIs84pqa+tbVtrElvRRnFVd7riyOUtC/l9OO59fas3qt/bop86aQHGCoBINA1GzQ6j4ngjCquBnsOuPU1R3Xiy2/jdgv8wOPpWMvNYiVmjtmQgcc5BqpfVXkXI+E98UrRrHFZttQ1rT3wTJvRujHkfUjkGqa6vYVHmR5PbKvuA+YNZZLqUyhFXhiVbA4z2NKJnXBCtjpUPKkbxwFhe6kJVYPsf6Vn7nV5LVtqyuYjzgHlcdx6U7NDcFQSrBhj6iqrULOd5pFVOD+hPX6ULKmU8LRptM8WTxGPzZcrkBgOAfQ/r9K2ln4k3KwdizKeT/Mv9xXLk0ydA4KnGVUYPXHNaDSpnWPPGcMDnoB2qlkRDws2Woaw+VuIhuaM8n1Hp/X8qsLXUiJHYfCPhcHPAzWWsEmlYsSyowG0j8Sn1q0miKFh56EYIWNFPJYjI/SqUkZuDRqbbWfMUeYMhuDVpbXMcn+WX5PIOc1zqxuwJCnmEndjB4+tWlhrR8xEVguG2An2p9kNUbwRH4u/akmI+lRdI1NZcQuRkHj39/rVnkMCe4baR6GkIjeUfQUPKqQy4pNMl2M+WKGwU7ihigQ1sHpQ2U4RRYpgI2UNtKoUwE7faht9qVQoAKjohR4zUiAKOgKFAgUoUmjzSGKoUQo6AABmlKtEtOouTQFBhliGW5wM4rF+IPEomk2tKvlqc7ASP8A81o/FF+bHTjHHxJLkZ9B3NcS1i+E19hH3u3Cp1J7UWXCNl7f+JcxiO224k3YVRgnBxnPU1QzXFxOTJAuG78nk1Z6fobMonuV/wA0LtUD+EHGR+dW9tpsMJZWQZY4wBXPPN8O/Fg+mK+4zXJXfHtJHJ9DUyHSDnDHK+vrWoubZOFGDgdMUysIC7sBRXLLM2dsMCK6HT1wTt/DjkinRb5AYKDk+lT1BBAHK96WExuPOe/oKybs6IxSK5bMyE4UcetNSaSrAsyL05Hery0KK+HhDAgg0q5tFDbkOMd85zTXQNIpU0uIwEsCmCeMdc0VroZLBDwTyQRxir+N2hQZhJIGC3Bx/wCZqXazxzxspXa7dcDHNawZjPGRYtLNuqCNSzY6gZGRipcWhNPHhhjHAB9+pq1glhyD5iPtbgE4yCOQamxXcShi7xKsZypyc7jwPn9a6YpfTlkv6MbcaBLbljHyRk4x3qnQeXciNgcrk4bgEn9uBW8F4ZHLH41Y8gDt71CudMF4jPDGF9R3H1qo5KMsmEqrG8beNkjMrDaOcEgdf1/pWq0bWDcjZM3xsMEH17Vg57WazukRvhUDAAz8Q9B35q6t2mtrNnYhWGCoxkoen1Hf2roXKOOUaZvIJfPDE8bQM/OlEc1m7HWtgSOV/LklmG856KTx/atO64OcYz2pGb4G6FA0KBBGkmlGiIoATihR4oYpoAqFGVNDaaYCRShRUKkQdAmhnFF1FAAzShSaApDoXR0kUocmgKFIMmpKBURnYgKoySaajQnHGazvjHX47O2NtHMFP8XxY3H0FAzHeP8AxU95eSRwyBYkG0AnPT2qB4d0ILGuo3wAmkHwKf4F/vTem6Z/ieoGedQltF8RXsxz+tXVxegkhQOOB7VzZp1wju0+K+Rxpo4iAigluuelJ81Tk5GO4xiqqSRiSeBnuOpoLdkcMSQw4zXI3Z6cYpE6QDO7GR3OelNyAIRnGMcc9KbSberDaRnuaNWEiZwR9KzZqhbcAKD1oHeTnBY0yMrnJJyOtORzFOgNAwo5GUHryc5IpxXcnJIxSnufNx8OD1xjg0zIZsHB2j3GKAHZiyxg+YDg8DNFDctHknufWo0drcP8TN8PXGOtONApBDkD51SHRJ/xAqMgKrdiP3pS6jLneT5hAzg96r5LfIxG4LflRRxSxqGc59cDOKdsVI0lncpJCoRiknTBGcA/171YJdgxRBoSJV43A7Tn0/Ss1ZzmIgSR7f5XGRn1qxZ2kYMG3S5znP4hW8J8HLkx8krUrf73AzJ8MmMqRwaz8Dzbv88yB1GF6kH61fW92MqkgKlgMZ+VRdUjeLDoF2Nw+44FdOKdOjhzw4simG5DRXGfgLckjkYIx+WDXQNHkbUojMG4x0/lHb6nk/lWKW4tpoBDMTjAAKkkYx1JrR+C5o7e0ktc7irblyc7s45P6CuiRwsvWh2nlh9KSIs+v0FS2vkjQ5jAYdgtRG15B0xUioWLY9kc/SlCzc9Ij9TUOTxD70w/iIfzj86AotRYyfyqP+qj+4uOojH1qibxFno9NN4gc9CfyphRofujDnfGKP7v6yx/lWabW526LIfkppB1O7bkQTH/AKaAouKFFR0iQGhQo6Q0FR0KFAxSinUWkIKceWO2ieaQ4RASTigCBr+rLo9mZM7SR1P7VxzUtVvdY1TZA3lAnaMjJFT/ABd4jOsai26VxCCRtY9B8u1N6XGIVNzJHCkmNsaxggRj+9RkntRthhuZaQEWdutrGQiIMeu71P51Fl81pdqjP14FMzaiCoiIxnt6fOiF75ZKjO/p7AV58nb5PXhGkT4LSE4MrFjnoDipkGmwEbiFTPrVdbyibll98jmrB7u1VQWVJO3x5P6VNo1pgMFlGSN+7vSD5O8BGOO5xxS49RVgEjVVUcfCopbXr7c46/lUNmsYjOABmULnt8qDGJC2HyOCAKemmimAM0EbY6Gm5LGyuI9yeYp9FfijkqghcRBFzj5im5r2JsoBvPoO1LSxsoxvaNyR6sTmlh40zsVAOwAxmlYhqFLm5wscSKh4LSf2qS2hK0e6a7bHoiAf1pn78yg7U6dgDT0N9cykKYzGD/FLgf8Aeri17ChI8PW6ybpLm7GOgAAzSpdNiCf+73M4b+VsU4ZnDFTPgnPKk8f3pLTEcNk/qMVW5E0+yLbZjYiRd3qRUzCJ8SP8K84XtUM3kak7sD39adS6hmPwFQQeVB4NXFoymTt6yISE3qOWB7e9O3Sx3Ftt/GGHY4qCuQfgAXIwecClKksKM+Twc4rRSOWasz8E/wBzu3h8h4WJwWTnr061c+GrswapvcBgxH4CVI9ai3bGSTeMLIw6buvzoQXRtWjcQbVTGZFAIXHf2rujK0ebONM6p8LHcoIB9RzVNqNrbQAzSxzOS+NsXU59qstNulvLGKRQR8I6jr70Lxc7T/zA06MkUI8s/wCnpFy3vI2KUFuD/p6TAn+5xVqaQRSoortupH8NtZJ9c0NurHobNPkuasKGKdAVxh1Y9b+Nf9sdD7pqJ5OquPklWBUmhtNFCJNChQxSIBR0WKPtSAAowKAFHQCHEqm8Z333LSSBOY2YH4QM5q5jrK/aEjtYqQhwTgnd19B8v7UFnKp1JuCUUyuzZQMcf9R9quIpPJtVU8vjJHbNZ9JkuNUlYOzLCTkj8I9BUr70zsPiIycc+lcmol6PR0sOLLAR+c5dmGB1xzU2K22qJGwF9D/bvUdLiOyhDAZYjvVc2ulpXzJyP4c8CuSr6O9NLst5JynHOOmAMUy2o7VAC7T6g1QXerybS6sOe+aiw6wJc5IzT2MflSNRHqRA5+L2qdHcpMqgOwPt0zWOGrRkdcfKplpq6jlGPHY0nBlKaZqmRnG0OVb/AJuhpG+4hJBXPf4TUC01qMKEULn3PWrKC7jcZlbcoAOG6A1Bon8EwyzXD4bIB9amRxLkIpGcY47GohvoGLqhCnPGBTMmoxw5AILe1BRKu7hbYDc65Hc+tRDqTlDmReueT1qsvdRilGZMDB45qpl1ADDF8e+apQbIlNI0Z1UoCM43ccHOKftdVAfazDaT164rBXXiOKJWxIoYdDUJPFEbESCbI7jsa1WGXwxeoidZ22E4PnAvxk7WxigNE098tbzXMTdR8WR+tYOw8S20oG2dcgZGTjPtV7Y+J4pGWMuMtjjNDi0LyRfRpGSa3Ox/8wD+IDrT6XayIO3OBmmYJ4ry1CBidxO0E8ioQyoAZ2BUkGnFmU1YvWbdVjS48oSgEBk6Ee4NVlt94il328joDx5cqkjk+tWckyzWpR/wtwR71EsWkEphBMZ6An+1dmGXo4M8a5OjeE7sXFgo2iNozsYA5BP7VcXK5/Ss74MYEzK4ztIBye/Y/pWkuByRW5yVyRNtArS8UMUCbG/LottO4oiKYhvZ7UNvtS6KgAx0o6FCpECjAohS6QBYo6FCgByOsz9pEhj0RVQz7pG2gQwNIx//AIg4+taZK5d9tulXd5eaRPFHcSQrDImIJmQ79wOMB1B4+ZpM0irZiI7WTSpWiu4rmGSQBliMJUjJyCQ2OTU9tPMXlvLa367+V8yIIG/M1E0K4ltBCYTJ5rqfLlkZmeBQMn8RJDcgdeKfa4Jmknmd5GRC252LHPbrXPkUb5R24nKuGHdTw+WTLHcA9P8AXjH7Gs/Lb6aHkfzLvcxy3/vS/wD9Ki3GqtcyNGg+EccUmafdARhODgkCnFRXoTlJ+xF3Bosq7Hub5D2K3afulRk0rSyu231bUYTjj4IZQfycGoc6CbIVZJD/AMoNV1xayxklopAPcVomjOTki9bw5PM2YvEtoo7LeW80H/1BWX9alQaFrscYEAt79R8W6yuUlx9Ac/pWcsr5rdhteWNvYkCtDa6qJgEuUhmX1kQFh8mGCPzpuMWVDJK+GSdPa7t7ki5WaB0Odsilf61oY9U81AB8OPU1j7+7ljYEzSPHnCZYnb7ZpjRrm7t9UJOoW1tHyy/fJQFPHoQawlgT5OyGpceGbkXLK4JlLDHX0qFqWpmJGaM857d6q9ZvdSuIdsVxp84BDF7JkOePbBqDaTvJgvKZGHJ3fhFR4P7NP9q+KGZtflYnJBYHpVbqOo304Iijlk68IhP9K0iaxcWefJl2H/khjT9iaS3jTWYARDqV9GD1CXDLn8sVtGKTOXJlkzAz2Gtv8R06+VPU274/pSP8P1CNQZ7e4jHoYmH7VvY/F+uTFcT6g4z1NxKc/m1W1t4l14YbbqJX2mc//dW29I51Fs55aWd0mGkEsQPQMME/StBYrJGyOLllZDnkda2tt42vy3ktfXAboY5mD/o6mlG6t7hjLPZ6fL6mS0T/AO3FZuSZok0T/C2qs7ICyb+MseCR7Vo70K0m/gbxkHvmsfH9zMgMNjEkn8P3e5Kf/Q/96tptWlhiWK7sL2GZACFKDJH8wzjisJYndo3WZdMmzxFYgeSCcjmoS38kV4oIVkPPUZHuKlrf21zEuDNG5x8M8TJn6kYz9arWjRLwBk3HceT2Pp8jVYrUjPM048HRPBE4+9XG4YZ0Xknr7Y/861rZ+Tn2rI+BkDvJuH+ZHgqM9gcEH161sJ+T9K7TzmRe9HQoUCBREUdFQAg9aFG1FQAdFQNAdagYocUeaKh2oCgZzR0QoxQAtTzVH9oemx6t4K1OJ93mRRebGw6hgeKvEp4IkkUkciho2UhlIyCMcik+eBp07PNfh27V7MuzHALjLdc9P6ik6rdbbRwjYaTj6VZeI9Dh0fXbqxhTyIo3WZY17Bs5H51Ras2U2heQPyrnmuUehidqyltMRZYDJqzstM+8v596fhIysQOBj1NRLQiFyzjoKkXHiC3sFLOwMrdFAyTUSbfCKpLlmjhtrcR4jhAA78KP71W6lBbsrB9oI9qxmp+K9WaQpGWgRhnjk4qubVLt1JNxOWz1Jq44n2ZSzx6Rd3VmqPuj5HXmm45FBAXtUeGS7+5pcSSCQNztYckUdvLFM/Uo3YEda1XBmnfKJF/Oy2mQeWfGPpk1b6N4eudSiWfYdzAEtjJP/aqpraS+u7ezjUkuwAwPXr+grs2haAttZpAj7WAxv6Vz6nJtSSO3SYtzbZzy90SbTo1kHxMORx0NVmmXwubaSSREWV25Ciuq+ItBe1sHj+8LI4GcAcketcjtYzbSTx7SCGOB9anBK00y9RDa00SJ0A5Jx7VEJXeFChmPY9vnTtyu1dzNt9Saqze/5nl2y73Pc1sjkk6NJYpGGBkIZs+nH0rRW8tqY8D4SPQkVzPUrrULRkV5iCw3YA6UmHXNQtzmO73c8g0nibJWeMfR06+tIb2IrPEs69t2Aw/2t6/Oqv7nLYbZIJTPak7fj/FGfQ1X+H/HOE8u+iUIx2l8cVfz3EUU0c1uytbXfwMAchW7GocZRNlKMuUR2mjZV3rkA1d2upyyaWtvIpkiBJiLEloGAJ4P8pxgj5VnZQ28gKAQeR6VY28/lWFz0DeWUX1LEgf3rWMiJIu9N1i6OqW9s+qa8rtIm6PETwqSRjDMnA/P503rUv3bxAYo8BYpWBB6bc1X6vqNg2neS0qRPb4MbNnJx2+tWniKIPrNlfQOWS5h8/OcjJwHx8v3pwe5mc4bOPp07wJahbS5us/6rAI2ckgDv+daOUc/SqHwE6toLBf4JSP0HT2q+k6iug42RT1oqNhzQpiBQoURoAS1FRtRUACjAoqUOKgYKPtRUYoATR0KOgBa0/FyaZUVIhUk8Uho5D9rll928V2t2MBbu3MfsGU8VzrUpIxOVdWzgEYrrX2xWxup7VANmxcq+P4wc/8AnzrAC3hmZQ5SK46PG/wnPs3QiufI+aO/B+tmMvXeVDHbwyNI3HIxVenh8ud0pcv39q31zpjxr8MBTd329frUB9PkDEiIHsOcVmptGrxqT5MydDin2rO7FV6c81Ii8L2TDdsmfHTLcVd/dmXHwbcHqFp9YyFA2SufdSBR5WPwRKX/AAhSNojXavGDzinItMijUkxxoqgszEdAO9XS2ckhG5Sg64qu1pnaIWMAO+UhSfX2o3th416E+C7Zpr+a/ZcqpKRD0J6n8sV1mwLBIhIuW7msb4f0uO1hgto+kf4mPc9zW1tAkZDA5GQCM9K5s0t0rO/BDZGiTrm37zIzNk7BtOOox0rjWvWrWXiYwk/5M3+ZH6ZPUV23V4RLwOfgBU461zHxtpsktul5Go821fcMD8S9xWmK4z5IzR3w49FHPYhCUlhVx2JFV8mnRFtyW6r7YraQW0WoWUc6AbXXPToagzae8ZKvj2xVrJ6ZzvF7MncaRDekecsm5eAQ3QVFfwrEvMU7gejLmtf9w+IEFge2KU0D/wAUKS9jjhhVeZozlp4vtGSXSXitTaoUAOckrk/OpMFlqWn2ixuTJAGDA/y1oPuysw2wujZxhhVjFZecmyYYwOAOhqvLfZn4afBVLtmKyMxw2DmpuxSsCr/FJn6KM1It9Ltwc+WpwenepdtY+feyukf+XCnlpxxuyC36YpJ1yVRTaj4YOrQupbY+Phx2PapfhXxAdX8Jwx3Z23+jXTxOuMFopBx+o/pWjijCMQ3pn61QN4WNhfGazl3tqIWAxAc7vMUoR74Yj6VrhZjqF0dq8FWklpoMcjAL5x3lP5eABVzJ2p2C0Szgito2X/LRUKggnIAH7UiVduK6UcLRFbrRUbdaKixAosUdCmAlulJpRpJoAHWlUkUoVAw8ChRUYoAOjA5zSaUKAY4lc7+0X7R20fV/8Ds5zb+Uo86VTglyM7Qe2BXRo+1eXftdd/8A251jcc4vGGfyrHM3VI69FjU5u/RtDq0+rQ77i4luFXLgu+cduKrxGk+TIAUGetZ7wTdySQXsLE/DGCpPcZq9V8ADOcVxTbs9OEEm0Sra3tgfheW3BPGyQjP0p97GRv8A96zL/wAyqf2qsBbcDketS4bp2YoSNpPU1G6X002R+BvYzsQFnDj18sf3pL2UqKS1wB6AR8/1qaJ40IGQUA4A7e9MzXIYgRjcT3o3sfjiVbRORmaZw3UgY4+tQbOISXr3rk+WpIj3HJY9zVjfwOY90h2/KqhJZJpFhg+IA49hVJtk7UjT6TNI8yuqf5Y61qIy2zdjAbkVn9EaO2iUyMeRhQByKu2nR2Cq7BcADJ5xUmsS/S+jkktlBBcApgkAfKs3rdqDLIrKNje1OGbD+Sygg4JJ4zUzW0e4sfvKD4tuSPXFXusVUYexSbSrp7aMjy2JKqx4I9KsbkW9wnxrNCR3aMso+q5qPFPHeOBIMMDjnrTxSaBj5DZQnkdqN30nZ8Ii28Wfhu4G+b7T+oFPpZl87nib0KyL/ep0cUUrqZomVsjqOKffTLfcQsMZ57qOlFr4J439INvF5bEPsC+7rn+tSdtsIjunhUkfzjg/SkS6UsUikLEFGcDYOaXbOts58xE5PG0dBRuS9C8T+jMFkXUm2DTSHrJsKxxj1JPLH2FW8EMVjZpGo3LyC38WT1J+tLtNWjmGwrhlJB/uKdJVm42gMD9abk2ZuG0rpSqiUqwKqpIb5iomozCJbZjwyhWdehSRe4NSFjMqvHjG8Y+lZzW7ogLCH+N2OP3NU20qRnGKlLksn8bxaa4V528zjbgnIP0rrnhXXP8A2j8PW98xBlBMcnuw7/UEV5X1aN4LqTcSSGBBPWu8fYhdNLoeoQsSQkkTj5kEfsK1wSe6ha3CvHuRvpBSaXL1pFdp47BRGjojTEJNFRmioAApQFFShUDBihR0KACpQ7UkUYPNAMkR15o+2OyYePtVx+Fpw/5opr0slcN+2XTi3jR2wNssUEp/LB/9NYZ/1O7/AB7rI/8AwzPhqy+7WlyP4jCCT/1ZqZC3xdRTekrLuunYFUwqAevWjhfAYYBI4ya4mejf5MnrbgqCCTkd6cjtBwoYqC3U0dqVVQcdsVJiiNw34gAOxqLNkgIkceP4iepok3CPKgkknORjFPRtFDgsAAMgNUK71EJE+1hjtjqaRVEfUpWuEFvEMyFsDJ607Fb2WlabIqMJLhx8T47+1UdvqHm3c0pPwxpgH3NQNT1+O3hbzpgiDuatJ9IhtGotLxVjGGBIPQ1KfVXyMsVA74rnum+JrW8crBdJIfQHB/KrVb5SR8RyOmabg12JZE+jYwa0Q21nDn3q7sNdSWIRu2FHAFc2t9SKnLNkimLvxxpWlyCKa7RZO6KdxHzx0oUG3wDyJLk6Nqvhv7yhvdPfbKoJMXaQe3oai6VqCOqrsDdiDwQfrVXoPjmG6RHt51degO7NRdW1KODW3aI7Y51EmB0B71LTNItG4tnjEnxNhW4GelP7LfPUA5wDWZ0/UAVGGGBwBnira3uxLiPA9gT1qbZoSfuxZviJYDv1pq800AGSMH396mpOoXavDAZzSJX2g7QADyMfvTTsyZnWtpVussxCAE47Z7VPil3tuHwsO/v/AOZqNqEpjLMmAy859aRYzvJktyDyTitEYTZPgO6c4/nOKyFt5epF5ujI7Ic+xNa+0O4hvVhWRvtLPh/WLu3DnypHM0furHP9cinJk4uyi8T2ZjnjbGfNUH8q7b9i1ibfwvdXDDHn3AQfJF/ua5LqcP3yG0c9FlIPyxn9q7/4K006R4P0y2ZcO0fnMPdzu/oRW2mVysnXzrEo/Sxl6mkUuXqabruPEYdEaOk0CARSaVSTTAVRiizQqBiqI0BQoAAoxRUdIGPRmuafbTph87S9SUcSRvbv81O4foT+VdKjrK/atCJfC0DHql4n0yrCs8quLN9LKsiOUI34sDaNqsKhyDy7gjnDGpqhVtlQDLgfE39Ki3D/AOeK4H0er/Im25wvHLdKe8/B757gdqrwSQWDE7ewo2uHXkfCw7VnR0RZJurxkTBHHsMVTXZkusRxthjxgdBTlxceZnJANSNOtCh8wAkn+Y9KpcA5EWXQzbaccOWl6k+tc+1/yZpDFcOQVP4T6116W2MtvlWyD14rGat4ZWe5aUAkcnJ7fStscldswyXRz6205VkEkY6cgitHp947IEaQkjuanJoiQMqKrAYHao3+Hf8AvZVGyRngcZrdtSOZNxHblvMAQSHJ5IHeqa68O2945cqEbqTir6ytsyEttO3g5q+bSo57aPeNp28uP0qU66Lbvsyui2MWlnKyDb6A1qhbDULcSjKugwue9Li8MwxIj+UqBuQT1z6VYpaNaJgcj09Kym+Tpg+Cv069eAiJiy4PTFX1tf5O4HPPc1R3S7ZMgYJpyCT1OCPSspI1Ujb29/5sYYqOOhp5pFIdQwzjkdxWdsLsBQVIweuepq7gnW5ypVhhevFQuAZB1Bsuy5PoKbtDsiY+4Gad1GPEqnaOffvRJFtjTaMAjgelbROaZOszyo6/GO9UXi6ZLu9tIE5uEMin/aTkfvV5YqPvMe5eCwqr07RYHF1q1zJIbp2eTDH4QoPTHypSKxLka0nRv8R1nTdJXnzZlL+wzg/purv820LhRhRwB6AdK5D9lEJ1DxS+ouuAscjqPQY2r/WuuSH4a7NNGo2cGvlc1H4RZOppvNOSdabxXQcDDpNKoqaEFRUZ6UnNMBVChQqBgoxRUdAAowKIUY60hDyVnvtHgM/hGYgEmK4hf9cfvWgQ1n/tHuXt/B9wEP8AqzRRsfQFs/tUZP1Zrg/6ROOqQZpzngYGPlUaZjv3Y709Eu2ORuenJ7ZqNOSF3Hr29685s9quRDSMCSHwB/WmWmbqxz75pMuWl44AGKZmZY1y5JGQBgciki/RKs1SaYtIfhUZAHU1apdRq7xdOOMdKpFkjixG83lKwySe1EuqoWw5UjB+JABz/XrVqNmTnRoItQE6hmQgs2FAPGB2qPM8bO6yYWR8Eg5IXPbPT61CGqbIWw7DC4BTBAyeh79aba+mmkXnhsAgnIH0qlGiXJscvFiSBcFgwA4HH61n7qMQ6gjOD0ycccVpbezlulMbE7jgMVPQ/wBqrL/w7PJcbw2QuRj2rWLRnOLaIGlLHJI299yZ4X3Nau1tolt2dpBgDIIHQ9hiqyy0OWzBkCDkgn1+VWdrbtHGLdgSCQSBwc56GlJ/Bxi0uSRFPuRYgpZGY9B6fOjbCgFRgNwVY+tNRyxqHkLiM8ggkn8vpTk0sbyArIRGCCCRg9KzkaRdEO5tlnRipPfGTVXErxNtbHXmrwqBGCQDkEDPXP0+lVWooY5RIucZ6+tSaKRIhmIwSOnar7TrzO0g4YED0yKzsDKwUrk8VZWUrbwuThuKzZqui91NfMETgjJPPoBQC5jj6/CPzpss0kGMr+XSpIDGNc4PXpWiZhJC7X/URgTkAnGPQGq+DzbyCeHAQtCQM9yas7P/AOJUjkDPy6UUkCRynZxleMehpSKgXf2TWvkSXRxjFuBz7sP7V0Jz8JrL+ALIW9reTgj4ikf6En+tadj8Jr0MH6I8rWO8rGHNIpb9aRWpysFFR0KYhJHFJpRoqYB0KFKqBiaOhmhQAOlGOaKlCkIWh7VV+MtNk1bwpqVtEhaZY/OjUdSyHdj8gatFNOxuVYEHpSatUVGW2SZ5whu1lEkakYEe/wDWo1yxZWHp0rpv2i+AdK0yzvPEmnmW3mdlSW2XBiO88sO6/IcVy64YEEDivPnBxdHs4sqn+SG1JZ2J5zQu0LgAkYHpR25yQM4zT8uwRlSwAI7jms/Zv6KfU7pI9rdSoz8Q/rVLHqMTvgyKSOwNWN/atdSbMkr3x1qsTwgLiQO6OvxYGDjFdEaS5OaSd8E+O6UouZQADnipY1+3t2XcS/oVqrn8CzxECK8dwf4GY5pMXhaOOULdGQNjkbiMVVRfscVJei+h8Zm2KtFESQepPar2x8a2c8YWaJA5Ocms/a+CdFu02m/uoTjoWPWjm+zpYmJsdUuMDG07s8/WpcI+mdEXL4Xl54ttUYiJARnIxxzTUXiu3kz5pKZPTGapV8ByKQZtUnJ6cBack8G7Bxqj8noVFGxfQbfwvFuLO7jA3g7icc96jXcjbgpb4Au3j2rPS+H7u0bdFqGMZ4K01cNrqx7YVjuAF4fDDj60bDKRpLe/zLtZy+4jGeSKlXZFzA2DwRkfOudnVNWguFW5jCljwUrYaLdtLCDLzxipmmiYOyVp8gxtIPHXFXFugJwB9Kq4ogsrFc7Sc1b2zFlVgCGBwTWDOldFioOT65zirCP4oVfBP7VXqQZAQOKsCdtoB6k81SM5Atn2GRu6qxB/6TQsJhc2MExbkKFNFYxS3TG1t1DTygxxqTjLEYAqX4Z8DeIyy22pWZsbcYEkkjqeP+UAnJq1By6I8kYfszd+DoTDoKv/APPlZx8hwP6VcN+E0UccdvbxQwoEijUIq+gFDPB+VejCO2KR42SW+TkNP1pNKbt8qTVEMFChRZoEExpNKNJNMBWaFDFCpGCjAoUdAAo8UQowaQgxS1PNIzRg0AVvjS0bUfB2r26DL/dzIvHdCG/Y152nbvxhhn516hjIIwwDKwwwPcHqK86+M9Afw7rN5YbSUjctET/FG3Kn8uPpXPnjfJ3aOdfiUUUoXHPQ4qWZA0R3Lu449qqRKHweVyc4PapSvlBg+2K5Gj0FIEDBZyzYA7Z71ZiYeWMkVXBQ3/nSnVYqBkDK5oBMfklKYYYz2NMzX4bLSxq5x+LvSHBcABvfFV90rQqCDmhdlN0P/wCIxxk7G2A8gGpEWvFBgTKDj1qiLBm+LrSTB5jcYrVISyMvn1hpcjz1Y5yMGnobgTYMkxPsKziQFZMFcgGrK2RcDBOaTK32aSCe3HCqHb1cZxS2xMORhfQdKr7ZHdCwXHvUuGXapUgkHmsmxoptU0qO6bdt/DyOKbtIzbyKFJXtirydlOMY6VUzrh9wzwcZFVutENUy2g5IxyDzU+Bjt3ZwfSqq3dSi4zn0q0g+FDkY/bisy7J1s3xjOOMVPupRFAqknIzVVaZZgTnJIp25uPNu9oHwpwT600TLk0XhCMSa9p3IJaZTx7c/tXVJTXMvAMXmeJLTA+GMPJkdsKf710qToa79P+p5ms/cTn4RQHeiB+AUFroOUS/QUilsOBSDQKgUKFCgkI0ilmkUAKoUKFIYKFCi70AKHSjohR0hB0AaKgBQA+hrEfa14bbU9ITWbePdcWAImAHLwnv/ANJ5+RNbRDTy7XDK6h0YFWU8hgeoNTJWqKhJxdnky5i8i4x2P70uF15Vmya032j+FW8N6zNaICbdv823fHWM9B8xyPpWQb/hv0HQ1xyjXB60J2rLKPBU4+LHpTwRmX4Rz7VCglywCgAnpiraHaCAMZ681k+DWIysZAzJjn86jy2Us3RDg9+1Xkdqk6ryu4n16CpcFsgJ3A5x07UkzTbZjjotxIcqNo6c0r/CJwOg4rbywxMAAuDzzionklAXK5B6cdarew8Zkf8AC7hMHaOfWpcVs9uQWXHtWla2jKYCHPcUn7gQ+0AEE85Hak5BtKpJGUZAIz2pSsSvJI9TU+fTtrkqdvB461GlhMaBR1bripCqIcshIC85zUdomLgkjbn86mPEqkM7HpwKZlDMeCQo4z70xCrbIYZXIzn51YvJtUKpOT+QqBCRGhYnOByadt3aVwpHU8CntJstoZ/u9s0mAXA2r8z/AGoWalVBJ3E8k00yiRgoHwJ29T3NSbdSzBRxngUijU+C9Wj0vVxwGlliY7f+TIzXTkmS6iEkfAPUHqD6V5u8J62b/wC0u9CPut4rdIowDwQpIY/Uk13rTLllwcHDDn3FetixNQSPGzz3TbLUcJ07mjXigpDR7gcqSeaCjmgzEN0FINON+EU2aABRGjoqCQqTmlGk0CFUKGaGaQwCjHWkilCgA6OiFGDSEChR5ojQAoEUtWxTVGDQBQ/aJ4aTxL4bn8tM3tmjTQEdWAHxJ9R+orzXc/5LsjfhbkGvXUTYYE8juPWvNP2j+Gn8N+Iru0CsYN5lgZh+KNuR+XI+lYZY+zr00/4mctrj/MUDkZ7VeWdwF+It2wM1ltrI2+M8+lWlnfeYnGAcYIPauaUT0ISNGLyNI8ZO7Pp0qSl8CojBxxnJPIrNpec/EQfQg1KgvYm/i5J6dhWdG6kaOK8R4iCc8d8c0tLlQu0AH581nBeeWTswMnGQelG+oOpDbsH1oovci8jwvQgr79hUlH3lcFfmOpqjj1D4AcHB7jtQF+7uwU4B796KHaNDLgLk8N3xyRUSaJQiucEY6Gm0ucKDnJxyaau5ldSM4yeoOMUqIk0RbiMKd7YXtz0qEzkEDChSOlK1G8jU4LE9MDPeoAneY8AKoHGRzVpGLkTeHIjXjHrVlZxYUlcZ6A4qutewU81cRHyoh296GCHolMYwOpOKqPF2troGllYmAu7nKRDuo/ib6dvc1Mv9UtNGs3v7xztQYA7s3ZQPU1ybWNZudbv5L65PxPwqA8Io6KK6dJgc5W+kYanMoRpdmu+yKMy+KrpssFSBFJDYJJY8Zr0XYRSRRx7HYDJADMWBH15rh32C6b5pvtRcDbLcLECw6hR/c13hFVGbGVOSDj5DFeu2eSydb3TJIFYEZ6qevzHrVjGQ4DKQR7VSOSW5UOvcfvTkF1JZzI6sXjZvLkQnnnoc/P8ArWUoX0CdFqw+A+xNNkGnVZJYi6HjPTuPnSCMViWIoUeKLFIQWKQRTlJNAqBih0oqGaQApQosUrgUAEOlHQo8UhBCjoUKAAaNeooAUpV5oAdSuVfb1e6GsekWU90i63KzCGEDJaHBJLHtyOPXmtz4y8Yad4D8O3OuamdyRDbDCDhriU/hQfuewya8SeL/ABbqni3xBc67qVwXvJpN+QeI8fhVfRV4AFPZuReOW2Vm4ZApZRTBby2BU0nSNUTWNOjvOFdvhlUdnHX+9LnAycYrgap0z1Iu1aDN1t5H6US3oBPPUVHxg/OkGMN86KKtlrDeqed2Kca8jP8AGM1UCIjA5zTotw3OTRRSmy2XUEAUb+B2zUmK/wAr8O3rwc1RLaFu7VLSw2JuMjY64BpUit7LkakEIJbAPUVGu9VlmOyLIQHg1CWLcozxnoTUu1tN/Uds0ronlkcKxfcxLMetTIYHZhlsZHQ1NjtlUbdvvTx8u3XeandZW0fsoUhXOR75otR1e10y1e8vJfLhTgAclz6AdzVJrPie10ePM7l5m/BAv4j7n0FYDVtbu9cuRPdEBU4jiT8KD+/vXTh00sjt9HPl1Cx9dkrX/EN14ivBPMSkKZEUIPCD9z71VyvsjLZ6Ckg80h0a5eO3jG5pmCAD3NezCCitqPMk3J2z0V9kenNpfhHToipEkqfeHPuxJ5/QV06IuB8SAgN2Oc8GsX4c06OG0gjaPKpGijzHJyMfl2rUQW8JXCqI2GDmNiOxpOiSeCrEAnBIOcCmbob7WdRyfLyCODkc/tTa+cHU7xMPQkK317H9KeFxhx5kcnI5DIf6jNJKnaESra5dTvjcENzhxwRVtblbsYTh8Z2f2rNWF7ELUQyP8cTGFsg9jwenpipa3caKXiIDody43cH6CoyYndBGRfGym/kP5URs5f5G/Ko+na1BcIGnV3U9HRsH8jVgl3pjdZ5l/wB2RWDi0XaZG+5zfyN+VJNnL/IfyqxVbCT8M5b5SUDb2v8APIf+qkBS0KFHUiAKMCgKOgAUM0KFIQM0B1oxSgtA0GgpbMkSNJI6oiKWZ2OAqgZJJ9AKNEJ6c1xz/wDUf9oH+A6Enhawm232pLvumU8xW+fw+xc8fIH1ppW6C7OO/bP9pM3j/wARu1tI66RZkxWUR6Ed5CP5m/QYFc1mHw4z0qQ5Lkt6cD51GlHFdFcDNF4FuvLubm0ZuJEEij3HB/Q1q7hD1FYHwzKItdtM8B2MZ+oIrfNIQxRhyK87UxqdnfpncaGCCOnNGFyckU+u05xxTbHmsLOmg0wFweacXn0+VN7x64pt5lQ7iaOwJ8RweTwKW9wM46gVTSaiANqsaQupBOePrT2snei/icE5B4qZFc+XjLE/MVk31wICc4qrvPF8i5SBd7+pPAqlhlLhClmjHs3t1rUNqu9pVUL1JOB+dZPVvHUtwTHp456eaw4H+0fuaylxdXeosGuZmfnhRwq/IUuKLGBiu3Do4rmXJyZNVKXERwtLPK0k0jSSNyXY5JpwAgUAuOKM4HFeglRyWJY47VceBdLbVfEDTj/RsYWncn1PwqPzJ/KqCeTArq/2S6GIfCd5qUqZkvpUC/7A4UfvTT/JIT6Oz6fbJ5ICmT4Bt/EfSrQKoQfGc9eenSokRBV0CkANgdecCpCEEgtkEfX0rF9jQssSMBhtYDA/KnHeR/iIIwOCKSYwAABuwwbk47iik+FSPgJ69etMBFsfLu7uFi3JSUAn1XB/UVLNyy8hlUKe3NVQmMesMc8Pb849Vf8A/wBVIaUEfEHJ6DgcVeTtMlDpvlh87MrnYN2MYwuQP3zRHWEJHkq8xPdSNoHuahvcKJo45pV/zQyeWF+I5HH/AJ8qQG+FTklRjHbBqVSXIFtFfFwruGHYgEY6+396lx3abcgMQemKo1fAUsxXGM+p+VP/AHnAAVHIx24qAo0tGBRUoCuUoOhQoDOaAABmjC0CyoMuQo96h3WtW1svwAyMenuaEm+gssAvX2qNcapaWoPxeaw7If3rN3up6hdv8FwpU4HlEYj+WRyPnUdLtIiqSRsk7HAj4OffPTHvWni4tk7ifrvi4adpl3qF1IbWztUMj44JA6L7kngfOvHfjHxDd+JtcvNVvXLTXMm7BOdi/wAKj2AwK6n9uXisyXK+Hre5LxwkTXQHCh8fCn0HJz3PtXFpDudn/l5+taRjRSGXOCFHb+vempBxTmKRJVMY9oozrNiPSdT+tdJurVmVpo+Sn4h6iub6CM6xbHPRs10+OV4xvwCD1Fedqv2R3aXplekgYDnBo2cDqOO1SrrTPNHnWh5PJj/tVY7zRErIhBHrXMjpfAUrHHFRmG8/Gc04xklOEU/Snl093A+DJ9TVWiXyRCE74qLcXEUecDn0Aq2NhsGAy571A1EWthEZZTuY8KvdjWkXbpEy4Vmev5pZOSCinoPWokUXI45NPSO9zMXfqegHQD0p+OPbivSx46POnLcwo4sY4p5V2jpzQAxSs10pEBZpDnFGTTEr4HvQ+AQLazm1bUbewtwTJcSLEuBnGT1/LNen9L0dtM8P21nb28SRwmBF3SHOA69cDiuLfYroX+KeKZtQkH+VYRZBPaR+B+ma7xcM1to8pzIdoV+OgKsCf6Usb/NCl0aJrWYrua1jBLEsFl46e4FKEUqKrNA/J4wVPp7+1MNqKR84PUDbnJA596UdRPlkndgEHJB9DUtr4IeknZNxMM5wBnCj5+tNSXq/Fi2uNxyOEX1+dNG6Lg56kZ5+QH70ckxZCVIHGck9qVr4VRBu7ib/ABGzYWs2WEqfEyrkEAj/ANNLG99yvIvwtjbCMnPuxprUCBNZMSGC3CD4eByrD96Uz8kDaUJxhR3rST/FNEpC3zCySRRxIQQXY8yEf7jz2p9bLZNLskIHmPjuQOahXCo8b71LYUnaBggDJ+tOyE3Do0hfbOgcICQucYOayXPYxbSRRhU8zzH7gDcaKQ3JbIhQDHG+XBx8gKet/LjiSMbVwnAIxmpChT/Du9/pRaEagLRgUoDOOKg3mrQ2oKRESP6joK5ErKJjFI13SMEX1JqDPq6RgCFcAnG9uv5VSXNxeTSCVZxKQTiOYcY9iBxUU6kJG8kIUucElH/hX1B7j5VssPslyJ91qTSMM5d8dDwR8zUTdv4dixb8RI5PtTPwnqxYnkDu3v7UUrqsbOzKEQct0xx096fXCAdn89IMWYgaUH/itjaO/wBaqtc8S23hzQLzVpApe2Tb5bgbmlP4UPzP6A1OtCpZljZyODuYdSQPhA7muGfbX48ttQ8Q/wCCQPi2007H2jIeb+LJ77en50417BLkwmq30+o3M11cSGSadzJIx/iYnJNVkqgIBjryf2p5bmKfAjkDZPTPNJnXqfXpVlEM4zSJBxThGKRJ0qWA5orbNQjb0OK6pLAy26TgBkKDdjt71ynTjtuVPbcK7P4efz7KNHIIx0PevN1bqmd+k9oqBMbZxhsChcXSS8MgOO/rVlqXh2ZGMtoN0Z6x+nyqkdZIWKyRlT6VyJp8nY7QoShSQoA+XejZ254yfakqN54Q8e1N32pQaZCGflj+FB1Y1cU26RLaStkbUdQi0+HfMSGb8KgctWRuZ5L+cyzE57DHCj0p67uJb6dppm3MTwOyj0FIUYHvXrYNOoK32ebmzObpdCVjVBgCnFXAzRgUDxXWlRgFRk5AFA8c0VMQ25wKhzOakzN70xbW0moXkFnCCZJ5FiUD1JxUSYzuX2NeHWsvC6XpeSGa+kM+eq7BwAR8vcda3upMyWk0cwVTLG5BX8LfCehP9Kb0SzNhYQWtvt8m3RY0Xpwo/wDz2NWjKkyG2mTKyjlH+IY/ft79OlQnTsGNwwpJZwScEOqkkgEnipNsjCMoHDZIOPXnHr70iCa4tIVjijNzbqAoHHmIB/6v61YxNFcq7RDOOuMY6j8qb7EiKhfI4BAOT9T/ANqcQuY1VQgUjHK9wMU6IsIcKDt5z6jH/ekECPcZJkjUE/iOOMmlQyt1jIsxITxEyPjPo4zSnUmWRY19s+tDV3iOlXARXmwhIKrhR0xycD+tOJG0pdpVTapOEHTgdz3/AKVq1+Csm+RUaOI0+7KZXweTwo69WPX6VHuYbmGzWSWVG8uYqdv4VVj8IB657fWpN5eRRad50tyqoBkfFjA44H51g7fxxdeItcXStMRvuEW7z5ODkjBBY+2CcD1rK/SHRtI7jAVc/EAQSTmpsT5BLSsMnjA9qplxDGru+2MEgMe/Hagbm5k+KO3AXt5jEH8gOKFGxWbLVdaVlaK2f4M4LD+P2HtVQkrOSz89+OwqHAS4kfccrwKVNcPFDK64LIQOehzj+9ZJVwMkyz7DtiI3DHxdkHqaiyQRXKiORcqeQzHnP82RQ2+UGXJbBOc/xH3pE0m1QSCS3fPQ1W6uiRmS5ms1bzS01uvWZfxge47/ADHNEko1BVk3k26n/LA7/wDMR/SlXUYERY8ooLFOgYjpmm41WS4jbaqllEx2DaC3QZ9cU7TX9hRLhlls4WnUGWZImZAOkYUEhR6kkcmvGN3PJdXEk8xLSSMXcnqSTk/qa9jtem3uo4oo1y/GW5GPlXkrxbp6aV4j1SxjYslvdyxKSMZAY4qWn2yokXSlDTsfRD/ap0iZ4zgVB0r/AOJI9UNWDjg1ceiiKVJBI7UzL+GpkuABGBxwajTr8NDQgWY4yOoOa6p4Y1BVtgHyCvNcu07k47bsVuNMJiIAJwAK87VKzu0zpnQfvylBtbnpk+lNTeRKcyRqT6kVTR3LbCCAR/SmL2/ks7WacZfykL7c43Yrz1Bt0j0HJVbJOt6npOi2ck04VXZT5cY/E7egrkl/rk95dtPIAyk8J/KKRq+q3erXLXF1IWZug7KPQCoLJgbsk816+DB4lz2eVnz73S6LiCZLhNyH5juKeC1RxytCwdDgir21k8+ESEYJANd0JWcrDxiipRGAPeknpViCNJbgUZpD9KQyNO/Fab7KrCO88Xw3MzKsdkhmG44G8/Cv9SfpWUnY5Ndi+wrT4f8ACL67KqzzXOw5UEAKox/6jWba9jOsWiAKMNlQOD6+uD+X6VIEpAO9Cdwz9P8Av+9QY9LjEqpaSSWjZ58s5Q8Hqh4/LFMWupyXd81nPGhZHIMicA/TnH51Sx3+pNlo8qwwtKX27F3OPT0A+dNw+ZGnm3IcXMxy0kTYZP8AlHyx3z0qNdqXmgjJ+EI9xzzkqQFHyGc/SnbKYmISEAt1+WTih8IOywCnyx5sssq7QOXIJ4Pb+3pT1tHZctCEZi2SFALDr1zzUIOXCEfDuGeO3/goNKCSpQccZ79euaW5jola4yf4XOGH4gq884JYD96rtY1zTdEsZJ764SOMMRs3Abwew560LqNtQsJLWSRjHMoUb+Svp0xnFcZ8RXs2ta8wv28yG2Yxxwr8KA4wWx3Jx+1V3FJCXZYX1/q/2iX629ur2uko2AvR39yR24Fa/wAH6Zb6RoyW1nHmRSweTGFyCc/F3PHQVJ0PQoIYIlZty7Q20Dap7YI7/U1ZWHwQywoAqB5FUAcLhv8AvQkkmK+STDbDAmZi8gIw57HocDtUhVkUYCxgHkbupoof4YzzkZJP7UqVS7ZzjqOB71k3Yz//2Q==" alt=""><div class="bars"><i></i><i></i><i></i><i></i><i></i></div></div>
+ <div class="pb"><div class="pn">x <span id="pStep"></span></div><div class="pt" id="pText"></div>
+ <div class="pc"><button id="pPrev" class="ic flip">⏮</button><button id="pPlay" class="ic">❚❚</button><button id="pNext" class="ic flip">⏭</button><button id="pClose" class="ic">✕</button></div><div class="pw" id="pWarn" hidden></div></div></div>
+ <button class="pbtn" id="pOpen"><img alt=""><span>▶</span></button>`;
+while(wrap.firstChild)stage.appendChild(wrap.firstChild);
+const presenter=document.getElementById('presenter'),pText=document.getElementById('pText'),pStep=document.getElementById('pStep'),pPlay=document.getElementById('pPlay'),pOpen=document.getElementById('pOpen'),pWarn=document.getElementById('pWarn');
+pOpen.querySelector('img').src=presenter.querySelector('.pv img').src;
+let tIdx=-1,tPaused=false,tTimer=null,tToken=0,arVoice=null,enVoice=null,arMale=false;
+const synth=window.speechSynthesis||null;
+function pickVoice(){if(!synth)return;const v=synth.getVoices();
+ const ar=v.filter(x=>/^ar/i.test(x.lang)),ML=/hamed|naayf|shakir|bassel|fahed|taim|rami|moaz|hamdan|\bali\b|saleh|laith|hedi|ismael|jamal|omar|abdullah|maged|majed|tarik|\bmale\b/i,FL=/zariyah|salma|hoda|rana|noura|sana|layla|laila|amal|hala|fatima|maryam|amany|amina|iman|mouna|reem|aysha|\bfemale\b/i,sa=x=>(ML.test(x.name)?100:0)-(FL.test(x.name)?100:0)+(/natural|neural|online/i.test(x.name)?8:0)+(/google/i.test(x.name)?2:0)+(/ar[-_]SA/i.test(x.lang)?1:0);arVoice=ar.sort((a,b)=>sa(b)-sa(a))[0]||null;arMale=!!(arVoice&&ML.test(arVoice.name)&&!FL.test(arVoice.name));
+ const en=v.filter(x=>/^en/i.test(x.lang)),se=x=>(/natural|neural|online/i.test(x.name)?8:0)+(/google/i.test(x.name)?4:0)+(/ryan|guy|george|daniel|david|arthur|male/i.test(x.name)?3:0)+(/en[-_]GB/i.test(x.lang)?2:0);
+ enVoice=en.sort((a,b)=>se(b)-se(a))[0]||null;}
+if(synth){pickVoice();synth.onvoiceschanged=pickVoice;}
+function chunks(t){return t.split(/(?<=[.،,:;!?؟])\s+/).reduce((a,s)=>{if(a.length&&(a[a.length-1]+' '+s).length<170)a[a.length-1]+=' '+s;else a.push(s);return a;},[]);}
+function speak(text,done){const tok=++tToken;presenter.classList.add('talking');const fin=()=>{if(tok!==tToken)return;presenter.classList.remove('talking');done();};
+ const vv=lang==='ar'?arVoice:enVoice;
+ if(synth&&vv){synth.cancel();if(lang==='ar'&&!arMale){pWarn.hidden=false;pWarn.textContent=PU().noMale;}const parts=chunks(text);let i=0;
+  const next=()=>{if(tok!==tToken)return;if(i>=parts.length){fin();return;}const u=new SpeechSynthesisUtterance(parts[i++]);u.voice=vv;u.lang=vv.lang;u.rate=lang==='ar'&&!arMale?.95:1;u.pitch=lang==='ar'&&!arMale?.72:1;
+   u.onend=()=>setTimeout(next,120);u.onerror=()=>setTimeout(next,120);synth.speak(u);};next();}
+ else{pWarn.hidden=false;pWarn.textContent=PU().noVoice;tTimer=setTimeout(fin,Math.max(5000,text.split(/\s+/).length*420));}}
+function showStep(i){clearTimeout(tTimer);if(synth)synth.cancel();pWarn.hidden=true;tIdx=i;const [k,ar,en]=CFG.tour[i],say=lang==='ar'?ar:en;
+ pText.textContent=lang==='ar'?strip(ar):en;pText.dir=lang==='ar'?'rtl':'ltr';pText.lang=lang;pStep.textContent='('+(i+1)+' / '+CFG.tour.length+')';pText.scrollTop=0;
+ if(k){if(selected!==k)select(k);focusPart(k);}else{if(selected)select(null);view('iso');}
+ if(!tPaused)speak(say,()=>{if(tIdx<CFG.tour.length-1)tTimer=setTimeout(()=>showStep(tIdx+1),700);});}
+function syncPresenter(){presenter.querySelector('.pn').firstChild.textContent=PU().name+' ';
+ [['pPrev',PU().prev],['pNext',PU().next],['pClose',PU().close]].forEach(([id,t])=>{const b=document.getElementById(id);b.title=t;b.setAttribute('aria-label',t);});
+ pPlay.textContent=tPaused?'▶':'❚❚';pPlay.title=tPaused?PU().resume:PU().pause;pPlay.setAttribute('aria-label',pPlay.title);pOpen.title=PU().open;pOpen.setAttribute('aria-label',PU().open);presenter.querySelector('.pv img').alt=PU().name;}
+function startTour(){presenter.hidden=false;pOpen.hidden=true;stage.classList.add('tour');tPaused=false;syncPresenter();if(mode==='full'){mode='cut';applyMode();}showStep(0);}
+function stopTour(){tToken++;clearTimeout(tTimer);if(synth)synth.cancel();presenter.classList.remove('talking');presenter.hidden=true;pOpen.hidden=false;stage.classList.remove('tour');}
+document.getElementById('pNext').onclick=()=>{if(tIdx<CFG.tour.length-1)showStep(tIdx+1);};
+document.getElementById('pPrev').onclick=()=>{if(tIdx>0)showStep(tIdx-1);};
+document.getElementById('pClose').onclick=stopTour;pOpen.onclick=startTour;
+pPlay.onclick=()=>{tPaused=!tPaused;syncPresenter();if(tPaused){tToken++;clearTimeout(tTimer);if(synth)synth.cancel();presenter.classList.remove('talking');}else showStep(tIdx);};
+const runBtn=document.getElementById(CFG.btn),oldRun=runBtn.onclick;
+runBtn.onclick=e=>{if(oldRun)oldRun.call(runBtn,e);if(CFG.isOn())startTour();else stopTour();};
+const oldSetLang=setLang;setLang=function(l){oldSetLang(l);syncPresenter();if(!presenter.hidden&&tIdx>=0)showStep(tIdx);};
+syncPresenter();
+})();
+
+loadingEl.remove();requestAnimationFrame(frame);
+})();
+
+</script>
+</body>
+</html>

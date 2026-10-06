@@ -84,8 +84,8 @@ export const AuthorModal: React.FC<AuthorModalProps> = ({
               <GraduationCap className="w-4 h-4 text-indigo-400 shrink-0" />
               <span>
                 {lang === 'ar'
-                  ? 'كلية العمارة الجامعة - 2026'
-                  : 'Al-Amara University College - 2026'}
+                  ? 'جامعة البصرة - 2026'
+                  : 'University of Basrah - 2026'}
               </span>
             </div>
 

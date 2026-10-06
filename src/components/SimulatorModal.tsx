@@ -41,13 +41,19 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
 
   if (!simulator) return null;
 
+  const isLocalSimulation = simulator.url.startsWith('/simulations/');
+
   const handleLaunch = () => {
     sfx.playLaunch();
     narrator.speak(
       lang === 'ar' ? `جارٍ فتح ${simulator.title_ar}` : `Opening ${simulator.title_en}`,
       lang
     );
-    window.open(simulator.url, '_blank');
+    if (isLocalSimulation) {
+      document.getElementById(`simulation-${simulator.id}`)?.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    window.open(simulator.url, '_blank', 'noopener,noreferrer');
   };
 
   const handleNarrate = () => {
@@ -176,6 +182,16 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
               simulatorId={simulator.id}
               title={lang === 'ar' ? simulator.title_ar : simulator.title_en}
             />
+            {isLocalSimulation && (
+              <div id={`simulation-${simulator.id}`} className="mt-4 overflow-hidden rounded-xl border border-cyan-500/30 bg-white shadow-lg">
+                <iframe
+                  src={simulator.url}
+                  title={lang === 'ar' ? simulator.title_ar : simulator.title_en}
+                  className="h-[520px] w-full border-0 sm:h-[640px]"
+                  loading="lazy"
+                />
+              </div>
+            )}
           </div>
 
           {/* Governing Equation */}
@@ -297,7 +313,7 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
           <div className="text-xs text-slate-400 flex items-center gap-2">
             <span className="font-semibold text-cyan-400">ENG ALAA MOHAMMED</span>
             <span>·</span>
-            <span>كلية العمارة الجامعة 2026</span>
+            <span>جامعة البصرة 2026</span>
           </div>
 
           <div className="flex items-center gap-2">

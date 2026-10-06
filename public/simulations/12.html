@@ -1,0 +1,869 @@
+<!doctype html>
+<!-- © 2026 Dr. Dheyaa J. Jasim (د. ضياء جمعة جاسم), Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College. Work ID: DJJ-VLAB-ABSORBER-2026. All rights reserved. For educational use; no republication or sale without written permission. -->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Dr. Dheyaa J. Jasim (د. ضياء جمعة جاسم)">
+<meta name="copyright" content="© 2026 Dr. Dheyaa J. Jasim. All rights reserved.">
+<meta name="dcterms.rights" content="All rights reserved. For educational use; no republication or sale without written permission.">
+<meta name="dcterms.identifier" content="DJJ-VLAB-ABSORBER-2026">
+<script type="application/ld+json" data-ip="djj">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "محاكي برج الامتصاص المحشو ثلاثي الأبعاد | 3D Packed Absorber", "identifier": "DJJ-VLAB-ABSORBER-2026", "inLanguage": ["ar", "en"], "copyrightYear": 2026, "author": {"@type": "Person", "name": "Dr. Dheyaa J. Jasim", "alternateName": "د. ضياء جمعة جاسم", "affiliation": {"@type": "CollegeOrUniversity", "name": "Al-Amarah University College", "department": "Department of Chemical Engineering and Petroleum Industries"}}, "copyrightHolder": {"@type": "Person", "name": "Dr. Dheyaa J. Jasim"}, "usageInfo": "All rights reserved. For educational use; no republication or sale without written permission."}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>محاكي برج الامتصاص المحشو ثلاثي الأبعاد | 3D Packed Absorber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e4eaee; --stage-a:#f3f6f8; --stage-b:#d2dce2; --panel:#f7f9fa; --ink:#1b2830; --muted:#5a6a75;
+  --line:#c9d4db; --chip:#ffffff; --accent:#b85f1e; --accent-ink:#ffffff; --cool:#2f76b3; --tint:#edf2f5;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#11171c; --stage-a:#223039; --stage-b:#10161b; --panel:#172027; --ink:#e1e8ed; --muted:#94a4af;
+    --line:#2c3a44; --chip:#21303a; --accent:#e0873d; --accent-ink:#1a1108; --cool:#5d9fd5; --tint:#1e2a32;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11171c; --stage-a:#223039; --stage-b:#10161b; --panel:#172027; --ink:#e1e8ed; --muted:#94a4af;
+  --line:#2c3a44; --chip:#21303a; --accent:#e0873d; --accent-ink:#1a1108; --cool:#5d9fd5; --tint:#1e2a32;
+}
+html{height:100%; scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0; height:100%; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans Arabic","Segoe UI",Tahoma,"Noto Sans Arabic",Arial,sans-serif; font-size:15px; line-height:1.7}
+button{font:inherit; color:inherit}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+.app{display:grid; grid-template-columns:minmax(300px,370px) 1fr; height:100%}
+.panel{background:var(--panel); border-inline-end:1px solid var(--line); overflow-y:auto; display:flex; flex-direction:column}
+.ph{padding:22px 22px 14px}
+.ph h1{margin:0; font-size:21px; line-height:1.4; font-weight:700}
+.ph .sub{margin:2px 0 0; color:var(--muted); font-size:13.5px; direction:ltr; text-align:right}
+
+.card{margin:0 16px; padding:16px 18px; background:var(--tint); border-radius:12px; border:1px solid var(--line)}
+.card h2{margin:0; font-size:18px; font-weight:600; line-height:1.45}
+.card .en{margin:0 0 8px; color:var(--muted); font-size:13px; direction:ltr; text-align:right}
+.card p{margin:6px 0}
+.card .eq{margin-top:10px; padding:8px 10px; border-inline-start:3px solid var(--accent); background:var(--panel); border-radius:0 6px 6px 0; font-size:14px; unicode-bidi:plaintext}
+.card .head{display:flex; gap:10px; align-items:flex-start}
+.card .head .num{flex:none; margin-top:3px}
+.card .act{margin-top:12px; display:flex; gap:8px; flex-wrap:wrap}
+.card .act button{background:var(--chip); border:1px solid var(--line); border-radius:8px; padding:5px 12px; cursor:pointer; font-size:13.5px}
+.card .act button:hover{border-color:var(--accent)}
+
+.num{display:inline-grid; place-items:center; width:24px; height:24px; border-radius:50%; font-size:12.5px; font-weight:600;
+  background:var(--chip); border:1.5px solid var(--ink); line-height:1; font-variant-numeric:tabular-nums}
+
+.mix{padding:18px 22px 6px}
+.mix h3,.parts h3{margin:0 0 6px; font-size:15px; font-weight:600}
+.rpm{display:flex; align-items:center; gap:12px}
+.rpm input{flex:1; accent-color:var(--accent)}
+.rpm output{min-width:86px; font-weight:600; font-variant-numeric:tabular-nums}
+.readout{display:grid; grid-template-columns:1fr auto; gap:2px 12px; margin:10px 0 4px; font-size:14px}
+.readout dt{color:var(--muted)}
+.readout dd{margin:0; font-weight:600; font-variant-numeric:tabular-nums; direction:ltr; text-align:left}
+.fine{font-size:12.5px; color:var(--muted); margin:6px 0 0}
+
+.parts{padding:14px 14px 8px}
+.parts h3{padding:10px 8px 2px; color:var(--muted); font-size:13px}
+.parts ul{list-style:none; margin:0; padding:0}
+.parts li button{display:flex; align-items:center; gap:10px; width:100%; text-align:right; background:none; border:0;
+  padding:5px 8px; border-radius:8px; cursor:pointer; font-size:14.5px}
+.parts li button:hover{background:var(--tint)}
+.parts li button[aria-current="true"]{background:var(--tint); box-shadow:inset -3px 0 0 var(--accent)}
+.parts li button[aria-current="true"] .num{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.lang{display:inline-block; cursor:pointer; background:none; font:inherit; margin-top:8px; font-size:13.5px; color:var(--accent); text-decoration:none; border:1px solid var(--line); border-radius:8px; padding:2px 10px}
+.lang:hover{border-color:var(--accent)}
+.credit{margin-top:auto; padding:14px 22px 20px; font-size:12.5px; color:var(--muted); border-top:1px solid var(--line)}
+.credit b{color:var(--ink); font-weight:600}
+
+.stage{position:relative; overflow:hidden; background:radial-gradient(ellipse 70% 65% at 50% 42%, var(--stage-a), var(--stage-b))}
+#c{display:block; width:100%; height:100%; touch-action:none; cursor:grab}
+#c:active{cursor:grabbing}
+.labels{position:absolute; inset:0; pointer-events:none}
+.lbl{direction:ltr; position:absolute; left:0; top:0; pointer-events:auto; display:flex; align-items:center; gap:6px; padding:0; border:0; background:none; cursor:pointer; white-space:nowrap}
+.lbl .t{direction:rtl; display:none; background:var(--chip); border:1px solid var(--line); border-radius:6px; padding:1px 8px; font-size:12.5px; box-shadow:0 1px 3px rgba(20,30,40,.18)}
+.labels.names .lbl .t,.lbl.on .t{display:inline-block}
+.lbl .num{box-shadow:0 1px 3px rgba(20,30,40,.25)}
+.lbl.on .num{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.lbl.on .t{border-color:var(--accent)}
+.labels.off .lbl:not(.on){display:none}
+
+.ovl{position:absolute; top:14px; inset-inline-start:16px; pointer-events:none; display:flex; flex-direction:column; align-items:flex-start; gap:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 12px; background:color-mix(in srgb,var(--panel) 82%,transparent); border:1px solid var(--line); border-radius:10px; padding:5px 12px; font-size:13px}
+.legend span{display:inline-flex; align-items:center; gap:6px}
+.legend i{width:11px; height:11px; border-radius:50%; display:inline-block; box-shadow:0 0 0 1.5px rgba(255,255,255,.7)}
+.legend b{font-weight:500}
+.tb.rx{background:#1f8a4c; color:#fff; border-color:#1f8a4c; font-weight:600}
+.tb.rx[aria-pressed="true"]{background:#b3362b; border-color:#b3362b; color:#fff}
+.rxbar{display:flex; height:12px; border-radius:6px; overflow:hidden; margin:8px 0 4px; background:var(--line)}
+.rxbar div{transition:width .25s linear}
+.brand{ background:color-mix(in srgb,var(--panel) 82%,transparent); border:1px solid var(--line); border-inline-start:4px solid var(--accent); border-radius:10px; padding:8px 14px 9px}
+.brand .who{font-size:17px; font-weight:700; line-height:1.4}
+.brand .en{font-size:13px; color:var(--muted); direction:ltr; text-align:right}
+.brand .org{font-size:12.5px; color:var(--muted)}
+.hint{position:absolute; top:14px; inset-inline-end:16px; max-width:300px; font-size:13px; color:var(--muted); pointer-events:none}
+.toolbar{position:absolute; bottom:14px; inset-inline:14px; display:flex; flex-wrap:wrap; gap:8px; justify-content:center; pointer-events:none}
+.toolbar > *{pointer-events:auto}
+.tb{background:var(--chip); border:1px solid var(--line); border-radius:9px; padding:6px 13px; cursor:pointer; font-size:13.5px; box-shadow:0 1px 3px rgba(20,30,40,.12)}
+.tb:hover{border-color:var(--accent)}
+.tb[aria-pressed="true"]{background:var(--ink); color:var(--panel); border-color:var(--ink)}
+.seg{display:inline-flex; background:var(--chip); border:1px solid var(--line); border-radius:9px; padding:2px; box-shadow:0 1px 3px rgba(20,30,40,.12)}
+.seg button{border:0; background:none; padding:4px 11px; border-radius:7px; cursor:pointer; font-size:13.5px}
+.seg button[aria-pressed="true"]{background:var(--ink); color:var(--panel)}
+.loading{position:absolute; inset:0; display:grid; place-items:center; color:var(--muted); font-size:15px; padding:20px; text-align:center}
+
+html[dir="ltr"] .ph .sub,html[dir="ltr"] .card .en,html[dir="ltr"] .brand .en{direction:rtl; text-align:left}
+html[dir="ltr"] .readout dd{text-align:right}
+html[dir="rtl"] #oReg{direction:rtl}
+html[dir="ltr"] .parts li button{text-align:left}
+html[dir="ltr"] .parts li button[aria-current="true"]{box-shadow:inset 3px 0 0 var(--accent)}
+html[dir="ltr"] .lbl .t{direction:ltr}
+html[dir="ltr"] .card .eq{border-radius:0 6px 6px 0}
+html[dir="rtl"] .card .eq{border-radius:6px 0 0 6px}
+@media (max-width:820px){
+  html,body{height:auto}
+  .app{grid-template-columns:1fr; height:auto}
+  .stage{order:-1; height:66svh; min-height:380px}
+  .panel{border-inline-end:0; overflow:visible}
+  .hint{display:none}
+  .ovl{top:10px; inset-inline-start:10px}
+  .brand{padding:6px 10px}
+  .legend{font-size:12px; padding:4px 9px}
+  .brand .who{font-size:15px}
+  .brand .org{display:none}
+  .toolbar{bottom:10px; gap:6px}
+  .tb,.seg button{font-size:12.5px}
+}
+.prof-h{margin-top:14px !important}
+.prof{display:grid; grid-template-columns:auto 1fr auto; gap:3px 8px; align-items:center; font-size:12.5px; font-variant-numeric:tabular-nums}
+.prof .k{color:var(--muted)}
+.prof .tr{height:9px; background:var(--line); border-radius:5px; overflow:hidden}
+.prof .tr div{height:100%; border-radius:5px; transition:width .3s}
+.prof .v{direction:ltr}
+.legend i.grad{width:34px; border-radius:6px; background:linear-gradient(90deg,#f2c21b,#e23b32)}
+html[dir="rtl"] .legend i.grad{background:linear-gradient(270deg,#f2c21b,#e23b32)}
+.legend i.bub{background:transparent; box-shadow:inset 0 0 0 2px #e9844a}
+@media (max-width:820px){
+  .stage{height:auto; min-height:0; display:flex; flex-direction:column}
+  #c{height:60svh; min-height:340px; flex:none}
+  .toolbar{position:static; inset:auto; padding:10px 10px 12px; background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+  .labels{bottom:auto; height:max(60svh,340px)}
+}
+.tb.fl{border-color:#b3362b; color:#b3362b; font-weight:600}
+.tb.fl[aria-pressed="true"]{background:#b3362b; color:#fff}
+.fwarn{background:#b3362b; color:#fff; border-radius:10px; padding:6px 12px; font-size:13.5px; font-weight:600; max-width:340px; box-shadow:0 2px 8px rgba(120,20,10,.3)}
+.fwarn[hidden]{display:none}
+.card.fcard{border-color:#b3362b; border-inline-start:4px solid #b3362b}
+.card.fcard h2{color:#b3362b}
+.card ul{margin:6px 0; padding-inline-start:20px}
+.card li{margin:2px 0}
+.card h4{margin:10px 0 2px; font-size:14.5px}
+.tb.ch{border-color:#c0621c; color:#c0621c; font-weight:600}
+.tb.ch[aria-pressed="true"]{background:#c0621c; color:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tb.ch{color:#f0a060;border-color:#d07a38}}
+.fwarn.ch{background:#c0621c}
+.card.ccard{border-inline-start:4px solid #c0621c}
+.card.ccard h2{color:#c0621c}
+.legend i.g1{width:34px; border-radius:6px; background:linear-gradient(90deg,#ffd600,#ff6a00)}
+.legend i.g2{width:34px; border-radius:6px; background:linear-gradient(90deg,#14d8ff,#1a2cb0)}
+html[dir="rtl"] .legend i.g1{background:linear-gradient(270deg,#ffd600,#ff6a00)}
+html[dir="rtl"] .legend i.g2{background:linear-gradient(270deg,#14d8ff,#1a2cb0)}
+#chart svg{width:100%; height:auto; display:block}
+#chart text{font-size:10px; fill:var(--muted); font-family:inherit}
+.ch-leg{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--muted); margin-top:4px}
+.ch-leg i{display:inline-block; width:16px; height:3px; border-radius:2px; vertical-align:middle; margin-inline-end:5px}
+.pkseg{display:flex; width:100%; margin-bottom:4px}
+.pkseg button{flex:1; padding:6px 4px}
+.presenter{position:absolute; top:12px; inset-inline-end:12px; width:min(290px,calc(100% - 24px)); display:flex; gap:9px; align-items:flex-start; background:color-mix(in srgb,var(--panel) 94%,transparent); border:1px solid var(--line); border-radius:12px; padding:8px 9px; box-shadow:0 4px 16px rgba(10,20,30,.2); z-index:5}
+.presenter[hidden]{display:none}
+.pv{position:relative; flex:none; width:52px; height:52px}
+.pv img{width:52px; height:52px; border-radius:50%; object-fit:cover; object-position:50% 30%; position:relative; z-index:1; border:2px solid var(--panel)}
+.pv .ring{position:absolute; inset:-3px; border-radius:50%; background:conic-gradient(#1f8a4c,#1f78c8,#1f8a4c); opacity:.35}
+.presenter.talking .pv img{animation:talk 2.4s ease-in-out infinite}
+.presenter.talking .pv .ring{opacity:1; animation:spin 3s linear infinite}
+@keyframes talk{0%,100%{transform:translateY(0) scale(1)}25%{transform:translateY(-1px) scale(1.02) rotate(-.6deg)}50%{transform:translateY(0) scale(1.005)}75%{transform:translateY(-1px) scale(1.015) rotate(.6deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pv .bars{position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); display:flex; gap:2px; z-index:2; background:var(--panel); border-radius:6px; padding:2px 4px; border:1px solid var(--line)}
+.pv .bars i{display:block; width:2px; height:4px; background:#1f8a4c; border-radius:2px}
+.presenter.talking .bars i{animation:bar .9s ease-in-out infinite}
+.presenter.talking .bars i:nth-child(2){animation-delay:.15s}.presenter.talking .bars i:nth-child(3){animation-delay:.3s}.presenter.talking .bars i:nth-child(4){animation-delay:.45s}.presenter.talking .bars i:nth-child(5){animation-delay:.6s}
+@keyframes bar{0%,100%{height:3px}50%{height:10px}}
+.pb{flex:1; min-width:0}
+.pn{font-weight:700; font-size:12.5px; line-height:1.3}
+.pn span{font-weight:500; color:var(--muted); font-size:11.5px; margin-inline-start:4px}
+.pt{font-size:12.5px; line-height:1.6; margin:3px 0 5px; max-height:4.9em; overflow-y:auto}
+.pc{display:flex; gap:4px}
+.pc .ic{background:var(--chip); border:1px solid var(--line); border-radius:7px; width:28px; height:24px; padding:0; font-size:11px; line-height:1; cursor:pointer}
+.pc .ic:hover{border-color:var(--accent)}
+html[dir="rtl"] .pc .flip{transform:scaleX(-1)}
+.pw{margin-top:4px; font-size:11px; color:#c0621c}
+.pbtn{position:absolute; top:12px; inset-inline-end:12px; z-index:5; width:46px; height:46px; border-radius:50%; padding:0; border:2px solid #1f8a4c; background:var(--panel); cursor:pointer; box-shadow:0 3px 10px rgba(10,20,30,.2)}
+.pbtn img{width:100%; height:100%; border-radius:50%; object-fit:cover; object-position:50% 30%}
+.pbtn span{position:absolute; bottom:-3px; inset-inline-end:-3px; width:18px; height:18px; border-radius:50%; background:#1f8a4c; color:#fff; font-size:9px; display:grid; place-items:center}
+.pbtn[hidden]{display:none}
+.stage.tour .hint{display:none}
+@media (max-width:820px){.presenter{top:8px; inset-inline-end:8px; width:min(270px,calc(100% - 16px))}.pbtn{top:8px}.stage.tour .ovl{display:none}}
+.stage .hint{inset-inline-end:70px}
+.wm{position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:6;pointer-events:none;user-select:none;font:600 11px/1.2 "IBM Plex Sans Arabic",system-ui,sans-serif;color:#fff;opacity:.5;text-shadow:0 0 3px rgba(0,0,0,.85),0 0 1px #000;white-space:nowrap;letter-spacing:.2px}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="panel">
+    <header class="ph">
+      <h1 data-t="h1"></h1>
+      <p class="sub" data-t="sub"></p>
+      <button class="lang" data-lang-toggle>English</button>
+    </header>
+    <section class="card" id="card" aria-live="polite"></section>
+    <section class="mix">
+      <h3 data-t="pkH"></h3>
+      <div class="seg pkseg" role="group">
+        <button data-pk="raschig" aria-pressed="true"></button>
+        <button data-pk="pall" aria-pressed="false"></button>
+        <button data-pk="saddle" aria-pressed="false"></button>
+        <button data-pk="struct" aria-pressed="false"></button>
+      </div>
+      <h3 data-t="opH" style="margin-top:14px"></h3>
+      <div class="rpm">
+        <input type="range" id="lg" min="0.6" max="3" step="0.1" value="1.8" aria-label="L/G">
+        <output id="lgOut">L/G = 1.8</output>
+      </div>
+      <dl class="readout">
+        <dt data-t="dA"></dt><dd id="oA">–</dd>
+        <dt data-t="dRec"></dt><dd id="oRec">–</dd>
+        <dt data-t="dY2"></dt><dd id="oY2">–</dd>
+        <dt data-t="dX1"></dt><dd id="oX1">–</dd>
+        <dt data-t="dLmin"></dt><dd id="oLmin">–</dd>
+        <dt data-t="dHog"></dt><dd id="oHog">–</dd>
+        <dt data-t="dAe"></dt><dd id="oAe">–</dd>
+        <dt data-t="dDP"></dt><dd id="oDP">–</dd>
+        <dt data-t="dFl"></dt><dd id="oFl">–</dd>
+      </dl>
+      <h3 class="prof-h" data-t="chH"></h3>
+      <div id="chart"></div>
+      <p class="fine" data-t="fine"></p>
+    </section>
+    <footer class="credit" data-t="credit"></footer>
+  </aside>
+  <main class="stage" id="stage">
+    <canvas id="c" aria-label="3D packed absorption column"></canvas>
+<div class="wm" aria-hidden="true">© 2026 د. ضياء جمعة جاسم · Dr. Dheyaa J. Jasim</div>
+    <div class="labels" id="labels"></div>
+    <div class="ovl">
+      <div class="brand"><div class="who" data-t="who"></div><div class="en" data-t="whoAlt"></div><div class="org" data-t="org"></div></div>
+      <div class="fwarn" id="fwarn" hidden></div>
+      <div class="legend" aria-hidden="true">
+        <span><i class="g1"></i><b data-t="lgGas"></b></span>
+        <span><i class="g2"></i><b data-t="lgLiq"></b></span>
+      </div>
+    </div>
+    <div class="hint" data-t="hint"></div>
+    <div class="toolbar">
+      <button class="tb rx" id="bRun" aria-pressed="false"></button>
+      <button class="tb fl" id="bFlood" aria-pressed="false"></button>
+      <button class="tb ch" id="bChan" aria-pressed="false"></button>
+      <button class="tb" data-lang-toggle>English</button>
+      <div class="seg" role="group">
+        <button data-drag="rotate" aria-pressed="true" data-t="dRot"></button>
+        <button data-drag="pan" aria-pressed="false" data-t="dPan"></button>
+      </div>
+      <div class="seg" role="group">
+        <button data-mode="full" aria-pressed="false" data-t="full"></button>
+        <button data-mode="cut" aria-pressed="true" data-t="cut"></button>
+        <button data-mode="ghost" aria-pressed="false" data-t="ghost"></button>
+      </div>
+      <button class="tb" id="bExplode" aria-pressed="false"></button>
+      <button class="tb" id="bLabels"></button>
+      <div class="seg" role="group">
+        <button data-view="iso" data-t="iso"></button>
+        <button data-view="front" data-t="front"></button>
+        <button data-view="top" data-t="top"></button>
+      </div>
+    </div>
+    <div class="loading" id="loading">جارٍ تحميل النموذج… Loading…</div>
+  </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+const loadingEl=document.getElementById('loading');
+if(!window.THREE||!THREE.OrbitControls){loadingEl.textContent='تعذّر تحميل مكتبة الرسم ثلاثي الأبعاد. تحقق من الاتصال بالإنترنت ثم أعد تحميل الصفحة. / The 3D library could not load; check your connection and reload.';return;}
+
+/* ================= content ================= */
+const INFO_AR={
+ shell:{ar:'غلاف برج الامتصاص',en:'Absorber shell',d:'وعاء أسطواني عمودي يجري فيه الغاز صاعداً والمذيب نازلاً بتعاكس (Counter-current)، فينتقل المذاب من الغاز إلى السائل على السطح الكبير الذي توفره الحشوة.',n:'الموازنة (محاليل مخففة): G(y₁ − y₂) = L(x₁ − x₂)'},
+ skirt:{ar:'التنورة الداعمة',en:'Support skirt',d:'أسطوانة فولاذية تحمل البرج وتنقل وزنه وأحمال الرياح إلى الأساس، وفيها فتحة لمرور خط السائل الغني.',n:''},
+ packing:{ar:'الحشوة',en:'Packing',d:'قطع صغيرة تُسكب عشوائياً أو صفائح مرتبة تكوّن مساحة سطحية كبيرة وفراغاً عالياً، ويمكن تغيير نوعها من أزرار «نوع الحشوة» في اللوحة. ينساب المذيب عليها كغشاء رقيق ويمر الغاز في الفراغات بينها، فيتلامس الطوران تلامساً جيداً مع هبوط ضغط قليل.',n:'ارتفاع الحشوة: Z = H_OG × N_OG'},
+ supports:{ar:'ألواح دعم الحشوة',en:'Packing support plates',d:'شبكات قوية أسفل كل طبقة تحمل وزن الحشوة والسائل المحتجز، وفتحاتها واسعة بحيث لا تعيق مرور الغاز والسائل ولا تسبب غمراً مبكراً.',n:''},
+ holddown:{ar:'شبكات التثبيت العلوية',en:'Hold-down grids',d:'شبكات خفيفة فوق كل طبقة تمنع الحلقات من التطاير أو الحركة عند تذبذب جريان الغاز.',n:''},
+ distributor:{ar:'موزع السائل',en:'Liquid distributor (pipe ladder)',d:'أنابيب متوازية مثقبة في أعلى البرج توزع المذيب بانتظام على كامل مقطع الحشوة. سوء التوزيع هنا من أهم أسباب ضعف أداء الأبراج المحشوة.',n:''},
+ redistributor:{ar:'مُعيد توزيع السائل',en:'Liquid redistributor',d:'صينية تجميع ذات مداخن بين الطبقتين، تجمع السائل الذي انحرف نحو الجدار وتعيد توزيعه على مركز الطبقة السفلى، بينما يصعد الغاز عبر المداخن.',n:''},
+ demister:{ar:'مانع الرذاذ',en:'Mist eliminator (demister pad)',d:'وسادة من شبكة أسلاك دقيقة تلتقط قطرات السائل التي يحملها الغاز قبل خروجه من القمة.',n:''},
+ gasIn:{ar:'مدخل الغاز',en:'Gas inlet and distributor',d:'يدخل الغاز الملوث (المحمّل بالمذاب) من أسفل البرج فوق سطح السائل، وتوجّهه قطعة داخلية إلى الأسفل لتوزيعه بانتظام تحت الحشوة.',n:'y₁ = تركيز المذاب في الغاز الداخل'},
+ blower:{ar:'مروحة الغاز',en:'Gas blower',d:'مروحة طاردة مركزية تدفع الغاز إلى البرج بضغط يكفي للتغلب على هبوط الضغط في الحشوة والأنابيب.',n:''},
+ gasOut:{ar:'مخرج الغاز النظيف والمدخنة',en:'Clean gas outlet and stack',d:'يخرج الغاز بعد إزالة معظم المذاب منه من القمة إلى المدخنة.',n:'الاسترداد = (y₁ − y₂)/y₁'},
+ solventPump:{ar:'مضخة المذيب',en:'Solvent pump',d:'تضخ المذيب النقي (الماء هنا) إلى قمة البرج. معدل تدفقه L يحدد عامل الامتصاص A ومقدار الاسترداد.',n:''},
+ solventLine:{ar:'خط المذيب وصمام التحكم بالتدفق',en:'Solvent line and flow control valve',d:'يرفع المذيب إلى موزع السائل، ويضبط صمام التحكم نسبة L/G المطلوبة.',n:'A = L/(mG) ، و (L/G)min = m·(y₁ − y₂)/y₁ عند x₂ = 0'},
+ sump:{ar:'حوض القاع',en:'Bottom sump',d:'يتجمع فيه المذيب الغني بالمذاب بعد نزوله عبر الحشوة، ويُحفظ مستواه ثابتاً ليمنع خروج الغاز مع السائل.',n:''},
+ richLine:{ar:'خط المذيب الغني ومضخته',en:'Rich solvent line and pump',d:'تسحب المضخة المذيب الغني من القاع وترسله إلى وحدة التجديد (Stripper) لاستعادة المذاب وإعادة استخدام المذيب.',n:'x₁ = x₂ + (G/L)(y₁ − y₂)'},
+ dp:{ar:'مرسل فرق الضغط',en:'Differential pressure transmitter',d:'يقيس هبوط الضغط عبر الحشوة، وهو أهم مؤشر على اقتراب البرج من التحميل (Loading) والغمر (Flooding)، إذ يرتفع ارتفاعاً حاداً عند الغمر.',n:''},
+ thermo:{ar:'مجسات درجة الحرارة',en:'Temperature sensors',d:'تقيس ارتفاع حرارة السائل الناتج عن حرارة الذوبان، وهو ما يقلل الذوبانية إذا كان كبيراً.',n:''},
+ level:{ar:'مرسل مستوى القاع',en:'Sump level transmitter',d:'يقيس مستوى السائل في القاع ويتحكم بصمام خط المذيب الغني.',n:''},
+ analyzers:{ar:'محللا الغاز',en:'Gas analysers (inlet and outlet)',d:'يقيسان تركيز المذاب في الغاز الداخل والخارج لحساب كفاءة الامتصاص ومراقبة الانبعاثات.',n:''},
+ manholes:{ar:'فتحات التفتيش',en:'Manholes',d:'فتحات لتعبئة الحشوة وتفريغها ولفحص الموزعات وألواح الدعم.',n:''},
+ platforms:{ar:'المنصات والسلّم',en:'Platforms and caged ladder',d:'منصات خدمة بحواجز أمان عند فتحات التفتيش، يُصعد إليها بسلّم ذي قفص حماية.',n:''}
+};
+const INFO_EN={
+ shell:{ar:'Absorber shell',en:'غلاف برج الامتصاص',d:'A vertical vessel in which gas rises and solvent falls counter-currently, so the solute moves from the gas into the liquid over the large surface provided by the packing.',n:'Balance (dilute): G(y₁ − y₂) = L(x₁ − x₂)'},
+ skirt:{ar:'Support skirt',en:'التنورة الداعمة',d:'A steel cylinder that carries the column and transfers its weight and wind loads to the foundation, with an opening for the rich solvent line.',n:''},
+ packing:{ar:'Packing',en:'الحشوة',d:'Randomly dumped pieces or ordered sheets that give a large surface area and high voidage; switch the type with the Packing type buttons in the panel. The solvent spreads over them as a thin film while gas passes through the gaps, giving good contact at low pressure drop.',n:'Packed height: Z = H_OG × N_OG'},
+ supports:{ar:'Packing support plates',en:'ألواح دعم الحشوة',d:'Strong grids under each bed that carry the packing and the held-up liquid, with large openings so they neither restrict gas and liquid nor cause early flooding.',n:''},
+ holddown:{ar:'Hold-down grids',en:'شبكات التثبيت العلوية',d:'Light grids on top of each bed that stop the rings from lifting or moving when the gas flow fluctuates.',n:''},
+ distributor:{ar:'Liquid distributor',en:'موزع السائل',d:'Parallel perforated pipes at the top that spread the solvent evenly over the whole packing cross-section. Poor distribution here is one of the main causes of poor packed-column performance.',n:''},
+ redistributor:{ar:'Liquid redistributor',en:'مُعيد توزيع السائل',d:'A chimney collector tray between the beds that gathers liquid which has drifted to the wall and redistributes it over the centre of the lower bed, while gas rises through the chimneys.',n:''},
+ demister:{ar:'Mist eliminator',en:'مانع الرذاذ',d:'A pad of fine knitted wire that catches liquid droplets carried by the gas before it leaves the top.',n:''},
+ gasIn:{ar:'Gas inlet and distributor',en:'مدخل الغاز',d:'The contaminated gas (carrying the solute) enters at the bottom above the liquid level; an internal deflector turns it downward so it spreads evenly under the packing.',n:'y₁ = solute mole fraction in the entering gas'},
+ blower:{ar:'Gas blower',en:'مروحة الغاز',d:'A centrifugal blower that pushes the gas into the column with enough pressure to overcome the pressure drop in the packing and pipework.',n:''},
+ gasOut:{ar:'Clean gas outlet and stack',en:'مخرج الغاز النظيف',d:'The gas, now stripped of most of the solute, leaves the top to the stack.',n:'Recovery = (y₁ − y₂)/y₁'},
+ solventPump:{ar:'Solvent pump',en:'مضخة المذيب',d:'Pumps fresh solvent (water here) to the top of the column. Its flow L sets the absorption factor A and the recovery.',n:''},
+ solventLine:{ar:'Solvent line and flow control valve',en:'خط المذيب وصمام التحكم',d:'Lifts the solvent to the liquid distributor; the control valve sets the required L/G ratio.',n:'A = L/(mG); (L/G)min = m·(y₁ − y₂)/y₁ for x₂ = 0'},
+ sump:{ar:'Bottom sump',en:'حوض القاع',d:'Collects the solute-rich solvent after it has passed through the packing; its level is held steady so gas cannot escape with the liquid.',n:''},
+ richLine:{ar:'Rich solvent line and pump',en:'خط المذيب الغني',d:'The pump draws the rich solvent from the bottom and sends it to the stripper, where the solute is recovered and the solvent reused.',n:'x₁ = x₂ + (G/L)(y₁ − y₂)'},
+ dp:{ar:'Differential pressure transmitter',en:'مرسل فرق الضغط',d:'Measures the pressure drop across the packing, the key indicator of loading and flooding, since it rises sharply at flooding.',n:''},
+ thermo:{ar:'Temperature sensors',en:'مجسات درجة الحرارة',d:'Measure the rise in liquid temperature caused by the heat of solution, which lowers solubility if it is large.',n:''},
+ level:{ar:'Sump level transmitter',en:'مرسل مستوى القاع',d:'Measures the bottom liquid level and drives the rich-solvent valve.',n:''},
+ analyzers:{ar:'Gas analysers',en:'محللا الغاز',d:'Measure the solute concentration in the inlet and outlet gas to calculate absorption efficiency and monitor emissions.',n:''},
+ manholes:{ar:'Manholes',en:'فتحات التفتيش',d:'Openings for loading and unloading the packing and for inspecting the distributors and support plates.',n:''},
+ platforms:{ar:'Platforms and caged ladder',en:'المنصات والسلّم',d:'Service platforms with guard rails at the manholes, reached by a caged ladder.',n:''}
+};
+let INFO=INFO_AR;
+const ORDER=['shell','skirt','packing','supports','holddown','distributor','redistributor','demister','sump','gasIn','blower','gasOut','solventPump','solventLine','richLine','dp','thermo','level','analyzers','manholes','platforms'];
+const NUM={};ORDER.forEach((k,i)=>NUM[k]=i+1);
+const INTERNAL=['packing','supports','holddown','distributor','redistributor','demister','sump'];
+
+const T={
+ ar:{title:'محاكي برج الامتصاص المحشو ثلاثي الأبعاد',h1:'برج الامتصاص المحشو',sub:'Packed Absorption Column',
+  pkH:'نوع الحشوة',dHog:'ارتفاع وحدة الانتقال H_OG',dAe:'المساحة النوعية ونسبة الفراغ',
+  pk:{raschig:['حلقات راشيغ الخزفية','Ceramic Raschig rings, 25 mm','أقدم أنواع الحشوات وأبسطها: أنابيب قصيرة طولها يساوي قطرها. رخيصة ومقاومة للتآكل والحرارة، لكن نسبة الفراغ فيها منخفضة فيكون هبوط الضغط كبيراً والسعة قليلة، وتميل إلى سوء توزيع السائل.','راشيغ'],
+   pall:['حلقات بال المعدنية','Metal Pall rings, 25 mm','حلقات معدنية جدرانها مثقبة بنوافذ وألسنة منحنية إلى الداخل، فيمر الغاز والسائل عبر الحلقة نفسها. نسبة الفراغ عالية جداً، فيكون هبوط الضغط أقل بنحو النصف والسعة أكبر وكفاءة التلامس أفضل من حلقات راشيغ.','بال'],
+   saddle:['سروج إنتالوكس الخزفية','Ceramic Intalox saddles, 25 mm','قطع خزفية على شكل سرج لا تتراص فوق بعضها بإحكام، فتوفر مساحة سطحية كبيرة وتوزيعاً جيداً للسائل مع هبوط ضغط متوسط. مناسبة للأوساط المسببة للتآكل.','سروج'],
+   struct:['الحشوة المنظمة','Structured packing (Mellapak 250Y type)','صفائح معدنية مموجة مرتبة في طبقات بقنوات مائلة 45°، وكل طبقة مدارة 90° عن التي تحتها. تعطي أعلى كفاءة (أصغر H_OG) وأقل هبوط ضغط وأكبر سعة، لكنها أغلى وأكثر حساسية للترسبات وسوء التوزيع.','منظمة']},
+  opH:'نسبة السائل إلى الغاز L/G',dA:'عامل الامتصاص A = L/(mG)',dRec:'نسبة الاسترداد',dY2:'تركيز الغاز الخارج y₂',dX1:'تركيز السائل الخارج x₁',dLmin:'L/G ÷ (L/G)min',dDP:'هبوط الضغط عبر الحشوة',dFl:'نسبة الاقتراب من الغمر',
+  chH:'توزيع التركيز على ارتفاع الحشوة',chY:'الغاز y/y₁',chX:'السائل x/x₁*',chH2:'الارتفاع',
+  fine:'امتصاص مذاب مخفف (نحو الأمونيا من الهواء بالماء) مع ثابت توازن m = 1.2 و y₁ = 0.05 ومذيب نقي x₂ = 0. ارتفاع الحشوة 4 m و H_OG يعتمد على نوع الحشوة (N_OG = 4/H_OG)، والنتائج من معادلة كولبرن. x₁* = y₁/m هو التركيز المتوازن مع الغاز الداخل.',
+  credit:'إعداد: <b>د. ضياء جمعة جاسم</b> (Dheyaa J. Jasim)<br>قسم الهندسة الكيمياوية والصناعات النفطية، كلية العمارة الجامعة<br>© 2026 د. ضياء جمعة جاسم. جميع الحقوق محفوظة. للاستخدام التعليمي؛ لا يجوز إعادة النشر أو البيع دون إذن كتابي.',
+  who:'إعداد: د. ضياء جمعة جاسم',whoAlt:'Dr. Dheyaa J. Jasim',org:'قسم الهندسة الكيمياوية والصناعات النفطية، كلية العمارة الجامعة',
+  lgGas:'الغاز: برتقالي ملوث ← أصفر نظيف',lgLiq:'المذيب: سماوي نقي ← أزرق داكن غني',
+  hint:'اسحب بالزر الأيسر للتدوير وبالزر الأيمن لتحريك الجهاز، واستخدم العجلة للتكبير والتصغير، وانقر على أي جزء لمعرفة وظيفته.',
+  dRot:'تدوير',dPan:'تحريك',full:'كامل',cut:'مقطع',ghost:'شفاف',iso:'منظور',front:'أمامي',top:'علوي',other:'English',otherLang:'en',
+  pick:'<h2>اختر جزءاً من الوحدة</h2><p>اضغط «تشغيل البرج» لترى الغاز الملوث (برتقالي) يصعد عبر الحشوة ويخرج نظيفاً (أصفر)، والمذيب النقي (سماوي) ينساب نازلاً ويغتني بالمذاب (أزرق داكن)، ثم انقر على أي جزء أو رقمه لمعرفة وظيفته.</p><p class="fine">غيّر نوع الحشوة ونسبة L/G وراقب الاسترداد وهبوط الضغط، ثم جرّب زرّي الغمر وسوء التوزيع.</p>',
+  focus:'تقريب الكاميرا من الجزء',clear:'إلغاء التحديد',explode:'تفكيك الأجزاء',assemble:'تجميع الأجزاء',run:'تشغيل البرج',stopRun:'إيقاف البرج',
+  flood:'الغمر (Flooding)',floodOff:'إنهاء الغمر',chan:'سوء توزيع السائل (Channeling)',chanOff:'إنهاء سوء التوزيع',
+  fw1:'⚠ البرج في حالة غمر: ',fw2:' من سرعة الغمر',cw:'⚠ سوء توزيع: السائل ينحرف نحو الجدار والغاز يعبر المركز الجاف',
+  fcard:'<h2>الغمر في البرج المحشو (Flooding)</h2><p class="en">Packed-column flooding</p><p>عند زيادة سرعة الغاز يعيق الغاز نزول السائل فيزداد السائل المحتجز في الحشوة (مرحلة التحميل Loading)، ثم يتراكم فوق الطبقة ويُحمل إلى الأعلى، وهذا هو الغمر.</p><h4>ما تراه الآن</h4><ul><li>الغاز يصعد بسرعة أكبر والسائل ينزل ببطء شديد.</li><li>تتكون بركة سماوية فوق كل طبقة حشوة.</li><li>قطرات سماوية تُحمل مع الغاز نحو القمة ومانع الرذاذ.</li><li>هبوط الضغط يرتفع ارتفاعاً حاداً ويقل الاسترداد.</li></ul><h4>أسبابه</h4><ul><li>معدل غاز أو سائل أعلى من سعة التصميم.</li><li>حشوة صغيرة الحجم، أو ألواح دعم ضيقة الفتحات، أو رغوة، أو ترسبات.</li></ul><h4>علاجه</h4><ul><li>خفض معدل الغاز أو السائل، وإزالة الترسبات، واستخدام حشوة أكبر أو منظّمة.</li></ul><p class="eq">يُصمم البرج عادة عند 70–80% من سرعة الغمر، ويُقدَّر الغمر من مخطط هبوط الضغط العام (GPDC)</p>',
+  ccard:'<h2>سوء توزيع السائل (Channeling)</h2><p class="en">Liquid maldistribution and wall flow</p><p>يميل السائل في الأبراج المحشوة إلى الانحراف نحو الجدار كلما نزل، لأن الفراغ قرب الجدار أكبر. فيجف مركز الحشوة ويسلك الغاز هذا الطريق الجاف دون أن يلامس السائل.</p><h4>ما تراه الآن</h4><ul><li>جزيئات المذيب تتجمع قرب الجدار كلما نزلت داخل الطبقة.</li><li>الغاز في المركز يبقى برتقالياً ملوثاً لأنه لا يلامس سائلاً كافياً.</li><li>مُعيد التوزيع بين الطبقتين يعيد السائل إلى المركز، ثم يبدأ الانحراف من جديد.</li><li>ينخفض الاسترداد لأن مساحة التلامس الفعّالة قلّت.</li></ul><h4>أسبابه</h4><ul><li>موزع سائل رديء أو مسدود أو مائل.</li><li>طبقات طويلة دون مُعيد توزيع، أو معدل سائل منخفض.</li><li>نسبة قطر البرج إلى حجم الحشوة صغيرة (أقل من نحو 10).</li></ul><h4>علاجه</h4><ul><li>موزع جيد التصميم، ومُعيد توزيع كل 3–6 m، وحجم حشوة مناسب.</li></ul><p class="eq">N_OG الفعّال يقل، فتقل الكفاءة: y₂/y₁ يزداد عند ثبات A</p>',
+  labels:'الملصقات: ',LT:{num:'أرقام',name:'أسماء',off:'مخفية'}},
+ en:{title:'3D Packed Absorption Column Simulator',h1:'Packed Absorption Column',sub:'برج الامتصاص المحشو',
+  pkH:'Packing type',dHog:'Height of a transfer unit H_OG',dAe:'Specific area and voidage',
+  pk:{raschig:['Ceramic Raschig rings','حلقات راشيغ الخزفية','The oldest and simplest packing: short tubes whose length equals their diameter. Cheap and resistant to corrosion and heat, but low voidage gives high pressure drop and low capacity, and they tend to cause liquid maldistribution.','Raschig'],
+   pall:['Metal Pall rings','حلقات بال المعدنية','Metal rings whose walls are cut into windows with tongues bent inward, so gas and liquid flow through the ring itself. Very high voidage gives about half the pressure drop, higher capacity and better contact than Raschig rings.','Pall'],
+   saddle:['Ceramic Intalox saddles','سروج إنتالوكس الخزفية','Saddle-shaped ceramic pieces that do not nest tightly, giving a large surface area and good liquid distribution at moderate pressure drop. Suitable for corrosive service.','Saddles'],
+   struct:['Structured packing','الحشوة المنظمة','Corrugated metal sheets arranged in layers with 45° channels, each layer turned 90° to the one below. It gives the highest efficiency (smallest H_OG), the lowest pressure drop and the highest capacity, but costs more and is more sensitive to fouling and maldistribution.','Structured']},
+  opH:'Liquid-to-gas ratio L/G',dA:'Absorption factor A = L/(mG)',dRec:'Recovery',dY2:'Outlet gas composition y₂',dX1:'Outlet liquid composition x₁',dLmin:'L/G ÷ (L/G)min',dDP:'Pressure drop across the packing',dFl:'Approach to flooding',
+  chH:'Composition profile along the packed height',chY:'Gas y/y₁',chX:'Liquid x/x₁*',chH2:'Height',
+  fine:'Absorption of a dilute solute (about ammonia from air into water) with equilibrium constant m = 1.2, y₁ = 0.05 and fresh solvent x₂ = 0. Packed height 4 m with H_OG set by the packing type (N_OG = 4/H_OG); results from the Colburn equation. x₁* = y₁/m is the liquid composition in equilibrium with the inlet gas.',
+  credit:'Prepared by <b>Dr. Dheyaa J. Jasim</b><br>Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College<br>© 2026 Dr. Dheyaa J. Jasim. All rights reserved. For educational use; no republication or sale without written permission.',
+  who:'Prepared by Dr. Dheyaa J. Jasim',whoAlt:'د. ضياء جمعة جاسم',org:'Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College',
+  lgGas:'Gas: orange laden → yellow clean',lgLiq:'Solvent: cyan lean → dark blue rich',
+  hint:'Left-drag to rotate, right-drag to move the unit, scroll to zoom in and out, and click any part to see its function.',
+  dRot:'Rotate',dPan:'Move',full:'Whole',cut:'Cutaway',ghost:'X-ray',iso:'Perspective',front:'Front',top:'Top',other:'العربية',otherLang:'ar',
+  pick:'<h2>Select a part of the unit</h2><p>Press “Start column” to watch the contaminated gas (orange) rise through the packing and leave clean (yellow), while fresh solvent (cyan) trickles down and becomes rich in solute (dark blue). Then click any part or its number to see its function.</p><p class="fine">Change the packing type and L/G and watch recovery and pressure drop, then try the flooding and maldistribution buttons.</p>',
+  focus:'Zoom to this part',clear:'Clear selection',explode:'Explode parts',assemble:'Assemble parts',run:'Start column',stopRun:'Stop column',
+  flood:'Flooding',floodOff:'End flooding',chan:'Liquid maldistribution (channeling)',chanOff:'End maldistribution',
+  fw1:'⚠ Column is flooding: ',fw2:' of flooding velocity',cw:'⚠ Maldistribution: liquid drifts to the wall and gas bypasses the dry centre',
+  fcard:'<h2>Flooding in a packed column</h2><p class="en">الغمر</p><p>As gas velocity rises, the gas hinders the falling liquid, so liquid hold-up in the packing grows (loading); then liquid builds up above the bed and is carried upward, which is flooding.</p><h4>What you see now</h4><ul><li>Gas rises faster and liquid falls very slowly.</li><li>A cyan pool forms above each packed bed.</li><li>Cyan droplets are carried with the gas toward the top and the demister.</li><li>Pressure drop rises sharply and recovery falls.</li></ul><h4>Causes</h4><ul><li>Gas or liquid rate above design capacity.</li><li>Small packing, restrictive support plates, foaming or fouling.</li></ul><h4>Remedies</h4><ul><li>Reduce gas or liquid rate, remove fouling, or use larger or structured packing.</li></ul><p class="eq">Columns are usually designed at 70–80% of flooding, estimated from the generalised pressure-drop correlation (GPDC)</p>',
+  ccard:'<h2>Liquid maldistribution (channeling)</h2><p class="en">سوء توزيع السائل</p><p>In packed columns liquid tends to migrate toward the wall as it falls, because voidage is higher there. The centre of the packing dries out and gas takes this dry path without contacting liquid.</p><h4>What you see now</h4><ul><li>Solvent particles gather near the wall as they move down each bed.</li><li>Gas in the centre stays orange because it meets too little liquid.</li><li>The redistributor between the beds brings liquid back to the centre, then the drift starts again.</li><li>Recovery falls because the effective contact area is smaller.</li></ul><h4>Causes</h4><ul><li>A poor, blocked or tilted liquid distributor.</li><li>Tall beds without redistribution, or low liquid rate.</li><li>Column-to-packing diameter ratio too small (below about 10).</li></ul><h4>Remedies</h4><ul><li>A well-designed distributor, a redistributor every 3–6 m, and suitable packing size.</li></ul><p class="eq">The effective N_OG falls, so y₂/y₁ rises at constant A</p>',
+  labels:'Labels: ',LT:{num:'numbers',name:'names',off:'hidden'}}
+};
+
+/* ================= absorption model ================= */
+const PK={
+ raschig:{hog:.5,dp:1,cap:1,a:190,eps:.73},pall:{hog:.4,dp:.55,cap:.72,a:207,eps:.94},
+ saddle:{hog:.45,dp:.75,cap:.85,a:255,eps:.77},struct:{hog:.3,dp:.35,cap:.65,a:250,eps:.97}};
+let pkType='raschig',pkInfo=false;
+const MEQ=1.2,Y1=.05;let NOG0=8;let LG=1.8,flood=false,chan=false,fk=0,ck=0,running=false;
+function yRatio(A,N){if(Math.abs(A-1)<1e-6)return 1/(1+N);const a=1-1/A;return a/(Math.exp(N*a)-1/A);}
+let SOL=null;
+function solve(){NOG0=4/PK[pkType].hog;const N=NOG0*(1-.55*ck)*(1-.3*fk),A=LG/MEQ,r=yRatio(A,N),y2=Y1*r;
+ /* profile from the top (N=0) to the bottom (N=NOG) */
+ const ys=[],xs=[],n=100;let y=y2;const h=N/n/20;for(let i=0;i<=n;i++){ys.push(y);xs.push((y-y2)/LG);for(let j=0;j<20;j++){const f=v=>v-MEQ*(v-y2)/LG,k1=f(y),k2=f(y+h*k1/2),k3=f(y+h*k2/2),k4=f(y+h*k3);y+=h*(k1+2*k2+2*k3+k4)/6;}}
+ SOL={A,N,y2,x1:(Y1-y2)/LG,rec:1-r,ys,xs,Lmin:MEQ*(1-r)};}
+function prof(f){ /* f = fraction of packed height measured from the bottom */ const t=(1-Math.min(1,Math.max(0,f)))*100,i=Math.min(99,Math.floor(t)),u=t-i;
+ return [SOL.ys[i]+(SOL.ys[i+1]-SOL.ys[i])*u,SOL.xs[i]+(SOL.xs[i+1]-SOL.xs[i])*u];}
+solve();
+
+/* ================= renderer ================= */
+const deg=Math.PI/180,V3=THREE.Vector3,V2=THREE.Vector2,UP=new V3(0,1,0);
+const P=(r,a,y)=>new V3(r*Math.cos(a*deg),y,r*Math.sin(a*deg));
+const RAD=a=>new V3(Math.cos(a*deg),0,Math.sin(a*deg));
+const C=h=>new THREE.Color(h).convertSRGBToLinear();
+const CR=.5,YB=1.3,YT=8.8,HDc=.25;
+const BEDS=[[2.3,4.8],[5.6,8.0]],PACKED=(BEDS[0][1]-BEDS[0][0])+(BEDS[1][1]-BEDS[1][0]);
+function packedBelow(y){let s=0;for(const [a,b] of BEDS)s+=Math.max(0,Math.min(y,b)-a);return s/PACKED;}
+const headY=r=>YT+HDc*Math.sqrt(Math.max(0,1-(r/CR)**2));
+const stage=document.getElementById('stage'),canvas=document.getElementById('c');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.localClippingEnabled=true;renderer.setClearColor(0,0);
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(36,1,.05,200);
+const HOME={pos:new V3(9.5,7.8,12.5),tgt:new V3(0,4.6,0)};camera.position.copy(HOME.pos);
+const controls=new THREE.OrbitControls(camera,canvas);
+controls.target.copy(HOME.tgt);controls.enableDamping=true;controls.dampingFactor=.08;controls.minDistance=1.2;controls.maxDistance=40;
+controls.enablePan=true;controls.screenSpacePanning=true;controls.panSpeed=1.1;
+controls.mouseButtons={LEFT:THREE.MOUSE.ROTATE,MIDDLE:THREE.MOUSE.DOLLY,RIGHT:THREE.MOUSE.PAN};
+controls.touches={ONE:THREE.TOUCH.ROTATE,TWO:THREE.TOUCH.DOLLY_PAN};
+canvas.addEventListener('contextmenu',e=>e.preventDefault());controls.update();
+(function(){const pm=new THREE.PMREMGenerator(renderer),es=new THREE.Scene();
+ const g=new THREE.SphereGeometry(20,48,24),pos=g.attributes.position,cols=[];
+ const lo=new THREE.Color(0x4a525a),mid=new THREE.Color(0xb8c2ca),hi=new THREE.Color(0xf2f6f9);
+ for(let i=0;i<pos.count;i++){const y=pos.getY(i)/20;const c=y<0?lo.clone().lerp(mid,y+1):mid.clone().lerp(hi,y);cols.push(c.r,c.g,c.b);}
+ g.setAttribute('color',new THREE.Float32BufferAttribute(cols,3));es.add(new THREE.Mesh(g,new THREE.MeshBasicMaterial({side:THREE.BackSide,vertexColors:true})));
+ const pl=(w,h,p,k)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(k,k,k),side:THREE.DoubleSide}));m.position.copy(p);m.lookAt(0,0,0);es.add(m);};
+ pl(14,4,new V3(0,14,6),3.2);pl(6,10,new V3(-15,4,-4),2.2);pl(6,10,new V3(15,5,2),1.6);
+ scene.environment=pm.fromScene(es,.04).texture;pm.dispose();})();
+scene.add(new THREE.HemisphereLight(0xeef3f7,0x3a4550,.55));
+const sun=new THREE.DirectionalLight(0xffffff,1.2);sun.position.set(8,16,10);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);
+Object.assign(sun.shadow.camera,{left:-8,right:8,top:11,bottom:-5,near:1,far:50});sun.shadow.camera.updateProjectionMatrix();sun.shadow.bias=-.0004;sun.shadow.normalBias=.03;scene.add(sun);
+const fill=new THREE.DirectionalLight(0xdfe8ff,.35);fill.position.set(-8,5,-6);scene.add(fill);
+
+const std=(hex,met,rough,extra)=>new THREE.MeshStandardMaterial(Object.assign({color:C(hex),metalness:met,roughness:rough,side:THREE.DoubleSide},extra||{}));
+const M={steel:std(0xd4dbe0,.9,.25),steelDark:std(0x8e989f,.85,.36),brushed:std(0xb9c2c9,.85,.4),
+ paint:std(0x2f5f86,.25,.48),paintGrey:std(0x5b6873,.35,.55),yellowPaint:std(0xd9a91c,.2,.5),black:std(0x2b3035,.3,.6),
+ red:std(0xb3362b,.2,.42),orange:std(0xc9772c,.2,.45),blue:std(0x2f7fe6,.2,.45),purple:std(0x7b2fbf,.2,.45),grey:std(0x9aa3aa,.2,.5),white:std(0xf3f3ee,0,.5),
+ ceramic:std(0xd8d2c6,0,.75),saddleC:std(0xeae6dc,0,.6),gasBand:std(0xff6a00,.2,.45),cyan:std(0x14c8f0,.2,.45),navy:std(0x1a2cb0,.2,.45),glass:std(0x9fd6ea,0,.05,{transparent:true,opacity:.42})};
+const meshTex=(function(){const cv=document.createElement('canvas');cv.width=cv.height=64;const x=cv.getContext('2d');x.fillStyle='#8f989f';x.fillRect(0,0,64,64);
+ x.strokeStyle='#d9dfe3';x.lineWidth=1.2;for(let i=-64;i<128;i+=5){x.beginPath();x.moveTo(i,0);x.lineTo(i+64,64);x.stroke();x.beginPath();x.moveTo(i,64);x.lineTo(i+64,0);x.stroke();}
+ const t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(6,6);t.encoding=THREE.sRGBEncoding;return t;})();
+M.mesh=new THREE.MeshStandardMaterial({map:meshTex,metalness:.6,roughness:.6,side:THREE.DoubleSide});
+
+function add(g,geo,mat,pos){const m=new THREE.Mesh(geo,mat);if(pos)m.position.copy(pos);g.add(m);return m;}
+function cylY(g,r,y0,y1,mat,x,z,seg,open){return add(g,new THREE.CylinderGeometry(r,r,y1-y0,seg||40,1,!!open),mat,new V3(x||0,(y0+y1)/2,z||0));}
+function pipe(g,p1,p2,r,mat,seg){const d=new V3().subVectors(p2,p1),L=d.length();const m=add(g,new THREE.CylinderGeometry(r,r,L,seg||24),mat);m.position.copy(p1).addScaledVector(d,.5);m.quaternion.setFromUnitVectors(UP,d.normalize());return m;}
+function ball(g,p,r,mat){return add(g,new THREE.SphereGeometry(r,24,16),mat,p);}
+function box(g,w,h,d,p,mat,ry){const m=add(g,new THREE.BoxGeometry(w,h,d),mat,p);if(ry)m.rotation.y=ry;return m;}
+function flange(g,p,dir,rd,n,mat){const f=new THREE.Group();f.position.copy(p);f.quaternion.setFromUnitVectors(UP,dir.clone().normalize());
+ add(f,new THREE.CylinderGeometry(rd,rd,.035,40),mat||M.steel);const bg=new THREE.CylinderGeometry(.01,.01,.07,8);
+ for(let i=0;i<n;i++){const a=(i+.5)/n*Math.PI*2;add(f,bg,M.steelDark,new V3(Math.cos(a)*rd*.8,0,Math.sin(a)*rd*.8));}g.add(f);return f;}
+const FLOWS=[];
+function line(g,pts,r,mat,colorFn,speed){for(let i=0;i<pts.length-1;i++)pipe(g,pts[i],pts[i+1],r,mat);for(let i=1;i<pts.length-1;i++)ball(g,pts[i],r,mat);if(colorFn)FLOWS.push({pts,colorFn,speed:speed||.9});}
+function band(g,p1,p2,r,mat){pipe(g,p1,p2,r,mat);}
+function arrow(g,p,dir,mat){const a=add(g,new THREE.ConeGeometry(.07,.16,20),mat,p);a.quaternion.setFromUnitVectors(UP,dir.clone().normalize());return a;}
+function valve(g,p,dir,r){ball(g,p,r*1.9,M.steel);const d=dir.clone().normalize();flange(g,p.clone().addScaledVector(d,r*2.2),d,r*2,6);flange(g,p.clone().addScaledVector(d,-r*2.2),d,r*2,6);
+ cylY(g,r*.35,p.y,p.y+r*4,M.steelDark,p.x,p.z,12);box(g,r*7,r*.5,r*.8,new V3(p.x,p.y+r*4,p.z),M.red);}
+function ctrlValve(g,p,dir,r){ball(g,p,r*1.9,M.steel);const d=dir.clone().normalize();flange(g,p.clone().addScaledVector(d,r*2.2),d,r*2,6);flange(g,p.clone().addScaledVector(d,-r*2.2),d,r*2,6);
+ const up=Math.abs(d.y)>.9?new V3(1,0,0):UP;const top=p.clone().addScaledVector(up,r*5);pipe(g,p,top,r*.4,M.steelDark,12);
+ const dm=add(g,new THREE.SphereGeometry(r*3,28,14,0,Math.PI*2,0,Math.PI/2),M.paint,top);dm.quaternion.setFromUnitVectors(UP,up);dm.scale.y=.55;}
+function pump(g,x,z,y,mat){box(g,.34,.06,.95,new V3(x,.03,z+.3),M.paintGrey);
+ const v=add(g,new THREE.CylinderGeometry(.17,.17,.13,32),mat,new V3(x,y,z));v.rotation.x=Math.PI/2;
+ pipe(g,new V3(x,y,z-.06),new V3(x,y,z-.2),.05,M.steel);flange(g,new V3(x,y,z-.2),new V3(0,0,1),.1,4);pipe(g,new V3(x,y+.1,z),new V3(x,y+.24,z),.045,M.steel);
+ const br=add(g,new THREE.CylinderGeometry(.07,.09,.18,20),M.paintGrey,new V3(x,y,z+.16));br.rotation.x=Math.PI/2;
+ const cp=add(g,new THREE.CylinderGeometry(.05,.05,.07,16),M.orange,new V3(x,y,z+.29));cp.rotation.x=Math.PI/2;
+ const mo=add(g,new THREE.CylinderGeometry(.14,.14,.4,28),mat,new V3(x,y,z+.53));mo.rotation.x=Math.PI/2;
+ const fc=add(g,new THREE.CylinderGeometry(.13,.14,.08,28),M.paintGrey,new V3(x,y,z+.76));fc.rotation.x=Math.PI/2;
+ box(g,.1,.1,.12,new V3(x,y+.17,z+.5),mat);[-1,1].forEach(s=>box(g,.05,y-.1,.3,new V3(x+s*.1,(y-.1)/2+.06,z+.5),M.paintGrey));box(g,.08,y-.12,.08,new V3(x,(y-.12)/2+.06,z),M.paintGrey);}
+function vesselProfile(r,hd,y0,y1){const pts=[],N=32;for(let i=0;i<=N;i++){const t=i/N*Math.PI/2;pts.push(new V2(Math.max(1e-4,r*Math.sin(t)),y0-hd*Math.cos(t)));}
+ pts.push(new V2(r,y1));for(let i=1;i<=N;i++){const t=i/N*Math.PI/2;pts.push(new V2(Math.max(1e-4,r*Math.cos(t)),y1+hd*Math.sin(t)));}return pts;}
+function grid(g,y,r,bar,h,mat){const n=Math.floor(2*r/bar);for(let i=0;i<=n;i++){const x=-r+i*bar;const c=Math.sqrt(Math.max(0,r*r-x*x));if(c<.02)continue;
+  box(g,.014,h,2*c,new V3(x,y,0),mat);box(g,2*c,h,.014,new V3(0,y,x),mat);}
+ const ring=add(g,new THREE.TorusGeometry(r,.018,8,64),mat,new V3(0,y,0));ring.rotation.x=Math.PI/2;}
+
+/* explode groups, parts, planes */
+const EG={},EOFF={column:new V3(),internals:new V3(0,0,2.4),gasSys:new V3(-2.4,0,0),liqSys:new V3(2.4,0,0),ground:new V3()};
+for(const k in EOFF){EG[k]=new THREE.Group();scene.add(EG[k]);}
+const PLANES={col:{p:new THREE.Plane(),c:new V3(0,0,0),eg:'column'},int:{p:new THREE.Plane(),c:new V3(0,0,0),eg:'internals'}};
+const parts={};
+function part(key,eg,anchor,plane){const g=new THREE.Group();EG[eg].add(g);parts[key]={key,group:g,anchor,plane,mats:[]};return g;}
+const GHOST=['shell','skirt','gasIn','gasOut','solventLine','richLine'];
+
+{const floor=new THREE.Mesh(new THREE.PlaneGeometry(80,80),new THREE.ShadowMaterial({opacity:.2}));floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;EG.ground.add(floor);
+ const gh=new THREE.GridHelper(24,48,0x7d8d99,0x7d8d99);gh.material.transparent=true;gh.material.opacity=.2;gh.position.y=.003;EG.ground.add(gh);
+ const pad=new THREE.Mesh(new THREE.CylinderGeometry(.9,.9,.08,48),std(0xa7a9a6,0,.9));pad.position.y=.04;pad.receiveShadow=true;EG.ground.add(pad);}
+
+/* ================= column ================= */
+{const g=part('shell','column',P(.52,15,6.8),'col');
+ add(g,new THREE.LatheGeometry(vesselProfile(CR,HDc,YB,YT),96),M.steel);add(g,new THREE.LatheGeometry(vesselProfile(CR-.018,HDc-.018,YB,YT),96),M.brushed);
+ pipe(g,P(.46,180,1.85),P(.72,180,1.85),.13,M.steel);flange(g,P(.72,180,1.85),RAD(180),.22,8);
+ pipe(g,P(.46,0,8.3),P(.7,0,8.3),.06,M.steel);flange(g,P(.7,0,8.3),RAD(0),.12,6);
+ pipe(g,new V3(0,headY(0)-.05,0),new V3(0,9.3,0),.12,M.steel);flange(g,new V3(0,9.3,0),UP,.2,8);
+ const np=box(g,.24,.15,.012,P(.505,40,1.7),M.white);np.rotation.y=Math.PI/2-40*deg;}
+{const g=part('skirt','column',P(.52,40,.5),'col');
+ cylY(g,CR,.08,1.12,M.paintGrey,0,0,64,true);cylY(g,.64,.08,.12,M.paintGrey,0,0,64);
+ const bg=new THREE.CylinderGeometry(.016,.016,.12,8);for(let i=0;i<10;i++)add(g,bg,M.steelDark,P(.58,i*36+18,.16));
+ const d=add(g,new THREE.CircleGeometry(.18,32),M.black,P(.503,70,.55));d.lookAt(P(3,70,.55));d.scale.y=1.5;}
+{const g=part('sump','column',new V3(.15,1.4,.1),'col');const pts=[],N=30;
+ for(let i=0;i<=N;i++){const t=i/N*Math.PI/2;pts.push(new V2(Math.max(1e-4,(CR-.02)*Math.sin(t)),YB-(HDc-.02)*Math.cos(t)));}
+ pts.push(new V2(CR-.02,1.55));pts.push(new V2(1e-4,1.55));
+ const m=add(g,new THREE.LatheGeometry(pts,64),new THREE.MeshStandardMaterial({color:C(0x1a2cb0),metalness:0,roughness:.15,transparent:true,opacity:.5,depthWrite:false,side:THREE.DoubleSide}));m.userData.sumpLiq=1;}
+/* internals */
+function mergeGeos(list){ /* merge non-indexed geometries (position + normal) into one */
+ const gs=list.map(g=>g.index?g.toNonIndexed():g);let n=0;gs.forEach(g=>n+=g.attributes.position.count);
+ const pos=new Float32Array(n*3),nor=new Float32Array(n*3);let o=0;
+ gs.forEach(g=>{pos.set(g.attributes.position.array,o*3);nor.set(g.attributes.normal.array,o*3);o+=g.attributes.position.count;});
+ const m=new THREE.BufferGeometry();m.setAttribute('position',new THREE.BufferAttribute(pos,3));m.setAttribute('normal',new THREE.BufferAttribute(nor,3));return m;}
+function scatter(g,geo,mat,per){BEDS.forEach(([a,b])=>{const im=new THREE.InstancedMesh(geo,mat,per);const o=new THREE.Object3D();
+ for(let i=0;i<per;i++){let x,z;do{x=(Math.random()*2-1)*.45;z=(Math.random()*2-1)*.45;}while(x*x+z*z>.45*.45);
+  o.position.set(x,a+.04+Math.random()*(b-a-.08),z);o.rotation.set(Math.random()*Math.PI*2,Math.random()*Math.PI*2,Math.random()*Math.PI*2);o.updateMatrix();im.setMatrixAt(i,o.matrix);}
+ im.userData.packing=1;g.add(im);});}
+const PKG={};
+{const g=part('packing','internals',new V3(.2,3.6,.25),'int');
+ /* Raschig rings: plain ceramic tubes */
+ const gr=new THREE.Group();g.add(gr);PKG.raschig=gr;
+ scatter(gr,new THREE.CylinderGeometry(.038,.038,.075,12,1,true),M.ceramic,1500);
+ /* Pall rings: metal ring with windows and inward-bent tongues */
+ const gp=new THREE.Group();g.add(gp);PKG.pall=gp;
+ {const parts_=[];for(let k=0;k<5;k++){const c=new THREE.CylinderGeometry(.038,.038,.075,3,1,true,k*2*Math.PI/5,Math.PI/5*1.2);parts_.push(c);}
+  for(let k=0;k<5;k++){const t=new THREE.BoxGeometry(.004,.03,.03);t.translate(.026,0,0);t.rotateZ(.5);t.rotateY(k*2*Math.PI/5+Math.PI/5*1.6);parts_.push(t);
+   const t2=new THREE.BoxGeometry(.004,.022,.026);t2.translate(.028,.024,0);t2.rotateY(k*2*Math.PI/5+Math.PI/5*1.6);parts_.push(t2);}
+  const ring=new THREE.TorusGeometry(.038,.003,4,20);ring.rotateX(Math.PI/2);ring.translate(0,.037,0);parts_.push(ring);const ring2=ring.clone();ring2.translate(0,-.074,0);parts_.push(ring2);
+  scatter(gp,mergeGeos(parts_),M.brushed,1500);}
+ /* Intalox saddles: curved ceramic half-shells */
+ const gs=new THREE.Group();g.add(gs);PKG.saddle=gs;
+ {const t=new THREE.TorusGeometry(.03,.02,8,16,Math.PI);t.scale(1,1,.3);scatter(gs,t,M.saddleC,1700);}
+ /* structured packing: layers of corrugated sheets, each layer turned 90 degrees */
+ const gt=new THREE.Group();g.add(gt);PKG.struct=gt;
+ {const LH=.2,SP=.05,R=.47;
+  BEDS.forEach(([a,b])=>{const nl=Math.round((b-a)/LH);
+   for(let l=0;l<nl;l++){const sheets=[];
+    for(let x=-R+SP/2,k=0;x<R;x+=SP,k++){const w=2*Math.sqrt(Math.max(0,R*R-x*x))-.01;if(w<.05)continue;
+     const segW=Math.max(4,Math.round(w/.03)),pg=new THREE.PlaneGeometry(w,LH-.006,segW,6);const p=pg.attributes.position,sg=k%2?1:-1;
+     for(let i=0;i<p.count;i++){const u=p.getX(i),v=p.getY(i);const ph=((u*sg+v)/.06)%1;const tri=Math.abs(((ph+1)%1)*2-1)*2-1;p.setZ(i,tri*.014);}
+     pg.computeVertexNormals();pg.rotateY(Math.PI/2);pg.translate(x,0,0);sheets.push(pg);}
+    const geo=mergeGeos(sheets);if(l%2)geo.rotateY(Math.PI/2);geo.translate(0,a+LH*(l+.5),0);
+    const m=new THREE.Mesh(geo,M.brushed);m.userData.packing=1;gt.add(m);
+    const band_=new THREE.Mesh(new THREE.CylinderGeometry(R+.005,R+.005,.03,48,1,true),M.steelDark);band_.position.y=a+LH*(l+.5);gt.add(band_);}});}
+ for(const k in PKG)PKG[k].visible=k===pkType;}
+{const g=part('supports','internals',new V3(-.3,BEDS[0][0]-.05,.3),'int');BEDS.forEach(([a])=>{grid(g,a-.03,.475,.09,.06,M.steelDark);
+ [0,120,240].forEach(t=>box(g,.04,.03,.06,P(.47,t,a-.08),M.steelDark,-t*deg));});}
+{const g=part('holddown','internals',new V3(-.3,BEDS[1][1]+.05,-.2),'int');BEDS.forEach(([,b])=>grid(g,b+.02,.47,.16,.025,M.brushed));}
+{const g=part('distributor','internals',new V3(.25,8.33,.2),'int');
+ pipe(g,P(.47,0,8.3),P(-.45,0,8.3).setY(8.3),.045,M.brushed);
+ [-.36,-.18,0,.18,.36].forEach(x=>{const c=Math.sqrt(.45*.45-x*x);pipe(g,new V3(x,8.3,-c),new V3(x,8.3,c),.025,M.brushed);ball(g,new V3(x,8.3,c),.025,M.brushed);ball(g,new V3(x,8.3,-c),.025,M.brushed);});}
+{const g=part('redistributor','internals',new V3(-.25,5.25,.25),'int');
+ const plate=new THREE.Shape();plate.absarc(0,0,.48,0,Math.PI*2,false);
+ const ch=[[0,0],[.25,0],[-.25,0],[0,.25],[0,-.25],[.18,.18],[-.18,-.18],[.18,-.18],[-.18,.18]];
+ ch.forEach(([x,z])=>{const h=new THREE.Path();h.absarc(x,-z,.06,0,Math.PI*2,true);plate.holes.push(h);});
+ const pm=add(g,new THREE.ShapeGeometry(plate,32),M.steelDark,new V3(0,5.2,0));pm.rotation.x=-Math.PI/2;
+ ch.forEach(([x,z])=>{cylY(g,.06,5.2,5.42,M.brushed,x,z,20,true);cylY(g,.085,5.45,5.47,M.brushed,x,z,20);});
+ cylY(g,.48,5.2,5.3,M.steelDark,0,0,64,true);
+ [-.32,.32].forEach(x=>{const c=Math.sqrt(.44*.44-x*x);pipe(g,new V3(x,5.12,-c),new V3(x,5.12,c),.022,M.brushed);});
+ pipe(g,new V3(0,5.2,0),new V3(0,5.12,0),.04,M.brushed);pipe(g,new V3(-.32,5.12,0),new V3(.32,5.12,0),.03,M.brushed);}
+{const g=part('demister','internals',new V3(.2,8.62,-.2),'int');
+ const d=add(g,new THREE.CylinderGeometry(.48,.48,.14,56),M.mesh,new V3(0,8.6,0));
+ grid(g,8.52,.48,.2,.02,M.steelDark);}
+
+/* manholes, platforms */
+{const g=part('manholes','column',P(.8,110,5.0));
+ [8.45,5.0,1.95].forEach(y=>{pipe(g,P(.46,110,y),P(.68,110,y),.16,M.steel);flange(g,P(.68,110,y),RAD(110),.23,12);pipe(g,P(.7,110,y),P(.74,110,y),.23,M.brushed);
+  const h=add(g,new THREE.TorusGeometry(.055,.011,8,20,Math.PI),M.steelDark,P(.75,110,y));h.lookAt(P(3,110,y));});}
+{const g=part('platforms','column',P(1.2,125,4.75));const a0=55,a1=170;
+ [4.42,7.87,9.05].forEach((y,i)=>{const top=i===2,ri=.53,ro=top?.95:1.2,s0=top?0:a0,s1=top?360:a1;
+  const pl=add(g,new THREE.RingGeometry(ri,ro,64,1,s0*deg,(s1-s0)*deg),M.yellowPaint,new V3(0,y,0));pl.rotation.x=Math.PI/2;
+  add(g,new THREE.CylinderGeometry(ro,ro,.06,64,1,true,Math.PI/2-s1*deg,(s1-s0)*deg),M.yellowPaint,new V3(0,y-.03,0));
+  for(let a=s0;a<=s1+.1;a+=(top?30:15)){const p=P(ro-.03,a,0);cylY(g,.015,y,y+.55,M.yellowPaint,p.x,p.z,8);}
+  [.3,.55].forEach(h=>{const t=add(g,new THREE.TorusGeometry(ro-.03,.014,6,72,(s1-s0)*deg),M.yellowPaint,new V3(0,y+h,0));t.rotation.x=Math.PI/2;t.rotation.z=s0*deg;});
+  if(!top)[0,1].forEach(j=>{const a=s0+(j+.5)*(s1-s0)/2;pipe(g,P(.52,a,y-.4),P(ro-.1,a,y-.02),.02,M.yellowPaint);});});
+ const la=150,lr=.9,tg=new V3(-Math.sin(la*deg),0,Math.cos(la*deg));
+ [-1,1].forEach(s=>{const b=P(lr,la,0).addScaledVector(tg,s*.2);cylY(g,.018,.12,9.6,M.yellowPaint,b.x,b.z,8);});
+ for(let y=.4;y<9.6;y+=.3)pipe(g,P(lr,la,y).addScaledVector(tg,-.2),P(lr,la,y).addScaledVector(tg,.2),.012,M.yellowPaint,8);
+ const cc=P(lr+.32,la,0);for(let y=2.2;y<9.6;y+=.6){const h=add(g,new THREE.TorusGeometry(.34,.012,6,40,Math.PI*1.3),M.yellowPaint,new V3(cc.x,y,cc.z));h.rotation.x=Math.PI/2;h.rotation.z=(la-117)*deg;}}
+
+/* instruments */
+{const g=part('dp','column',P(.95,30,3.3));
+ [2.15,8.4].forEach(y=>{pipe(g,P(.48,30,y),P(.8,30,y),.018,M.steel);valve(g,P(.66,30,y),RAD(30),.02);});
+ const p=P(.8,30,0);pipe(g,new V3(p.x,2.15,p.z),new V3(p.x,3.05,p.z),.012,M.steel);pipe(g,new V3(p.x,8.4,p.z),new V3(p.x,3.3,p.z),.012,M.steel);
+ box(g,.16,.2,.12,new V3(p.x+.04,3.18,p.z+.02),M.paint);const d=add(g,new THREE.CylinderGeometry(.05,.05,.03,24),M.white,P(.9,30,3.2));d.rotation.z=Math.PI/2;d.rotation.y=-30*deg;}
+{const g=part('thermo','column',P(.85,60,6.4));
+ [2.8,4.3,6.1,7.6].forEach(y=>{pipe(g,P(.3,60,y),P(.68,60,y),.016,M.steel);flange(g,P(.6,60,y),RAD(60),.055,4);pipe(g,P(.68,60,y),P(.8,60,y),.05,M.paintGrey);});}
+{const g=part('level','column',P(.85,330,1.8));
+ [1.25,1.75].forEach(y=>{pipe(g,P(.47,330,y),P(.8,330,y),.022,M.steel);});cylY(g,.05,1.15,1.85,M.steel,P(.8,330,0).x,P(.8,330,0).z,24);
+ box(g,.12,.12,.1,P(.8,330,1.95),M.paintGrey);}
+
+/* ================= gas system ================= */
+const BX=-2.5;
+{const g=part('blower','gasSys',new V3(BX,1.35,.25));
+ const vol=add(g,new THREE.CylinderGeometry(.42,.42,.3,40),M.paint,new V3(BX,.8,0));vol.rotation.x=Math.PI/2;
+ const inl=add(g,new THREE.CylinderGeometry(.18,.22,.25,32),M.paint,new V3(BX,.8,.27));inl.rotation.x=Math.PI/2;
+ const scr=add(g,new THREE.CircleGeometry(.18,24),M.black,new V3(BX,.8,.4));
+ box(g,.3,.26,.35,new V3(BX+.26,1.05,0),M.paint);
+ const mo=add(g,new THREE.CylinderGeometry(.16,.16,.45,28),M.paint,new V3(BX,.8,-.42));mo.rotation.x=Math.PI/2;
+ box(g,.9,.08,1.2,new V3(BX,.04,-.1),M.paintGrey);box(g,.6,.3,.1,new V3(BX,.25,0),M.paintGrey);box(g,.3,.3,.1,new V3(BX,.25,-.42),M.paintGrey);}
+{const g=part('gasIn','gasSys',new V3(-1.5,1.95,.2));
+ line(g,[new V3(BX+.41,1.05,0),new V3(-1.2,1.05,0),new V3(-1.2,1.85,0),new V3(-.72,1.85,0)],.13,M.steel,()=>GASRED,1.4);
+ band(g,new V3(-1.6,1.05,0),new V3(-1.75,1.05,0),.14,M.gasBand);
+ /* internal deflector */
+ pipe(g,P(.46,180,1.85),P(.1,180,1.85),.12,M.brushed);const hd=add(g,new THREE.SphereGeometry(.15,24,12,0,Math.PI*2,0,Math.PI/2),M.brushed,P(.05,180,1.93));}
+{const g=part('gasOut','gasSys',new V3(.9,9.8,.15));
+ line(g,[new V3(0,9.3,0),new V3(0,9.75,0),new V3(1.4,9.75,0),new V3(1.4,10.8,0)],.12,M.steel,()=>gasColor(1),1.4);
+ cylY(g,.16,10.8,10.85,M.steel,1.4,0,32);const cap=add(g,new THREE.ConeGeometry(.28,.18,32),M.steel,new V3(1.4,11.05,0));
+ [0,120,240].forEach(a=>{const p=P(.14,a,0);cylY(g,.01,10.85,10.97,M.steelDark,1.4+p.x,p.z,6);});
+ band(g,new V3(.6,9.75,0),new V3(.75,9.75,0),.13,M.grey);arrow(g,new V3(1.4,11.35,0),UP,M.grey);}
+{const g=part('analyzers','gasSys',new V3(-1.2,2.4,.35));
+ [[new V3(-1.2,1.45,0),new V3(-1.2,1.45,.35)],[new V3(.8,9.75,0),new V3(.8,9.75,.35)]].forEach(([a,b])=>{pipe(g,a,b,.012,M.steel);box(g,.22,.28,.16,b.clone().add(new V3(0,0,.08)),M.white);
+  box(g,.12,.06,.01,b.clone().add(new V3(0,.05,.165)),M.black);});}
+
+/* ================= liquid system ================= */
+const SX=2.0;
+{const g=part('solventPump','liqSys',new V3(SX,.8,.7));pump(g,SX,.7,.45,M.cyan);
+ line(g,[new V3(3.4,.45,.5),new V3(SX,.45,.5)],.05,M.steel,()=>LIQC(0),.8);band(g,new V3(3.0,.45,.5),new V3(3.15,.45,.5),.056,M.cyan);
+ flange(g,new V3(3.4,.45,.5),new V3(1,0,0),.11,6);arrow(g,new V3(3.62,.45,.5),new V3(-1,0,0),M.cyan);}
+{const g=part('solventLine','liqSys',new V3(.95,5.3,.7));
+ line(g,[new V3(SX,.69,.7),new V3(SX,1.2,.7),new V3(.95,1.2,.7),new V3(.95,8.3,.7),new V3(.95,8.3,0),new V3(.72,8.3,0)],.05,M.steel,()=>LIQC(0),.9);
+ ctrlValve(g,new V3(.95,3.6,.7),UP,.05);
+ const rot=add(g,new THREE.CylinderGeometry(.055,.035,.35,20,1,true),M.glass,new V3(.95,2.4,.7));cylY(g,.06,2.2,2.23,M.steelDark,.95,.7,20);cylY(g,.06,2.57,2.6,M.steelDark,.95,.7,20);
+ flange(g,new V3(.75,8.3,0),new V3(1,0,0),.11,6);}
+{const g=part('richLine','liqSys',new V3(-.9,.95,.75));pump(g,-.9,.7,.45,M.navy);
+ line(g,[new V3(0,1.05,0),new V3(0,.45,0),new V3(-.9,.45,0),new V3(-.9,.45,.5)],.07,M.steel,()=>LIQC(1),.7);
+ line(g,[new V3(-.9,.69,.7),new V3(-.9,1.0,.7),new V3(-3.5,1.0,.7)],.05,M.steel,()=>LIQC(1),.8);
+ ctrlValve(g,new V3(-2.0,1.0,.7),new V3(1,0,0),.05);band(g,new V3(-2.9,1.0,.7),new V3(-3.05,1.0,.7),.056,M.navy);
+ flange(g,new V3(-3.5,1.0,.7),new V3(1,0,0),.11,6);arrow(g,new V3(-3.72,1.0,.7),new V3(-1,0,0),M.navy);}
+
+/* pools used when flooding */
+const pools=[];BEDS.forEach(([,b])=>{const m=new THREE.Mesh(new THREE.CylinderGeometry(.47,.47,1,48),new THREE.MeshStandardMaterial({color:C(0x14d8ff),metalness:0,roughness:.1,transparent:true,opacity:.45,depthWrite:false,side:THREE.DoubleSide}));
+ m.userData.base=b;m.visible=false;EG.internals.add(m);pools.push(m);});
+
+/* ================= finalize ================= */
+const pickables=[];let sumpMesh=null;
+for(const key in parts){const pt=parts[key],cache=new Map();
+ pt.group.traverse(o=>{if(!o.isMesh)return;if(!cache.has(o.material)){const c=o.material.clone();cache.set(o.material,c);pt.mats.push(c);}
+  o.material=cache.get(o.material);o.userData.key=key;const tr=o.material.transparent;o.castShadow=!tr&&!o.userData.packing;o.receiveShadow=!o.userData.packing;pickables.push(o);if(o.userData.sumpLiq)sumpMesh=o;});}
+
+/* ================= particles ================= */
+const GASRED=C(0xff6a00),GASCLEAN=C(0xffd600),LIQLEAN=C(0x14d8ff),LIQRICH=C(0x1a2cb0);
+const tG=new THREE.Color(),tL=new THREE.Color();
+function gasColor(f,extra){const [y]=prof(f);return tG.copy(GASCLEAN).lerp(GASRED,Math.min(1,y/Y1+(extra||0)));}
+function LIQC(f){const [,x]=prof(f);return tL.copy(LIQLEAN).lerp(LIQRICH,Math.min(1,x/(Y1/MEQ)));}
+const BALL=(function(){const cv=document.createElement('canvas');cv.width=cv.height=64;const x=cv.getContext('2d');
+ const g=x.createRadialGradient(24,22,2,32,32,31);g.addColorStop(0,'#ffffff');g.addColorStop(.35,'#e6e6e6');g.addColorStop(.85,'#8a8a8a');g.addColorStop(1,'#5c5c5c');
+ x.fillStyle=g;x.beginPath();x.arc(32,32,30,0,Math.PI*2);x.fill();const t=new THREE.CanvasTexture(cv);t.encoding=THREE.sRGBEncoding;return t;})();
+function pts(n,size){const pos=new Float32Array(n*3),col=new Float32Array(n*3),g=new THREE.BufferGeometry();
+ g.setAttribute('position',new THREE.BufferAttribute(pos,3));g.setAttribute('color',new THREE.BufferAttribute(col,3));
+ const p=new THREE.Points(g,new THREE.PointsMaterial({vertexColors:true,size,map:BALL,alphaTest:.5,depthWrite:true}));p.frustumCulled=false;scene.add(p);return {p,pos,col,g};}
+function setC(o,i,c){o.col[i*3]=c.r;o.col[i*3+1]=c.g;o.col[i*3+2]=c.b;}
+const rnd=Math.random;
+const NG=5000,GP=pts(NG,.058),gD=[];
+function gNew(d,y){const r=.44*Math.sqrt(rnd()),t=rnd()*Math.PI*2;d.r=r;d.t=t;d.y=y;d.sp=.8+rnd()*.5;d.w=rnd()*9;d.ent=false;}
+for(let i=0;i<NG;i++){const d={};gNew(d,1.9+rnd()*7);gD.push(d);}
+const NL=5000,LP=pts(NL,.058),lD=[];
+function lNew(d,y){const r=.43*Math.sqrt(rnd()),t=rnd()*Math.PI*2;d.r0=r;d.t=t;d.y=y;d.sp=.8+rnd()*.5;d.w=rnd()*9;}
+for(let i=0;i<NL;i++){const d={};lNew(d,1.6+rnd()*6.6);lD.push(d);}
+function inBed(y){for(let k=0;k<2;k++){const [a,b]=BEDS[k];if(y>=a&&y<=b)return k;}return -1;}
+let simT=0;
+function stepParticles(dt){simT+=dt;
+ /* gas: rises, weaving through the voids of the packing */
+ for(let i=0;i<NG;i++){const d=gD[i];const bed=inBed(d.y);const v=(bed>=0?.55:.9)*d.sp*(1+1.6*fk);d.y+=v*dt;d.w+=dt*(3+6*fk);
+  if(d.y>9.2){gNew(d,1.9);}
+  const wob=bed>=0?.035:.012;const x=d.r*Math.cos(d.t)+Math.sin(d.w)*wob,z=d.r*Math.sin(d.t)+Math.cos(d.w*1.3)*wob;
+  GP.pos[i*3]=x;GP.pos[i*3+1]=d.y;GP.pos[i*3+2]=z;
+  const f=packedBelow(d.y);let extra=0;if(ck>0&&d.r<.28)extra=ck*.9*(f); /* dry core: gas stays laden */
+  if(fk>.2&&d.y>BEDS[1][1]&&(i%100)<30*fk){setC(GP,i,LIQLEAN);}else setC(GP,i,gasColor(f,extra));}
+ /* liquid: trickles down over the packing */
+ for(let i=0;i<NL;i++){const d=lD[i];const bed=inBed(d.y);let v=(bed>=0?.42:1.3)*d.sp;if(bed>=0)v*=(1-.75*fk);
+  d.y-=v*dt;d.w+=dt*4;
+  if(d.y<1.58){lNew(d,8.25);}
+  let r=d.r0;if(bed>=0&&ck>0){const [a,b]=BEDS[bed],prog=(b-d.y)/(b-a);r=d.r0+(.44-d.r0)*ck*Math.min(1,prog*1.3);}
+  const jit=bed>=0?.03:.004;let x=r*Math.cos(d.t)+Math.sin(d.w+i)*jit,z=r*Math.sin(d.t)+Math.cos(d.w*1.2+i)*jit;
+  const yy=d.y;
+  LP.pos[i*3]=x;LP.pos[i*3+1]=yy;LP.pos[i*3+2]=z;setC(LP,i,LIQC(packedBelow(d.y)));}
+ [GP,LP].forEach(o=>{o.g.attributes.position.needsUpdate=true;o.g.attributes.color.needsUpdate=true;});}
+/* pipe flows */
+FLOWS.forEach(f=>{f.L=[0];for(let i=1;i<f.pts.length;i++)f.L.push(f.L[i-1]+f.pts[i].distanceTo(f.pts[i-1]));f.n=Math.max(14,Math.round(f.L[f.L.length-1]*55));});
+const NFL=FLOWS.reduce((a,f)=>a+f.n,0),FP=pts(NFL,.06),fD=[];
+FLOWS.forEach((f,fi)=>{for(let i=0;i<f.n;i++)fD.push({f:fi,s:i/f.n*f.L[f.L.length-1]});});
+function stepFlows(dt){const cols=FLOWS.map(f=>f.colorFn().clone());
+ for(let i=0;i<fD.length;i++){const d=fD[i],f=FLOWS[d.f],Lt=f.L[f.L.length-1];d.s=(d.s+dt*f.speed*(1+(fk*.6)))%Lt;
+ let k=1;while(k<f.L.length-1&&f.L[k]<d.s)k++;const a=f.pts[k-1],b=f.pts[k],u=(d.s-f.L[k-1])/(f.L[k]-f.L[k-1]||1);
+ FP.pos[i*3]=a.x+(b.x-a.x)*u;FP.pos[i*3+1]=a.y+(b.y-a.y)*u;FP.pos[i*3+2]=a.z+(b.z-a.z)*u;setC(FP,i,cols[d.f]);}
+ FP.g.attributes.position.needsUpdate=true;FP.g.attributes.color.needsUpdate=true;}
+stepParticles(0);stepFlows(0);
+
+/* ================= state & modes ================= */
+let mode='cut',exploded=false,explodeK=0,labelMode='num',selected=null,fly=null,lang='ar';
+const reduced=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+const PT_PLANE=[[GP,'col'],[LP,'col']];
+function applyMode(){
+ for(const k in parts){const pt=parts[k];pt.mats.forEach(m=>{m.clippingPlanes=(mode==='cut'&&pt.plane)?[PLANES[pt.plane].p]:[];m.clipShadows=true;
+  if(GHOST.includes(k)){const gh=mode==='ghost';if(!m.userData.b){m.userData.b=1;m.userData.t0=m.transparent;m.userData.o0=m.opacity;m.userData.dw=m.depthWrite;}
+   m.transparent=gh?true:m.userData.t0;m.opacity=gh?.13:m.userData.o0;m.depthWrite=gh?false:m.userData.dw;}m.needsUpdate=true;});}
+ PT_PLANE.forEach(([o,pl])=>{o.p.material.clippingPlanes=mode==='cut'?[PLANES[pl].p]:[];o.p.material.needsUpdate=true;});
+ pools.forEach(m=>{m.material.clippingPlanes=mode==='cut'?[PLANES.int.p]:[];m.material.needsUpdate=true;});
+ document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===mode));}
+applyMode();
+function setHighlight(k,on){if(!k)return;parts[k].mats.forEach(m=>{m.emissive=on?C(0xd9742a):new THREE.Color(0);m.emissiveIntensity=on?.5:0;});}
+
+/* ================= UI ================= */
+const L=()=>T[lang];
+const labelsEl=document.getElementById('labels'),cardEl=document.getElementById('card'),labelEls={};
+ORDER.forEach(k=>{const b=document.createElement('button');b.className='lbl';b.type='button';b.innerHTML=`<span class="num">${NUM[k]}</span><span class="t"></span>`;
+ b.onclick=e=>{e.stopPropagation();select(k);};labelsEl.appendChild(b);labelEls[k]=b;});
+function updateLabels(){ORDER.forEach(k=>{labelEls[k].querySelector('.t').textContent=INFO[k].ar;labelEls[k].setAttribute('aria-label',INFO[k].ar);});}
+function renderCard(){cardEl.classList.toggle('fcard',flood&&!selected);cardEl.classList.toggle('ccard',chan&&!selected);
+ if(!selected){if(pkInfo&&!flood&&!chan){const p=L().pk[pkType],d=PK[pkType];cardEl.innerHTML=`<h2>${p[0]}</h2><p class="en">${p[1]}</p><p>${p[2]}</p><p class="eq">a ≈ ${d.a} m²/m³${lang==='ar'?' ،':','} ε ≈ ${d.eps}${lang==='ar'?' ،':','} H_OG ≈ ${d.hog} m</p>`;return;}
+  cardEl.innerHTML=flood?L().fcard:chan?L().ccard:L().pick;return;}const i=INFO[selected];
+ cardEl.innerHTML=`<div class="head"><span class="num">${NUM[selected]}</span><div><h2>${i.ar}</h2><p class="en">${i.en}</p></div></div><p>${i.d}</p>${i.n?`<p class="eq">${i.n}</p>`:''}<div class="act"><button id="bFocus">${L().focus}</button><button id="bClear">${L().clear}</button></div>`;
+ document.getElementById('bFocus').onclick=()=>focusPart(selected);document.getElementById('bClear').onclick=()=>select(null);}
+function select(k){pkInfo=false;if(selected){setHighlight(selected,false);labelEls[selected].classList.remove('on');}
+ selected=(k===selected)?null:k;
+ if(selected){setHighlight(selected,true);labelEls[selected].classList.add('on');if(INTERNAL.includes(selected)&&mode==='full'&&!exploded){mode='cut';applyMode();}}
+ renderCard();}
+function flyTo(pos,tgt){fly={p0:camera.position.clone(),t0:controls.target.clone(),p1:pos,t1:tgt,e:0,d:reduced?.001:.9};}
+function focusPart(k){const b=new THREE.Box3().setFromObject(parts[k].group),c=b.getCenter(new V3()),s=b.getSize(new V3()).length();
+ const dir=camera.position.clone().sub(controls.target).normalize();flyTo(c.clone().addScaledVector(dir,Math.max(1.6,s*1.4)),c);}
+function view(v){const t=HOME.tgt.clone(),f=exploded?1.15:1;const off=v==='front'?new V3(0,.5,16):v==='top'?new V3(0,19,.4):HOME.pos.clone().sub(HOME.tgt);flyTo(t.clone().add(off.multiplyScalar(f)),t);}
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>view(b.dataset.view));
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;applyMode();});
+function setDrag(m){const pan=m==='pan';controls.mouseButtons.LEFT=pan?THREE.MOUSE.PAN:THREE.MOUSE.ROTATE;controls.mouseButtons.RIGHT=pan?THREE.MOUSE.ROTATE:THREE.MOUSE.PAN;
+ controls.touches.ONE=pan?THREE.TOUCH.PAN:THREE.TOUCH.ROTATE;canvas.style.cursor=pan?'move':'';document.querySelectorAll('[data-drag]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.drag===m));}
+document.querySelectorAll('[data-drag]').forEach(b=>b.onclick=()=>setDrag(b.dataset.drag));
+const bExplode=document.getElementById('bExplode'),bLabels=document.getElementById('bLabels'),bRun=document.getElementById('bRun'),bFlood=document.getElementById('bFlood'),bChan=document.getElementById('bChan'),fwarn=document.getElementById('fwarn');
+function syncExplode(){bExplode.setAttribute('aria-pressed',exploded);bExplode.textContent=exploded?L().assemble:L().explode;}
+bExplode.onclick=()=>{exploded=!exploded;syncExplode();view('iso');};
+function syncRun(){bRun.setAttribute('aria-pressed',running);bRun.textContent=running?L().stopRun:L().run;}
+function syncProb(){bFlood.setAttribute('aria-pressed',flood);bFlood.textContent=flood?L().floodOff:L().flood;bChan.setAttribute('aria-pressed',chan);bChan.textContent=chan?L().chanOff:L().chan;}
+function toCut(){if(exploded){exploded=false;syncExplode();}if(mode==='full'){mode='cut';applyMode();}}
+bRun.onclick=()=>{running=!running;syncRun();if(running)toCut();else{flood=chan=false;syncProb();renderCard();}};
+function probOn(){if(!running){running=true;syncRun();}toCut();if(selected)select(null);}
+function syncPk(){document.querySelectorAll('[data-pk]').forEach(b=>{b.setAttribute('aria-pressed',b.dataset.pk===pkType);b.textContent=L().pk[b.dataset.pk][3];});}
+document.querySelectorAll('[data-pk]').forEach(b=>b.onclick=()=>{pkType=b.dataset.pk;for(const k in PKG)PKG[k].visible=k===pkType;
+ if(selected)select(null);pkInfo=true;if(mode==='full'){mode='cut';applyMode();}if(exploded){exploded=false;syncExplode();}syncPk();readouts();renderCard();});
+bFlood.onclick=()=>{pkInfo=false;flood=!flood;if(flood){chan=false;probOn();}syncProb();renderCard();};
+bChan.onclick=()=>{pkInfo=false;chan=!chan;if(chan){flood=false;probOn();}syncProb();renderCard();};
+const LM=['num','name','off'];function syncLabelsBtn(){bLabels.textContent=L().labels+L().LT[labelMode];}
+bLabels.onclick=()=>{labelMode=LM[(LM.indexOf(labelMode)+1)%3];syncLabelsBtn();labelsEl.classList.toggle('names',labelMode==='name');labelsEl.classList.toggle('off',labelMode==='off');};
+
+/* readouts + chart */
+const lgEl=document.getElementById('lg'),chartEl=document.getElementById('chart');
+function chart(){const W=300,H=170,l=34,r=10,t=8,b=26,iw=W-l-r,ih=H-t-b;const X=v=>l+v*iw,Y=v=>t+(1-v)*ih;let py='',px='';
+ for(let i=0;i<=50;i++){const f=i/50,[y,x]=prof(f);py+=(i?'L':'M')+X(y/Y1).toFixed(1)+' '+Y(f).toFixed(1);px+=(i?'L':'M')+X(Math.min(1,x/(Y1/MEQ))).toFixed(1)+' '+Y(f).toFixed(1);}
+ const gr=[0,.25,.5,.75,1].map(v=>`<line x1="${X(v)}" x2="${X(v)}" y1="${t}" y2="${t+ih}" stroke="currentColor" stroke-opacity=".12"/><text x="${X(v)}" y="${H-10}" text-anchor="middle">${v}</text>`).join('');
+ chartEl.innerHTML=`<svg viewBox="0 0 ${W} ${H}" dir="ltr" role="img" aria-label="${L().chH}" style="color:var(--ink)">${gr}
+ <text x="${l-6}" y="${t+8}" text-anchor="end">${lang==='ar'?'قمة':'top'}</text><text x="${l-6}" y="${t+ih}" text-anchor="end">${lang==='ar'?'قاع':'bot'}</text>
+ <path d="${py}" fill="none" stroke="#ff6a00" stroke-width="2.5"/><path d="${px}" fill="none" stroke="#1a2cb0" stroke-width="2.5" stroke-dasharray="5 3"/></svg>
+ <div class="ch-leg"><span><i style="background:#ff6a00"></i>${L().chY}</span><span><i style="background:#1a2cb0"></i>${L().chX}</span></div>`;}
+function readouts(){LG=+lgEl.value;solve();document.getElementById('lgOut').textContent='L/G = '+LG.toFixed(1);
+ document.getElementById('oA').textContent=SOL.A.toFixed(2);document.getElementById('oRec').textContent=(SOL.rec*100).toFixed(1)+' %';
+ document.getElementById('oY2').textContent=SOL.y2.toFixed(4);document.getElementById('oX1').textContent=SOL.x1.toFixed(4);
+ document.getElementById('oLmin').textContent=(LG/SOL.Lmin).toFixed(2)+' ×';
+ const pk=PK[pkType],base=(55+8*LG)*pk.cap,fl=base+(125-base)*fk,dp=(180+60*LG)*pk.dp*(1+5*fk*fk);
+ document.getElementById('oHog').textContent=pk.hog.toFixed(2)+' m  (N_OG = '+(4/pk.hog).toFixed(1)+')';document.getElementById('oAe').textContent=pk.a+' m²/m³ · ε = '+pk.eps;
+ document.getElementById('oDP').textContent=Math.round(dp)+' Pa/m';document.getElementById('oFl').textContent=Math.round(fl)+' %';
+ if(sumpMesh)sumpMesh.material.color.copy(LIQC(0));
+ const w=fk>.25?'fl':ck>.3?'ch':'';fwarn.hidden=!w;fwarn.className='fwarn'+(w==='ch'?' ch':'');if(w)fwarn.textContent=w==='fl'?L().fw1+Math.round(fl)+' %'+L().fw2:L().cw;
+ chart();}
+lgEl.oninput=readouts;
+
+function setLang(l){lang=l;INFO=l==='ar'?INFO_AR:INFO_EN;document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';document.title=L().title;
+ document.querySelectorAll('[data-t]').forEach(el=>{el.innerHTML=L()[el.dataset.t];});
+ document.querySelectorAll('[data-lang-toggle]').forEach(b=>{b.textContent=L().other;b.lang=L().otherLang;});
+ updateLabels();renderCard();syncExplode();syncRun();syncProb();syncLabelsBtn();syncPk();readouts();
+ try{localStorage.setItem('abs-lang',l);}catch(e){}requestAnimationFrame(resize);}
+document.querySelectorAll('[data-lang-toggle]').forEach(b=>b.onclick=()=>setLang(lang==='ar'?'en':'ar'));
+
+/* picking */
+const ray=new THREE.Raycaster(),mouse=new V2();let downXY=null;
+canvas.addEventListener('pointerdown',e=>{downXY=[e.clientX,e.clientY];});
+canvas.addEventListener('pointerup',e=>{if(!downXY)return;const mv=Math.hypot(e.clientX-downXY[0],e.clientY-downXY[1]);downXY=null;if(mv>6)return;
+ const r=canvas.getBoundingClientRect();mouse.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(mouse,camera);
+ for(const h of ray.intersectObjects(pickables,false)){let ob=h.object,vis=true;while(ob){if(!ob.visible){vis=false;break;}ob=ob.parent;}if(!vis)continue;const k=h.object.userData.key,pt=parts[k];
+  if(mode==='ghost'&&GHOST.includes(k))continue;
+  if(mode==='cut'&&pt.plane&&PLANES[pt.plane].p.distanceToPoint(h.point)<0)continue;
+  if(k!==selected)select(k);return;}
+ if(selected)select(null);});
+
+function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+{const ro=new ResizeObserver(resize);ro.observe(stage);ro.observe(canvas);}resize();
+try{const q=new URLSearchParams(location.search).get('lang'),sv=localStorage.getItem('abs-lang');if(q==='en'||q==='ar')lang=q;else if(sv==='en'||sv==='ar')lang=sv;}catch(e){}
+setLang(lang);
+
+/* loop */
+const clock=new THREE.Clock(),tmp=new V3(),dirH=new V3();let rt=0;const ease=u=>u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;
+function frame(){const dt=Math.min(clock.getDelta(),.05);
+ if(fly){fly.e+=dt;const u=ease(Math.min(1,fly.e/fly.d));camera.position.lerpVectors(fly.p0,fly.p1,u);controls.target.lerpVectors(fly.t0,fly.t1,u);if(fly.e>=fly.d)fly=null;}
+ controls.update();
+ explodeK+=((exploded?1:0)-explodeK)*Math.min(1,dt*(reduced?60:4));const ek=explodeK;
+ for(const k in EG)EG[k].position.copy(EOFF[k]).multiplyScalar(ek);
+ const fT=flood&&running?1:0,cT=chan&&running?1:0;const fk0=fk,ck0=ck;
+ fk+=(fT-fk)*Math.min(1,dt*(fT?.4:.7));ck+=(cT-ck)*Math.min(1,dt*.6);if(fk<.002)fk=0;if(ck<.002)ck=0;
+ rt+=dt;if(rt>.25&&(Math.abs(fk-fk0)>0||Math.abs(ck-ck0)>0||fk>0||ck>0)){rt=0;readouts();}
+ pools.forEach(m=>{const h=.02+.33*fk;m.visible=fk>.03&&running;m.scale.y=h;m.position.y=m.userData.base+h/2;});
+ const on=running&&ek<.04;[GP,LP,FP].forEach(o=>o.p.visible=on);
+ if(on){stepParticles(dt);stepFlows(dt);}
+ dirH.subVectors(controls.target,camera.position);dirH.y=0;
+ if(dirH.lengthSq()>1e-4){dirH.normalize();for(const k in PLANES){const pl=PLANES[k];tmp.copy(pl.c).add(EG[pl.eg].position);pl.p.normal.copy(dirH);pl.p.constant=-dirH.dot(tmp);}}
+ renderer.render(scene,camera);
+ const cw=canvas.clientWidth,ch=canvas.clientHeight;
+ for(const k of ORDER){const el=labelEls[k],pt=parts[k];let show=true;
+  if(INTERNAL.includes(k)&&mode==='full'&&ek<.5&&k!==selected)show=false;
+  if(show){tmp.copy(pt.anchor);pt.group.localToWorld(tmp);tmp.project(camera);if(tmp.z>1||tmp.z<-1)show=false;}
+  if(!show){el.style.visibility='hidden';continue;}
+  el.style.visibility='visible';el.style.transform=`translate(${(tmp.x*.5+.5)*cw}px,${(-tmp.y*.5+.5)*ch}px) translate(-12px,-50%)`;}
+ requestAnimationFrame(frame);}
+/* ================= presenter: narrated guided tour (Arabic / English) ================= */
+(function(){
+const CFG={btn:"bRun",isOn:()=>running,tour:[[null, "السَّلامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ. أَنا الدُّكْتورْ ضِياءْ جُمْعَة جاسِمْ، تَدْريسِيٌّ في قِسْمِ الهَنْدَسَةِ الكيمْياوِيَّةِ وَالصِّناعاتِ النِّفْطِيَّةِ في كُلِّيَّةِ العَمارَةِ الجامِعَة، وَأُدَرِّسُ مادَّتَيِ انْتِقالِ الكُتْلَةِ وَتَصْميمِ المُفاعِلات. أَهْلاً بِكُمْ في هذا المُحاكي ثُلاثِيِّ الأَبْعادِ لِبُرْجِ الامْتِصاصِ المَحْشُوّ. سَأُعَرِّفُكُمْ عَلى أَجْزائِهِ الرَّئيسَة، ثُمَّ نُشاهِدُ مَعاً كَيْفَ يَنْتَقِلُ المُذابُ مِنَ الغازِ إِلى المُذيب.", "Hello and welcome. I am Doctor Dheyaa J. Jasim, a lecturer in the Department of Chemical Engineering and Petroleum Industries at Al-Amarah University College, where I teach Mass Transfer and Reactor Design. Welcome to this three-dimensional simulator of a packed absorption column. I will introduce its main parts, and then we will watch together how the solute moves from the gas into the solvent."], ["shell", "هذا هُوَ البُرْج. يَصْعَدُ فيهِ الغازُ المُلَوَّثُ وَيَنْزِلُ المُذيب، فَيَنْتَقِلُ المُذابُ مِنَ الغازِ إِلى السّائِل.", "This is the column. Contaminated gas rises and solvent falls inside it, and the solute moves from the gas into the liquid."], ["packing", "وَهذِهِ الحَشْوَة. تُوَفِّرُ مِساحَةً سَطْحِيَّةً كَبيرَة، يَنْسابُ عَلَيْها المُذيبُ كَغِشاءٍ رَقيق، وَيَمُرُّ الغازُ في الفَراغاتِ بَيْنَها. وَيُمْكِنُكُمْ تَغْييرُ نَوْعِها مِنَ اللَّوْحَة.", "This is the packing. It provides a large surface area; the solvent spreads over it as a thin film while the gas passes through the gaps. You can change its type in the panel."], ["distributor", "في الأَعْلى موَزِّعُ السّائِل، يُوَزِّعُ المُذيبَ بِانْتِظامٍ عَلى كامِلِ الحَشْوَة.", "At the top is the liquid distributor, which spreads the solvent evenly over the whole packing."], ["redistributor", "وَبَيْنَ الطَّبَقَتَيْنِ مُعيدُ التَّوْزيع، يَجْمَعُ السّائِلَ الَّذي انْحَرَفَ نَحْوَ الجِدارِ وَيُعيدُهُ إِلى المَرْكَز.", "Between the two beds is the redistributor, which collects liquid that has drifted to the wall and returns it to the centre."], ["demister", "وَهذا مانِعُ الرَّذاذ، يَلْتَقِطُ قَطَراتِ السّائِلِ قَبْلَ خُروجِ الغازِ مِنَ القِمَّة.", "This is the mist eliminator, which catches liquid droplets before the gas leaves the top."], ["blower", "تَدْفَعُ هذِهِ المِرْوَحَةُ الغازَ المُلَوَّثَ البُرْتُقالِيَّ إِلى أَسْفَلِ البُرْج.", "This blower pushes the orange contaminated gas into the bottom of the column."], ["solventPump", "وَتَضُخُّ هذِهِ المِضَخَّةُ المُذيبَ النَّقِيَّ السَّماوِيَّ إِلى القِمَّة.", "This pump sends the fresh cyan solvent to the top."], ["richLine", "وَمِنَ القاعِ يَخْرُجُ المُذيبُ الغَنِيُّ بِالمُذابِ إِلى وَحْدَةِ التَّجْديد.", "The solute-rich solvent leaves the bottom for the regeneration unit."], ["dp", "أَمّا مُرْسِلُ فَرْقِ الضَّغْطِ فَهُوَ أَهَمُّ مُؤَشِّرٍ عَلى اقْتِرابِ البُرْجِ مِنَ الغَمْر.", "The differential pressure transmitter is the key indicator of the column approaching flooding."], [null, "غَيِّروا نِسْبَةَ السّائِلِ إِلى الغازِ وَنَوْعَ الحَشْوَة، وَراقِبوا الاسْتِرْدادَ وَهُبوطَ الضَّغْط، ثُمَّ جَرِّبوا زِرَّيِ الغَمْرِ وَسوءِ التَّوْزيع. بِالتَّوْفيقِ لِلْجَميع.", "Change the liquid-to-gas ratio and the packing type, watch recovery and pressure drop, then try the flooding and maldistribution buttons. Good luck to you all."]]};
+const strip=t=>t.replace(/[\u064B-\u0652\u0670]/g,'');
+const PUI={ar:{name:'د. ضياء جمعة جاسم',prev:'السابق',pause:'إيقاف مؤقت',resume:'متابعة',next:'التالي',close:'إغلاق',open:'شرح الدكتور ضياء',noVoice:'لا يتوفر صوت عربي في هذا المتصفح، لذلك يظهر الشرح مكتوباً فقط. جرّب Edge أو Chrome.',noMale:'لا يتوفر صوت عربي رجالي في هذا الجهاز، فاستُخدم أقرب صوت متاح بنبرة أخفض. جرّب Microsoft Edge (أصوات مثل حامد وشاكر) أو أضف صوتاً عربياً رجالياً من إعدادات النظام.'},
+ en:{name:'Dr. Dheyaa J. Jasim',prev:'Previous',pause:'Pause',resume:'Resume',next:'Next',close:'Close',open:'Tour with Dr. Dheyaa',noVoice:'No English voice is available in this browser, so the tour is shown as text only. Try Edge or Chrome.'}};
+const PU=()=>PUI[lang];
+const wrap=document.createElement('div');
+wrap.innerHTML=`<div class="presenter" id="presenter" hidden><div class="pv"><div class="ring"></div><img src="data:image/jpeg;base64,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" alt=""><div class="bars"><i></i><i></i><i></i><i></i><i></i></div></div>
+ <div class="pb"><div class="pn">x <span id="pStep"></span></div><div class="pt" id="pText"></div>
+ <div class="pc"><button id="pPrev" class="ic flip">⏮</button><button id="pPlay" class="ic">❚❚</button><button id="pNext" class="ic flip">⏭</button><button id="pClose" class="ic">✕</button></div><div class="pw" id="pWarn" hidden></div></div></div>
+ <button class="pbtn" id="pOpen"><img alt=""><span>▶</span></button>`;
+while(wrap.firstChild)stage.appendChild(wrap.firstChild);
+const presenter=document.getElementById('presenter'),pText=document.getElementById('pText'),pStep=document.getElementById('pStep'),pPlay=document.getElementById('pPlay'),pOpen=document.getElementById('pOpen'),pWarn=document.getElementById('pWarn');
+pOpen.querySelector('img').src=presenter.querySelector('.pv img').src;
+let tIdx=-1,tPaused=false,tTimer=null,tToken=0,arVoice=null,enVoice=null,arMale=false;
+const synth=window.speechSynthesis||null;
+function pickVoice(){if(!synth)return;const v=synth.getVoices();
+ const ar=v.filter(x=>/^ar/i.test(x.lang)),ML=/hamed|naayf|shakir|bassel|fahed|taim|rami|moaz|hamdan|\bali\b|saleh|laith|hedi|ismael|jamal|omar|abdullah|maged|majed|tarik|\bmale\b/i,FL=/zariyah|salma|hoda|rana|noura|sana|layla|laila|amal|hala|fatima|maryam|amany|amina|iman|mouna|reem|aysha|\bfemale\b/i,sa=x=>(ML.test(x.name)?100:0)-(FL.test(x.name)?100:0)+(/natural|neural|online/i.test(x.name)?8:0)+(/google/i.test(x.name)?2:0)+(/ar[-_]SA/i.test(x.lang)?1:0);arVoice=ar.sort((a,b)=>sa(b)-sa(a))[0]||null;arMale=!!(arVoice&&ML.test(arVoice.name)&&!FL.test(arVoice.name));
+ const en=v.filter(x=>/^en/i.test(x.lang)),se=x=>(/natural|neural|online/i.test(x.name)?8:0)+(/google/i.test(x.name)?4:0)+(/ryan|guy|george|daniel|david|arthur|male/i.test(x.name)?3:0)+(/en[-_]GB/i.test(x.lang)?2:0);
+ enVoice=en.sort((a,b)=>se(b)-se(a))[0]||null;}
+if(synth){pickVoice();synth.onvoiceschanged=pickVoice;}
+function chunks(t){return t.split(/(?<=[.،,:;!?؟])\s+/).reduce((a,s)=>{if(a.length&&(a[a.length-1]+' '+s).length<170)a[a.length-1]+=' '+s;else a.push(s);return a;},[]);}
+function speak(text,done){const tok=++tToken;presenter.classList.add('talking');const fin=()=>{if(tok!==tToken)return;presenter.classList.remove('talking');done();};
+ const vv=lang==='ar'?arVoice:enVoice;
+ if(synth&&vv){synth.cancel();if(lang==='ar'&&!arMale){pWarn.hidden=false;pWarn.textContent=PU().noMale;}const parts=chunks(text);let i=0;
+  const next=()=>{if(tok!==tToken)return;if(i>=parts.length){fin();return;}const u=new SpeechSynthesisUtterance(parts[i++]);u.voice=vv;u.lang=vv.lang;u.rate=lang==='ar'&&!arMale?.95:1;u.pitch=lang==='ar'&&!arMale?.72:1;
+   u.onend=()=>setTimeout(next,120);u.onerror=()=>setTimeout(next,120);synth.speak(u);};next();}
+ else{pWarn.hidden=false;pWarn.textContent=PU().noVoice;tTimer=setTimeout(fin,Math.max(5000,text.split(/\s+/).length*420));}}
+function showStep(i){clearTimeout(tTimer);if(synth)synth.cancel();pWarn.hidden=true;tIdx=i;const [k,ar,en]=CFG.tour[i],say=lang==='ar'?ar:en;
+ pText.textContent=lang==='ar'?strip(ar):en;pText.dir=lang==='ar'?'rtl':'ltr';pText.lang=lang;pStep.textContent='('+(i+1)+' / '+CFG.tour.length+')';pText.scrollTop=0;
+ if(k){if(selected!==k)select(k);focusPart(k);}else{if(selected)select(null);view('iso');}
+ if(!tPaused)speak(say,()=>{if(tIdx<CFG.tour.length-1)tTimer=setTimeout(()=>showStep(tIdx+1),700);});}
+function syncPresenter(){presenter.querySelector('.pn').firstChild.textContent=PU().name+' ';
+ [['pPrev',PU().prev],['pNext',PU().next],['pClose',PU().close]].forEach(([id,t])=>{const b=document.getElementById(id);b.title=t;b.setAttribute('aria-label',t);});
+ pPlay.textContent=tPaused?'▶':'❚❚';pPlay.title=tPaused?PU().resume:PU().pause;pPlay.setAttribute('aria-label',pPlay.title);pOpen.title=PU().open;pOpen.setAttribute('aria-label',PU().open);presenter.querySelector('.pv img').alt=PU().name;}
+function startTour(){presenter.hidden=false;pOpen.hidden=true;stage.classList.add('tour');tPaused=false;syncPresenter();if(mode==='full'){mode='cut';applyMode();}showStep(0);}
+function stopTour(){tToken++;clearTimeout(tTimer);if(synth)synth.cancel();presenter.classList.remove('talking');presenter.hidden=true;pOpen.hidden=false;stage.classList.remove('tour');}
+document.getElementById('pNext').onclick=()=>{if(tIdx<CFG.tour.length-1)showStep(tIdx+1);};
+document.getElementById('pPrev').onclick=()=>{if(tIdx>0)showStep(tIdx-1);};
+document.getElementById('pClose').onclick=stopTour;pOpen.onclick=startTour;
+pPlay.onclick=()=>{tPaused=!tPaused;syncPresenter();if(tPaused){tToken++;clearTimeout(tTimer);if(synth)synth.cancel();presenter.classList.remove('talking');}else showStep(tIdx);};
+const runBtn=document.getElementById(CFG.btn),oldRun=runBtn.onclick;
+runBtn.onclick=e=>{if(oldRun)oldRun.call(runBtn,e);if(CFG.isOn())startTour();else stopTour();};
+const oldSetLang=setLang;setLang=function(l){oldSetLang(l);syncPresenter();if(!presenter.hidden&&tIdx>=0)showStep(tIdx);};
+syncPresenter();
+})();
+
+loadingEl.remove();requestAnimationFrame(frame);
+})();
+
+</script>
+</body>
+</html>

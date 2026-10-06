@@ -1,0 +1,854 @@
+<!doctype html>
+<!-- © 2026 Dr. Dheyaa J. Jasim (د. ضياء جمعة جاسم), Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College. Work ID: DJJ-VLAB-STIRRED_TANK_HEATER-2026. All rights reserved. For educational use; no republication or sale without written permission. -->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Dr. Dheyaa J. Jasim (د. ضياء جمعة جاسم)">
+<meta name="copyright" content="© 2026 Dr. Dheyaa J. Jasim. All rights reserved.">
+<meta name="dcterms.rights" content="All rights reserved. For educational use; no republication or sale without written permission.">
+<meta name="dcterms.identifier" content="DJJ-VLAB-STIRRED_TANK_HEATER-2026">
+<script type="application/ld+json" data-ip="djj">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "محاكي مسخن الخزانين على التوالي | Two Stirred Tank Heater in Series", "identifier": "DJJ-VLAB-STIRRED_TANK_HEATER-2026", "inLanguage": ["ar", "en"], "copyrightYear": 2026, "author": {"@type": "Person", "name": "Dr. Dheyaa J. Jasim", "alternateName": "د. ضياء جمعة جاسم", "affiliation": {"@type": "CollegeOrUniversity", "name": "Al-Amarah University College", "department": "Department of Chemical Engineering and Petroleum Industries"}}, "copyrightHolder": {"@type": "Person", "name": "Dr. Dheyaa J. Jasim"}, "usageInfo": "All rights reserved. For educational use; no republication or sale without written permission."}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>محاكي مسخن الخزانين على التوالي | Two Stirred Tank Heater in Series</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e4eaee; --stage-a:#f3f6f8; --stage-b:#d2dce2; --panel:#f7f9fa; --ink:#1b2830; --muted:#5a6a75;
+  --line:#c9d4db; --chip:#ffffff; --accent:#b85f1e; --accent-ink:#ffffff; --cool:#2f76b3; --tint:#edf2f5;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#11171c; --stage-a:#223039; --stage-b:#10161b; --panel:#172027; --ink:#e1e8ed; --muted:#94a4af;
+    --line:#2c3a44; --chip:#21303a; --accent:#e0873d; --accent-ink:#1a1108; --cool:#5d9fd5; --tint:#1e2a32;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11171c; --stage-a:#223039; --stage-b:#10161b; --panel:#172027; --ink:#e1e8ed; --muted:#94a4af;
+  --line:#2c3a44; --chip:#21303a; --accent:#e0873d; --accent-ink:#1a1108; --cool:#5d9fd5; --tint:#1e2a32;
+}
+html{height:100%; scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0; height:100%; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans Arabic","Segoe UI",Tahoma,"Noto Sans Arabic",Arial,sans-serif; font-size:15px; line-height:1.7}
+button{font:inherit; color:inherit}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+.app{display:grid; grid-template-columns:minmax(300px,370px) 1fr; height:100%}
+.panel{background:var(--panel); border-inline-end:1px solid var(--line); overflow-y:auto; display:flex; flex-direction:column}
+.ph{padding:22px 22px 14px}
+.ph h1{margin:0; font-size:21px; line-height:1.4; font-weight:700}
+.ph .sub{margin:2px 0 0; color:var(--muted); font-size:13.5px; direction:ltr; text-align:right}
+
+.card{margin:0 16px; padding:16px 18px; background:var(--tint); border-radius:12px; border:1px solid var(--line)}
+.card h2{margin:0; font-size:18px; font-weight:600; line-height:1.45}
+.card .en{margin:0 0 8px; color:var(--muted); font-size:13px; direction:ltr; text-align:right}
+.card p{margin:6px 0}
+.card .eq{margin-top:10px; padding:8px 10px; border-inline-start:3px solid var(--accent); background:var(--panel); border-radius:0 6px 6px 0; font-size:14px; unicode-bidi:plaintext}
+.card .head{display:flex; gap:10px; align-items:flex-start}
+.card .head .num{flex:none; margin-top:3px}
+.card .act{margin-top:12px; display:flex; gap:8px; flex-wrap:wrap}
+.card .act button{background:var(--chip); border:1px solid var(--line); border-radius:8px; padding:5px 12px; cursor:pointer; font-size:13.5px}
+.card .act button:hover{border-color:var(--accent)}
+
+.num{display:inline-grid; place-items:center; width:24px; height:24px; border-radius:50%; font-size:12.5px; font-weight:600;
+  background:var(--chip); border:1.5px solid var(--ink); line-height:1; font-variant-numeric:tabular-nums}
+
+.mix{padding:18px 22px 6px}
+.mix h3,.parts h3{margin:0 0 6px; font-size:15px; font-weight:600}
+.rpm{display:flex; align-items:center; gap:12px}
+.rpm input{flex:1; accent-color:var(--accent)}
+.rpm output{min-width:86px; font-weight:600; font-variant-numeric:tabular-nums}
+.readout{display:grid; grid-template-columns:1fr auto; gap:2px 12px; margin:10px 0 4px; font-size:14px}
+.readout dt{color:var(--muted)}
+.readout dd{margin:0; font-weight:600; font-variant-numeric:tabular-nums; direction:ltr; text-align:left}
+.fine{font-size:12.5px; color:var(--muted); margin:6px 0 0}
+
+.parts{padding:14px 14px 8px}
+.parts h3{padding:10px 8px 2px; color:var(--muted); font-size:13px}
+.parts ul{list-style:none; margin:0; padding:0}
+.parts li button{display:flex; align-items:center; gap:10px; width:100%; text-align:right; background:none; border:0;
+  padding:5px 8px; border-radius:8px; cursor:pointer; font-size:14.5px}
+.parts li button:hover{background:var(--tint)}
+.parts li button[aria-current="true"]{background:var(--tint); box-shadow:inset -3px 0 0 var(--accent)}
+.parts li button[aria-current="true"] .num{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.lang{display:inline-block; cursor:pointer; background:none; font:inherit; margin-top:8px; font-size:13.5px; color:var(--accent); text-decoration:none; border:1px solid var(--line); border-radius:8px; padding:2px 10px}
+.lang:hover{border-color:var(--accent)}
+.credit{margin-top:auto; padding:14px 22px 20px; font-size:12.5px; color:var(--muted); border-top:1px solid var(--line)}
+.credit b{color:var(--ink); font-weight:600}
+
+.stage{position:relative; overflow:hidden; background:radial-gradient(ellipse 70% 65% at 50% 42%, var(--stage-a), var(--stage-b))}
+#c{display:block; width:100%; height:100%; touch-action:none; cursor:grab}
+#c:active{cursor:grabbing}
+.labels{position:absolute; inset:0; pointer-events:none}
+.lbl{direction:ltr; position:absolute; left:0; top:0; pointer-events:auto; display:flex; align-items:center; gap:6px; padding:0; border:0; background:none; cursor:pointer; white-space:nowrap}
+.lbl .t{direction:rtl; display:none; background:var(--chip); border:1px solid var(--line); border-radius:6px; padding:1px 8px; font-size:12.5px; box-shadow:0 1px 3px rgba(20,30,40,.18)}
+.labels.names .lbl .t,.lbl.on .t{display:inline-block}
+.lbl .num{box-shadow:0 1px 3px rgba(20,30,40,.25)}
+.lbl.on .num{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.lbl.on .t{border-color:var(--accent)}
+.labels.off .lbl:not(.on){display:none}
+
+.ovl{position:absolute; top:14px; inset-inline-start:16px; pointer-events:none; display:flex; flex-direction:column; align-items:flex-start; gap:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 12px; background:color-mix(in srgb,var(--panel) 82%,transparent); border:1px solid var(--line); border-radius:10px; padding:5px 12px; font-size:13px}
+.legend span{display:inline-flex; align-items:center; gap:6px}
+.legend i{width:11px; height:11px; border-radius:50%; display:inline-block; box-shadow:0 0 0 1.5px rgba(255,255,255,.7)}
+.legend b{font-weight:500}
+.tb.rx{background:#1f8a4c; color:#fff; border-color:#1f8a4c; font-weight:600}
+.tb.rx[aria-pressed="true"]{background:#b3362b; border-color:#b3362b; color:#fff}
+.rxbar{display:flex; height:12px; border-radius:6px; overflow:hidden; margin:8px 0 4px; background:var(--line)}
+.rxbar div{transition:width .25s linear}
+.brand{ background:color-mix(in srgb,var(--panel) 82%,transparent); border:1px solid var(--line); border-inline-start:4px solid var(--accent); border-radius:10px; padding:8px 14px 9px}
+.brand .who{font-size:17px; font-weight:700; line-height:1.4}
+.brand .en{font-size:13px; color:var(--muted); direction:ltr; text-align:right}
+.brand .org{font-size:12.5px; color:var(--muted)}
+.hint{position:absolute; top:14px; inset-inline-end:16px; max-width:300px; font-size:13px; color:var(--muted); pointer-events:none}
+.toolbar{position:absolute; bottom:14px; inset-inline:14px; display:flex; flex-wrap:wrap; gap:8px; justify-content:center; pointer-events:none}
+.toolbar > *{pointer-events:auto}
+.tb{background:var(--chip); border:1px solid var(--line); border-radius:9px; padding:6px 13px; cursor:pointer; font-size:13.5px; box-shadow:0 1px 3px rgba(20,30,40,.12)}
+.tb:hover{border-color:var(--accent)}
+.tb[aria-pressed="true"]{background:var(--ink); color:var(--panel); border-color:var(--ink)}
+.seg{display:inline-flex; background:var(--chip); border:1px solid var(--line); border-radius:9px; padding:2px; box-shadow:0 1px 3px rgba(20,30,40,.12)}
+.seg button{border:0; background:none; padding:4px 11px; border-radius:7px; cursor:pointer; font-size:13.5px}
+.seg button[aria-pressed="true"]{background:var(--ink); color:var(--panel)}
+.loading{position:absolute; inset:0; display:grid; place-items:center; color:var(--muted); font-size:15px; padding:20px; text-align:center}
+
+html[dir="ltr"] .ph .sub,html[dir="ltr"] .card .en,html[dir="ltr"] .brand .en{direction:rtl; text-align:left}
+html[dir="ltr"] .readout dd{text-align:right}
+html[dir="rtl"] #oReg{direction:rtl}
+html[dir="ltr"] .parts li button{text-align:left}
+html[dir="ltr"] .parts li button[aria-current="true"]{box-shadow:inset 3px 0 0 var(--accent)}
+html[dir="ltr"] .lbl .t{direction:ltr}
+html[dir="ltr"] .card .eq{border-radius:0 6px 6px 0}
+html[dir="rtl"] .card .eq{border-radius:6px 0 0 6px}
+@media (max-width:820px){
+  html,body{height:auto}
+  .app{grid-template-columns:1fr; height:auto}
+  .stage{order:-1; height:66svh; min-height:380px}
+  .panel{border-inline-end:0; overflow:visible}
+  .hint{display:none}
+  .ovl{top:10px; inset-inline-start:10px}
+  .brand{padding:6px 10px}
+  .legend{font-size:12px; padding:4px 9px}
+  .brand .who{font-size:15px}
+  .brand .org{display:none}
+  .toolbar{bottom:10px; gap:6px}
+  .tb,.seg button{font-size:12.5px}
+}
+.prof-h{margin-top:14px !important}
+.prof{display:grid; grid-template-columns:auto 1fr auto; gap:3px 8px; align-items:center; font-size:12.5px; font-variant-numeric:tabular-nums}
+.prof .k{color:var(--muted)}
+.prof .tr{height:9px; background:var(--line); border-radius:5px; overflow:hidden}
+.prof .tr div{height:100%; border-radius:5px; transition:width .3s}
+.prof .v{direction:ltr}
+.legend i.grad{width:34px; border-radius:6px; background:linear-gradient(90deg,#f2c21b,#e23b32)}
+html[dir="rtl"] .legend i.grad{background:linear-gradient(270deg,#f2c21b,#e23b32)}
+.legend i.bub{background:transparent; box-shadow:inset 0 0 0 2px #e9844a}
+@media (max-width:820px){
+  .stage{height:auto; min-height:0; display:flex; flex-direction:column}
+  #c{height:60svh; min-height:340px; flex:none}
+  .toolbar{position:static; inset:auto; padding:10px 10px 12px; background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+  .labels{bottom:auto; height:max(60svh,340px)}
+}
+.tb.fl{border-color:#b3362b; color:#b3362b; font-weight:600}
+.tb.fl[aria-pressed="true"]{background:#b3362b; color:#fff}
+.fwarn{background:#b3362b; color:#fff; border-radius:10px; padding:6px 12px; font-size:13.5px; font-weight:600; max-width:340px; box-shadow:0 2px 8px rgba(120,20,10,.3)}
+.fwarn[hidden]{display:none}
+.card.fcard{border-color:#b3362b; border-inline-start:4px solid #b3362b}
+.card.fcard h2{color:#b3362b}
+.card ul{margin:6px 0; padding-inline-start:20px}
+.card li{margin:2px 0}
+.card h4{margin:10px 0 2px; font-size:14.5px}
+#chart svg{width:100%; height:auto; display:block}
+#chart text{font-size:10px; fill:var(--muted); font-family:inherit}
+.ch-leg{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--muted); margin-top:4px}
+.ch-leg i{display:inline-block; width:16px; height:3px; border-radius:2px; vertical-align:middle; margin-inline-end:5px}
+.fwarn.ok{background:#1f8a4c}
+.legend i.sw{width:34px; border-radius:6px; background:linear-gradient(90deg,#ff3b1f,#1f5fff)}
+.legend i.gw{width:34px; border-radius:6px; background:linear-gradient(90deg,#9be38a,#f4f4f4)}
+html[dir="rtl"] .legend i.sw{background:linear-gradient(270deg,#ff3b1f,#1f5fff)}
+html[dir="rtl"] .legend i.gw{background:linear-gradient(270deg,#9be38a,#f4f4f4)}
+.pkseg{display:flex; width:100%}
+.pkseg button{flex:1; padding:6px 3px; font-size:12.5px}
+#chart2 svg{width:100%;height:auto;display:block;margin-top:8px}#chart2 text{font-size:10px;fill:var(--muted);font-family:inherit}
+#chart svg,#chart2 svg,#chart3 svg{width:100%;height:auto;display:block;margin-top:8px}#chart text,#chart2 text,#chart3 text{font-size:10px;fill:var(--muted);font-family:inherit}
+.fwarn.bad{background:#c8352e}
+
+#tbl table{width:100%;border-collapse:collapse;font-size:11px;margin-top:6px}#tbl th,#tbl td{border:1px solid rgba(128,128,128,.35);padding:2px 4px;text-align:center}#tbl th{background:rgba(31,78,120,.25)}#tbl .osc{color:#c8352e;font-weight:700}
+
+#tbl .sc{max-height:170px;overflow:auto;border:1px solid rgba(128,128,128,.35)}#tbl .sc table{margin:0}
+.presenter{position:absolute; top:12px; inset-inline-end:12px; width:min(290px,calc(100% - 24px)); display:flex; gap:9px; align-items:flex-start; background:color-mix(in srgb,var(--panel) 94%,transparent); border:1px solid var(--line); border-radius:12px; padding:8px 9px; box-shadow:0 4px 16px rgba(10,20,30,.2); z-index:5}
+.presenter[hidden]{display:none}
+.pv{position:relative; flex:none; width:52px; height:52px}
+.pv img{width:52px; height:52px; border-radius:50%; object-fit:cover; object-position:50% 30%; position:relative; z-index:1; border:2px solid var(--panel)}
+.pv .ring{position:absolute; inset:-3px; border-radius:50%; background:conic-gradient(#1f8a4c,#1f78c8,#1f8a4c); opacity:.35}
+.presenter.talking .pv img{animation:talk 2.4s ease-in-out infinite}
+.presenter.talking .pv .ring{opacity:1; animation:spin 3s linear infinite}
+@keyframes talk{0%,100%{transform:translateY(0) scale(1)}25%{transform:translateY(-1px) scale(1.02) rotate(-.6deg)}50%{transform:translateY(0) scale(1.005)}75%{transform:translateY(-1px) scale(1.015) rotate(.6deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pv .bars{position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); display:flex; gap:2px; z-index:2; background:var(--panel); border-radius:6px; padding:2px 4px; border:1px solid var(--line)}
+.pv .bars i{display:block; width:2px; height:4px; background:#1f8a4c; border-radius:2px}
+.presenter.talking .bars i{animation:bar .9s ease-in-out infinite}
+.presenter.talking .bars i:nth-child(2){animation-delay:.15s}.presenter.talking .bars i:nth-child(3){animation-delay:.3s}.presenter.talking .bars i:nth-child(4){animation-delay:.45s}.presenter.talking .bars i:nth-child(5){animation-delay:.6s}
+@keyframes bar{0%,100%{height:3px}50%{height:10px}}
+.pb{flex:1; min-width:0}
+.pn{font-weight:700; font-size:12.5px; line-height:1.3}
+.pn span{font-weight:500; color:var(--muted); font-size:11.5px; margin-inline-start:4px}
+.pt{font-size:12.5px; line-height:1.6; margin:3px 0 5px; max-height:4.9em; overflow-y:auto}
+.pc{display:flex; gap:4px}
+.pc .ic{background:var(--chip); border:1px solid var(--line); border-radius:7px; width:28px; height:24px; padding:0; font-size:11px; line-height:1; cursor:pointer}
+.pc .ic:hover{border-color:var(--accent)}
+html[dir="rtl"] .pc .flip{transform:scaleX(-1)}
+.pw{margin-top:4px; font-size:11px; color:#c0621c}
+.pbtn{position:absolute; top:12px; inset-inline-end:12px; z-index:5; width:46px; height:46px; border-radius:50%; padding:0; border:2px solid #1f8a4c; background:var(--panel); cursor:pointer; box-shadow:0 3px 10px rgba(10,20,30,.2)}
+.pbtn img{width:100%; height:100%; border-radius:50%; object-fit:cover; object-position:50% 30%}
+.pbtn span{position:absolute; bottom:-3px; inset-inline-end:-3px; width:18px; height:18px; border-radius:50%; background:#1f8a4c; color:#fff; font-size:9px; display:grid; place-items:center}
+.pbtn[hidden]{display:none}
+.stage.tour .hint{display:none}
+@media (max-width:820px){.presenter{top:8px; inset-inline-end:8px; width:min(270px,calc(100% - 16px))}.pbtn{top:8px}.stage.tour .ovl{display:none}}
+.stage .hint{inset-inline-end:70px}
+.wm{position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:6;pointer-events:none;user-select:none;font:600 11px/1.2 "IBM Plex Sans Arabic",system-ui,sans-serif;color:#fff;opacity:.5;text-shadow:0 0 3px rgba(0,0,0,.85),0 0 1px #000;white-space:nowrap;letter-spacing:.2px}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="panel">
+    <header class="ph">
+      <h1 data-t="h1"></h1>
+      <p class="sub" data-t="sub"></p>
+      <button class="lang" data-lang-toggle>English</button>
+    </header>
+    <section class="card" id="card" aria-live="polite"></section>
+    <section class="mix">
+      <h3 data-t="opMode"></h3>
+      <div class="seg pkseg" role="group">
+        <button data-op="open" aria-pressed="true"></button>
+        <button data-op="ctrl" aria-pressed="false"></button>
+      </div>
+      <h3 data-t="opF" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="fl" min="0.3" max="1" step="0.05" value="0.5" aria-label="Flow rate"><output id="flOut">–</output></div>
+      <h3 data-t="opV1" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="v1" min="0.5" max="2" step="0.1" value="1" aria-label="Volume of tank 1"><output id="v1Out">–</output></div>
+      <h3 data-t="opV2" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="v2" min="0.5" max="2" step="0.1" value="1.2" aria-label="Volume of tank 2"><output id="v2Out">–</output></div>
+      <h3 data-t="opTh" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="th" min="30" max="60" step="1" value="40" aria-label="Final temperature"><output id="thOut">–</output></div>
+      <h3 data-t="opCv" style="margin-top:12px"></h3>
+      <div class="seg pkseg" role="group">
+        <button data-cv="1" aria-pressed="false">T1</button>
+        <button data-cv="2" aria-pressed="true">T2</button>
+      </div>
+      <h3 data-t="opType" style="margin-top:10px"></h3>
+      <div class="seg pkseg" role="group">
+        <button data-ctype="P" aria-pressed="false">P</button>
+        <button data-ctype="PI" aria-pressed="true">PI</button>
+        <button data-ctype="PID" aria-pressed="false">PID</button>
+      </div>
+      <h3 data-t="opKc" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="kc" min="0.1" max="40" step="0.1" value="1.5" aria-label="Gain"><output id="kcOut">–</output></div>
+      <h3 data-t="opTi" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="ti" min="10" max="600" step="1" value="150" aria-label="Integral time"><output id="tiOut">–</output></div>
+      <h3 data-t="opTd" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="td" min="0" max="200" step="1" value="30" aria-label="Derivative time"><output id="tdOut">–</output></div>
+      <h3 data-t="opSpd" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="sd" min="0" max="2.5" step="0.05" value="1.5" aria-label="Simulation speed"><output id="sdOut">–</output></div>
+      <dl class="readout">
+        <dt data-t="dSig"></dt><dd id="oSig">–</dd>
+        <dt data-t="dTau"></dt><dd id="oTau">–</dd>
+        <dt data-t="dCal"></dt><dd id="oCal">–</dd>
+        <dt data-t="dPrc"></dt><dd id="oPrc">–</dd>
+        <dt data-t="dErr"></dt><dd id="oErr">–</dd>
+        <dt data-t="dTF"></dt><dd id="oTF">–</dd>
+        <dt data-t="dCtl"></dt><dd id="oCtl">–</dd>
+        <dt data-t="dKu"></dt><dd id="oKu">–</dd>
+        <dt data-t="dZn"></dt><dd id="oZn">–</dd>
+        <dt data-t="dTm"></dt><dd id="oTm">–</dd>
+      </dl>
+      <h3 class="prof-h" data-t="chH"></h3>
+      <div id="chart"></div>
+      <div id="chart2"></div>
+      <div id="chart3"></div>
+      <div id="chart4"></div>
+      <div id="tbl"></div>
+      <p class="fine" data-t="fine"></p>
+    </section>
+    <footer class="credit" data-t="credit"></footer>
+  </aside>
+  <main class="stage" id="stage">
+    <canvas id="c" aria-label="3D two stirred tank heater in series"></canvas>
+<div class="wm" aria-hidden="true">© 2026 د. ضياء جمعة جاسم · Dr. Dheyaa J. Jasim</div>
+    <div class="labels" id="labels"></div>
+    <div class="ovl">
+      <div class="brand"><div class="who" data-t="who"></div><div class="en" data-t="whoAlt"></div><div class="org" data-t="org"></div></div>
+      <div class="fwarn" id="fwarn" hidden></div>
+      <div class="legend" aria-hidden="true">
+        <span><i style="background:#ff6d00"></i><b data-t="lgT1"></b></span>
+        <span><i style="background:#d50000"></i><b data-t="lgT2"></b></span>
+        <span><i style="background:#2979ff"></i><b data-t="lgQ"></b></span>
+        <span><i style="background:#ffb300"></i><b data-t="lgW"></b></span>
+      </div>
+    </div>
+    <div class="hint" data-t="hint"></div>
+    <div class="toolbar">
+      <button class="tb rx" id="bRun" aria-pressed="false"></button>
+      <button class="tb" id="bStep"></button>
+        <button class="tb" id="bRec"></button>
+        <button class="tb" id="bZN"></button>
+      <button class="tb" id="bReset"></button>
+      
+      <button class="tb" data-lang-toggle>English</button>
+      <div class="seg" role="group">
+        <button data-drag="rotate" aria-pressed="true" data-t="dRot"></button>
+        <button data-drag="pan" aria-pressed="false" data-t="dPan"></button>
+      </div>
+      <div class="seg" role="group">
+        <button data-mode="full" aria-pressed="false" data-t="full"></button>
+        <button data-mode="cut" aria-pressed="true" data-t="cut"></button>
+        <button data-mode="ghost" aria-pressed="false" data-t="ghost"></button>
+      </div>
+      <button class="tb" id="bExplode" aria-pressed="false"></button>
+      <button class="tb" id="bLabels"></button>
+      <div class="seg" role="group">
+        <button data-view="iso" data-t="iso"></button>
+        <button data-view="front" data-t="front"></button>
+        <button data-view="top" data-t="top"></button>
+      </div>
+    </div>
+    <div class="loading" id="loading">جارٍ تحميل النموذج… Loading…</div>
+  </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+const loadingEl=document.getElementById('loading');
+if(!window.THREE||!THREE.OrbitControls){loadingEl.textContent='تعذّر تحميل مكتبة الرسم ثلاثي الأبعاد. تحقق من الاتصال بالإنترنت ثم أعد تحميل الصفحة. / The 3D library could not load; check your connection and reload.';return;}
+
+const DT=.1,clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+/* ---- experiments as given in the laboratory manual (settings, set-point steps, recording interval) ---- */
+const EXPS={7:{id:'level',w1:20,w2:60,Kp:.241,Tn:1.136,Tv:.171,rec:60},8:{id:'flow',w1:10,w2:40,Kp:2.075,Tn:.073,Tv:.011,rec:10}};
+/* ---- level loop: tank B2 drained through V14 (square-root law), inflow from the pump through the control valve V6 ---- */
+function LevelPlant(par){const P=Object.assign({D:.12,H:.45,kd0:4.0e-4,theta:35,Qmax:1.16e-4,taua:3,taus:2,deadu:2},par||{}),A=Math.PI*P.D*P.D/4,f=th=>Math.pow(th/90,1.5);
+ const o={P,A,h:.09,ua:0,ys:0,buf:[],kd(){return P.kd0*f(P.theta);}};
+ o.init=function(pct){this.h=pct/100*P.H;this.ua=this.kd()*Math.sqrt(this.h)/P.Qmax*100;this.ys=pct;this.buf=new Array(Math.max(1,Math.round(P.deadu/DT))).fill(this.ua);return this.ua;};
+ o.step=function(u,dt){this.buf.push(u);const ud=this.buf.shift();this.ua+=dt*(ud-this.ua)/P.taua;const qin=P.Qmax*clamp(this.ua,0,100)/100,qo=this.kd()*Math.sqrt(Math.max(0,this.h));
+  this.h=clamp(this.h+dt*(qin-qo)/A,0,P.H*1.15);const y=this.h/P.H*100;this.ys+=dt*(y-this.ys)/P.taus;return this.ys;};
+ o.ss=function(pct){return this.kd()*Math.sqrt(pct/100*P.H)/P.Qmax*100;};
+ o.lin=function(pct){const h0=pct/100*P.H,R=2*Math.sqrt(h0)/this.kd(),K=R*P.Qmax/100/P.H*100,tau=A*R;return {K,tau};};return o;}
+/* ---- flow loop: dead time, then two lags (pneumatic actuator, hydraulics + transmitter) ---- */
+function FlowPlant(par){const P=Object.assign({K:1,taua:2.5,tauf:1.9,theta:.8,kfac:1},par||{}),o={P,ua:0,x:0,buf:[]};
+ o.init=function(pct){const u=pct/(P.K*P.kfac);this.ua=u;this.x=pct;this.buf=new Array(Math.max(1,Math.round(P.theta/DT))).fill(u);return u;};
+ o.step=function(u,dt){this.buf.push(u);const ud=this.buf.shift();this.ua+=dt*(ud-this.ua)/P.taua;this.x+=dt*(P.K*P.kfac*clamp(this.ua,0,100)-this.x)/P.tauf;return this.x;};
+ o.ss=function(pct){return pct/(P.K*P.kfac);};o.lin=function(){return {K:P.K*P.kfac,tau:P.taua+P.tauf};};return o;}
+/* ---- industrial PID (parallel form, derivative on the measurement with a filter, clamping anti-windup) ---- */
+function PID(par){const c=Object.assign({Kp:1,Tn:60,Tv:0,dir:'INV',N:10,type:'PID',man:0},par||{});c.I=0;c.yf=null;c.u=0;
+ c.err=function(sp,y){return this.dir==='INV'?sp-y:y-sp;};
+ c.eff=function(){const t=this.type;return {Tn:(t==='PI'||t==='PID')?this.Tn:Infinity,Tv:(t==='PD'||t==='PID')?this.Tv:0};};
+ c.bump=function(u,y,sp){this.I=u-this.Kp*this.err(sp,y);this.yf=y;this.u=u;};
+ c.step=function(sp,y,dt,manual){const {Tn,Tv}=this.eff(),e=this.err(sp,y);if(this.yf===null)this.yf=y;
+  let D=0;if(Tv>0){const Tf=Tv/this.N;const yfn=this.yf+dt*(y-this.yf)/Tf;const dy=(yfn-this.yf)/dt;this.yf=yfn;D=(this.dir==='INV'?-1:1)*this.Kp*Tv*dy;}else this.yf=y;
+  if(manual){this.u=this.man;this.I=this.u-this.Kp*e-D;return this.u;}
+  const un=this.Kp*e+this.I+D,uc=clamp(un,0,100);
+  if(isFinite(Tn)&&Tn>0){const dI=this.Kp*e*dt/Tn;if(un===uc||(un>100&&dI<0)||(un<0&&dI>0))this.I+=dI;}
+  this.u=clamp(this.Kp*e+this.I+D,0,100);return this.u;};return c;}
+/* ---- run a closed-loop set-point step; returns the sampled response ---- */
+function runLoop(mkPlant,pidPar,w1,w2,T,opts){opts=opts||{};const pl=mkPlant(),u0=pl.init(w1),c=new PID(pidPar);c.bump(u0,w1,w1);
+ const n=Math.round(T/DT),t=new Float64Array(n+1),y=new Float64Array(n+1),u=new Float64Array(n+1),sp=new Float64Array(n+1);const t0=opts.t0===undefined?10:opts.t0;let yy=w1;
+ for(let i=0;i<=n;i++){const tt=i*DT,s=tt>=t0?w2:w1;const uu=c.step(s,yy,DT,false);yy=pl.step(uu,DT);t[i]=tt;y[i]=yy;u[i]=uu;sp[i]=s;}
+ return {t,y,u,sp,t0,w1,w2,plant:pl};}
+/* ---- step-response metrics: delay (50 %), rise (10–90 %), settling (±5 %), overshoot, IAE ---- */
+function crossT(t,z,lv,from){for(let i=from;i<z.length;i++){if(z[i]>=lv){if(i===0)return t[0];const f=(lv-z[i-1])/((z[i]-z[i-1])||1);return t[i-1]+f*(t[i]-t[i-1]);}}return NaN;}
+function metrics(t,y,t0,y0,y1){const n=t.length,D=y1-y0;let i0=0;while(i0<n&&t[i0]<t0)i0++;const tt=new Float64Array(n-i0),z=new Float64Array(n-i0);for(let i=i0;i<n;i++){tt[i-i0]=t[i]-t0;z[i-i0]=(y[i]-y0)/D;}
+ let pk=-1e9,tp=0;for(let i=0;i<z.length;i++)if(z[i]>pk){pk=z[i];tp=tt[i];}
+ const k=Math.floor(z.length*.95);let zf=0;for(let i=k;i<z.length;i++)zf+=z[i];zf/=(z.length-k);
+ const t10=crossT(tt,z,.1,0),t50=crossT(tt,z,.5,0),t90=crossT(tt,z,.9,0);let ts=NaN;for(let i=z.length-1;i>=0;i--){if(Math.abs(z[i]-1)>.05){ts=i<z.length-1?tt[i+1]:NaN;break;}if(i===0)ts=0;}
+ let iae=0;for(let i=1;i<z.length;i++)iae+=Math.abs(1-z[i])*(tt[i]-tt[i-1]);
+ return {delay:t50,rise:t90-t10,settle:ts,over:Math.max(0,(pk-1)*100),peakT:tp,iae:iae*Math.abs(D),offset:(1-zf)*D,zf};}
+/* ---- identification from an open-loop step (process reaction curve): two-point FOPDT and tuning rules ---- */
+function fitFOPDT(t,y,t0,u0,u1){let i0=0;while(t[i0]<t0)i0++;const y0=y[Math.max(0,i0-1)],n=t.length,k=Math.floor(n*.95);let yf=0;for(let i=k;i<n;i++)yf+=y[i];yf/=(n-k);const K=(yf-y0)/(u1-u0),tt=[],z=[];for(let i=i0;i<n;i++){tt.push(t[i]-t0);z.push((y[i]-y0)/(yf-y0));}
+ const a=crossT(tt,z,.283,0),b=crossT(tt,z,.632,0),tau=1.5*(b-a),th=Math.max(0,b-tau);
+ /* slope (tangent) method for comparison */let ms=0,im=0;for(let i=1;i<z.length;i++){const s=(z[i]-z[i-1])/(tt[i]-tt[i-1]);if(s>ms){ms=s;im=i;}}const thT=tt[im]-z[im]/ms,tauT=1/ms-0;
+ return {K,tau,theta:th,tauT,thetaT:Math.max(0,thT),yf,y0};}
+const tuneZN=(K,tau,th)=>({Kp:1.2*tau/(K*th),Ti:2*th,Td:.5*th}),tuneCC=(K,tau,th)=>{const r=th/tau;return {Kp:(tau/(K*th))*(4/3+r/4),Ti:th*(32+6*r)/(13+8*r),Td:th*4/(11+2*r)};};
+
+/* ---------- PCT-M3 pressure unit: compressor (dead time + motor lag) → tank with a needle-valve leak → transducer lag ---------- */
+const PCTX={a:1.0,b:.16,Pm:3.2,taum:2.0,taus:.4,deadu:1.0,rng:2.5};
+function PressurePlant(par){const P=Object.assign({},PCTX,par||{}),o={P,um:0,p:0,ys:0,buf:[],vent:false};
+ o.uFor=function(bar){return clamp(P.b*bar/(P.a*(1-bar/P.Pm))*100,0,1e3);};
+ o.init=function(pct){const bar=pct/100*P.rng,u=this.uFor(bar);this.p=bar;this.um=u;this.ys=pct;this.buf=new Array(Math.max(1,Math.round(P.deadu/DT))).fill(u);return u;};
+ o.step=function(u,dt){this.buf.push(u);const ud=this.buf.shift();this.um+=dt*(ud-this.um)/P.taum;const uu=clamp(this.um,0,100)/100;
+  const dp=P.a*uu*(1-this.p/P.Pm)-P.b*this.p-(this.vent?1.2*this.p:0);this.p=Math.max(0,this.p+dt*dp);const y=this.p/P.rng*100;this.ys+=dt*(y-this.ys)/P.taus;return this.ys;};
+ o.lin=function(bar){const u0=this.uFor(bar)/100,tau=1/(P.a*u0/P.Pm+P.b),Kb=P.a*(1-bar/P.Pm)*tau/100; /* bar per % of motor speed */return {K:Kb/P.rng*100,tau,taus:[P.taum,tau,P.taus],theta:P.deadu};};return o;}
+/* ---------- frequency response, margins and Routh criterion (lecture book, lectures 12 and 13) ---------- */
+const cm=(a,b)=>[a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]],cd=(a,b)=>{const d=b[0]*b[0]+b[1]*b[1];return [(a[0]*b[0]+a[1]*b[1])/d,(a[1]*b[0]-a[0]*b[1])/d];};
+function Gjw(Pl,w){let n=[Pl.K,0];for(const t of Pl.taus)n=cd(n,[1,w*t]);return cm(n,[Math.cos(-w*Pl.theta),Math.sin(-w*Pl.theta)]);}
+function Cjw(c,w,N){N=N||10;const {Tn,Tv}=c.eff?c.eff():{Tn:c.Tn,Tv:c.Tv};let r=[1,0];if(isFinite(Tn)&&Tn>0)r=[1,-1/(w*Tn)];if(Tv>0){const d=cd([0,w*Tv],[1,w*Tv/N]);r=[r[0]+d[0],r[1]+d[1]];}return [c.Kp*r[0],c.Kp*r[1]];}
+function loopFR(Pl,c,w){const g=Gjw(Pl,w),k=Cjw(c,w),l=cm(k,g);return {mag:Math.hypot(l[0],l[1]),ph:Math.atan2(l[1],l[0])*180/Math.PI};}
+function bodeData(Pl,c,n){n=n||240;const w=[],mag=[],ph=[];let prev=null,off=0;for(let i=0;i<n;i++){const ww=Math.pow(10,-2+4.2*i/(n-1)),f=loopFR(Pl,c,ww);let p=f.ph+off;if(prev!==null){while(p-prev>180){off-=360;p-=360;}while(p-prev<-180){off+=360;p+=360;}}prev=p;w.push(ww);mag.push(f.mag);ph.push(p);}return {w,mag,ph};}
+function margins(Pl,c){const b=bodeData(Pl,c,2400);let wp=NaN,gm=NaN,wc=NaN,pm=NaN;
+ for(let i=1;i<b.w.length;i++){if(isNaN(wp)&&b.ph[i-1]>-180&&b.ph[i]<=-180){const f=(-180-b.ph[i-1])/(b.ph[i]-b.ph[i-1]);wp=b.w[i-1]*Math.pow(b.w[i]/b.w[i-1],f);const m=b.mag[i-1]*Math.pow(b.mag[i]/b.mag[i-1],f);gm=1/m;}
+  if(isNaN(wc)&&b.mag[i-1]>1&&b.mag[i]<=1){const f=(1-b.mag[i-1])/(b.mag[i]-b.mag[i-1]);wc=b.w[i-1]*Math.pow(b.w[i]/b.w[i-1],f);const p=b.ph[i-1]+f*(b.ph[i]-b.ph[i-1]);pm=180+p;}}
+ return {wp,gm,wc,pm};}
+const pmul=(a,b)=>{const r=new Array(a.length+b.length-1).fill(0);for(let i=0;i<a.length;i++)for(let j=0;j<b.length;j++)r[i+j]+=a[i]*b[j];return r;};
+function routhStable(c){const n=c.length-1;if(c.some(v=>!(v>0)))return false;let r0=[],r1=[];for(let i=0;i<c.length;i+=2)r0.push(c[i]);for(let i=1;i<c.length;i+=2)r1.push(c[i]);const col=[r0[0],r1[0]];
+ for(let k=2;k<=n;k++){const w=Math.max(r0.length,r1.length),nr=[];for(let j=0;j<w-1;j++){const a=r0[j+1]||0,b=r1[j+1]||0;nr.push((r1[0]*a-r0[0]*b)/r1[0]);}if(!nr.length)nr.push(0);col.push(nr[0]);if(!(nr[0]>0)||!isFinite(nr[0]))return false;r0=r1;r1=nr;if(r1[0]===0)return false;}return col.every(v=>v>0);}
+/* characteristic polynomial of 1 + Kc·G(s) with a first-order Padé approximation of the dead time */
+function charPoly(Pl,Kc){let den=[1];for(const t of Pl.taus)den=pmul(den,[t,1]);if(!(Pl.theta>0)){const r=den.slice();r[r.length-1]+=Pl.K*Kc;return r;}den=pmul(den,[Pl.theta/2,1]);const num=[-Pl.theta/2*Pl.K*Kc,Pl.K*Kc];const L=den.length,r=den.slice();for(let i=0;i<num.length;i++)r[L-1-i]+=num[num.length-1-i];return r;}
+function KuRouth(Pl){let lo=0,hi=1;while(routhStable(charPoly(Pl,hi))&&hi<1e6)hi*=2;for(let i=0;i<70;i++){const m=.5*(lo+hi);if(routhStable(charPoly(Pl,m)))lo=m;else hi=m;}return .5*(lo+hi);}
+function KuBode(Pl){const c={Kp:1,Tn:Infinity,Tv:0},m=margins(Pl,c);return {Ku:m.gm,wu:m.wp,Pu:2*Math.PI/m.wp};}
+const zn=(Ku,Pu)=>({P:{Kp:.5*Ku},PI:{Kp:.45*Ku,Ti:Pu/1.2},PID:{Kp:.6*Ku,Ti:Pu/2,Td:Pu/8}});
+/* sustained-oscillation search on the nonlinear plant with a P controller */
+function oscRatio(mk,Kp,sp0,sp1,T){const r=runLoop(mk,{Kp,Tn:Infinity,Tv:0,type:'P'},sp0,sp1,T,{t0:5}),y=r.y,pk=[];for(let i=2;i<y.length-1;i++)if(y[i]>y[i-1]&&y[i]>=y[i+1]&&r.t[i]>20)pk.push([r.t[i],y[i]]);
+ if(pk.length<3)return {ratio:0,period:NaN,peaks:pk.length};const a=pk.slice(-3);const mean=(y[y.length-1]);const a1=a[1][1]-mean,a2=a[2][1]-mean;return {ratio:a1>0?a2/a1:0,period:a[2][0]-a[1][0],peaks:pk.length};}
+function KuSim(mk,sp0,sp1,T){let lo=.1,hi=400;const test=Kp=>oscRatio(mk,Kp,sp0,sp1,T).ratio>=.97;if(!test(hi))return {Ku:NaN};for(let i=0;i<30;i++){const m=Math.sqrt(lo*hi);if(test(m))hi=m;else lo=m;}const Ku=Math.sqrt(lo*hi),o=oscRatio(mk,Ku*1.0,sp0,sp1,T);return {Ku,Pu:o.period};}
+
+/* ---------- two stirred-tank heater in series (experiment 2): heater with a thermal lag → tank 1 → pipe delay → tank 2, thermocouple lags ---------- */
+const HT={Ti:20,Tamb:22,UA:3,tauh:20,taus:5,thetap:15,Qmax:1500,range:40,Tmin:20,C:4180,m1:1.06,m2:.95};   /* C = rho·cp in J/(L·K); volumes in L, flow in L/min */
+function HeaterPlant(par){const P=Object.assign({V1:1.0,V2:1.2,F:.5,real:true},HT,par||{}),WF=P.C*P.F/60,V1t=P.V1*(P.real?P.m1:1),V2t=P.V2*(P.real?P.m2:1),UA=P.real?P.UA:0,th=P.real?P.thetap:0,tauh=P.real?P.tauh:0,taus=P.real?P.taus:0;
+ const o={P,WF,UA,Qe:0,T1:0,T2:0,y1:0,y2:0,buf:[]};
+ o.Qfor=T1=>WF*(T1-P.Ti)+UA*(T1-P.Tamb);
+ o.init=function(T1sp){const Q0=this.Qfor(T1sp);this.Qe=Q0;this.T1=T1sp;this.T2=(WF*T1sp+UA*P.Tamb)/(WF+UA);this.y1=this.T1;this.y2=this.T2;this.buf=new Array(Math.max(1,Math.round(th/DT))).fill(T1sp);return Q0;};
+ o.step=function(Q,dt){this.Qe=tauh>0?this.Qe+dt*(Q-this.Qe)/tauh:Q;this.T1+=dt*(WF*(P.Ti-this.T1)+this.Qe-UA*(this.T1-P.Tamb))/(P.C*V1t);let T1d=this.T1;if(th>0){this.buf.push(this.T1);T1d=this.buf.shift();}
+  this.T2+=dt*(WF*(T1d-this.T2)-UA*(this.T2-P.Tamb))/(P.C*V2t);this.y1=taus>0?this.y1+dt*(this.T1-this.y1)/taus:this.T1;this.y2=taus>0?this.y2+dt*(this.T2-this.y2)/taus:this.T2;return {T1:this.y1,T2:this.y2};};
+ return o;}
+function HeaterLoop(par,which){const pl=HeaterPlant(par),P=pl.P,o={pl,P};o.init=function(pct){const Tsp=P.Tmin+pct*P.range/100,Q0=pl.init(Tsp);return Q0/P.Qmax*100;};
+ o.step=function(u,dt){const r=pl.step(Math.max(0,Math.min(100,u))*P.Qmax/100,dt);return ((which===1?r.T1:r.T2)-P.Tmin)/P.range*100;};
+return o;}
+/* design models for the heater loops (nominal volumes) */
+function heaterLin(par,which){const P=Object.assign({V1:1.0,V2:1.2,F:.5},HT,par||{}),WF=P.C*P.F/60,tau1=P.V1/P.F*60,tau2=P.V2/P.F*60,K=P.Qmax/WF/P.range*100/100;/* %/% */
+ return which===1?{K,taus:[P.tauh,tau1,P.taus],theta:0}:{K,taus:[P.tauh,tau1,tau2,P.taus],theta:P.thetap};}
+/* ---------- experiment: step in heater power from the steady state at Tlo to the one that gives T1 = Thi; readings every minute with noise and 0.1 °C resolution ---------- */
+function mulberry(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function runExperiment(par,Tlo,Thi,Tend,seed,sigma){const pl=HeaterPlant(par),Q0=pl.init(Tlo),Q1=pl.Qfor(Thi),rn=mulberry(seed||7),gs=()=>Math.sqrt(-2*Math.log(rn()+1e-12))*Math.cos(2*Math.PI*rn()),sg=sigma===undefined?.05:sigma;
+ const tm=[],a=[],b=[],ft=[],f1=[],f2=[];let s=0;const n=Math.round(Tend*60/DT);
+ for(let i=0;i<=n;i++){const t=i*DT;if(i%Math.round(60/DT)===0){const r={T1:pl.y1,T2:pl.y2};tm.push(t/60);a.push(Math.round((r.T1+sg*gs())*10)/10);b.push(Math.round((r.T2+sg*gs())*10)/10);}
+  if(i%10===0){ft.push(t/60);f1.push(pl.y1);f2.push(pl.y2);}pl.step(Q1,DT);}
+ return {tm,T1:a,T2:b,fine:{t:ft,T1:f1,T2:f2},Tlo,Thi,Q0,Q1,WF:pl.WF};}
+/* ---------- the ideal theory of the manual: T2/Q = 1/(ρ·Cp·F) / ((τ1 s + 1)(τ2 s + 1)) ---------- */
+function stepTwoLag(t,a,b){if(t<=0)return 0;if(Math.abs(a-b)<1e-9*Math.max(a,b))return 1-(1+t/a)*Math.exp(-t/a);return 1-(a*Math.exp(-t/a)-b*Math.exp(-t/b))/(a-b);}
+const stepFOPDT=(t,K,tau,L)=>t<=L?0:K*(1-Math.exp(-(t-L)/tau));
+/* ---------- Caldwell method (as described in the manual): t(73 %) = 1.32 (τ1 + τ2); t2 = 0.5 (τ1 + τ2); read P at t2; the standard figure gives τ2/τ1 ---------- */
+const Pstd=r=>{const S=1,a=S/(1+r),b=r*S/(1+r);return stepTwoLag(.5*S,a,b);};
+function invPstd(P){const p0=Pstd(0),p1=Pstd(1);if(P>=p0)return {r:0,clamped:true};if(P<=p1)return {r:1,clamped:true};let lo=0,hi=1;for(let i=0;i<60;i++){const m=.5*(lo+hi);if(Pstd(m)>P)lo=m;else hi=m;}return {r:.5*(lo+hi),clamped:false};}
+function interp(t,y,x){for(let i=1;i<t.length;i++)if(t[i]>=x){const f=(x-t[i-1])/(t[i]-t[i-1]);return y[i-1]+f*(y[i]-y[i-1]);}return y[y.length-1];}
+function caldwell(tm,T){const n=T.length,T0=T[0],Tf=(T[n-1]+T[n-2]+T[n-3])/3,A=Tf-T0,y=T.map(v=>(v-T0)/A),t73=crossT(tm,y,.73,0);if(!isFinite(t73))return {ok:false};
+ const S=t73/1.32,t2=.5*S,P=interp(tm,y,t2),inv=invPstd(P),r=inv.r,tau1=S/(1+r),tau2=r*S/(1+r);return {ok:true,A,T0,Tf,t73,S,t2,P,r,tau1,tau2,clamped:inv.clamped,y};}
+/* ---------- process reaction curve (tangent at the inflection point): K e^{-Ls}/(Ts+1) ---------- */
+function prcTangent(tm,T){const n=T.length,T0=T[0],Tf=(T[n-1]+T[n-2]+T[n-3])/3,A=Tf-T0,y=T.map(v=>(v-T0)/A);let ms=0,im=1;for(let i=1;i<n-1;i++){const s=(y[i+1]-y[i-1])/(tm[i+1]-tm[i-1]);if(s>ms){ms=s;im=i;}}
+ const L=Math.max(0,tm[im]-y[im]/ms),Tc=1/ms;return {A,T0,Tf,L,T:Tc,slope:ms,im,y};}
+const rmse=(tm,T,fn)=>{let s=0,m=0;for(let i=0;i<tm.length;i++){const e=T[i]-fn(tm[i]);s+=e*e;m=Math.max(m,Math.abs(e));}return {rmse:Math.sqrt(s/tm.length),max:m};};
+
+
+let OP='open',CV=2,TYPE='PI',KC=1.5,TI=150,TD=30,FL=.5,VOL1=1,VOL2=1.2,TH=40,SPEED=32,running=true,selected=null,seed=7;const PORTS=[];
+let PLT=null,CT=null,HIST=[],T_SIM=0,stepped=false,T_STEP=0,SPT=25,Qcmd=0,Q0=0,Q1=0,recAcc=0,EXPD=null,CAL=null,PRCR=null,ERR=null,AN=null,anTimer=null,expTimer=null,stirA=0,coilGlow=0;
+const pct=v=>(v-HT.Tmin)/HT.range*100,par=()=>({F:FL,V1:VOL1,V2:VOL2});
+/* ================= content ================= */
+const INFO_AR={
+ feed:{ar:'خزان التغذية والمضخة والصمام',en:'Feed tank, pump and valve',d:'خزان يحوي الماء البارد (نحو 20°C) تسحب منه المضخة وتدفعه إلى الخزان الأول. صمام اليد يضبط التدفق F، ويُقرأ على المقياس العائم (في الدليل: «القراءة 6»). يبقى تدفق الماء ثابتاً في التجربة، وهو ما يجعل ثابتي الزمن τ = V/F ثابتين.',n:'τ = V / F'},
+ flow:{ar:'مقياس التدفق وخطوط الربط',en:'Flowmeter and connecting lines',d:'مقياس عائم يرتفع عوّامه مع التدفق. من الخزان الأول يسيل الماء بفيضان إلى الخزان الثاني عبر أنبوب، ومنه إلى خزان التصريف، فيبقى حجم كل خزان ثابتاً. في الأنبوب بين الخزانين زمن انتقال قصير (نحو 15 s) يضيفه المحاكي ضمن «الواقع»، وهو غير موجود في النظرية المثالية.',n:'θ ≈ 15 s'},
+ t1:{ar:'الخزان الأول والمسخّن',en:'Tank 1 and the heater',d:'خزان مقلَّب جيداً فيه ملف تسخين كهربائي. الطاقة Q المضافة ترفع درجة حرارة الماء، وتحملها الجريان إلى الخارج. موازنة الطاقة: ρ·Cp·V₁·dT₁/dt = ρ·Cp·F·(Tᵢ − T₁) + Q. ثابت الزمن τ₁ = V₁/F، والربح 1/(ρ·Cp·F). يتوهج الملف بحسب القدرة الفعلية (للمسخّن تأخر حراري نحو 20 s).',n:'τ₁ = V₁/F ، T₁(s)/Q(s) = [1/(ρCpF)] / (τ₁s + 1)'},
+ t2:{ar:'الخزان الثاني',en:'Tank 2',d:'خزان مقلَّب بلا مسخّن، يستقبل ماء الخزان الأول فتتبع حرارته حرارة الخزان الأول بتأخر إضافي. الخزانان على التوالي بلا تفاعل بينهما، فدالة التحويل من القدرة إلى T₂ جداء دالتين من الرتبة الأولى، أي نظام من الرتبة الثانية فرط التخميد.',n:'T₂(s)/Q(s) = [1/(ρCpF)] / ((τ₁s + 1)(τ₂s + 1))'},
+ tc:{ar:'المزدوجان الحراريان',en:'Thermocouples',d:'يقيسان T₁ وT₂ ويرسلان الإشارة إلى المتحكم وسجل البيانات. لكل مزدوج زمن استجابة (نحو 5 s) وضجيج صغير (0.05°C) ودقة 0.1°C، كما في القراءة اليدوية كل دقيقة بحسب الدليل.',n:'قراءة كل 1 min'},
+ cab:{ar:'خزانة التحكم والقدرة',en:'Control and power cabinet',d:'يضبط المتحكم القدرة الكهربائية للمسخّن (حتى 1500 W) بوحدة قدرة. في التجربة المفتوحة تُغيَّر القدرة بخطوة من القيمة التي تعطي 25°C إلى التي تعطي القيمة العليا (مثلاً 40°C). في التجربة المغلقة يعمل متحكم P أو PI أو PID على T₁ أو T₂ بحسب اختيارك.',n:'u (%) = Kc·(e + ∫e dt/Ti − Td·dy/dt)'},
+ pc:{ar:'الحاسوب والمنحنى',en:'Computer and trend',d:'يعرض منحنى الحرارتين مع الزمن. في الشريط الجانبي: جدول القراءات كل دقيقة، وتطبيق طريقة كالدويل، وطريقة منحنى رد فعل العملية (PRC)، ومقارنة الاستجابتين بالقياس والنظرية.',n:'قراءة T₁ وT₂ كل دقيقة'}
+};
+const INFO_EN={
+ feed:{ar:'Feed tank, pump and valve',en:'خزان التغذية والمضخة والصمام',d:'A tank of cold water (about 20°C) from which the pump draws and drives the water to the first tank. The hand valve sets the flow F, read on the float meter (“reading 6” in the manual). The water flow is constant in the experiment, which keeps the two time constants τ = V/F fixed.',n:'τ = V / F'},
+ flow:{ar:'Flowmeter and connecting lines',en:'مقياس التدفق وخطوط الربط',d:'A float meter whose float rises with the flow. From the first tank the water overflows through a pipe to the second tank and from there to a drain tank, so each tank keeps a constant volume. The pipe between the tanks has a short transport time (about 15 s) that the simulator adds to “reality” and that the ideal theory does not have.',n:'θ ≈ 15 s'},
+ t1:{ar:'Tank 1 and the heater',en:'الخزان الأول والمسخّن',d:'A well-stirred tank with an electric heating coil. The added power Q raises the water temperature and the flow carries it out. Energy balance: ρ·Cp·V₁·dT₁/dt = ρ·Cp·F·(Tᵢ − T₁) + Q. The time constant is τ₁ = V₁/F and the gain 1/(ρ·Cp·F). The coil glows with the actual power (the heater has a thermal lag of about 20 s).',n:'τ₁ = V₁/F, T₁(s)/Q(s) = [1/(ρCpF)] / (τ₁s + 1)'},
+ t2:{ar:'Tank 2',en:'الخزان الثاني',d:'A stirred tank without a heater that receives the water of the first tank, so its temperature follows that of tank 1 with an extra lag. The two tanks are in series without interaction, so the transfer function from power to T₂ is a product of two first-order functions, an overdamped second-order system.',n:'T₂(s)/Q(s) = [1/(ρCpF)] / ((τ₁s + 1)(τ₂s + 1))'},
+ tc:{ar:'Thermocouples',en:'المزدوجان الحراريان',d:'They measure T₁ and T₂ and send the signal to the controller and the data logger. Each has a response lag (about 5 s), a small noise (0.05°C) and 0.1°C resolution, as in the manual’s one-minute manual readings.',n:'one reading every 1 min'},
+ cab:{ar:'Control and power cabinet',en:'خزانة التحكم والقدرة',d:'The controller sets the electric power of the heater (up to 1500 W) through a power unit. In the open-loop experiment the power is changed by a step from the value that gives 25°C to the one that gives the upper value (for example 40°C). In the closed-loop experiment a P, PI or PID controller acts on T₁ or T₂ as you choose.',n:'u (%) = Kc·(e + ∫e dt/Ti − Td·dy/dt)'},
+ pc:{ar:'Computer and trend',en:'الحاسوب والمنحنى',d:'It plots the two temperatures against time. The side panel holds the table of readings every minute, the Caldwell method, the process reaction curve (PRC) method, and the comparison of the two responses with the measurement and the theory.',n:'T₁ and T₂ read every minute'}
+};
+let INFO=INFO_AR;
+const ORDER=['feed','flow','t1','t2','tc','cab','pc'];const NUM={};ORDER.forEach((k,i)=>NUM[k]=i+1);const INTERNAL=['t1','t2'];
+const T={
+ ar:{title:'محاكي مسخن الخزانين على التوالي',h1:'مسخن الخزانين على التوالي',sub:'Two Stirred Tank Heater in Series (Exp. 2): Caldwell and process-reaction-curve methods, with closed-loop control of T1 and T2',
+  opMode:'نمط التجربة',op_open:'حلقة مفتوحة (خطوة في الطاقة)',op_ctrl:'حلقة مغلقة (متحكم)',opF:'التدفق F (L/min)',opV1:'حجم الخزان الأول V₁ (L)',opV2:'حجم الخزان الثاني V₂ (L)',opTh:'القيمة العليا لـ T₁ بعد الخطوة (°C): من 25',
+  opCv:'المتغير المتحكَّم فيه',opType:'نوع المتحكم',opKc:'الكسب Kc',opTi:'زمن التكامل Ti (s)',opTd:'زمن الاشتقاق Td (s)',opSpd:'سرعة المحاكاة',
+  dSig:'T₁ ، T₂ (°C) ، القدرة (W)',dTau:'النظرية: τ₁ ، τ₂ (min) ، الربح (°C/W)',dCal:'كالدويل: t₇₃ ، τ₁+τ₂ ، t₂ ، P ، τ₁ ، τ₂',dPrc:'PRC (المماس): L ، T (min) ، K',dErr:'جذر متوسط مربع الخطأ للنموذج مقابل القياس (°C)',dTF:'دوال التحويل T₂(s)/Q(s)',dCtl:'الحلقة المغلقة: التجاوز ، الاستقرار ، أعلى قدرة',dKu:'الكسب الحدّي Ku لحلقة T المختارة (بودي ، راوث+باديه ، محاكاة على النبات الواقعي)',dZn:'ضبط زيغلر–نيكولز (Kc ، Ti ، Td)',dTm:'الزمن',
+  step:'تطبيق الخطوة 25 ← القيمة العليا',stepBack:'العودة إلى 25°C',rec:'تسجيل تجربة جديدة',zn:'تطبيق ضبط Z–N',reset:'إعادة التهيئة',
+  chH:'المنحنيات: الحي، كالدويل، الشكل القياسي، والمقارنة وجدول القراءات',chT:'T₁ وT₂ والقدرة مع الزمن',chTx:'الزمن (min)',chC:'طريقة كالدويل: Y/A لـ T₂',chCx:'الزمن (min)',chS:'الشكل القياسي لكالدويل: P مقابل τ₂/τ₁',chSx:'τ₂/τ₁',chM:'مقارنة: القياس والنظرية وكالدويل وPRC (T₂)',chMx:'الزمن (min)',
+  lgT1:'T₁ حرارة الخزان الأول',lgT2:'T₂ حرارة الخزان الثاني',lgQ:'القدرة الكهربائية',lgW:'القيمة المطلوبة / الخطوة',cTh:'النظرية المثالية',cCal:'كالدويل',cPrc:'PRC',cExp:'القياس (كل دقيقة)',cClamp:'* P خارج مدى الشكل القياسي (0.264–0.393): في القياس زمن ميت وتأخر إضافي (المسخّن والأنبوب والمزدوج) فتكون الاستجابة أكثر «تأخراً» من أي نظام ثنائي التأخير مثالي، فيُعتمد τ₂/τ₁ = 1.',cY:'Y/A المقاس',cPt:'القيمة المقروءة',
+  tT:'جدول القراءات (كل دقيقة)',tMin:'min',
+  fine:'محاكاة للتجربة 2 (مسخن الخزانين) بحسب دليل مختبر السيطرة على العمليات (الجامعة التكنولوجية، إعداد سناء وثيق ونسمة بلاسم، إشراف د. زيدون محسن)، مع تحليل من كتاب المحاضرات (د. زيدون محسن شكور): الأنظمة من الرتبة الأولى على التوالي (المحاضرة 5)، وتقريب الزمن الميت (6)، والمتحكمات (9)، ومعيار راوث (12)، ومخططات بودي (13). ما أُخذ من الدليل: موازنة الطاقة للخزانين، ودالة التحويل T₂(s)/Q(s) الثنائية الرتبة، وخطوة الطاقة من 25 إلى 40°C، وقراءة T₁ وT₂ كل دقيقة، وطريقة كالدويل (قراءة t عند Y/A = 0.73، وt₁ = 1.32(τ₁+τ₂)، وt₂ = 0.5(τ₁+τ₂)، ثم P من الشكل القياسي)، وطريقة منحنى رد فعل العملية، ومقارنة النموذجين بالقياس والنظرية، وسؤال المتحكم المناسب لـ T₁ وT₂. ما افترضته لأن الدليل لا يعطيه، فهو افتراضي وليس قياساً على الجهاز: V₁ = 1.0 L وV₂ = 1.2 L وF = 0.5 L/min (ويمكن تغييرها)، وحرارة الماء الداخل 20°C وحرارة المحيط 22°C. وجعلتُ «الواقع» يختلف عن النظرية المثالية بأمور واقعية: فقد حراري UA = 3 W/K لكل خزان، وتأخر المسخّن 20 s، وزمن انتقال الأنبوب 15 s، وتأخر المزدوج 5 s، وضجيج 0.05°C ودقة 0.1°C، وحجمان فعليان مختلفان عن الاسميين (+6% و−5%). ولذلك لا تتطابق النظرية مع القياس تماماً، وهو المقصود في سؤال «قارن الاستجابتين». القدرة القصوى 1500 W، ومدى المتحكم 20–60°C = 100%. وتنبيه على الدليل: العامل 1.32 في طريقة كالدويل تقريبي؛ فلنظام ذي تأخيرين متساويين يبلغ الرد 73% عند 1.293·(τ₁+τ₂)، فيعطي 1.32 مجموعاً أقل من الحقيقي بنحو 2%، وهي حساسة عند اقتراب النسبة τ₂/τ₁ من 1 (مدى P ضيق: 0.264 إلى 0.393). التحقق: بيانات مثالية بلا ضجيج تعطي نسبة ثابتي الزمن بدقة جيدة (مثلاً الحقيقي 0.40 يعطي 0.51 و0.10 يعطي 0.13)، وموازنة الطاقة تُغلق عند الاستقرار إلى 10⁻⁸ W، وعلى القياس المحاكى يعطي كالدويل جذر متوسط مربع خطأ نحو 0.30°C مقابل 1.12°C لطريقة PRC و1.41°C للنظرية المثالية. وفي الحلقة المغلقة: Ku لحلقة T₁ يساوي 33.87 بالطرق الثلاث (بودي وراوث والمحاكاة 33.90 على نموذج مطابق)، ولحلقة T₂ يساوي 7.44 (بودي) و7.46 (راوث مع باديه) و7.29 (محاكاة على نموذج مطابق)، أما المحاكاة التي تعرضها الصفحة فهي على النبات الواقعي (بفقده الحراري واختلاف أحجامه) وتعطي نحو 8.2؛ ونفس ضبط PI يعطي في T₁ تجاوزاً 0% وفي T₂ تجاوزاً 34%.',
+  credit:'إعداد: <b>د. ضياء جمعة جاسم</b> (Dheyaa J. Jasim)<br>قسم الهندسة الكيمياوية والصناعات النفطية، كلية العمارة الجامعة<br>© 2026 د. ضياء جمعة جاسم. جميع الحقوق محفوظة. للاستخدام التعليمي؛ لا يجوز إعادة النشر أو البيع دون إذن كتابي.',
+  who:'إعداد: د. ضياء جمعة جاسم',whoAlt:'Dr. Dheyaa J. Jasim',org:'قسم الهندسة الكيمياوية والصناعات النفطية، كلية العمارة الجامعة',
+  hint:'اسحب بالزر الأيسر للتدوير وبالزر الأيمن لتحريك الجهاز، واستخدم العجلة للتكبير والتصغير، وانقر على أي جزء لمعرفة وظيفته.',
+  dRot:'تدوير',dPan:'تحريك',full:'كامل',cut:'مقطع',ghost:'شفاف',iso:'منظور',front:'أمامي',top:'علوي',other:'English',otherLang:'en',
+  pick:'<h2>كيف تتبع حرارة الخزان الثاني حرارة الأول؟</h2><p>يُدخَل الماء البارد إلى الخزان الأول فيسخّنه الملف، ثم يسيل إلى الخزان الثاني. اضغط «تطبيق الخطوة» لترى T₁ ترتفع بسرعة وT₂ تتبعها متأخرة بشكل حرف S: ذلك نظام من الرتبة الثانية.</p><p>من القراءات كل دقيقة تستخرج طريقة كالدويل ثابتي الزمن τ₁ وτ₂، وتستخرج طريقة PRC نموذجاً من الرتبة الأولى مع زمن ميت. قارنهما بالقياس والنظرية، ثم جرّب التحكم في T₁ ثم T₂.</p>',
+  focus:'تقريب الكاميرا من الجزء',clear:'إلغاء التحديد',explode:'تفكيك الأجزاء',assemble:'تجميع الأجزاء',run:'تشغيل المحاكاة',stopRun:'إيقاف مؤقت',
+  wIdle:'اضغط «تطبيق الخطوة» لرفع قدرة المسخّن من قيمة 25°C إلى قيمة {h}°C.',wRun:'الاستجابة قيد التشكل: T₁ = {a}°C وT₂ = {b}°C.',wDone:'استقر النظام: T₁ = {a}°C وT₂ = {b}°C. لاحظ أن T₂ أقل قليلاً لأن في الخزان الثاني فقداً حرارياً للمحيط.',wCtl:'الحلقة المغلقة على {v}: T = {x}°C ، المطلوب {w}°C ، القدرة {q} W.',wSat:'⚠ القدرة بلغت حدّ المسخّن ({q} W): لا يمكن تسريع الاستجابة أكثر.',wOsc:'⚠ تذبذب كبير (تجاوز {o}%): خفّض Kc أو زد Ti.',wUlt:'⚠ Kc = {k} قريب من الحدّي ({u}) أو أعلى: حافة عدم الاستقرار.',
+  labels:'الملصقات: ',LT:{num:'أرقام',name:'أسماء',off:'مخفية'}},
+ en:{title:'Two Stirred Tank Heater in Series Simulator',h1:'Two Stirred Tank Heaters in Series',sub:'مسخن الخزانين على التوالي (التجربة 2): طريقتا كالدويل ومنحنى رد فعل العملية، مع السيطرة المغلقة على T1 وT2',
+  opMode:'Experiment mode',op_open:'Open loop (a step in power)',op_ctrl:'Closed loop (a controller)',opF:'Flow F (L/min)',opV1:'Tank 1 volume V₁ (L)',opV2:'Tank 2 volume V₂ (L)',opTh:'Upper value of T₁ after the step (°C): from 25',
+  opCv:'Controlled variable',opType:'Controller type',opKc:'Gain Kc',opTi:'Integral time Ti (s)',opTd:'Derivative time Td (s)',opSpd:'Simulation speed',
+  dSig:'T₁, T₂ (°C), power (W)',dTau:'Theory: τ₁, τ₂ (min), gain (°C/W)',dCal:'Caldwell: t₇₃, τ₁+τ₂, t₂, P, τ₁, τ₂',dPrc:'PRC (tangent): L, T (min), K',dErr:'RMS error of the model against the measurement (°C)',dTF:'Transfer functions T₂(s)/Q(s)',dCtl:'Closed loop: overshoot, settling, peak power',dKu:'Ultimate gain Ku of the chosen T loop (Bode, Routh+Padé, simulation on the real plant)',dZn:'Ziegler–Nichols tuning (Kc, Ti, Td)',dTm:'Time',
+  step:'Apply the step 25 → upper value',stepBack:'Return to 25°C',rec:'Record a new experiment',zn:'Apply Z–N tuning',reset:'Reset',
+  chH:'Curves: live, Caldwell, the standard figure, the comparison and the readings table',chT:'T₁, T₂ and power against time',chTx:'Time (min)',chC:'Caldwell method: Y/A of T₂',chCx:'Time (min)',chS:'Caldwell standard figure: P against τ₂/τ₁',chSx:'τ₂/τ₁',chM:'Comparison: measurement, theory, Caldwell and PRC (T₂)',chMx:'Time (min)',
+  lgT1:'T₁ temperature of tank 1',lgT2:'T₂ temperature of tank 2',lgQ:'Electric power',lgW:'Set point / step',cTh:'Ideal theory',cCal:'Caldwell',cPrc:'PRC',cExp:'Measurement (each minute)',cClamp:'* P is outside the range of the standard figure (0.264–0.393): the measurement has a dead time and extra lags (heater, pipe, thermocouple), so the response is more “delayed” than any ideal two-lag system, and τ₂/τ₁ = 1 is used.',cY:'Measured Y/A',cPt:'Value read',
+  tT:'Table of readings (each minute)',tMin:'min',
+  fine:'A simulation of experiment 2 (the two stirred tank heater) according to the Process Control Laboratory manual (University of Technology, prepared by Sana Wathiq and Nesma Balasim, supervised by Dr. Zaidoon Mohsin), with analysis from the lecture book (Dr. Zaidoon M. Shakoor): first-order systems in series (lecture 5), dead-time approximation (6), controllers (9), the Routh criterion (12) and Bode diagrams (13). Taken from the manual: the energy balances of the two tanks, the second-order transfer function T₂(s)/Q(s), the energy step from 25 to 40°C, reading T₁ and T₂ every minute, the Caldwell method (reading t at Y/A = 0.73, t₁ = 1.32(τ₁+τ₂), t₂ = 0.5(τ₁+τ₂), then P from the standard figure), the process-reaction-curve method, the comparison of the two models with the measurement and the theory, and the question of a suitable controller for T₁ and T₂. What I assumed because the manual does not give it, so it is assumed and not measured on the apparatus: V₁ = 1.0 L, V₂ = 1.2 L and F = 0.5 L/min (adjustable), inlet water at 20°C and surroundings at 22°C. I made “reality” differ from the ideal theory in realistic ways: a heat loss UA = 3 W/K per tank, a heater lag of 20 s, a pipe transport time of 15 s, a thermocouple lag of 5 s, noise of 0.05°C and 0.1°C resolution, and two actual volumes that differ from the nominal ones (+6% and −5%). So the theory does not match the measurement exactly, which is the point of the question “compare the two responses”. The maximum power is 1500 W and the controller range is 20–60°C = 100%. A note on the manual: the factor 1.32 in the Caldwell method is approximate; for two equal lags the response reaches 73% at 1.293·(τ₁+τ₂), so 1.32 gives a sum about 2% too low, and the method is sensitive when τ₂/τ₁ approaches 1 (the range of P is narrow: 0.264 to 0.393). Verification: ideal noise-free data give the ratio of the time constants well (for example a true 0.40 gives 0.51 and 0.10 gives 0.13), the energy balance closes at steady state to 10⁻⁸ W, and on the simulated measurement Caldwell gives an RMS error of about 0.30°C against 1.12°C for the PRC method and 1.41°C for the ideal theory. In closed loop: Ku of the T₁ loop is 33.87 by the three methods (Bode, Routh and a 33.90 simulation on a matching model), and of the T₂ loop 7.44 (Bode), 7.46 (Routh with Padé) and 7.29 (simulation on a matching model), while the simulation the page shows is on the real plant (with its heat loss and different volumes) and gives about 8.2; the same PI settings give 0% overshoot on T₁ and 34% on T₂.',
+  credit:'Prepared by <b>Dr. Dheyaa J. Jasim</b><br>Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College<br>© 2026 Dr. Dheyaa J. Jasim. All rights reserved. For educational use; no republication or sale without written permission.',
+  who:'Prepared by Dr. Dheyaa J. Jasim',whoAlt:'د. ضياء جمعة جاسم',org:'Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College',
+  hint:'Left-drag to rotate, right-drag to move the unit, scroll to zoom in and out, and click any part to see its function.',
+  dRot:'Rotate',dPan:'Move',full:'Whole',cut:'Cutaway',ghost:'X-ray',iso:'Perspective',front:'Front',top:'Top',other:'العربية',otherLang:'ar',
+  pick:'<h2>How does the second tank follow the first?</h2><p>Cold water enters the first tank where the coil heats it, and then flows to the second tank. Press “Apply the step” to see T₁ rise quickly and T₂ follow it late in an S shape: that is a second-order system.</p><p>From the readings every minute the Caldwell method extracts the two time constants τ₁ and τ₂, and the PRC method extracts a first-order model with dead time. Compare them with the measurement and the theory, then try controlling T₁ and then T₂.</p>',
+  focus:'Zoom to this part',clear:'Clear selection',explode:'Explode parts',assemble:'Assemble parts',run:'Run the simulation',stopRun:'Pause',
+  wIdle:'Press “Apply the step” to raise the heater power from the value for 25°C to the one for {h}°C.',wRun:'The response is developing: T₁ = {a}°C and T₂ = {b}°C.',wDone:'The system is steady: T₁ = {a}°C and T₂ = {b}°C. Note that T₂ is slightly lower because tank 2 loses heat to the surroundings.',wCtl:'Closed loop on {v}: T = {x}°C, set point {w}°C, power {q} W.',wSat:'⚠ The power has reached the heater limit ({q} W): the response cannot be made faster.',wOsc:'⚠ Large oscillation (overshoot {o}%): lower Kc or raise Ti.',wUlt:'⚠ Kc = {k} is near the ultimate value ({u}) or above it: the edge of instability.',
+  labels:'Labels: ',LT:{num:'numbers',name:'names',off:'hidden'}}
+};
+/* ================= renderer ================= */
+const V3=THREE.Vector3,V2=THREE.Vector2,UP=new V3(0,1,0);
+const C=h=>new THREE.Color(h).convertSRGBToLinear();
+const stage=document.getElementById('stage'),canvas=document.getElementById('c');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.shadowMap.enabled=true;renderer.localClippingEnabled=true;renderer.setClearColor(0,0);
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(36,1,.05,160);
+const HOME={pos:new V3(7.0,5.6,19.0),tgt:new V3(7.0,2.4,0)};camera.position.copy(HOME.pos);
+const controls=new THREE.OrbitControls(camera,canvas);
+controls.target.copy(HOME.tgt);controls.enableDamping=true;controls.dampingFactor=.08;controls.minDistance=1;controls.maxDistance=46;
+controls.enablePan=true;controls.screenSpacePanning=true;controls.panSpeed=1.1;
+controls.mouseButtons={LEFT:THREE.MOUSE.ROTATE,MIDDLE:THREE.MOUSE.DOLLY,RIGHT:THREE.MOUSE.PAN};
+controls.touches={ONE:THREE.TOUCH.ROTATE,TWO:THREE.TOUCH.DOLLY_PAN};
+canvas.addEventListener('contextmenu',e=>e.preventDefault());controls.update();
+(function(){const pm=new THREE.PMREMGenerator(renderer),es=new THREE.Scene();
+ const g=new THREE.SphereGeometry(20,48,24),pos=g.attributes.position,cols=[];
+ const lo=new THREE.Color(0x4a525a),mid=new THREE.Color(0xb8c2ca),hi=new THREE.Color(0xf2f6f9);
+ for(let i=0;i<pos.count;i++){const y=pos.getY(i)/20;const c=y<0?lo.clone().lerp(mid,y+1):mid.clone().lerp(hi,y);cols.push(c.r,c.g,c.b);}
+ g.setAttribute('color',new THREE.Float32BufferAttribute(cols,3));es.add(new THREE.Mesh(g,new THREE.MeshBasicMaterial({side:THREE.BackSide,vertexColors:true})));
+ const pl=(w,h,p,k)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(k,k,k),side:THREE.DoubleSide}));m.position.copy(p);m.lookAt(0,0,0);es.add(m);};
+ pl(14,4,new V3(0,14,6),3.2);pl(6,10,new V3(-15,4,-4),2.2);pl(6,10,new V3(15,5,2),1.6);
+ scene.environment=pm.fromScene(es,.04).texture;pm.dispose();})();
+scene.add(new THREE.HemisphereLight(0xeef3f7,0x3a4550,.55));
+const sun=new THREE.DirectionalLight(0xffffff,1.2);sun.position.set(8,16,10);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);
+Object.assign(sun.shadow.camera,{left:-8,right:8,top:11,bottom:-5,near:1,far:50});sun.shadow.camera.updateProjectionMatrix();sun.shadow.bias=-.0004;sun.shadow.normalBias=.03;scene.add(sun);
+const fill=new THREE.DirectionalLight(0xdfe8ff,.35);fill.position.set(-8,5,-6);scene.add(fill);
+
+
+const std=(hex,met,rough,extra)=>new THREE.MeshStandardMaterial(Object.assign({color:C(hex),metalness:met,roughness:rough,side:THREE.DoubleSide},extra||{}));
+const M={steel:std(0xd4dbe0,.9,.25),steelDark:std(0x8e989f,.85,.36),brushed:std(0xb9c2c9,.85,.4),
+ paint:std(0x2f5f86,.25,.48),paintGrey:std(0x5b6873,.35,.55),yellowPaint:std(0xd9a91c,.2,.5),black:std(0x2b3035,.3,.6),
+ red:std(0xb3362b,.2,.42),orange:std(0xc9772c,.2,.45),blue:std(0x2f7fe6,.2,.45),purple:std(0x7b2fbf,.2,.45),grey:std(0x9aa3aa,.2,.5),white:std(0xf3f3ee,0,.5),
+ ceramic:std(0xd8d2c6,0,.75),saddleC:std(0xeae6dc,0,.6),gasBand:std(0xff6a00,.2,.45),cyan:std(0x14c8f0,.2,.45),navy:std(0x1a2cb0,.2,.45),glass:std(0x9fd6ea,0,.05,{transparent:true,opacity:.42})};
+const meshTex=(function(){const cv=document.createElement('canvas');cv.width=cv.height=64;const x=cv.getContext('2d');x.fillStyle='#8f989f';x.fillRect(0,0,64,64);
+ x.strokeStyle='#d9dfe3';x.lineWidth=1.2;for(let i=-64;i<128;i+=5){x.beginPath();x.moveTo(i,0);x.lineTo(i+64,64);x.stroke();x.beginPath();x.moveTo(i,64);x.lineTo(i+64,0);x.stroke();}
+ const t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(6,6);t.encoding=THREE.sRGBEncoding;return t;})();
+M.mesh=new THREE.MeshStandardMaterial({map:meshTex,metalness:.6,roughness:.6,side:THREE.DoubleSide});
+
+function add(g,geo,mat,pos){const m=new THREE.Mesh(geo,mat);if(pos)m.position.copy(pos);g.add(m);return m;}
+function cylY(g,r,y0,y1,mat,x,z,seg,open){return add(g,new THREE.CylinderGeometry(r,r,y1-y0,seg||40,1,!!open),mat,new V3(x||0,(y0+y1)/2,z||0));}
+function pipe(g,p1,p2,r,mat,seg){const d=new V3().subVectors(p2,p1),L=d.length();const m=add(g,new THREE.CylinderGeometry(r,r,L,seg||24),mat);m.position.copy(p1).addScaledVector(d,.5);m.quaternion.setFromUnitVectors(UP,d.normalize());return m;}
+function ball(g,p,r,mat){return add(g,new THREE.SphereGeometry(r,24,16),mat,p);}
+function box(g,w,h,d,p,mat,ry){const m=add(g,new THREE.BoxGeometry(w,h,d),mat,p);if(ry)m.rotation.y=ry;return m;}
+function flange(g,p,dir,rd,n,mat){const f=new THREE.Group();f.position.copy(p);f.quaternion.setFromUnitVectors(UP,dir.clone().normalize());
+ add(f,new THREE.CylinderGeometry(rd,rd,.035,40),mat||M.steel);const bg=new THREE.CylinderGeometry(.01,.01,.07,8);
+ for(let i=0;i<n;i++){const a=(i+.5)/n*Math.PI*2;add(f,bg,M.steelDark,new V3(Math.cos(a)*rd*.8,0,Math.sin(a)*rd*.8));}g.add(f);return f;}
+const FLOWS=[];
+function line(g,pts,r,mat,colorFn,speed){for(let i=0;i<pts.length-1;i++)pipe(g,pts[i],pts[i+1],r,mat);for(let i=1;i<pts.length-1;i++)ball(g,pts[i],r,mat);if(colorFn)FLOWS.push({pts,colorFn,speed:speed||.9});}
+function band(g,p1,p2,r,mat){pipe(g,p1,p2,r,mat);}
+function arrow(g,p,dir,mat){const a=add(g,new THREE.ConeGeometry(.07,.16,20),mat,p);a.quaternion.setFromUnitVectors(UP,dir.clone().normalize());return a;}
+function valve(g,p,dir,r){ball(g,p,r*1.9,M.steel);const d=dir.clone().normalize();flange(g,p.clone().addScaledVector(d,r*2.2),d,r*2,6);flange(g,p.clone().addScaledVector(d,-r*2.2),d,r*2,6);
+ cylY(g,r*.35,p.y,p.y+r*4,M.steelDark,p.x,p.z,12);box(g,r*7,r*.5,r*.8,new V3(p.x,p.y+r*4,p.z),M.red);}
+function ctrlValve(g,p,dir,r){ball(g,p,r*1.9,M.steel);const d=dir.clone().normalize();flange(g,p.clone().addScaledVector(d,r*2.2),d,r*2,6);flange(g,p.clone().addScaledVector(d,-r*2.2),d,r*2,6);
+ const up=Math.abs(d.y)>.9?new V3(1,0,0):UP;const top=p.clone().addScaledVector(up,r*5);pipe(g,p,top,r*.4,M.steelDark,12);
+ const dm=add(g,new THREE.SphereGeometry(r*3,28,14,0,Math.PI*2,0,Math.PI/2),M.paint,top);dm.quaternion.setFromUnitVectors(UP,up);dm.scale.y=.55;}
+function pump(g,x,z,y,mat){box(g,.34,.06,.95,new V3(x,.03,z+.3),M.paintGrey);
+ const v=add(g,new THREE.CylinderGeometry(.17,.17,.13,32),mat,new V3(x,y,z));v.rotation.x=Math.PI/2;
+ pipe(g,new V3(x,y,z-.06),new V3(x,y,z-.2),.05,M.steel);flange(g,new V3(x,y,z-.2),new V3(0,0,1),.1,4);pipe(g,new V3(x,y+.1,z),new V3(x,y+.24,z),.045,M.steel);
+ const br=add(g,new THREE.CylinderGeometry(.07,.09,.18,20),M.paintGrey,new V3(x,y,z+.16));br.rotation.x=Math.PI/2;
+ const cp=add(g,new THREE.CylinderGeometry(.05,.05,.07,16),M.orange,new V3(x,y,z+.29));cp.rotation.x=Math.PI/2;
+ const mo=add(g,new THREE.CylinderGeometry(.14,.14,.4,28),mat,new V3(x,y,z+.53));mo.rotation.x=Math.PI/2;
+ const fc=add(g,new THREE.CylinderGeometry(.13,.14,.08,28),M.paintGrey,new V3(x,y,z+.76));fc.rotation.x=Math.PI/2;
+ box(g,.1,.1,.12,new V3(x,y+.17,z+.5),mat);[-1,1].forEach(s=>box(g,.05,y-.1,.3,new V3(x+s*.1,(y-.1)/2+.06,z+.5),M.paintGrey));box(g,.08,y-.12,.08,new V3(x,(y-.12)/2+.06,z),M.paintGrey);}
+function vesselProfile(r,hd,y0,y1){const pts=[],N=32;for(let i=0;i<=N;i++){const t=i/N*Math.PI/2;pts.push(new V2(Math.max(1e-4,r*Math.sin(t)),y0-hd*Math.cos(t)));}
+ pts.push(new V2(r,y1));for(let i=1;i<=N;i++){const t=i/N*Math.PI/2;pts.push(new V2(Math.max(1e-4,r*Math.cos(t)),y1+hd*Math.sin(t)));}return pts;}
+
+function cylX(g,r,x0,x1,mat,y,z,seg,open){const m=add(g,new THREE.CylinderGeometry(r,r,x1-x0,seg||40,1,!!open),mat,new V3((x0+x1)/2,y,z||0));m.rotation.z=Math.PI/2;return m;}
+const bx=(g,x0,x1,y0,y1,z0,z1,mat)=>box(g,x1-x0,y1-y0,z1-z0,new V3((x0+x1)/2,(y0+y1)/2,(z0+z1)/2),mat);
+M.poly=std(0xcfd8dc,.05,.3,{transparent:true,opacity:.26,depthWrite:false,side:THREE.DoubleSide});M.alu=std(0x90a4ae,.7,.4);M.frame=std(0x5f6b73,.5,.5);M.cab=std(0xb7c0c5,.2,.6);
+const cutPlane=new THREE.Plane(new V3(0,0,-1),.001);
+const parts={};const root=new THREE.Group();scene.add(root);
+function part(key,anchor,plane){const g=new THREE.Group();root.add(g);parts[key]={key,group:g,anchor,plane,mats:[]};return g;}
+{const floor=new THREE.Mesh(new THREE.PlaneGeometry(90,90),new THREE.ShadowMaterial({opacity:.18}));floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;scene.add(floor);
+ const sl=new THREE.Mesh(new THREE.BoxGeometry(16.4,.1,5.6),std(0xa9aba8,0,.9));sl.position.set(7.0,-.05,.4);sl.receiveShadow=true;scene.add(sl);}
+const route=(g,pts,rad,mat)=>{line(g,pts,rad,mat);pts.slice(1,-1).forEach(p=>ball(g,p,rad*1.04,mat));};
+const sgn=(g,pts,col)=>{const m=std(col,.1,.7);line(g,pts,.016,m);pts.forEach(p=>ball(g,p,.02,m));};
+function pumpAt(g,x,z,rot,mat){const pg=new THREE.Group();pg.position.set(x,0,z);pg.rotation.y=rot;g.add(pg);pump(pg,0,0,.3,mat);const s=Math.sin(rot),c=Math.cos(rot),S=new V3(x-.2*s,.3,z-.2*c),D=new V3(x,.54,z);PORTS.push(S,D);return {S,D};}
+function faceTex(w,h,draw){const cv=document.createElement('canvas');cv.width=w;cv.height=h;draw(cv.getContext('2d'),w,h);const t=new THREE.CanvasTexture(cv);t.encoding=THREE.sRGBEncoding;return t;}
+const X1=new V3(1,0,0),PATH={},TKX=[6.4,10.4],TKR=.95,YW0=.8,YW1=2.6;
+const TCOL=[[18,0x2962ff],[28,0x00b8d4],[36,0x00c853],[44,0xffd600],[52,0xff6d00],[62,0xd50000]];
+function tcol(T,out){let i=0;while(i<TCOL.length-2&&T>TCOL[i+1][0])i++;const a=TCOL[i],b=TCOL[i+1],f=Math.max(0,Math.min(1,(T-a[0])/(b[0]-a[0])));out.setHex(a[1]).lerp(new THREE.Color(b[1]),f);return out.convertSRGBToLinear();}
+const _c=new THREE.Color(),WAT=[null,null,null];let STIR=[null,null],COIL=null,FLT=null;
+function tankShell(g,cx,key){cylY(g,TKR,YW0,3.0,M.poly,cx,0,48,true);cylY(g,TKR+.03,YW0-.1,YW0,M.steelDark,cx,0,48);cylY(g,TKR+.03,3.0,3.1,M.steelDark,cx,0,48);
+ const w=add(g,new THREE.CylinderGeometry(TKR-.02,TKR-.02,1,40),new THREE.MeshStandardMaterial({color:C(0x2962ff),roughness:.12,transparent:true,opacity:.5,depthWrite:false}),new V3(cx,(YW0+YW1)/2,0));w.scale.y=YW1-YW0;return w;}
+function stirrer(g,cx,idx){bx(g,cx-.28,cx+.28,3.25,3.75,-.25,.25,M.blue);cylY(g,.05,1.3,3.25,M.steelDark,cx,0,10);const imp=new THREE.Group();imp.position.set(cx,1.4,0);g.add(imp);for(let k=0;k<4;k++){const bl=new THREE.Mesh(new THREE.BoxGeometry(.7,.1,.05),M.steel);bl.rotation.y=k*Math.PI/2;imp.add(bl);}STIR[idx]=imp;}
+/* ---------- feed tank, pump and the flow valve ---------- */
+{const g=part('feed',new V3(1.4,2.5,.6));
+ cylY(g,.9,.1,2.2,M.poly,1.2,0,40,true);cylY(g,.93,.05,.1,M.steelDark,1.2,0,40);const w=add(g,new THREE.CylinderGeometry(.88,.88,1,32),new THREE.MeshStandardMaterial({color:C(0x2962ff),roughness:.12,transparent:true,opacity:.5,depthWrite:false}),new V3(1.2,1.0,0));w.scale.y=1.8;WAT[2]=w;
+ pipe(g,new V3(2.1,.3,0),new V3(2.4,.3,0),.05,M.steel);flange(g,new V3(2.4,.3,0),X1,.09,6);const pm=pumpAt(g,3.8,0,Math.PI/2,M.blue);pipe(g,new V3(2.4,.3,0),pm.S,.05,M.steel);PATH.pmD=pm.D;PATH.pmS=pm.S;
+ valve(g,new V3(3.8,.95,0),UP,.09);}
+/* ---------- flowmeter and the connecting lines ---------- */
+{const g=part('flow',new V3(3.8,3.0,.4));
+ route(g,[PATH.pmD,new V3(3.8,3.7,0),new V3(5.8,3.7,0),new V3(5.8,2.8,0)],.05,M.steel);
+ cylY(g,.1,1.4,2.4,M.glass,3.8,0,16);flange(g,new V3(3.8,1.4,0),UP,.14,8);flange(g,new V3(3.8,2.4,0),UP,.14,8);FLT=add(g,new THREE.SphereGeometry(.065,14,10),new THREE.MeshStandardMaterial({color:C(0xff6d00),roughness:.3}),new V3(3.8,1.7,0));
+ for(let k=0;k<=6;k++)box(g,.12,.01,.02,new V3(3.62,1.45+k*.15,0),M.black);
+ route(g,[new V3(7.35,2.5,0),new V3(8.3,2.5,0),new V3(8.3,3.7,0),new V3(9.9,3.7,0),new V3(9.9,2.8,0)],.05,M.steel);
+ route(g,[new V3(11.35,2.5,0),new V3(12.0,2.5,0),new V3(12.0,1.6,0),new V3(13.2,1.6,0),new V3(13.2,1.25,0)],.05,M.steel);
+ cylY(g,.6,.1,1.2,M.poly,13.2,0,32,true);cylY(g,.63,.05,.1,M.steelDark,13.2,0,32);const w=add(g,new THREE.CylinderGeometry(.58,.58,1,28),new THREE.MeshStandardMaterial({color:C(0x2962ff),roughness:.12,transparent:true,opacity:.5,depthWrite:false}),new V3(13.2,.55,0));w.scale.y=.9;WAT[3]=w;
+ PATH.p0=[new V3(2.1,.3,0),new V3(3.6,.3,0),PATH.pmD,new V3(3.8,3.7,0),new V3(5.8,3.7,0),new V3(5.8,2.8,0)];
+ PATH.p1=[new V3(7.35,2.5,0),new V3(8.3,2.5,0),new V3(8.3,3.7,0),new V3(9.9,3.7,0),new V3(9.9,2.8,0)];
+ PATH.p2=[new V3(11.35,2.5,0),new V3(12.0,2.5,0),new V3(12.0,1.6,0),new V3(13.2,1.6,0),new V3(13.2,1.3,0)];}
+/* ---------- tank 1 with the stirrer and the heating coil ---------- */
+{const g=part('t1',new V3(6.4,4.1,.4),true);const cx=TKX[0];WAT[0]=tankShell(g,cx,'t1');stirrer(g,cx,0);
+ const cp=[];const N=5,H0=1.1,H1=2.0;for(let i=0;i<=120;i++){const f=i/120,a=f*Math.PI*2*N;cp.push(new V3(cx+.5*Math.cos(a),H0+(H1-H0)*f,.5*Math.sin(a)));}
+ COIL=add(g,new THREE.TubeGeometry(new THREE.CatmullRomCurve3(cp),240,.03,8,false),new THREE.MeshStandardMaterial({color:C(0xd32f2f),roughness:.4,emissive:C(0xff3d00),emissiveIntensity:0}),new V3(0,0,0));
+ ball(g,new V3(cx+.5,2.0,0),.04,M.steelDark);ball(g,new V3(cx+.5,1.1,0),.04,M.steelDark);route(g,[new V3(cx+.5,2.0,0),new V3(cx+.5,3.1,0)],.025,M.steelDark);route(g,[new V3(cx+.5,1.1,0),new V3(cx+.6,1.1,0),new V3(cx+.6,3.1,0)],.025,M.steelDark);
+ box(g,.34,.2,.2,new V3(cx+.55,3.25,0),M.black);}
+/* ---------- tank 2 ---------- */
+{const g=part('t2',new V3(10.4,4.1,.4),true);const cx=TKX[1];WAT[1]=tankShell(g,cx,'t2');stirrer(g,cx,1);}
+/* ---------- thermocouples ---------- */
+{const g=part('tc',new V3(8.6,3.9,.8));
+ [[6.9,'t1'],[10.9,'t2']].forEach(([x])=>{cylY(g,.02,1.5,3.2,M.steelDark,x,.55,8);box(g,.18,.14,.14,new V3(x,3.3,.55),M.black);});
+ sgn(g,[new V3(6.9,3.3,.55),new V3(6.9,4.3,.55),new V3(6.9,4.3,-1.1),new V3(3.0,4.3,-1.1)],0xffd600);
+ sgn(g,[new V3(10.9,3.3,.55),new V3(10.9,4.5,.55),new V3(10.9,4.5,-1.1),new V3(3.0,4.45,-1.1)],0x2979ff);}
+/* ---------- the cabinet (controller + power unit) ---------- */
+const cabCv=document.createElement('canvas');cabCv.width=300;cabCv.height=220;const cabTex=new THREE.CanvasTexture(cabCv);cabTex.encoding=THREE.sRGBEncoding;
+{const g=part('cab',new V3(1.6,5.1,-.8));
+ bx(g,.2,3.0,2.9,4.6,-1.4,-.8,M.cab);add(g,new THREE.PlaneGeometry(1.5,1.1),new THREE.MeshBasicMaterial({map:cabTex}),new V3(1.0,3.95,-.795));
+ [[1.9,.12],[2.3,.12],[2.7,.12]].forEach(([x])=>{cylY(g,.12,3.5,3.56,M.steelDark,x,-.8,16);});box(g,.9,.5,.05,new V3(2.3,3.1,-.79),M.black);[0,1,2].forEach(i=>box(g,.1,.1,.05,new V3(2.0+i*.3,3.1,-.76),M.blue));
+ sgn(g,[new V3(3.0,3.3,-1.1),new V3(6.95,3.3,-1.1),new V3(6.95,3.25,0)],0xd32f2f);}
+/* ---------- the computer ---------- */
+const pcCv=document.createElement('canvas');pcCv.width=512;pcCv.height=320;const pcTex=new THREE.CanvasTexture(pcCv);pcTex.encoding=THREE.sRGBEncoding;
+{const g=part('pc',new V3(1.6,2.3,2.0));
+ bx(g,.2,3.0,.95,1.05,1.4,2.6,M.alu);[[.3,1.5],[2.9,1.5],[.3,2.5],[2.9,2.5]].forEach(([x,z])=>bx(g,x-.04,x+.04,0,.95,z-.04,z+.04,M.frame));
+ box(g,2.0,1.35,.08,new V3(1.6,1.85,1.9),M.black);add(g,new THREE.PlaneGeometry(1.9,1.2),new THREE.MeshBasicMaterial({map:pcTex}),new V3(1.6,1.85,1.945));bx(g,1.5,1.7,1.05,1.2,1.85,1.95,M.steelDark);box(g,.9,.06,.35,new V3(1.6,1.08,2.25),M.black);}
+const pickables=[];
+function finalize(){for(const key in parts){const pt=parts[key],cache=new Map();pt.group.traverse(o=>{if(!o.isMesh)return;if(!cache.has(o.material)){const c=o.material.clone();cache.set(o.material,c);pt.mats.push(c);}
+ o.material=cache.get(o.material);o.userData.key=key;o.castShadow=!o.material.transparent;o.receiveShadow=true;pickables.push(o);});}}
+window.__PORTS=PORTS;finalize();COIL.material.userData.coil=true;
+/* ================= particles ================= */
+const BALL=(function(){const cv=document.createElement('canvas');cv.width=cv.height=64;const x=cv.getContext('2d');
+ const g=x.createRadialGradient(24,22,2,32,32,31);g.addColorStop(0,'#ffffff');g.addColorStop(.35,'#e6e6e6');g.addColorStop(.85,'#8a8a8a');g.addColorStop(1,'#5c5c5c');
+ x.fillStyle=g;x.beginPath();x.arc(32,32,30,0,Math.PI*2);x.fill();const t=new THREE.CanvasTexture(cv);t.encoding=THREE.sRGBEncoding;return t;})();
+function pts(n,size){const pos=new Float32Array(n*3),col=new Float32Array(n*3),g=new THREE.BufferGeometry();
+ g.setAttribute('position',new THREE.BufferAttribute(pos,3));g.setAttribute('color',new THREE.BufferAttribute(col,3));
+ const p=new THREE.Points(g,new THREE.PointsMaterial({vertexColors:true,size,map:BALL,alphaTest:.5,depthWrite:true}));p.frustumCulled=false;scene.add(p);return {p,pos,col,g};}
+const rnd=Math.random;
+function mkPath(p){const L=[0];for(let i=1;i<p.length;i++)L.push(L[i-1]+p[i].distanceTo(p[i-1]));return {p,L,T:L[L.length-1]};}
+function at(P,s,o){s=Math.min(Math.max(s,0),P.T);let k=1;while(k<P.L.length-1&&P.L[k]<s)k++;const a=P.p[k-1],b=P.p[k],u=(s-P.L[k-1])/(P.L[k]-P.L[k-1]||1);return o.set(a.x+(b.x-a.x)*u,a.y+(b.y-a.y)*u,a.z+(b.z-a.z)*u);}
+const _p=new V3(),PP=[mkPath(PATH.p0),mkPath(PATH.p1),mkPath(PATH.p2)],NPP=450,PPT=pts(NPP,.06),ppD=[];
+for(let i=0;i<NPP;i++){const k=i%3;ppD.push({k,s:rnd()*PP[k].T,j:[(rnd()-.5)*.05,(rnd()-.5)*.05,(rnd()-.5)*.05],sp:.85+rnd()*.3});}
+const NT=3,NPT=240,TPT=pts(NT*NPT,.055),tD=[];
+for(let t=0;t<NT;t++)for(let i=0;i<NPT;i++){const R=t===2?.8:TKR-.07;tD.push({t,a:rnd()*Math.PI*2,r:Math.sqrt(rnd())*R,y:(t===2?.25:YW0+.1)+rnd()*((t===2?1.8:YW1)-(t===2?.25:YW0+.1)-.1),vy:(rnd()-.5)});}
+/* ================= simulation ================= */
+function resetSim(){PLT=HeaterPlant(par());Q0=PLT.init(25);Q1=PLT.Qfor(TH);Qcmd=Q0;SPT=25;stepped=false;HIST=[];T_SIM=0;recAcc=0;CT=new PID({Kp:KC,Tn:TI,Tv:TD,dir:'INV',type:TYPE});CT.bump(Q0/HT.Qmax*100,pct(CV===1?PLT.y1:PLT.y2),pct(25));pushRec();}
+function pushRec(){HIST.push({t:T_SIM,T1:PLT.y1,T2:PLT.y2,sp:SPT,Q:Qcmd});if(HIST.length>9000)HIST.shift();}
+function simStep(){if(OP==='open')Qcmd=stepped?Q1:Q0;else{CT.Kp=KC;CT.Tn=TI;CT.Tv=TD;CT.type=TYPE;const u=CT.step(pct(SPT),pct(CV===1?PLT.y1:PLT.y2),DT,false);Qcmd=u*HT.Qmax/100;}
+ PLT.step(Qcmd,DT);T_SIM+=DT;recAcc+=DT;if(recAcc>=2-1e-9){recAcc=0;pushRec();}}
+function liveCtl(){if(OP!=='ctrl'||!stepped)return null;const seg=HIST.filter(h=>h.t>=T_STEP-2);if(seg.length<5||seg[seg.length-1].t-T_STEP<30)return null;const t=Float64Array.from(seg.map(h=>h.t)),y=Float64Array.from(seg.map(h=>pct(CV===1?h.T1:h.T2)));return metrics(t,y,T_STEP,pct(25),pct(TH));}
+/* ---- the recorded experiment and its analysis (Caldwell, PRC, theory) ---- */
+function doExperiment(){EXPD=runExperiment(par(),25,TH,40,seed,.05);const tm=EXPD.tm,T2=EXPD.T2,tau1=VOL1/FL,tau2=VOL2/FL,Kq=1/EXPD.WF,A=EXPD.Thi-EXPD.Tlo;
+ CAL=caldwell(tm,T2);PRCR=prcTangent(tm,T2);const KexpA=CAL.ok?CAL.A/(EXPD.Q1-EXPD.Q0):NaN;
+ const th=rmse(tm,T2,t=>25+A*stepTwoLag(t,tau1,tau2)),ec=CAL.ok?rmse(tm,T2,t=>CAL.T0+CAL.A*stepTwoLag(t,CAL.tau1,CAL.tau2)):{rmse:NaN,max:NaN},ep=rmse(tm,T2,t=>PRCR.T0+PRCR.A*stepFOPDT(t,1,PRCR.T,PRCR.L));
+ ERR={th,ec,ep,tau1,tau2,Kq,KexpA,K1:PRCR.A/(EXPD.Q1-EXPD.Q0)};}
+function doCtl(){const Pl=heaterLin(par(),CV),kb=KuBode(Pl),kr=KuRouth(Pl),mk=()=>HeaterLoop(par(),CV),Tm=Math.min(4000,Math.max(800,14*kb.Pu)),ks=KuSim(mk,pct(34),pct(36),Tm);AN={Pl,kb,kr,ks,zn:zn(kb.Ku,kb.Pu)};analyseLoop();}
+function analyseLoop(){if(!AN)return;const c=new PID({Kp:KC,Tn:TI,Tv:TD,type:TYPE});AN.mg=margins(AN.Pl,c);}
+function schedule(){clearTimeout(expTimer);expTimer=setTimeout(()=>{doExperiment();doCtl();readouts(true);},220);}
+/* ================= screens ================= */
+function drawCab(){const x=cabCv.getContext('2d'),W=300,H=220;x.fillStyle='#10212b';x.fillRect(0,0,W,H);x.fillStyle='#9fd3ea';x.font='bold 15px sans-serif';x.fillText(OP==='open'?'HEATER  OPEN LOOP':'HEATER  PID '+TYPE+' on T'+CV,8,20);
+ const row=(l,v,y,c)=>{x.fillStyle='#7fa3b5';x.font='13px sans-serif';x.fillText(l,8,y);x.fillStyle=c;x.font='bold 26px monospace';x.fillText(v,70,y+2);};
+ row('T1',PLT.y1.toFixed(1),56,'#ff9100');row('T2',PLT.y2.toFixed(1),96,'#ff5252');row('SP',SPT.toFixed(1),136,'#ffb300');row('Q',Qcmd.toFixed(0)+' W',176,'#2979ff');
+ x.fillStyle='#1d3a4a';x.fillRect(8,190,284,10);x.fillStyle='#2979ff';x.fillRect(8,190,284*Math.min(1,Qcmd/HT.Qmax),10);cabTex.needsUpdate=true;}
+function drawPC(){const x=pcCv.getContext('2d'),W=512,H=320;x.fillStyle='#0b1a22';x.fillRect(0,0,W,H);x.fillStyle='#9fd3ea';x.font='bold 15px sans-serif';x.fillText('Two stirred tank heater   T1, T2',10,20);
+ const L=36,R=W-30,Tp=34,B=H-30,win=2400,tmax=Math.max(win,T_SIM),t0=Math.max(0,tmax-win),lo=15,hi=60;x.strokeStyle='#1d3a4a';x.lineWidth=1;for(let i=0;i<=5;i++){const yy=Tp+(B-Tp)*i/5;x.beginPath();x.moveTo(L,yy);x.lineTo(R,yy);x.stroke();x.fillStyle='#7fa3b5';x.font='11px sans-serif';x.fillText(String(Math.round(hi-(hi-lo)*i/5)),4,yy+4);x.fillText(String(Math.round(1500-1500*i/5)),R+2,yy+4);}
+ for(let i=0;i<=5;i++){const xx=L+(R-L)*i/5;x.fillText(String(Math.round((t0+win*i/5)/60)),xx-6,H-12);}
+ const draw=(fn,col,lw)=>{x.strokeStyle=col;x.lineWidth=lw;x.beginPath();let f=true;for(const h of HIST){if(h.t<t0)continue;const px=L+(h.t-t0)/win*(R-L),py=B-fn(h)*(B-Tp);if(f){x.moveTo(px,py);f=false;}else x.lineTo(px,py);}x.stroke();};draw(h=>h.Q/1500,'#2979ff',1.4);draw(h=>(h.sp-lo)/(hi-lo),'#ffb300',1.4);draw(h=>(h.T1-lo)/(hi-lo),'#ff9100',2);draw(h=>(h.T2-lo)/(hi-lo),'#ff5252',2.2);pcTex.needsUpdate=true;}
+/* ================= modes ================= */
+let mode='cut',fly=null,lang='ar',labelMode='num';
+const reduced=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function applyMode(){
+ for(const k in parts){const pt=parts[k];pt.mats.forEach(m=>{if(m.userData.o0===undefined){m.userData.o0=m.opacity;m.userData.t0=m.transparent;m.userData.dw=m.depthWrite;}
+  const shell=m.userData.t0&&m.userData.o0<.4,gh=mode==='ghost'&&(k==='t1'||k==='t2'||k==='feed');
+  m.transparent=gh?true:m.userData.t0;m.opacity=gh?(shell?.05:.14):m.userData.o0;m.depthWrite=gh?false:m.userData.dw;
+  m.clippingPlanes=(mode==='cut'&&pt.plane)?[cutPlane]:[];m.clipShadows=true;m.needsUpdate=true;});}
+ TPT.p.material.clippingPlanes=mode==='cut'?[cutPlane]:[];TPT.p.material.needsUpdate=true;
+ document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===mode));}
+function setHighlight(k,on){if(!k||!parts[k])return;parts[k].mats.forEach(m=>{if(m.emissive&&m.emissiveIntensity!==undefined&&!(m.userData&&m.userData.coil)){m.emissive=on?C(0xd9742a):new THREE.Color(0);m.emissiveIntensity=on?.45:0;}});}
+/* ================= UI ================= */
+const L_=()=>T[lang];
+const labelsEl=document.getElementById('labels'),cardEl=document.getElementById('card'),labelEls={};
+ORDER.forEach(k=>{const b=document.createElement('button');b.className='lbl';b.type='button';b.innerHTML=`<span class="num">${NUM[k]}</span><span class="t"></span>`;
+ b.onclick=e=>{e.stopPropagation();select(k);};labelsEl.appendChild(b);labelEls[k]=b;});
+function updateLabels(){ORDER.forEach(k=>{labelEls[k].querySelector('.t').textContent=INFO[k].ar;labelEls[k].setAttribute('aria-label',INFO[k].ar);});}
+function renderCard(){if(!selected){cardEl.innerHTML=L_().pick;return;}const i=INFO[selected];
+ cardEl.innerHTML=`<div class="head"><span class="num">${NUM[selected]}</span><div><h2>${i.ar}</h2><p class="en">${i.en}</p></div></div><p>${i.d}</p>${i.n?`<p class="eq">${i.n}</p>`:''}<div class="act"><button id="bFocus">${L_().focus}</button><button id="bClear">${L_().clear}</button></div>`;
+ document.getElementById('bFocus').onclick=()=>focusPart(selected);document.getElementById('bClear').onclick=()=>select(null);}
+function select(k){if(selected){setHighlight(selected,false);labelEls[selected].classList.remove('on');}selected=(k===selected)?null:k;
+ if(selected){setHighlight(selected,true);labelEls[selected].classList.add('on');}renderCard();}
+function flyTo(p_,tgt){fly={p0:camera.position.clone(),t0:controls.target.clone(),p1:p_,t1:tgt,e:0,d:reduced?.001:.9};}
+function focusPart(k){const pt=parts[k];const b=new THREE.Box3().setFromObject(pt.group),c=b.isEmpty()?pt.anchor.clone():b.getCenter(new V3()),s=b.isEmpty()?3:b.getSize(new V3()).length(),dir=camera.position.clone().sub(controls.target).normalize();flyTo(c.clone().addScaledVector(dir,Math.max(3,s*.9)),c);}
+function view(v){const t=HOME.tgt.clone();const off=v==='front'?new V3(0,.6,21):v==='top'?new V3(0,22,.1):HOME.pos.clone().sub(HOME.tgt);flyTo(t.clone().add(off),t);}
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>view(b.dataset.view));
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;applyMode();});
+function setDrag(m){const pan=m==='pan';controls.mouseButtons.LEFT=pan?THREE.MOUSE.PAN:THREE.MOUSE.ROTATE;controls.mouseButtons.RIGHT=pan?THREE.MOUSE.ROTATE:THREE.MOUSE.PAN;
+ controls.touches.ONE=pan?THREE.TOUCH.PAN:THREE.TOUCH.ROTATE;canvas.style.cursor=pan?'move':'';document.querySelectorAll('[data-drag]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.drag===m));}
+document.querySelectorAll('[data-drag]').forEach(b=>b.onclick=()=>setDrag(b.dataset.drag));
+const E_=id=>document.getElementById(id),bExplode=E_('bExplode'),bLabels=E_('bLabels'),bRun=E_('bRun'),bStep=E_('bStep'),bRec=E_('bRec'),bZN=E_('bZN'),bReset=E_('bReset'),fwarn=E_('fwarn');
+if(bExplode)bExplode.style.display='none';
+const flEl=E_('fl'),v1El=E_('v1'),v2El=E_('v2'),thEl=E_('th'),kcEl=E_('kc'),tiEl=E_('ti'),tdEl=E_('td'),sdEl=E_('sd'),chartEl=E_('chart'),chart2El=E_('chart2'),chart3El=E_('chart3'),chart4El=E_('chart4'),tblEl=E_('tbl');
+function syncBtns(){bRun.setAttribute('aria-pressed',running);bRun.textContent=running?L_().stopRun:L_().run;bStep.textContent=stepped?L_().stepBack:L_().step;bRec.textContent=L_().rec;bZN.textContent=L_().zn;bReset.textContent=L_().reset;
+ document.querySelectorAll('[data-op]').forEach(b=>{b.textContent=L_()['op_'+b.dataset.op];b.setAttribute('aria-pressed',b.dataset.op===OP);});
+ document.querySelectorAll('[data-cv]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.cv===CV));
+ document.querySelectorAll('[data-ctype]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.ctype===TYPE));}
+function loadAll(){flEl.value=FL;v1El.value=VOL1;v2El.value=VOL2;thEl.value=TH;kcEl.value=KC;tiEl.value=TI;tdEl.value=TD;resetSim();doExperiment();doCtl();syncBtns();readouts(true);}
+bRun.onclick=()=>{running=!running;syncBtns();};
+bStep.onclick=()=>{stepped=!stepped;SPT=stepped?TH:25;if(stepped)T_STEP=T_SIM;syncBtns();readouts(true);};
+bRec.onclick=()=>{seed=seed*7+3;doExperiment();readouts(true);};
+bZN.onclick=()=>{if(!AN)return;const z=AN.zn;if(TYPE==='P'){KC=+z.P.Kp.toFixed(2);}else if(TYPE==='PI'){KC=+z.PI.Kp.toFixed(2);TI=Math.round(z.PI.Ti);}else{KC=+z.PID.Kp.toFixed(2);TI=Math.round(z.PID.Ti);TD=Math.round(z.PID.Td);}kcEl.value=KC;tiEl.value=TI;tdEl.value=TD;analyseLoop();readouts(true);};
+bReset.onclick=()=>{loadAll();};
+document.querySelectorAll('[data-op]').forEach(b=>b.onclick=()=>{OP=b.dataset.op;resetSim();syncBtns();readouts(true);});
+document.querySelectorAll('[data-cv]').forEach(b=>b.onclick=()=>{CV=+b.dataset.cv;resetSim();doCtl();syncBtns();readouts(true);});
+document.querySelectorAll('[data-ctype]').forEach(b=>b.onclick=()=>{TYPE=b.dataset.ctype;if(CT)CT.type=TYPE;analyseLoop();syncBtns();readouts(true);});
+const LM=['num','name','off'];function syncLabelsBtn(){bLabels.textContent=L_().labels+L_().LT[labelMode];}
+bLabels.onclick=()=>{labelMode=LM[(LM.indexOf(labelMode)+1)%3];syncLabelsBtn();labelsEl.classList.toggle('names',labelMode==='name');labelsEl.classList.toggle('off',labelMode==='off');};
+const f2=(v,d)=>isFinite(v)?v.toFixed(d===undefined?1:d):'–';
+function charts(){const W=300,l=34,r=30,iw=W-l-r,Hh=150,t=8,b=26,ih=Hh-t-b;
+ {const win=40,tmax=Math.max(win,T_SIM/60),t0=Math.max(0,tmax-win),lo=15,hi=60,X=tt=>l+(tt-t0)/win*iw,Y=v=>t+(1-(Math.min(hi,Math.max(lo,v))-lo)/(hi-lo))*ih,YQ=q=>t+(1-Math.min(1,q/1500))*ih;
+  const path=(fn,sc)=>{let d='',f=true;for(const h of HIST){const m=h.t/60;if(m<t0)continue;d+=(f?'M':'L')+X(m).toFixed(1)+' '+sc(fn(h)).toFixed(1);f=false;}return d;};
+  let th='';if(OP==='open'&&stepped){const tau1=VOL1/FL,tau2=VOL2/FL,dT=TH-25,m0=T_STEP/60;let d1='',d2='';for(let k=0;k<=80;k++){const tt=k*(Math.max(win,tmax)-m0)/80,m=m0+tt;if(m<t0||tt<0)continue;d1+=(d1?'L':'M')+X(m).toFixed(1)+' '+Y(25+dT*(1-Math.exp(-tt/tau1))).toFixed(1);d2+=(d2?'L':'M')+X(m).toFixed(1)+' '+Y(25+dT*stepTwoLag(tt,tau1,tau2)).toFixed(1);}th=`<path d="${d1}" fill="none" stroke="#ff9100" stroke-width="1.2" stroke-dasharray="4 3"/><path d="${d2}" fill="none" stroke="#ff5252" stroke-width="1.2" stroke-dasharray="4 3"/>`;}
+  chartEl.innerHTML=`<div class="ch-leg"><b>${L_().chT}</b></div><svg viewBox="0 0 ${W} ${Hh}" dir="ltr" role="img" aria-label="${L_().chT}" style="color:var(--ink)">${[15,25,35,45,60].map(v=>`<line x1="${l}" x2="${W-r}" y1="${Y(v)}" y2="${Y(v)}" stroke="currentColor" stroke-opacity=".12"/><text x="${l-4}" y="${Y(v)+3}" text-anchor="end">${v}</text>`).join('')}${[0,.25,.5,.75,1].map(f=>`<text x="${W-r+3}" y="${t+ih*(1-f)+3}">${Math.round(f*1500)}</text>`).join('')}${[0,.25,.5,.75,1].map(f=>`<text x="${X(t0+win*f)}" y="${Hh-12}" text-anchor="middle">${Math.round(t0+win*f)}</text>`).join('')}<text x="${l+iw/2}" y="${Hh-1}" text-anchor="middle">${L_().chTx}</text>
+  <path d="${path(h=>h.Q,YQ)}" fill="none" stroke="#2979ff" stroke-width="1.5"/><path d="${path(h=>h.sp,Y)}" fill="none" stroke="#ffb300" stroke-width="1.5"/>${th}<path d="${path(h=>h.T1,Y)}" fill="none" stroke="#ff9100" stroke-width="2.2"/><path d="${path(h=>h.T2,Y)}" fill="none" stroke="#d50000" stroke-width="2.4"/></svg>
+  <div class="ch-leg"><span><i style="background:#ff9100"></i>T₁</span><span><i style="background:#d50000"></i>T₂</span><span><i style="background:#2979ff"></i>Q (W)</span><span><i style="background:#ffb300"></i>SP</span></div>`;}
+ if(EXPD&&CAL&&CAL.ok){const tm=EXPD.tm,tmx=Math.min(40,tm[tm.length-1]),X=v=>l+v/tmx*iw,Y=v=>t+(1-Math.min(1.1,Math.max(0,v))/1.1)*ih;let pl='';CAL.y.forEach((v,i)=>{pl+=(i?'L':'M')+X(tm[i]).toFixed(1)+' '+Y(v).toFixed(1);});
+  chart2El.innerHTML=`<div class="ch-leg"><b>${L_().chC}</b></div><svg viewBox="0 0 ${W} ${Hh}" dir="ltr" role="img" aria-label="${L_().chC}" style="color:var(--ink)">${[0,.25,.5,.73,1].map(v=>`<line x1="${l}" x2="${W-r}" y1="${Y(v)}" y2="${Y(v)}" stroke="currentColor" stroke-opacity="${v===.73?.45:.12}"/><text x="${l-4}" y="${Y(v)+3}" text-anchor="end">${v}</text>`).join('')}${[0,10,20,30,40].map(v=>`<text x="${X(v)}" y="${Hh-12}" text-anchor="middle">${v}</text>`).join('')}<text x="${l+iw/2}" y="${Hh-1}" text-anchor="middle">${L_().chCx}</text>
+  <path d="${pl}" fill="none" stroke="#00c853" stroke-width="1.6"/>${CAL.y.map((v,i)=>`<circle cx="${X(tm[i]).toFixed(1)}" cy="${Y(v).toFixed(1)}" r="1.8" fill="#00c853"/>`).join('')}
+  <line x1="${X(CAL.t73)}" x2="${X(CAL.t73)}" y1="${Y(.73)}" y2="${t+ih}" stroke="#d50000" stroke-dasharray="4 3"/><line x1="${X(CAL.t2)}" x2="${X(CAL.t2)}" y1="${Y(CAL.P)}" y2="${t+ih}" stroke="#2979ff" stroke-dasharray="4 3"/><line x1="${l}" x2="${X(CAL.t2)}" y1="${Y(CAL.P)}" y2="${Y(CAL.P)}" stroke="#2979ff" stroke-dasharray="4 3"/></svg>
+  <div class="ch-leg"><span><i style="background:#d50000"></i>t₇₃ = ${f2(CAL.t73,2)} min</span><span><i style="background:#2979ff"></i>t₂ = ${f2(CAL.t2,2)} min ، P = ${f2(CAL.P,3)}</span></div>`;
+  const Hs=150,Xr=v=>l+v*iw,pmin=.25,pmax=.41,Ys=v=>t+(1-(v-pmin)/(pmax-pmin))*ih;let pc='';for(let i=0;i<=40;i++){const rr=i/40;pc+=(i?'L':'M')+Xr(rr).toFixed(1)+' '+Ys(Pstd(rr)).toFixed(1);}
+  chart3El.innerHTML=`<div class="ch-leg"><b>${L_().chS}</b></div><svg viewBox="0 0 ${W} ${Hs}" dir="ltr" role="img" aria-label="${L_().chS}" style="color:var(--ink)">${[.26,.3,.34,.38,.4].map(v=>`<line x1="${l}" x2="${W-r}" y1="${Ys(v)}" y2="${Ys(v)}" stroke="currentColor" stroke-opacity=".12"/><text x="${l-4}" y="${Ys(v)+3}" text-anchor="end">${v}</text>`).join('')}${[0,.25,.5,.75,1].map(v=>`<text x="${Xr(v)}" y="${Hs-12}" text-anchor="middle">${v}</text>`).join('')}<text x="${l+iw/2}" y="${Hs-1}" text-anchor="middle">${L_().chSx}</text>
+  <path d="${pc}" fill="none" stroke="#6a1b9a" stroke-width="2.2"/><line x1="${Xr(CAL.r)}" x2="${Xr(CAL.r)}" y1="${Ys(Math.min(pmax,Math.max(pmin,CAL.P)))}" y2="${t+ih}" stroke="#d50000" stroke-dasharray="4 3"/><line x1="${l}" x2="${Xr(CAL.r)}" y1="${Ys(Math.min(pmax,Math.max(pmin,CAL.P)))}" y2="${Ys(Math.min(pmax,Math.max(pmin,CAL.P)))}" stroke="#d50000" stroke-dasharray="4 3"/><circle cx="${Xr(CAL.r)}" cy="${Ys(Math.min(pmax,Math.max(pmin,CAL.P)))}" r="4" fill="#d50000"/></svg>
+  <div class="ch-leg"><span>P = ${f2(CAL.P,3)} → τ₂/τ₁ = ${f2(CAL.r,2)}${CAL.clamped?' *':''}</span></div>${CAL.clamped?`<p class="fine" style="margin:4px 0">${L_().cClamp}</p>`:''}`;
+  const Y4=v=>t+(1-(Math.min(45,Math.max(23,v))-23)/22)*ih,X4=v=>l+v/tmx*iw;const fx=(fn)=>{let d='';for(let k=0;k<=160;k++){const m=k*tmx/160;d+=(k?'L':'M')+X4(m).toFixed(1)+' '+Y4(fn(m)).toFixed(1);}return d;};const A=EXPD.Thi-EXPD.Tlo;
+  chart4El.innerHTML=`<div class="ch-leg"><b>${L_().chM}</b></div><svg viewBox="0 0 ${W} ${Hh}" dir="ltr" role="img" aria-label="${L_().chM}" style="color:var(--ink)">${[25,30,35,40,45].map(v=>`<line x1="${l}" x2="${W-r}" y1="${Y4(v)}" y2="${Y4(v)}" stroke="currentColor" stroke-opacity=".12"/><text x="${l-4}" y="${Y4(v)+3}" text-anchor="end">${v}</text>`).join('')}${[0,10,20,30,40].map(v=>`<text x="${X4(v)}" y="${Hh-12}" text-anchor="middle">${v}</text>`).join('')}<text x="${l+iw/2}" y="${Hh-1}" text-anchor="middle">${L_().chMx}</text>
+  <path d="${fx(m=>25+A*stepTwoLag(m,ERR.tau1,ERR.tau2))}" fill="none" stroke="#757575" stroke-width="1.6" stroke-dasharray="5 3"/><path d="${fx(m=>CAL.T0+CAL.A*stepTwoLag(m,CAL.tau1,CAL.tau2))}" fill="none" stroke="#2979ff" stroke-width="2"/><path d="${fx(m=>PRCR.T0+PRCR.A*stepFOPDT(m,1,PRCR.T,PRCR.L))}" fill="none" stroke="#fb8c00" stroke-width="2"/>${EXPD.tm.map((m,i)=>`<circle cx="${X4(m).toFixed(1)}" cy="${Y4(EXPD.T2[i]).toFixed(1)}" r="2" fill="#00c853"/>`).join('')}</svg>
+  <div class="ch-leg"><span><i style="background:#00c853"></i>${L_().cExp}</span><span><i style="background:#757575"></i>${L_().cTh}</span><span><i style="background:#2979ff"></i>${L_().cCal}</span><span><i style="background:#fb8c00"></i>${L_().cPrc}</span></div>`;
+  let h=`<p class="ch-leg"><b>${L_().tT}</b></p><div class="sc"><table><tr><th>${L_().tMin}</th><th>T₁</th><th>T₂</th></tr>`;EXPD.tm.forEach((m,i)=>{h+=`<tr><td>${m}</td><td>${EXPD.T1[i].toFixed(1)}</td><td>${EXPD.T2[i].toFixed(1)}</td></tr>`;});tblEl.innerHTML=h+'</table></div>';}}
+function readouts(force){const s=(id,t)=>E_(id).textContent=t;FL=+flEl.value;const nv1=+v1El.value,nv2=+v2El.value,nth=+thEl.value;const ch=(nv1!==VOL1||nv2!==VOL2||nth!==TH||FL!==(PLT?PLT.P.F:FL));VOL1=nv1;VOL2=nv2;TH=nth;KC=+kcEl.value;TI=+tiEl.value;TD=+tdEl.value;SPEED=Math.pow(10,+sdEl.value);
+ if(ch&&PLT){PLT.P.F=FL;resetSim();schedule();}
+ s('flOut',FL.toFixed(2)+' L/min');s('v1Out',VOL1.toFixed(1)+' L');s('v2Out',VOL2.toFixed(1)+' L');s('thOut',TH+' °C');s('kcOut',KC.toFixed(2));s('tiOut',TI+' s');s('tdOut',TD+' s');s('sdOut','×'+Math.round(SPEED));
+ s('oSig',PLT.y1.toFixed(1)+' ، '+PLT.y2.toFixed(1)+' °C ، '+Qcmd.toFixed(0)+' W');
+ if(ERR){s('oTau',f2(ERR.tau1,2)+' ، '+f2(ERR.tau2,2)+' min ، '+ERR.Kq.toFixed(4)+' °C/W');
+  if(CAL&&CAL.ok){s('oCal',f2(CAL.t73,2)+' ، '+f2(CAL.S,2)+' ، '+f2(CAL.t2,2)+' min ، P = '+f2(CAL.P,3)+' ، '+f2(CAL.tau1,2)+' ، '+f2(CAL.tau2,2)+' min'+(CAL.clamped?' *':''));}
+  s('oPrc','L = '+f2(PRCR.L,2)+' ، T = '+f2(PRCR.T,2)+' min ، K = '+ERR.K1.toFixed(4)+' °C/W');
+  const best=ERR.ec.rmse<=ERR.ep.rmse&&ERR.ec.rmse<=ERR.th.rmse?(lang==='ar'?'الأفضل: كالدويل':'best: Caldwell'):(ERR.ep.rmse<ERR.th.rmse?(lang==='ar'?'الأفضل: PRC':'best: PRC'):(lang==='ar'?'الأفضل: النظرية':'best: theory'));
+  s('oErr',(lang==='ar'?'النظرية ':'theory ')+f2(ERR.th.rmse,2)+' ، '+(lang==='ar'?'كالدويل ':'Caldwell ')+f2(ERR.ec.rmse,2)+' ، PRC '+f2(ERR.ep.rmse,2)+' ؛ '+best);
+  s('oTF',(lang==='ar'?'نظرية: ':'theory: ')+ERR.Kq.toFixed(4)+'/((' +(ERR.tau1*60).toFixed(0)+'s+1)('+(ERR.tau2*60).toFixed(0)+'s+1)) ؛ '+(CAL&&CAL.ok?(lang==='ar'?'كالدويل: ':'Caldwell: ')+ERR.KexpA.toFixed(4)+'/(('+(CAL.tau1*60).toFixed(0)+'s+1)('+(CAL.tau2*60).toFixed(0)+'s+1)) ؛ ':'')+'PRC: '+ERR.K1.toFixed(4)+'·e^(−'+(PRCR.L*60).toFixed(0)+'s)/('+(PRCR.T*60).toFixed(0)+'s+1)');}
+ const m=liveCtl();s('oCtl',m?f2(m.over,1)+' % ، '+f2(m.settle/60,1)+' min ، '+f2(Math.max(...HIST.filter(h=>h.t>=T_STEP).map(h=>h.Q)),0)+' W':'–');
+ if(AN){s('oKu','T'+CV+': '+f2(AN.kb.Ku,2)+' ، '+f2(AN.kr,2)+' ، '+f2(AN.ks.Ku,2)+(lang==='ar'?' ؛ Pu = ':' ; Pu = ')+f2(AN.kb.Pu/60,2)+' min');const z=AN.zn;s('oZn','P: '+f2(z.P.Kp,2)+' ؛ PI: '+f2(z.PI.Kp,2)+' / '+f2(z.PI.Ti,0)+' ؛ PID: '+f2(z.PID.Kp,2)+' / '+f2(z.PID.Ti,0)+' / '+f2(z.PID.Td,0));}
+ s('oTm',(T_SIM/60).toFixed(1)+' min');
+ let w;const settled=Math.abs(PLT.y1-(stepped?TH:25))<.3&&T_SIM-T_STEP>600;const ku=AN?AN.kb.Ku:1e9;
+ if(OP==='open'){if(!stepped)w=['',L_().wIdle.replace('{h}',TH)];else if(settled&&Math.abs(PLT.y2-PLT.y1)<2.5)w=['ok',L_().wDone.replace('{a}',PLT.y1.toFixed(1)).replace('{b}',PLT.y2.toFixed(1))];else w=['',L_().wRun.replace('{a}',PLT.y1.toFixed(1)).replace('{b}',PLT.y2.toFixed(1))];}
+ else{if(TYPE==='P'&&KC>=ku*.9)w=['bad',L_().wUlt.replace('{k}',KC.toFixed(1)).replace('{u}',f2(ku,1))];else if(m&&m.over>25)w=['mid',L_().wOsc.replace('{o}',m.over.toFixed(0))];else if(Qcmd>=HT.Qmax*.995&&stepped)w=['mid',L_().wSat.replace('{q}',Qcmd.toFixed(0))];else w=['ok',L_().wCtl.replace('{v}','T'+CV).replace('{x}',(CV===1?PLT.y1:PLT.y2).toFixed(1)).replace('{w}',SPT.toFixed(0)).replace('{q}',Qcmd.toFixed(0))];}
+ fwarn.hidden=false;fwarn.className='fwarn'+(w[0]?' '+w[0]:'');fwarn.style.background=w[0]===''?'#1f78c8':'';fwarn.textContent=w[1];
+ if(force||!charts.t||performance.now()-charts.t>450){charts.t=performance.now();charts();}drawCab();drawPC();}
+[flEl,v1El,v2El,thEl,sdEl].forEach(e=>e.oninput=()=>readouts(true));[kcEl,tiEl,tdEl].forEach(e=>e.oninput=()=>{analyseLoop();readouts(true);});
+function setLang(l){lang=l;INFO=l==='ar'?INFO_AR:INFO_EN;document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';document.title=L_().title;
+ document.querySelectorAll('[data-t]').forEach(el=>{el.innerHTML=L_()[el.dataset.t];});
+ document.querySelectorAll('[data-lang-toggle]').forEach(b=>{b.textContent=L_().other;b.lang=L_().otherLang;});
+ updateLabels();renderCard();syncBtns();syncLabelsBtn();readouts(true);
+ try{localStorage.setItem('ht-lang',l);}catch(e){}requestAnimationFrame(resize);}
+document.querySelectorAll('[data-lang-toggle]').forEach(b=>b.onclick=()=>setLang(lang==='ar'?'en':'ar'));
+const ray=new THREE.Raycaster(),mouse=new V2();let downXY=null;
+canvas.addEventListener('pointerdown',e=>{downXY=[e.clientX,e.clientY];});
+canvas.addEventListener('pointerup',e=>{if(!downXY)return;const mv=Math.hypot(e.clientX-downXY[0],e.clientY-downXY[1]);downXY=null;if(mv>6)return;
+ const r=canvas.getBoundingClientRect();mouse.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(mouse,camera);
+ for(const h of ray.intersectObjects(pickables,false)){const k=h.object.userData.key,pt=parts[k];if(!pt)continue;if(mode==='cut'&&pt.plane&&cutPlane.distanceToPoint(h.point)<0)continue;if(k!==selected)select(k);return;}
+ if(selected)select(null);});
+function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+{const ro=new ResizeObserver(resize);ro.observe(stage);ro.observe(canvas);}resize();
+try{const q=new URLSearchParams(location.search).get('lang'),sv=localStorage.getItem('ht-lang');if(q==='en'||q==='ar')lang=q;else if(sv==='en'||sv==='ar')lang=sv;}catch(e){}
+loadAll();applyMode();setLang(lang);
+/* ================= animation ================= */
+const clock=new THREE.Clock(),tmp=new V3();let rt=0,acc=0;const ease=u=>u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;
+function frame(){const dt=Math.min(clock.getDelta(),.05);
+ if(fly){fly.e+=dt;const u=ease(Math.min(1,fly.e/fly.d));camera.position.lerpVectors(fly.p0,fly.p1,u);controls.target.lerpVectors(fly.t0,fly.t1,u);if(fly.e>=fly.d)fly=null;}
+ controls.update();
+ if(running){acc+=dt*SPEED;let n=Math.floor(acc/DT);acc-=n*DT;n=Math.min(n,3000);for(let i=0;i<n;i++)simStep();}
+ /* colours of the water, the glow of the coil, the stirrers and the float */
+ tcol(PLT.T1,_c);WAT[0].material.color.copy(_c);tcol(PLT.T2,_c);WAT[1].material.color.copy(_c);tcol(HT.Ti,_c);WAT[2].material.color.copy(_c);WAT[3].material.color.copy(tcol(PLT.T2,_c));
+ coilGlow=Math.min(1,PLT.Qe/HT.Qmax*1.6);COIL.material.emissiveIntensity=coilGlow*1.5;if(running)stirA+=dt*7;STIR[0].rotation.y=stirA;STIR[1].rotation.y=stirA;FLT.position.y=1.5+.75*Math.min(1,FL/1.0);
+ /* particles in the pipes */
+ const sp=.25+FL*3;
+ for(let i=0;i<NPP;i++){const d=ppD[i],P=PP[d.k];if(running)d.s=(d.s+dt*sp*d.sp)%P.T;at(P,d.s,_p);PPT.pos[i*3]=_p.x+d.j[0];PPT.pos[i*3+1]=_p.y+d.j[1];PPT.pos[i*3+2]=_p.z+d.j[2];tcol(d.k===0?HT.Ti:(d.k===1?PLT.T1:PLT.T2),_c);PPT.col[i*3]=_c.r;PPT.col[i*3+1]=_c.g;PPT.col[i*3+2]=_c.b;}
+ PPT.g.attributes.position.needsUpdate=true;PPT.g.attributes.color.needsUpdate=true;
+ /* particles in the three tanks: swirl with the stirrer, carried down along the shaft and up along the wall */
+ for(let i=0;i<NT*NPT;i++){const d=tD[i],cx=d.t===2?1.2:TKX[d.t],R=d.t===2?.8:TKR-.07,y0=d.t===2?.25:YW0+.1,y1=d.t===2?2.0:YW1-.1;
+  if(running){const om=d.t===2?.15:2.2/(.4+d.r);d.a+=dt*om*(d.t===2?1:1);const up=d.r>R*.55?1:-1;d.y+=up*dt*(d.t===2?.05:.35)*(.5+Math.abs(d.vy));if(d.y>y1){d.y=y1;}if(d.y<y0){d.y=y0;}if(rnd()<.01)d.vy=(rnd()-.5)*1.5;}
+  TPT.pos[i*3]=cx+d.r*Math.cos(d.a);TPT.pos[i*3+1]=d.y;TPT.pos[i*3+2]=d.r*Math.sin(d.a);tcol(d.t===2?HT.Ti:(d.t===0?PLT.T1:PLT.T2),_c);TPT.col[i*3]=_c.r;TPT.col[i*3+1]=_c.g;TPT.col[i*3+2]=_c.b;}
+ TPT.g.attributes.position.needsUpdate=true;TPT.g.attributes.color.needsUpdate=true;
+ rt+=dt;if(rt>.25){rt=0;readouts(false);}
+ renderer.render(scene,camera);
+ const cw=canvas.clientWidth,ch=canvas.clientHeight;
+ for(const k of ORDER){const el=labelEls[k],pt=parts[k];let show=true;
+  if(show){tmp.copy(pt.anchor);tmp.project(camera);if(tmp.z>1||tmp.z<-1)show=false;}
+  if(!show){el.style.visibility='hidden';continue;}el.style.visibility='visible';el.style.transform=`translate(${(tmp.x*.5+.5)*cw}px,${(-tmp.y*.5+.5)*ch}px) translate(-12px,-50%)`;}
+ requestAnimationFrame(frame);}
+/* ================= presenter: narrated guided tour (Arabic / English) ================= */
+(function(){
+const CFG={btn:"bRun",isOn:()=>running,tour:[[null, "السَّلامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ. أَنا الدُّكْتورْ ضِياءْ جُمْعَة جاسِمْ، تَدْريسِيٌّ في قِسْمِ الهَنْدَسَةِ الكيمْياوِيَّةِ وَالصِّناعاتِ النِّفْطِيَّةِ في كُلِّيَّةِ العَمارَةِ الجامِعَة، وَأُدَرِّسُ مادَّتَيِ انْتِقالِ الكُتْلَةِ وَتَصْميمِ المُفاعِلات. أَهْلاً بِكُمْ في هذا المُحاكي ثُلاثِيِّ الأَبْعادِ لِمِسْخَنِ الخَزّانَيْنِ عَلى التَّوالي. سَأُعَرِّفُكُمْ عَلى أَجْزائِهِ الرَّئيسَة، ثُمَّ نُشاهِدُ مَعاً كَيْفَ تَتْبَعُ حَرارَةُ الخَزّانِ الثّاني حَرارَةَ الأَوَّلِ، وَكَيْفَ نَسْتَخْرِجُ ثابِتَيِ الزَّمَن.", "Hello and welcome. I am Doctor Dheyaa J. Jasim, a lecturer in the Department of Chemical Engineering and Petroleum Industries at Al-Amarah University College, where I teach Mass Transfer and Reactor Design. Welcome to this three-dimensional simulator of the two stirred tank heater in series. I will introduce its main parts, and then we will watch together how the second tank follows the first, and how we extract the two time constants."], ["feed", "الماءُ البارِدُ يَخْرُجُ مِن هذا الخَزّانِ بِمِضَخَّةٍ وَيُضْبَطُ تَدَفُّقُهُ بِالصِّمام. وَثابِتُ كُلِّ خَزّانٍ يُساوي حَجْمَهُ مَقْسوماً عَلى التَّدَفُّق.", "Cold water leaves this tank by a pump and its flow is set by the valve. Each tank’s time constant equals its volume divided by the flow."], ["flow", "وَيُبَيِّنُ هذا المِقْياسُ التَّدَفُّق. وَيَسيلُ الماءُ بِالفَيَضانِ مِنَ الخَزّانِ الأَوَّلِ إِلى الثّاني ثُمَّ إِلى التَّصْريف.", "This meter shows the flow. The water overflows from the first tank to the second and then to the drain."], ["t1", "في الخَزّانِ الأَوَّلِ مِلَفُّ تَسْخين. تَرْتَفِعُ حَرارَتُهُ بِسُرْعَةٍ كَنِظامٍ مِنَ الرُّتْبَةِ الأولى، وَيَتَوَهَّجُ المِلَفُّ بِحَسَبِ القُدْرَة.", "Tank one has a heating coil. Its temperature rises quickly like a first-order system, and the coil glows with the power."], ["t2", "وَالخَزّانُ الثّاني بِلا مِسْخَن. حَرارَتُهُ تَتْبَعُ الأَوَّلَ بِتَأَخُّرٍ إِضافِيٍّ، فَتَظْهَرُ الاسْتِجابَةُ بِشَكْلِ حَرْفِ إِس، وَهذا نِظامٌ مِنَ الرُّتْبَةِ الثّانِيَة.", "Tank two has no heater. Its temperature follows the first with an extra lag, so the response has an S shape: a second-order system."], ["tc", "وَيَقيسُ هذانِ المُزْدَوِجانِ الحَرارَتَيْنِ. وَنَقْرَأُهُما كُلَّ دَقيقَةٍ كَما في الدَّليل.", "These two thermocouples measure the temperatures. We read them every minute as in the manual."], ["cab", "وَتُغَيِّرُ هذِهِ الخِزانَةُ قُدْرَةَ المِسْخَن. في التَّجْرِبَةِ المَفْتوحَةِ نُطَبِّقُ خُطْوَةً مِنْ خَمْسٍ وَعِشْرينَ إِلى القيمَةِ العُلْيا، وَفي المُغْلَقَةِ يَعْمَلُ المُتَحَكِّمُ عَلى T واحِد أَو T اثْنَيْن.", "This cabinet changes the heater power. In the open-loop test we apply a step from twenty-five to the upper value, and in the closed loop the controller acts on T one or T two."], ["pc", "وَفي الشَّريطِ الجانِبِيِّ طَريقَةُ كالْدويلِ وَطَريقَةُ مُنْحَنى رَدِّ فِعْلِ العَمَلِيَّة، وَمُقارَنَتُهُما بِالقِياسِ وَالنَّظَرِيَّة، وَجَدْوَلُ القِراءات.", "The side panel holds the Caldwell method and the process reaction curve method, their comparison with the measurement and the theory, and the table of readings."], [null, "جَرِّبوا الآنَ: طَبِّقوا الخُطْوَةَ وَراقِبوا T اثْنَيْن تَتْبَعُ T واحِد. ثُمَّ قارِنوا تَقْديرَ كالْدويلِ بِمُنْحَنى رَدِّ فِعْلِ العَمَلِيَّةِ، وَانْظُروا أَيُّهُما أَقْرَبُ إِلى القِياس. وَجَرِّبوا الحَلْقَةَ المُغْلَقَةَ عَلى T واحِد ثُمَّ T اثْنَيْن بِنَفْسِ الضَّبْط. بِالتَّوْفيقِ لِلْجَميع.", "Now try it yourselves: apply the step and watch T two follow T one. Then compare the Caldwell estimate with the process reaction curve and see which is closer to the measurement. And try the closed loop on T one and then T two with the same settings. Good luck to you all."]]};
+const strip=t=>t.replace(/[\u064B-\u0652\u0670]/g,'');
+const PUI={ar:{name:'د. ضياء جمعة جاسم',prev:'السابق',pause:'إيقاف مؤقت',resume:'متابعة',next:'التالي',close:'إغلاق',open:'شرح الدكتور ضياء',noVoice:'لا يتوفر صوت عربي في هذا المتصفح، لذلك يظهر الشرح مكتوباً فقط. جرّب Edge أو Chrome.',noMale:'لا يتوفر صوت عربي رجالي في هذا الجهاز، فاستُخدم أقرب صوت متاح بنبرة أخفض. جرّب Microsoft Edge (أصوات مثل حامد وشاكر) أو أضف صوتاً عربياً رجالياً من إعدادات النظام.'},
+ en:{name:'Dr. Dheyaa J. Jasim',prev:'Previous',pause:'Pause',resume:'Resume',next:'Next',close:'Close',open:'Tour with Dr. Dheyaa',noVoice:'No English voice is available in this browser, so the tour is shown as text only. Try Edge or Chrome.'}};
+const PU=()=>PUI[lang];
+const wrap=document.createElement('div');
+wrap.innerHTML=`<div class="presenter" id="presenter" hidden><div class="pv"><div class="ring"></div><img src="data:image/jpeg;base64,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" alt=""><div class="bars"><i></i><i></i><i></i><i></i><i></i></div></div>
+ <div class="pb"><div class="pn">x <span id="pStep"></span></div><div class="pt" id="pText"></div>
+ <div class="pc"><button id="pPrev" class="ic flip">⏮</button><button id="pPlay" class="ic">❚❚</button><button id="pNext" class="ic flip">⏭</button><button id="pClose" class="ic">✕</button></div><div class="pw" id="pWarn" hidden></div></div></div>
+ <button class="pbtn" id="pOpen"><img alt=""><span>▶</span></button>`;
+while(wrap.firstChild)stage.appendChild(wrap.firstChild);
+const presenter=document.getElementById('presenter'),pText=document.getElementById('pText'),pStep=document.getElementById('pStep'),pPlay=document.getElementById('pPlay'),pOpen=document.getElementById('pOpen'),pWarn=document.getElementById('pWarn');
+pOpen.querySelector('img').src=presenter.querySelector('.pv img').src;
+let tIdx=-1,tPaused=false,tTimer=null,tToken=0,arVoice=null,enVoice=null,arMale=false;
+const synth=window.speechSynthesis||null;
+function pickVoice(){if(!synth)return;const v=synth.getVoices();
+ const ar=v.filter(x=>/^ar/i.test(x.lang)),ML=/hamed|naayf|shakir|bassel|fahed|taim|rami|moaz|hamdan|\bali\b|saleh|laith|hedi|ismael|jamal|omar|abdullah|maged|majed|tarik|\bmale\b/i,FL=/zariyah|salma|hoda|rana|noura|sana|layla|laila|amal|hala|fatima|maryam|amany|amina|iman|mouna|reem|aysha|\bfemale\b/i,sa=x=>(ML.test(x.name)?100:0)-(FL.test(x.name)?100:0)+(/natural|neural|online/i.test(x.name)?8:0)+(/google/i.test(x.name)?2:0)+(/ar[-_]SA/i.test(x.lang)?1:0);arVoice=ar.sort((a,b)=>sa(b)-sa(a))[0]||null;arMale=!!(arVoice&&ML.test(arVoice.name)&&!FL.test(arVoice.name));
+ const en=v.filter(x=>/^en/i.test(x.lang)),se=x=>(/natural|neural|online/i.test(x.name)?8:0)+(/google/i.test(x.name)?4:0)+(/ryan|guy|george|daniel|david|arthur|male/i.test(x.name)?3:0)+(/en[-_]GB/i.test(x.lang)?2:0);
+ enVoice=en.sort((a,b)=>se(b)-se(a))[0]||null;}
+if(synth){pickVoice();synth.onvoiceschanged=pickVoice;}
+function chunks(t){return t.split(/(?<=[.،,:;!?؟])\s+/).reduce((a,s)=>{if(a.length&&(a[a.length-1]+' '+s).length<170)a[a.length-1]+=' '+s;else a.push(s);return a;},[]);}
+function speak(text,done){const tok=++tToken;presenter.classList.add('talking');const fin=()=>{if(tok!==tToken)return;presenter.classList.remove('talking');done();};
+ const vv=lang==='ar'?arVoice:enVoice;
+ if(synth&&vv){synth.cancel();if(lang==='ar'&&!arMale){pWarn.hidden=false;pWarn.textContent=PU().noMale;}const parts=chunks(text);let i=0;
+  const next=()=>{if(tok!==tToken)return;if(i>=parts.length){fin();return;}const u=new SpeechSynthesisUtterance(parts[i++]);u.voice=vv;u.lang=vv.lang;u.rate=lang==='ar'&&!arMale?.95:1;u.pitch=lang==='ar'&&!arMale?.72:1;
+   u.onend=()=>setTimeout(next,120);u.onerror=()=>setTimeout(next,120);synth.speak(u);};next();}
+ else{pWarn.hidden=false;pWarn.textContent=PU().noVoice;tTimer=setTimeout(fin,Math.max(5000,text.split(/\s+/).length*420));}}
+function showStep(i){clearTimeout(tTimer);if(synth)synth.cancel();pWarn.hidden=true;tIdx=i;const [k,ar,en]=CFG.tour[i],say=lang==='ar'?ar:en;
+ pText.textContent=lang==='ar'?strip(ar):en;pText.dir=lang==='ar'?'rtl':'ltr';pText.lang=lang;pStep.textContent='('+(i+1)+' / '+CFG.tour.length+')';pText.scrollTop=0;
+ if(k){if(selected!==k)select(k);focusPart(k);}else{if(selected)select(null);view('iso');}
+ if(!tPaused)speak(say,()=>{if(tIdx<CFG.tour.length-1)tTimer=setTimeout(()=>showStep(tIdx+1),700);});}
+function syncPresenter(){presenter.querySelector('.pn').firstChild.textContent=PU().name+' ';
+ [['pPrev',PU().prev],['pNext',PU().next],['pClose',PU().close]].forEach(([id,t])=>{const b=document.getElementById(id);b.title=t;b.setAttribute('aria-label',t);});
+ pPlay.textContent=tPaused?'▶':'❚❚';pPlay.title=tPaused?PU().resume:PU().pause;pPlay.setAttribute('aria-label',pPlay.title);pOpen.title=PU().open;pOpen.setAttribute('aria-label',PU().open);presenter.querySelector('.pv img').alt=PU().name;}
+function startTour(){presenter.hidden=false;pOpen.hidden=true;stage.classList.add('tour');tPaused=false;syncPresenter();if(mode==='full'){mode='cut';applyMode();}showStep(0);}
+function stopTour(){tToken++;clearTimeout(tTimer);if(synth)synth.cancel();presenter.classList.remove('talking');presenter.hidden=true;pOpen.hidden=false;stage.classList.remove('tour');}
+document.getElementById('pNext').onclick=()=>{if(tIdx<CFG.tour.length-1)showStep(tIdx+1);};
+document.getElementById('pPrev').onclick=()=>{if(tIdx>0)showStep(tIdx-1);};
+document.getElementById('pClose').onclick=stopTour;pOpen.onclick=startTour;
+pPlay.onclick=()=>{tPaused=!tPaused;syncPresenter();if(tPaused){tToken++;clearTimeout(tTimer);if(synth)synth.cancel();presenter.classList.remove('talking');}else showStep(tIdx);};
+const runBtn=document.getElementById(CFG.btn),oldRun=runBtn.onclick;
+runBtn.onclick=e=>{if(oldRun)oldRun.call(runBtn,e);if(CFG.isOn())startTour();else stopTour();};
+const oldSetLang=setLang;setLang=function(l){oldSetLang(l);syncPresenter();if(!presenter.hidden&&tIdx>=0)showStep(tIdx);};
+syncPresenter();
+})();
+
+loadingEl.remove();requestAnimationFrame(frame);
+})();
+
+</script>
+</body>
+</html>

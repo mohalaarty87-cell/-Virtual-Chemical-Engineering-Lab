@@ -1,0 +1,855 @@
+<!doctype html>
+<!-- © 2026 Dr. Dheyaa J. Jasim (د. ضياء جمعة جاسم), Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College. Work ID: DJJ-VLAB-FLUIDIZED_BED-2026. All rights reserved. For educational use; no republication or sale without written permission. -->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Dr. Dheyaa J. Jasim (د. ضياء جمعة جاسم)">
+<meta name="copyright" content="© 2026 Dr. Dheyaa J. Jasim. All rights reserved.">
+<meta name="dcterms.rights" content="All rights reserved. For educational use; no republication or sale without written permission.">
+<meta name="dcterms.identifier" content="DJJ-VLAB-FLUIDIZED_BED-2026">
+<script type="application/ld+json" data-ip="djj">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "محاكي مفاعل الطبقة المميعة ثلاثي الأبعاد | 3D Fluidized Bed Reactor", "identifier": "DJJ-VLAB-FLUIDIZED_BED-2026", "inLanguage": ["ar", "en"], "copyrightYear": 2026, "author": {"@type": "Person", "name": "Dr. Dheyaa J. Jasim", "alternateName": "د. ضياء جمعة جاسم", "affiliation": {"@type": "CollegeOrUniversity", "name": "Al-Amarah University College", "department": "Department of Chemical Engineering and Petroleum Industries"}}, "copyrightHolder": {"@type": "Person", "name": "Dr. Dheyaa J. Jasim"}, "usageInfo": "All rights reserved. For educational use; no republication or sale without written permission."}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>محاكي مفاعل الطبقة المميعة ثلاثي الأبعاد | 3D Fluidized Bed Reactor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e4eaee; --stage-a:#f3f6f8; --stage-b:#d2dce2; --panel:#f7f9fa; --ink:#1b2830; --muted:#5a6a75;
+  --line:#c9d4db; --chip:#ffffff; --accent:#b85f1e; --accent-ink:#ffffff; --cool:#2f76b3; --tint:#edf2f5;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#11171c; --stage-a:#223039; --stage-b:#10161b; --panel:#172027; --ink:#e1e8ed; --muted:#94a4af;
+    --line:#2c3a44; --chip:#21303a; --accent:#e0873d; --accent-ink:#1a1108; --cool:#5d9fd5; --tint:#1e2a32;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11171c; --stage-a:#223039; --stage-b:#10161b; --panel:#172027; --ink:#e1e8ed; --muted:#94a4af;
+  --line:#2c3a44; --chip:#21303a; --accent:#e0873d; --accent-ink:#1a1108; --cool:#5d9fd5; --tint:#1e2a32;
+}
+html{height:100%; scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0; height:100%; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans Arabic","Segoe UI",Tahoma,"Noto Sans Arabic",Arial,sans-serif; font-size:15px; line-height:1.7}
+button{font:inherit; color:inherit}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+.app{display:grid; grid-template-columns:minmax(300px,370px) 1fr; height:100%}
+.panel{background:var(--panel); border-inline-end:1px solid var(--line); overflow-y:auto; display:flex; flex-direction:column}
+.ph{padding:22px 22px 14px}
+.ph h1{margin:0; font-size:21px; line-height:1.4; font-weight:700}
+.ph .sub{margin:2px 0 0; color:var(--muted); font-size:13.5px; direction:ltr; text-align:right}
+
+.card{margin:0 16px; padding:16px 18px; background:var(--tint); border-radius:12px; border:1px solid var(--line)}
+.card h2{margin:0; font-size:18px; font-weight:600; line-height:1.45}
+.card .en{margin:0 0 8px; color:var(--muted); font-size:13px; direction:ltr; text-align:right}
+.card p{margin:6px 0}
+.card .eq{margin-top:10px; padding:8px 10px; border-inline-start:3px solid var(--accent); background:var(--panel); border-radius:0 6px 6px 0; font-size:14px; unicode-bidi:plaintext}
+.card .head{display:flex; gap:10px; align-items:flex-start}
+.card .head .num{flex:none; margin-top:3px}
+.card .act{margin-top:12px; display:flex; gap:8px; flex-wrap:wrap}
+.card .act button{background:var(--chip); border:1px solid var(--line); border-radius:8px; padding:5px 12px; cursor:pointer; font-size:13.5px}
+.card .act button:hover{border-color:var(--accent)}
+
+.num{display:inline-grid; place-items:center; width:24px; height:24px; border-radius:50%; font-size:12.5px; font-weight:600;
+  background:var(--chip); border:1.5px solid var(--ink); line-height:1; font-variant-numeric:tabular-nums}
+
+.mix{padding:18px 22px 6px}
+.mix h3,.parts h3{margin:0 0 6px; font-size:15px; font-weight:600}
+.rpm{display:flex; align-items:center; gap:12px}
+.rpm input{flex:1; accent-color:var(--accent)}
+.rpm output{min-width:86px; font-weight:600; font-variant-numeric:tabular-nums}
+.readout{display:grid; grid-template-columns:1fr auto; gap:2px 12px; margin:10px 0 4px; font-size:14px}
+.readout dt{color:var(--muted)}
+.readout dd{margin:0; font-weight:600; font-variant-numeric:tabular-nums; direction:ltr; text-align:left}
+.fine{font-size:12.5px; color:var(--muted); margin:6px 0 0}
+
+.parts{padding:14px 14px 8px}
+.parts h3{padding:10px 8px 2px; color:var(--muted); font-size:13px}
+.parts ul{list-style:none; margin:0; padding:0}
+.parts li button{display:flex; align-items:center; gap:10px; width:100%; text-align:right; background:none; border:0;
+  padding:5px 8px; border-radius:8px; cursor:pointer; font-size:14.5px}
+.parts li button:hover{background:var(--tint)}
+.parts li button[aria-current="true"]{background:var(--tint); box-shadow:inset -3px 0 0 var(--accent)}
+.parts li button[aria-current="true"] .num{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.lang{display:inline-block; cursor:pointer; background:none; font:inherit; margin-top:8px; font-size:13.5px; color:var(--accent); text-decoration:none; border:1px solid var(--line); border-radius:8px; padding:2px 10px}
+.lang:hover{border-color:var(--accent)}
+.credit{margin-top:auto; padding:14px 22px 20px; font-size:12.5px; color:var(--muted); border-top:1px solid var(--line)}
+.credit b{color:var(--ink); font-weight:600}
+
+.stage{position:relative; overflow:hidden; background:radial-gradient(ellipse 70% 65% at 50% 42%, var(--stage-a), var(--stage-b))}
+#c{display:block; width:100%; height:100%; touch-action:none; cursor:grab}
+#c:active{cursor:grabbing}
+.labels{position:absolute; inset:0; pointer-events:none}
+.lbl{direction:ltr; position:absolute; left:0; top:0; pointer-events:auto; display:flex; align-items:center; gap:6px; padding:0; border:0; background:none; cursor:pointer; white-space:nowrap}
+.lbl .t{direction:rtl; display:none; background:var(--chip); border:1px solid var(--line); border-radius:6px; padding:1px 8px; font-size:12.5px; box-shadow:0 1px 3px rgba(20,30,40,.18)}
+.labels.names .lbl .t,.lbl.on .t{display:inline-block}
+.lbl .num{box-shadow:0 1px 3px rgba(20,30,40,.25)}
+.lbl.on .num{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.lbl.on .t{border-color:var(--accent)}
+.labels.off .lbl:not(.on){display:none}
+
+.ovl{position:absolute; top:14px; inset-inline-start:16px; pointer-events:none; display:flex; flex-direction:column; align-items:flex-start; gap:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 12px; background:color-mix(in srgb,var(--panel) 82%,transparent); border:1px solid var(--line); border-radius:10px; padding:5px 12px; font-size:13px}
+.legend span{display:inline-flex; align-items:center; gap:6px}
+.legend i{width:11px; height:11px; border-radius:50%; display:inline-block; box-shadow:0 0 0 1.5px rgba(255,255,255,.7)}
+.legend b{font-weight:500}
+.tb.rx{background:#1f8a4c; color:#fff; border-color:#1f8a4c; font-weight:600}
+.tb.rx[aria-pressed="true"]{background:#b3362b; border-color:#b3362b; color:#fff}
+.rxbar{display:flex; height:12px; border-radius:6px; overflow:hidden; margin:8px 0 4px; background:var(--line)}
+.rxbar div{transition:width .25s linear}
+.brand{ background:color-mix(in srgb,var(--panel) 82%,transparent); border:1px solid var(--line); border-inline-start:4px solid var(--accent); border-radius:10px; padding:8px 14px 9px}
+.brand .who{font-size:17px; font-weight:700; line-height:1.4}
+.brand .en{font-size:13px; color:var(--muted); direction:ltr; text-align:right}
+.brand .org{font-size:12.5px; color:var(--muted)}
+.hint{position:absolute; top:14px; inset-inline-end:16px; max-width:300px; font-size:13px; color:var(--muted); pointer-events:none}
+.toolbar{position:absolute; bottom:14px; inset-inline:14px; display:flex; flex-wrap:wrap; gap:8px; justify-content:center; pointer-events:none}
+.toolbar > *{pointer-events:auto}
+.tb{background:var(--chip); border:1px solid var(--line); border-radius:9px; padding:6px 13px; cursor:pointer; font-size:13.5px; box-shadow:0 1px 3px rgba(20,30,40,.12)}
+.tb:hover{border-color:var(--accent)}
+.tb[aria-pressed="true"]{background:var(--ink); color:var(--panel); border-color:var(--ink)}
+.seg{display:inline-flex; background:var(--chip); border:1px solid var(--line); border-radius:9px; padding:2px; box-shadow:0 1px 3px rgba(20,30,40,.12)}
+.seg button{border:0; background:none; padding:4px 11px; border-radius:7px; cursor:pointer; font-size:13.5px}
+.seg button[aria-pressed="true"]{background:var(--ink); color:var(--panel)}
+.loading{position:absolute; inset:0; display:grid; place-items:center; color:var(--muted); font-size:15px; padding:20px; text-align:center}
+
+html[dir="ltr"] .ph .sub,html[dir="ltr"] .card .en,html[dir="ltr"] .brand .en{direction:rtl; text-align:left}
+html[dir="ltr"] .readout dd{text-align:right}
+html[dir="rtl"] #oReg{direction:rtl}
+html[dir="ltr"] .parts li button{text-align:left}
+html[dir="ltr"] .parts li button[aria-current="true"]{box-shadow:inset 3px 0 0 var(--accent)}
+html[dir="ltr"] .lbl .t{direction:ltr}
+html[dir="ltr"] .card .eq{border-radius:0 6px 6px 0}
+html[dir="rtl"] .card .eq{border-radius:6px 0 0 6px}
+@media (max-width:820px){
+  html,body{height:auto}
+  .app{grid-template-columns:1fr; height:auto}
+  .stage{order:-1; height:66svh; min-height:380px}
+  .panel{border-inline-end:0; overflow:visible}
+  .hint{display:none}
+  .ovl{top:10px; inset-inline-start:10px}
+  .brand{padding:6px 10px}
+  .legend{font-size:12px; padding:4px 9px}
+  .brand .who{font-size:15px}
+  .brand .org{display:none}
+  .toolbar{bottom:10px; gap:6px}
+  .tb,.seg button{font-size:12.5px}
+}
+.prof-h{margin-top:14px !important}
+.prof{display:grid; grid-template-columns:auto 1fr auto; gap:3px 8px; align-items:center; font-size:12.5px; font-variant-numeric:tabular-nums}
+.prof .k{color:var(--muted)}
+.prof .tr{height:9px; background:var(--line); border-radius:5px; overflow:hidden}
+.prof .tr div{height:100%; border-radius:5px; transition:width .3s}
+.prof .v{direction:ltr}
+.legend i.grad{width:34px; border-radius:6px; background:linear-gradient(90deg,#f2c21b,#e23b32)}
+html[dir="rtl"] .legend i.grad{background:linear-gradient(270deg,#f2c21b,#e23b32)}
+.legend i.bub{background:transparent; box-shadow:inset 0 0 0 2px #e9844a}
+@media (max-width:820px){
+  .stage{height:auto; min-height:0; display:flex; flex-direction:column}
+  #c{height:60svh; min-height:340px; flex:none}
+  .toolbar{position:static; inset:auto; padding:10px 10px 12px; background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+  .labels{bottom:auto; height:max(60svh,340px)}
+}
+.tb.fl{border-color:#b3362b; color:#b3362b; font-weight:600}
+.tb.fl[aria-pressed="true"]{background:#b3362b; color:#fff}
+.fwarn{background:#b3362b; color:#fff; border-radius:10px; padding:6px 12px; font-size:13.5px; font-weight:600; max-width:340px; box-shadow:0 2px 8px rgba(120,20,10,.3)}
+.fwarn[hidden]{display:none}
+.card.fcard{border-color:#b3362b; border-inline-start:4px solid #b3362b}
+.card.fcard h2{color:#b3362b}
+.card ul{margin:6px 0; padding-inline-start:20px}
+.card li{margin:2px 0}
+.card h4{margin:10px 0 2px; font-size:14.5px}
+.jump{display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 2px}
+.jump button{background:var(--chip); border:1px solid var(--line); border-radius:8px; padding:3px 9px; font-size:12.5px; cursor:pointer}
+.jump button:hover{border-color:var(--accent)}
+.regime{border-radius:10px; padding:7px 13px; font-size:14px; font-weight:600; color:#fff; box-shadow:0 2px 8px rgba(0,0,0,.2); max-width:360px; transition:background .4s}
+.regime small{display:block; font-weight:500; font-size:12.5px; opacity:.92}
+.legend i.gg{width:34px; border-radius:6px; background:linear-gradient(90deg,#e23b32,#22b45a)}
+html[dir="rtl"] .legend i.gg{background:linear-gradient(270deg,#e23b32,#22b45a)}
+.legend i.bb{background:rgba(200,235,255,.55); box-shadow:inset 0 0 0 1.5px #7fb8f0}
+#chart svg{width:100%; height:auto; display:block}
+#chart text{font-size:10px; fill:var(--muted); font-family:inherit}
+.presenter{position:absolute; top:12px; inset-inline-end:12px; width:min(290px,calc(100% - 24px)); display:flex; gap:9px; align-items:flex-start; background:color-mix(in srgb,var(--panel) 94%,transparent); border:1px solid var(--line); border-radius:12px; padding:8px 9px; box-shadow:0 4px 16px rgba(10,20,30,.2); z-index:5}
+.presenter[hidden]{display:none}
+.pv{position:relative; flex:none; width:52px; height:52px}
+.pv img{width:52px; height:52px; border-radius:50%; object-fit:cover; object-position:50% 30%; position:relative; z-index:1; border:2px solid var(--panel)}
+.pv .ring{position:absolute; inset:-3px; border-radius:50%; background:conic-gradient(#1f8a4c,#1f78c8,#1f8a4c); opacity:.35}
+.presenter.talking .pv img{animation:talk 2.4s ease-in-out infinite}
+.presenter.talking .pv .ring{opacity:1; animation:spin 3s linear infinite}
+@keyframes talk{0%,100%{transform:translateY(0) scale(1)}25%{transform:translateY(-1px) scale(1.02) rotate(-.6deg)}50%{transform:translateY(0) scale(1.005)}75%{transform:translateY(-1px) scale(1.015) rotate(.6deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pv .bars{position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); display:flex; gap:2px; z-index:2; background:var(--panel); border-radius:6px; padding:2px 4px; border:1px solid var(--line)}
+.pv .bars i{display:block; width:2px; height:4px; background:#1f8a4c; border-radius:2px}
+.presenter.talking .bars i{animation:bar .9s ease-in-out infinite}
+.presenter.talking .bars i:nth-child(2){animation-delay:.15s}.presenter.talking .bars i:nth-child(3){animation-delay:.3s}.presenter.talking .bars i:nth-child(4){animation-delay:.45s}.presenter.talking .bars i:nth-child(5){animation-delay:.6s}
+@keyframes bar{0%,100%{height:3px}50%{height:10px}}
+.pb{flex:1; min-width:0}
+.pn{font-weight:700; font-size:12.5px; line-height:1.3}
+.pn span{font-weight:500; color:var(--muted); font-size:11.5px; margin-inline-start:4px}
+.pt{font-size:12.5px; line-height:1.6; margin:3px 0 5px; max-height:4.9em; overflow-y:auto}
+.pc{display:flex; gap:4px}
+.pc .ic{background:var(--chip); border:1px solid var(--line); border-radius:7px; width:28px; height:24px; padding:0; font-size:11px; line-height:1; cursor:pointer}
+.pc .ic:hover{border-color:var(--accent)}
+html[dir="rtl"] .pc .flip{transform:scaleX(-1)}
+.pw{margin-top:4px; font-size:11px; color:#c0621c}
+.pbtn{position:absolute; top:12px; inset-inline-end:12px; z-index:5; width:46px; height:46px; border-radius:50%; padding:0; border:2px solid #1f8a4c; background:var(--panel); cursor:pointer; box-shadow:0 3px 10px rgba(10,20,30,.2)}
+.pbtn img{width:100%; height:100%; border-radius:50%; object-fit:cover; object-position:50% 30%}
+.pbtn span{position:absolute; bottom:-3px; inset-inline-end:-3px; width:18px; height:18px; border-radius:50%; background:#1f8a4c; color:#fff; font-size:9px; display:grid; place-items:center}
+.pbtn[hidden]{display:none}
+.stage.tour .hint{display:none}
+@media (max-width:820px){.presenter{top:8px; inset-inline-end:8px; width:min(270px,calc(100% - 16px))}.pbtn{top:8px}.stage.tour .ovl{display:none}}
+.stage .hint{inset-inline-end:70px}
+.wm{position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:6;pointer-events:none;user-select:none;font:600 11px/1.2 "IBM Plex Sans Arabic",system-ui,sans-serif;color:#fff;opacity:.5;text-shadow:0 0 3px rgba(0,0,0,.85),0 0 1px #000;white-space:nowrap;letter-spacing:.2px}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="panel">
+    <header class="ph">
+      <h1 data-t="h1"></h1>
+      <p class="sub" data-t="sub"></p>
+      <button class="lang" data-lang-toggle>English</button>
+    </header>
+    <section class="card" id="card" aria-live="polite"></section>
+    <section class="mix">
+      <h3 data-t="opH"></h3>
+      <div class="rpm">
+        <input type="range" id="uu" min="0" max="1000" step="1" value="240" aria-label="Superficial gas velocity">
+        <output id="uOut">–</output>
+      </div>
+      <div class="jump">
+        <button data-jump="0.6" data-t="j1"></button>
+        <button data-jump="1" data-t="j2"></button>
+        <button data-jump="4" data-t="j3"></button>
+        <button data-jump="45" data-t="j4"></button>
+        <button data-jump="62" data-t="j5"></button>
+      </div>
+      <dl class="readout">
+        <dt data-t="dReg"></dt><dd id="oReg">–</dd>
+        <dt data-t="dUmf"></dt><dd id="oUmf">–</dd>
+        <dt data-t="dRatio"></dt><dd id="oRatio">–</dd>
+        <dt data-t="dUt"></dt><dd id="oUt">–</dd>
+        <dt data-t="dDP"></dt><dd id="oDP">–</dd>
+        <dt data-t="dH"></dt><dd id="oH">–</dd>
+        <dt data-t="dAr"></dt><dd id="oAr">–</dd>
+        <dt data-t="dUmfE"></dt><dd id="oUmfE">–</dd>
+        <dt data-t="dUc"></dt><dd id="oUc">–</dd>
+        <dt data-t="dUtr"></dt><dd id="oUtr">–</dd>
+        <dt data-t="dDb"></dt><dd id="oDb">–</dd>
+      </dl>
+      <h3 class="prof-h" data-t="cycH"></h3>
+      <dl class="readout">
+        <dt data-t="dVi"></dt><dd id="oVi">–</dd>
+        <dt data-t="dD50"></dt><dd id="oD50">–</dd>
+        <dt data-t="dEf1"></dt><dd id="oEf1">–</dd>
+        <dt data-t="dEf2"></dt><dd id="oEf2">–</dd>
+        <dt data-t="dCdp"></dt><dd id="oCdp">–</dd>
+      </dl>
+      <h3 class="prof-h" data-t="chH"></h3>
+      <div id="chart"></div>
+      <p class="fine" data-t="fine"></p>
+    </section>
+    <footer class="credit" data-t="credit"></footer>
+  </aside>
+  <main class="stage" id="stage">
+    <canvas id="c" aria-label="3D fluidized bed reactor"></canvas>
+<div class="wm" aria-hidden="true">© 2026 د. ضياء جمعة جاسم · Dr. Dheyaa J. Jasim</div>
+    <div class="labels" id="labels"></div>
+    <div class="ovl">
+      <div class="brand"><div class="who" data-t="who"></div><div class="en" data-t="whoAlt"></div><div class="org" data-t="org"></div></div>
+      <div class="regime" id="regime"></div>
+      <div class="legend" aria-hidden="true">
+        <span><i style="background:#e6b35c"></i><b data-t="lgS"></b></span>
+        <span><i class="gg"></i><b data-t="lgG"></b></span>
+        <span><i class="bb"></i><b data-t="lgB"></b></span>
+        <span><i style="background:#1d5fd1"></i><b data-t="lgW"></b></span>
+      </div>
+    </div>
+    <div class="hint" data-t="hint"></div>
+    <div class="toolbar">
+      <button class="tb rx" id="bRun" aria-pressed="false"></button>
+      <button class="tb" data-lang-toggle>English</button>
+      <div class="seg" role="group">
+        <button data-drag="rotate" aria-pressed="true" data-t="dRot"></button>
+        <button data-drag="pan" aria-pressed="false" data-t="dPan"></button>
+      </div>
+      <div class="seg" role="group">
+        <button data-mode="full" aria-pressed="false" data-t="full"></button>
+        <button data-mode="cut" aria-pressed="true" data-t="cut"></button>
+        <button data-mode="ghost" aria-pressed="false" data-t="ghost"></button>
+      </div>
+      <button class="tb" id="bExplode" aria-pressed="false"></button>
+      <button class="tb" id="bLabels"></button>
+      <div class="seg" role="group">
+        <button data-view="iso" data-t="iso"></button>
+        <button data-view="front" data-t="front"></button>
+        <button data-view="top" data-t="top"></button>
+      </div>
+    </div>
+    <div class="loading" id="loading">جارٍ تحميل النموذج… Loading…</div>
+  </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+const loadingEl=document.getElementById('loading');
+if(!window.THREE||!THREE.OrbitControls){loadingEl.textContent='تعذّر تحميل مكتبة الرسم ثلاثي الأبعاد. تحقق من الاتصال بالإنترنت ثم أعد تحميل الصفحة. / The 3D library could not load; check your connection and reload.';return;}
+
+/* ================= physics (Geldart B catalyst in air) ================= */
+const DP=250e-6,RHOS=2500,RHOG=1.2,MU=1.8e-5,G=9.81,EMF=.45,LMF=1.2;
+const AR=DP**3*RHOG*(RHOS-RHOG)*G/MU**2;
+const REMF=Math.sqrt(33.7**2+.0408*AR)-33.7,UMF=REMF*MU/(RHOG*DP); /* Wen & Yu */
+const DSTAR=Math.cbrt(AR),USTAR=1/(18/DSTAR**2+(2.335-1.744)/Math.sqrt(DSTAR)),UT=USTAR*Math.cbrt(MU*(RHOS-RHOG)*G/RHOG**2); /* Haider & Levenspiel, sphere */
+const UC=1.24*Math.pow(AR,.45)*MU/(RHOG*DP);   /* onset of turbulent fluidization, Bi & Grace (1995): Re_c = 1.24 Ar^0.45 */
+const UTR=2.28*Math.pow(AR,.419)*MU/(RHOG*DP); /* transport velocity, Bi, Grace & Zhu (1995): Re_tr = 2.28 Ar^0.419 */
+const EPS_ERG=.45,ReErg=(-150*(1-EPS_ERG)/EPS_ERG**3+Math.sqrt((150*(1-EPS_ERG)/EPS_ERG**3)**2+4*1.75/EPS_ERG**3*AR))/(2*1.75/EPS_ERG**3),UMF_ERG=ReErg*MU/(RHOG*DP); /* full Ergun, for comparison */
+const DT=1.2,AT=Math.PI*DT*DT/4,NOR=60;       /* column diameter (m), area, number of distributor orifices */
+/* bubble diameter, Mori & Wen (1975), cgs units inside */
+function dBub(U,h){const du=Math.max(0,(U-UMF)*100),A=AT*1e4;if(du<=0)return 0;
+ const dbm=Math.min(.652*Math.pow(A*du,.4),.5*DT*100),db0=Math.min(.347*Math.pow(A*du/NOR,.4),dbm);
+ return (dbm-(dbm-db0)*Math.exp(-.3*h*100/(DT*100)))/100;}
+/* cyclones: Stairmand high-efficiency proportions, two in parallel */
+const DC=.44,CA=.5*DC,CB=.2*DC,CDE=.5*DC,NE=6;
+function cycl(U){const Q=U*AT,vi=Q/(2*CA*CB),d50=vi>0?Math.sqrt(9*MU*CB/(2*Math.PI*NE*vi*(RHOS-RHOG))):0,
+ eff=dp=>vi>0?1/(1+(d50/dp)**2):0,dp=.5*RHOG*vi*vi*16*CA*CB/(CDE*CDE);return {vi,d50,eff,dp};} /* Lapple cut size, Shepherd-Lapple pressure drop */
+const DPMF=(1-EMF)*(RHOS-RHOG)*G*LMF;
+function ergun(U){return 150*MU*U*(1-EMF)**2/(EMF**3*DP**2)+1.75*RHOG*U*U*(1-EMF)/(EMF**3*DP);}
+function bedDP(U){if(U<=UMF)return DPMF*ergun(U)/ergun(UMF);const e=entr(U);return DPMF*(1-.8*e);}
+function entr(U){return Math.min(1,Math.max(0,(U-UT)/(UTR-UT)));} /* fraction of solids carried out */
+function bedH(U){ /* Kunii-Levenspiel bubbling-bed expansion: delta=(U-Umf)/ub, ub=U-Umf+0.711(g db)^0.5 */
+ if(U<=UMF)return LMF;const db=dBub(U,LMF/2),ub=(U-UMF)+.711*Math.sqrt(G*db),delta=Math.min(.6,(U-UMF)/ub);
+ let h=LMF/(1-delta);if(U>UC)h*=1+.25*Math.min(1,(U-UC)/(UTR-UC));h=Math.min(h,3.0);return h*(1-.6*entr(U));}
+function regime(U){if(U<=0)return 'off';if(U<.97*UMF)return 'fixed';if(U<1.2*UMF)return 'mf';if(U<UC)return 'bub';if(U<UTR)return 'turb';return 'pt';}
+
+/* ================= content ================= */
+const INFO_AR={
+ shell:{ar:'وعاء المفاعل',en:'Reactor vessel',d:'وعاء أسطواني عمودي تحدث فيه عملية التمييع والتفاعل. يتكون من منطقة الطبقة في الأسفل ومنطقة أوسع في الأعلى لفصل الجسيمات عن الغاز.',n:'عند التمييع: ΔP = W/A = (1 − ε_mf)(ρs − ρg)·g·L_mf'},
+ windbox:{ar:'حجرة توزيع الغاز (Windbox)',en:'Windbox (gas plenum)',d:'حجرة أسفل لوح التوزيع يدخلها الغاز أولاً فيهدأ ويتوزع ضغطه بالتساوي قبل صعوده عبر فتحات اللوح.',n:''},
+ distributor:{ar:'لوح توزيع الغاز',en:'Gas distributor plate with nozzles',d:'لوح مثقب تعلوه فوهات ذات أغطية (Bubble caps) توزع الغاز بانتظام على كامل مقطع الطبقة وتمنع سقوط الجسيمات إلى حجرة الغاز. يُصمم ليكون هبوط الضغط فيه نحو 20–30% من هبوط ضغط الطبقة.',n:''},
+ bed:{ar:'طبقة جسيمات المحفز',en:'Catalyst bed (Geldart group B)',d:'جسيمات صلبة قطرها 250 µm وكثافتها 2500 kg/m³. عند سرعة غاز أقل من سرعة التمييع الدنيا تبقى ساكنة كطبقة ثابتة، وعند بلوغها يتساوى وزن الجسيمات مع قوة سحب الغاز فتتصرف الطبقة كالسائل.',n:'Ar = dp³ρg(ρs − ρg)g/µ² ، و Re_mf = √(33.7² + 0.0408·Ar) − 33.7 (Wen & Yu)'},
+ freeboard:{ar:'منطقة الفصل العلوية (Freeboard)',en:'Freeboard and disengagement zone',d:'منطقة فوق الطبقة يتسع قطرها فتقل سرعة الغاز، فتسقط معظم الجسيمات المقذوفة من انفجار الفقاعات عائدة إلى الطبقة قبل أن تصل إلى المخرج.',n:''},
+ cyclones:{ar:'الإعصاريات الداخلية (Cyclones)',en:'Internal cyclones, Stairmand high-efficiency design',d:'يدخل الغاز المحمّل بالجسيمات من فتحة مستطيلة مماسية فيدور في دوامة خارجية تنزل على طول الجدار، فتدفع قوة الطرد المركزي الجسيمات إلى الجدار فتنزلق إلى المخروط ثم أنبوب الإعادة. ثم ينعكس الغاز في دوامة داخلية صاعدة في المركز ويخرج نظيفاً من أنبوب المخرج العلوي (Vortex finder). في وضع «مقطع» يُشق كل إعصار طولياً لترى الدوامتين والجسيمات داخله.',n:'أبعاد Stairmand: a = 0.5Dc ، b = 0.2Dc ، De = 0.5Dc ، الارتفاع الكلي 4Dc. قطر القطع (Lapple): d₅₀ = √[9µb / (2πNe·vi(ρs − ρg))]. يُصمم الإعصار عادة لسرعة دخول 15–25 m/s، وفوقها يزداد التآكل وهبوط الضغط كثيراً.'},
+ diplegs:{ar:'أنابيب إعادة الجسيمات (Diplegs)',en:'Cyclone diplegs with trickle valves',d:'أنابيب عمودية تنزل فيها الجسيمات التي جمعها الإعصار بطيئةً ومتراصة، وتنتهي مغمورة داخل الطبقة. عمود الجسيمات فيها يوازن فرق الضغط بين الطبقة والإعصار، والصمام القلاب في نهايتها يمنع صعود الغاز فيها وإلا ضعفت كفاءة الإعصار.',n:''},
+ coils:{ar:'ملفات التبريد الغاطسة',en:'Immersed cooling coils',d:'أنابيب يجري فيها ماء التبريد داخل الطبقة لإزالة حرارة التفاعل. معامل انتقال الحرارة في الطبقة المميعة كبير جداً بسبب حركة الجسيمات، فتبقى حرارة الطبقة متجانسة تقريباً.',n:''},
+ gasIn:{ar:'منظومة تغذية الغاز',en:'Gas supply: blower, flow meter and control valve',d:'مروحة تدفع الغاز المتفاعل إلى حجرة التوزيع، مع مقياس تدفق وصمام تحكم يُضبط بهما السرعة السطحية U للغاز.',n:'U = Q / A (السرعة السطحية)'},
+ gasOut:{ar:'مخرج الغاز',en:'Gas outlet',d:'يخرج منه الغاز الناتج بعد مروره بالإعصاريات، ويُرسل إلى وحدات الفصل والتنقية.',n:''},
+ feed:{ar:'تغذية المحفز',en:'Catalyst feed hopper and rotary valve',d:'قادوس يخزن جسيمات المحفز الجديدة، وصمام دوار يغذيها إلى الطبقة بمعدل منتظم لتعويض المفقود.',n:''},
+ withdraw:{ar:'سحب المحفز المستهلك',en:'Spent catalyst withdrawal',d:'خط في أسفل الطبقة مع صمام منزلق لسحب جزء من المحفز المستهلك أو للحفاظ على ارتفاع الطبقة.',n:''},
+ dp:{ar:'مرسل فرق الضغط عبر الطبقة',en:'Bed differential pressure transmitter',d:'أهم جهاز لتحديد سرعة التمييع الدنيا: يرتفع فرق الضغط مع السرعة في الطبقة الثابتة، ثم يثبت عند قيمة وزن الطبقة على مساحة المقطع بعد التمييع.',n:''},
+ thermo:{ar:'مجسات درجة الحرارة',en:'Temperature sensors',d:'مجسات على ارتفاعات مختلفة تؤكد تجانس الحرارة في الطبقة المميعة، وتكشف البقع الساخنة إن ضعف التمييع.',n:''},
+ sight:{ar:'زجاجتا الرؤية',en:'Sight glasses',d:'نافذتان لمراقبة سلوك الطبقة وحركة الفقاعات أثناء التشغيل.',n:''},
+ skirt:{ar:'التنورة الداعمة',en:'Support skirt',d:'تحمل المفاعل وتنقل وزنه إلى الأساس.',n:''},
+ platforms:{ar:'المنصات والسلّم',en:'Platforms and ladder',d:'منصات خدمة بحواجز أمان يُصعد إليها بسلّم.',n:''}
+};
+const INFO_EN={
+ shell:{ar:'Reactor vessel',en:'وعاء المفاعل',d:'A vertical vessel in which fluidization and reaction take place: the bed zone at the bottom and a wider zone above for separating particles from the gas.',n:'Once fluidized: ΔP = W/A = (1 − ε_mf)(ρs − ρg)·g·L_mf'},
+ windbox:{ar:'Windbox (gas plenum)',en:'حجرة توزيع الغاز',d:'A chamber under the distributor that the gas enters first; it settles there and its pressure evens out before it rises through the plate.',n:''},
+ distributor:{ar:'Gas distributor plate',en:'لوح توزيع الغاز',d:'A perforated plate topped with capped nozzles that spreads gas evenly over the bed cross-section and stops particles falling into the windbox. It is designed for a pressure drop of about 20–30% of the bed pressure drop.',n:''},
+ bed:{ar:'Catalyst bed (Geldart group B)',en:'طبقة جسيمات المحفز',d:'Solid particles 250 µm in diameter with density 2500 kg/m³. Below the minimum fluidization velocity they stay still as a fixed bed; at that velocity the drag of the gas balances the weight of the particles and the bed behaves like a liquid.',n:'Ar = dp³ρg(ρs − ρg)g/µ², Re_mf = √(33.7² + 0.0408·Ar) − 33.7 (Wen & Yu)'},
+ freeboard:{ar:'Freeboard and disengagement zone',en:'منطقة الفصل العلوية',d:'The region above the bed widens so the gas slows down, and most particles thrown up by bursting bubbles fall back into the bed before reaching the outlet.',n:''},
+ cyclones:{ar:'Internal cyclones (Stairmand design)',en:'الإعصاريات الداخلية',d:'Particle-laden gas enters through a tangential rectangular inlet and forms an outer vortex spiralling down the wall; centrifugal force throws the particles to the wall, where they slide into the cone and the dipleg. The gas then reverses into an inner vortex rising in the centre and leaves clean through the vortex finder. In Cutaway mode each cyclone is split lengthwise so you can see both vortices and the particles inside.',n:'Stairmand proportions: a = 0.5Dc, b = 0.2Dc, De = 0.5Dc, overall height 4Dc. Cut size (Lapple): d₅₀ = √[9µb / (2πNe·vi(ρs − ρg))]. Cyclones are usually designed for inlet velocities of 15–25 m/s; above that, erosion and pressure drop rise sharply.'},
+ diplegs:{ar:'Cyclone diplegs',en:'أنابيب إعادة الجسيمات',d:'Vertical pipes in which the collected particles move down slowly as a dense column and discharge below the bed surface. The solids column balances the pressure difference between bed and cyclone, and the trickle valve at the end stops gas rising up the dipleg, which would ruin cyclone efficiency.',n:''},
+ coils:{ar:'Immersed cooling coils',en:'ملفات التبريد الغاطسة',d:'Tubes carrying cooling water inside the bed to remove the heat of reaction. Particle motion gives very high heat-transfer coefficients, so the bed stays almost uniform in temperature.',n:''},
+ gasIn:{ar:'Gas supply',en:'منظومة تغذية الغاز',d:'A blower pushes the reacting gas into the windbox, with a flow meter and control valve that set the superficial gas velocity U.',n:'U = Q / A (superficial velocity)'},
+ gasOut:{ar:'Gas outlet',en:'مخرج الغاز',d:'The product gas leaves here after passing through the cyclones and goes on to separation and purification.',n:''},
+ feed:{ar:'Catalyst feed',en:'تغذية المحفز',d:'A hopper holding fresh catalyst and a rotary valve that feeds it into the bed at a steady rate to replace losses.',n:''},
+ withdraw:{ar:'Spent catalyst withdrawal',en:'سحب المحفز المستهلك',d:'A line at the bottom of the bed with a slide valve for drawing off spent catalyst or holding the bed level.',n:''},
+ dp:{ar:'Bed differential pressure transmitter',en:'مرسل فرق الضغط',d:'The key instrument for finding the minimum fluidization velocity: pressure drop rises with velocity in a fixed bed, then levels off at bed weight per unit area once the bed is fluidized.',n:''},
+ thermo:{ar:'Temperature sensors',en:'مجسات درجة الحرارة',d:'Sensors at several heights confirm the uniform temperature of a fluidized bed and reveal hot spots if fluidization is poor.',n:''},
+ sight:{ar:'Sight glasses',en:'زجاجتا الرؤية',d:'Windows for watching bed behaviour and bubble motion during operation.',n:''},
+ skirt:{ar:'Support skirt',en:'التنورة الداعمة',d:'Carries the reactor and transfers its weight to the foundation.',n:''},
+ platforms:{ar:'Platforms and ladder',en:'المنصات والسلّم',d:'Service platforms with guard rails, reached by a ladder.',n:''}
+};
+let INFO=INFO_AR;
+const ORDER=['shell','windbox','distributor','bed','freeboard','cyclones','diplegs','coils','gasIn','gasOut','feed','withdraw','dp','thermo','sight','skirt','platforms'];
+const NUM={};ORDER.forEach((k,i)=>NUM[k]=i+1);
+const INTERNAL=['distributor','bed','cyclones','diplegs','coils'];
+
+const T={
+ ar:{title:'محاكي مفاعل الطبقة المميعة ثلاثي الأبعاد',h1:'مفاعل الطبقة المميعة',sub:'Fluidized Bed Reactor',
+  opH:'السرعة السطحية للغاز U',j1:'طبقة ثابتة',j2:'U = U_mf',j3:'فقاعية',j4:'مضطربة',j5:'نقل هوائي',dUc:'بداية التمييع المضطرب U_c',dUtr:'سرعة النقل U_tr',dUmfE:'U_mf من Ergun (ε_mf = 0.45) للمقارنة',dDb:'قطر الفقاعة في منتصف الطبقة',cycH:'أداء الإعصار',dVi:'سرعة الدخول vi',dD50:'قطر القطع d₅₀',dEf1:'كفاءة جمع جسيمات 250 µm',dEf2:'كفاءة جمع الدقائق 10 µm',dCdp:'هبوط الضغط في الإعصار',
+  dReg:'نظام التمييع',dUmf:'سرعة التمييع الدنيا U_mf',dRatio:'U / U_mf',dUt:'السرعة الحدية للجسيم U_t',dDP:'هبوط الضغط عبر الطبقة',dH:'ارتفاع الطبقة',dAr:'عدد أرخميدس Ar',
+  chH:'هبوط الضغط مقابل سرعة الغاز',chX:'U / U_mf',chY:'ΔP (kPa)',
+  fine:'جسيمات كروية dp = 250 µm و ρs = 2500 kg/m³ في هواء (ρg = 1.2 kg/m³ ، µ = 1.8×10⁻⁵ Pa·s)، و ε_mf = 0.45 وارتفاع الطبقة عند التمييع 1.2 m وقطر المفاعل 1.2 m. المراجع: U_mf من Wen & Yu (1966)، و U_t من Haider & Levenspiel (1989)، وبداية التمييع المضطرب U_c من Bi & Grace (1995)، وسرعة النقل U_tr من Bi, Grace & Zhu (1995)، وقطر الفقاعات من Mori & Wen (1975)، وتمدد الطبقة من نموذج Kunii & Levenspiel، وهبوط الضغط في الطبقة الثابتة من Ergun، والإعصاريات بأبعاد Stairmand مع كفاءة Lapple.',
+  credit:'إعداد: <b>د. ضياء جمعة جاسم</b> (Dheyaa J. Jasim)<br>قسم الهندسة الكيمياوية والصناعات النفطية، كلية العمارة الجامعة<br>© 2026 د. ضياء جمعة جاسم. جميع الحقوق محفوظة. للاستخدام التعليمي؛ لا يجوز إعادة النشر أو البيع دون إذن كتابي.',
+  who:'إعداد: د. ضياء جمعة جاسم',whoAlt:'Dr. Dheyaa J. Jasim',org:'قسم الهندسة الكيمياوية والصناعات النفطية، كلية العمارة الجامعة',
+  lgS:'جسيمات المحفز',lgG:'الغاز: متفاعل ← ناتج',lgB:'فقاعات الغاز',lgW:'ماء التبريد',
+  hint:'اسحب بالزر الأيسر للتدوير وبالزر الأيمن لتحريك الجهاز، واستخدم العجلة للتكبير والتصغير، وانقر على أي جزء لمعرفة وظيفته.',
+  dRot:'تدوير',dPan:'تحريك',full:'كامل',cut:'مقطع',ghost:'شفاف',iso:'منظور',front:'أمامي',top:'علوي',other:'English',otherLang:'en',
+  pick:'<h2>من الطبقة الثابتة إلى الطبقة المميعة</h2><p>اضغط «تشغيل الغاز» ثم ارفع السرعة السطحية تدريجياً بالمنزلق وراقب الطبقة ومنحنى هبوط الضغط:</p><ul><li><b>أقل من U_mf:</b> الجسيمات ساكنة والغاز يتخللها، وهبوط الضغط يزداد مع السرعة.</li><li><b>عند U_mf:</b> يتساوى هبوط الضغط مع وزن الطبقة، فتبدأ الجسيمات بالاهتزاز وتتمدد الطبقة قليلاً.</li><li><b>فوق U_mf:</b> تظهر الفقاعات، ويبقى هبوط الضغط ثابتاً مهما زادت السرعة.</li><li><b>فوق U_c ثم U_tr:</b> يصبح التمييع مضطرباً ثم تُحمل معظم الجسيمات إلى الإعصاريات وتعود عبر أنابيب الإعادة.</li></ul><p class="fine">انقر على أي جزء أو رقمه لمعرفة وظيفته.</p>',
+  focus:'تقريب الكاميرا من الجزء',clear:'إلغاء التحديد',explode:'تفكيك الأجزاء',assemble:'تجميع الأجزاء',run:'تشغيل الغاز',stopRun:'إيقاف الغاز',
+  reg:{off:['الغاز متوقف','اضغط «تشغيل الغاز»','#5b6873'],fixed:['طبقة ثابتة (Fixed bed)','U < U_mf: الغاز يتخلل الجسيمات الساكنة','#6b7a86'],mf:['التمييع الأدنى (Minimum fluidization)','U ≈ U_mf: وزن الطبقة = قوة السحب','#7a4fc0'],
+   bub:['تمييع فقاعي (Bubbling)','U_mf < U < U_c: فقاعات تصعد وتنفجر عند السطح','#1f78c8'],turb:['تمييع مضطرب (Turbulent)','U_c < U < U_tr: فراغات صغيرة غير منتظمة وسطح غير واضح وحمل متزايد للجسيمات','#c0621c'],
+   pt:['تمييع سريع / نقل هوائي','U > U_tr: معظم الجسيمات تُحمل مع الغاز وتعود عبر الإعصاريات','#b3362b']},
+  labels:'الملصقات: ',LT:{num:'أرقام',name:'أسماء',off:'مخفية'}},
+ en:{title:'3D Fluidized Bed Reactor Simulator',h1:'Fluidized Bed Reactor',sub:'مفاعل الطبقة المميعة',
+  opH:'Superficial gas velocity U',j1:'Fixed bed',j2:'U = U_mf',j3:'Bubbling',j4:'Turbulent',j5:'Transport',dUc:'Turbulent onset U_c',dUtr:'Transport velocity U_tr',dUmfE:'U_mf from Ergun (ε_mf = 0.45), for comparison',dDb:'Bubble diameter at mid-bed',cycH:'Cyclone performance',dVi:'Inlet velocity vi',dD50:'Cut size d₅₀',dEf1:'Collection efficiency, 250 µm particles',dEf2:'Collection efficiency, 10 µm fines',dCdp:'Cyclone pressure drop',
+  dReg:'Fluidization regime',dUmf:'Minimum fluidization velocity U_mf',dRatio:'U / U_mf',dUt:'Particle terminal velocity U_t',dDP:'Pressure drop across the bed',dH:'Bed height',dAr:'Archimedes number Ar',
+  chH:'Bed pressure drop against gas velocity',chX:'U / U_mf',chY:'ΔP (kPa)',
+  fine:'Spherical particles dp = 250 µm and ρs = 2500 kg/m³ in air (ρg = 1.2 kg/m³, µ = 1.8×10⁻⁵ Pa·s), ε_mf = 0.45 bed height at minimum fluidization 1.2 m and column diameter 1.2 m. Sources: U_mf from Wen & Yu (1966), U_t from Haider & Levenspiel (1989), turbulent onset U_c from Bi & Grace (1995), transport velocity U_tr from Bi, Grace & Zhu (1995), bubble size from Mori & Wen (1975), bed expansion from the Kunii–Levenspiel model, fixed-bed pressure drop from Ergun, and cyclones with Stairmand proportions and Lapple efficiency.',
+  credit:'Prepared by <b>Dr. Dheyaa J. Jasim</b><br>Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College<br>© 2026 Dr. Dheyaa J. Jasim. All rights reserved. For educational use; no republication or sale without written permission.',
+  who:'Prepared by Dr. Dheyaa J. Jasim',whoAlt:'د. ضياء جمعة جاسم',org:'Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College',
+  lgS:'Catalyst particles',lgG:'Gas: reactant → product',lgB:'Gas bubbles',lgW:'Cooling water',
+  hint:'Left-drag to rotate, right-drag to move the unit, scroll to zoom in and out, and click any part to see its function.',
+  dRot:'Rotate',dPan:'Move',full:'Whole',cut:'Cutaway',ghost:'X-ray',iso:'Perspective',front:'Front',top:'Top',other:'العربية',otherLang:'ar',
+  pick:'<h2>From fixed bed to fluidized bed</h2><p>Press “Start gas”, then raise the superficial velocity step by step with the slider and watch the bed and the pressure-drop curve:</p><ul><li><b>Below U_mf:</b> particles stay still and gas percolates through; pressure drop rises with velocity.</li><li><b>At U_mf:</b> pressure drop equals bed weight per area, particles start to vibrate and the bed expands slightly.</li><li><b>Above U_mf:</b> bubbles appear and pressure drop stays constant however much the velocity rises.</li><li><b>Above U_c and then U_tr:</b> fluidization turns turbulent, then most particles are carried to the cyclones and returned through the diplegs.</li></ul><p class="fine">Click any part or its number to see its function.</p>',
+  focus:'Zoom to this part',clear:'Clear selection',explode:'Explode parts',assemble:'Assemble parts',run:'Start gas',stopRun:'Stop gas',
+  reg:{off:['Gas off','Press “Start gas”','#5b6873'],fixed:['Fixed bed','U < U_mf: gas percolates through still particles','#6b7a86'],mf:['Minimum fluidization','U ≈ U_mf: bed weight = gas drag','#7a4fc0'],
+   bub:['Bubbling fluidization','U_mf < U < U_c: bubbles rise and burst at the surface','#1f78c8'],turb:['Turbulent fluidization','U_c < U < U_tr: small irregular voids, diffuse surface, rising carry-over','#c0621c'],
+   pt:['Fast fluidization / transport','U > U_tr: most particles are carried out and returned by the cyclones','#b3362b']},
+  labels:'Labels: ',LT:{num:'numbers',name:'names',off:'hidden'}}
+};
+
+/* ================= renderer ================= */
+const deg=Math.PI/180,V3=THREE.Vector3,V2=THREE.Vector2,UP=new V3(0,1,0);
+const P=(r,a,y)=>new V3(r*Math.cos(a*deg),y,r*Math.sin(a*deg));
+const RAD=a=>new V3(Math.cos(a*deg),0,Math.sin(a*deg));
+const C=h=>new THREE.Color(h).convertSRGBToLinear();
+const R1=.6,R2=.95,YD=1.8,YC0=6.2,YC1=6.9,YT=9.0;   /* bed radius, freeboard radius, distributor, cone, top tangent */
+const stage=document.getElementById('stage'),canvas=document.getElementById('c');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.localClippingEnabled=true;renderer.setClearColor(0,0);
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(36,1,.05,200);
+const HOME={pos:new V3(9,7,12.5),tgt:new V3(0,4.3,0)};camera.position.copy(HOME.pos);
+const controls=new THREE.OrbitControls(camera,canvas);
+controls.target.copy(HOME.tgt);controls.enableDamping=true;controls.dampingFactor=.08;controls.minDistance=1.2;controls.maxDistance=40;
+controls.enablePan=true;controls.screenSpacePanning=true;controls.panSpeed=1.1;
+controls.mouseButtons={LEFT:THREE.MOUSE.ROTATE,MIDDLE:THREE.MOUSE.DOLLY,RIGHT:THREE.MOUSE.PAN};
+controls.touches={ONE:THREE.TOUCH.ROTATE,TWO:THREE.TOUCH.DOLLY_PAN};
+canvas.addEventListener('contextmenu',e=>e.preventDefault());controls.update();
+(function(){const pm=new THREE.PMREMGenerator(renderer),es=new THREE.Scene();
+ const g=new THREE.SphereGeometry(20,48,24),pos=g.attributes.position,cols=[];
+ const lo=new THREE.Color(0x4a525a),mid=new THREE.Color(0xb8c2ca),hi=new THREE.Color(0xf2f6f9);
+ for(let i=0;i<pos.count;i++){const y=pos.getY(i)/20;const c=y<0?lo.clone().lerp(mid,y+1):mid.clone().lerp(hi,y);cols.push(c.r,c.g,c.b);}
+ g.setAttribute('color',new THREE.Float32BufferAttribute(cols,3));es.add(new THREE.Mesh(g,new THREE.MeshBasicMaterial({side:THREE.BackSide,vertexColors:true})));
+ const pl=(w,h,p,k)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(k,k,k),side:THREE.DoubleSide}));m.position.copy(p);m.lookAt(0,0,0);es.add(m);};
+ pl(14,4,new V3(0,14,6),3.2);pl(6,10,new V3(-15,4,-4),2.2);pl(6,10,new V3(15,5,2),1.6);
+ scene.environment=pm.fromScene(es,.04).texture;pm.dispose();})();
+scene.add(new THREE.HemisphereLight(0xeef3f7,0x3a4550,.55));
+const sun=new THREE.DirectionalLight(0xffffff,1.2);sun.position.set(8,16,10);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);
+Object.assign(sun.shadow.camera,{left:-8,right:8,top:11,bottom:-5,near:1,far:50});sun.shadow.camera.updateProjectionMatrix();sun.shadow.bias=-.0004;sun.shadow.normalBias=.03;scene.add(sun);
+const fill=new THREE.DirectionalLight(0xdfe8ff,.35);fill.position.set(-8,5,-6);scene.add(fill);
+
+
+const std=(hex,met,rough,extra)=>new THREE.MeshStandardMaterial(Object.assign({color:C(hex),metalness:met,roughness:rough,side:THREE.DoubleSide},extra||{}));
+const M={steel:std(0xd4dbe0,.9,.25),steelDark:std(0x8e989f,.85,.36),brushed:std(0xb9c2c9,.85,.4),
+ paint:std(0x2f5f86,.25,.48),paintGrey:std(0x5b6873,.35,.55),yellowPaint:std(0xd9a91c,.2,.5),black:std(0x2b3035,.3,.6),
+ red:std(0xb3362b,.2,.42),orange:std(0xc9772c,.2,.45),blue:std(0x2f7fe6,.2,.45),purple:std(0x7b2fbf,.2,.45),grey:std(0x9aa3aa,.2,.5),white:std(0xf3f3ee,0,.5),
+ ceramic:std(0xd8d2c6,0,.75),saddleC:std(0xeae6dc,0,.6),gasBand:std(0xff6a00,.2,.45),cyan:std(0x14c8f0,.2,.45),navy:std(0x1a2cb0,.2,.45),glass:std(0x9fd6ea,0,.05,{transparent:true,opacity:.42})};
+const meshTex=(function(){const cv=document.createElement('canvas');cv.width=cv.height=64;const x=cv.getContext('2d');x.fillStyle='#8f989f';x.fillRect(0,0,64,64);
+ x.strokeStyle='#d9dfe3';x.lineWidth=1.2;for(let i=-64;i<128;i+=5){x.beginPath();x.moveTo(i,0);x.lineTo(i+64,64);x.stroke();x.beginPath();x.moveTo(i,64);x.lineTo(i+64,0);x.stroke();}
+ const t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(6,6);t.encoding=THREE.sRGBEncoding;return t;})();
+M.mesh=new THREE.MeshStandardMaterial({map:meshTex,metalness:.6,roughness:.6,side:THREE.DoubleSide});
+
+function add(g,geo,mat,pos){const m=new THREE.Mesh(geo,mat);if(pos)m.position.copy(pos);g.add(m);return m;}
+function cylY(g,r,y0,y1,mat,x,z,seg,open){return add(g,new THREE.CylinderGeometry(r,r,y1-y0,seg||40,1,!!open),mat,new V3(x||0,(y0+y1)/2,z||0));}
+function pipe(g,p1,p2,r,mat,seg){const d=new V3().subVectors(p2,p1),L=d.length();const m=add(g,new THREE.CylinderGeometry(r,r,L,seg||24),mat);m.position.copy(p1).addScaledVector(d,.5);m.quaternion.setFromUnitVectors(UP,d.normalize());return m;}
+function ball(g,p,r,mat){return add(g,new THREE.SphereGeometry(r,24,16),mat,p);}
+function box(g,w,h,d,p,mat,ry){const m=add(g,new THREE.BoxGeometry(w,h,d),mat,p);if(ry)m.rotation.y=ry;return m;}
+function flange(g,p,dir,rd,n,mat){const f=new THREE.Group();f.position.copy(p);f.quaternion.setFromUnitVectors(UP,dir.clone().normalize());
+ add(f,new THREE.CylinderGeometry(rd,rd,.035,40),mat||M.steel);const bg=new THREE.CylinderGeometry(.01,.01,.07,8);
+ for(let i=0;i<n;i++){const a=(i+.5)/n*Math.PI*2;add(f,bg,M.steelDark,new V3(Math.cos(a)*rd*.8,0,Math.sin(a)*rd*.8));}g.add(f);return f;}
+const FLOWS=[];
+function line(g,pts,r,mat,colorFn,speed){for(let i=0;i<pts.length-1;i++)pipe(g,pts[i],pts[i+1],r,mat);for(let i=1;i<pts.length-1;i++)ball(g,pts[i],r,mat);if(colorFn)FLOWS.push({pts,colorFn,speed:speed||.9});}
+function band(g,p1,p2,r,mat){pipe(g,p1,p2,r,mat);}
+function arrow(g,p,dir,mat){const a=add(g,new THREE.ConeGeometry(.07,.16,20),mat,p);a.quaternion.setFromUnitVectors(UP,dir.clone().normalize());return a;}
+function valve(g,p,dir,r){ball(g,p,r*1.9,M.steel);const d=dir.clone().normalize();flange(g,p.clone().addScaledVector(d,r*2.2),d,r*2,6);flange(g,p.clone().addScaledVector(d,-r*2.2),d,r*2,6);
+ cylY(g,r*.35,p.y,p.y+r*4,M.steelDark,p.x,p.z,12);box(g,r*7,r*.5,r*.8,new V3(p.x,p.y+r*4,p.z),M.red);}
+function ctrlValve(g,p,dir,r){ball(g,p,r*1.9,M.steel);const d=dir.clone().normalize();flange(g,p.clone().addScaledVector(d,r*2.2),d,r*2,6);flange(g,p.clone().addScaledVector(d,-r*2.2),d,r*2,6);
+ const up=Math.abs(d.y)>.9?new V3(1,0,0):UP;const top=p.clone().addScaledVector(up,r*5);pipe(g,p,top,r*.4,M.steelDark,12);
+ const dm=add(g,new THREE.SphereGeometry(r*3,28,14,0,Math.PI*2,0,Math.PI/2),M.paint,top);dm.quaternion.setFromUnitVectors(UP,up);dm.scale.y=.55;}
+function pump(g,x,z,y,mat){box(g,.34,.06,.95,new V3(x,.03,z+.3),M.paintGrey);
+ const v=add(g,new THREE.CylinderGeometry(.17,.17,.13,32),mat,new V3(x,y,z));v.rotation.x=Math.PI/2;
+ pipe(g,new V3(x,y,z-.06),new V3(x,y,z-.2),.05,M.steel);flange(g,new V3(x,y,z-.2),new V3(0,0,1),.1,4);pipe(g,new V3(x,y+.1,z),new V3(x,y+.24,z),.045,M.steel);
+ const br=add(g,new THREE.CylinderGeometry(.07,.09,.18,20),M.paintGrey,new V3(x,y,z+.16));br.rotation.x=Math.PI/2;
+ const cp=add(g,new THREE.CylinderGeometry(.05,.05,.07,16),M.orange,new V3(x,y,z+.29));cp.rotation.x=Math.PI/2;
+ const mo=add(g,new THREE.CylinderGeometry(.14,.14,.4,28),mat,new V3(x,y,z+.53));mo.rotation.x=Math.PI/2;
+ const fc=add(g,new THREE.CylinderGeometry(.13,.14,.08,28),M.paintGrey,new V3(x,y,z+.76));fc.rotation.x=Math.PI/2;
+ box(g,.1,.1,.12,new V3(x,y+.17,z+.5),mat);[-1,1].forEach(s=>box(g,.05,y-.1,.3,new V3(x+s*.1,(y-.1)/2+.06,z+.5),M.paintGrey));box(g,.08,y-.12,.08,new V3(x,(y-.12)/2+.06,z),M.paintGrey);}
+function vesselProfile(r,hd,y0,y1){const pts=[],N=32;for(let i=0;i<=N;i++){const t=i/N*Math.PI/2;pts.push(new V2(Math.max(1e-4,r*Math.sin(t)),y0-hd*Math.cos(t)));}
+ pts.push(new V2(r,y1));for(let i=1;i<=N;i++){const t=i/N*Math.PI/2;pts.push(new V2(Math.max(1e-4,r*Math.cos(t)),y1+hd*Math.sin(t)));}return pts;}
+
+M.sand=std(0xe6b35c,0,.8);M.coil=std(0xbfd4e2,.2,.15,{transparent:true,opacity:.3,depthWrite:false});M.coilEnd=std(0xc0c8ce,.85,.3);M.blue=std(0x1d5fd1,.2,.45);M.lblue=std(0x7fb8f0,.2,.45);M.hopper=std(0x6b7a86,.4,.5);
+
+const EG={},EOFF={column:new V3(),cyclone:new V3(0,3.4,0),coils:new V3(0,0,2.4),dist:new V3(0,0,-2.4),gas:new V3(-2.2,0,0),solids:new V3(1.8,0,0),ground:new V3()};
+for(const k in EOFF){EG[k]=new THREE.Group();scene.add(EG[k]);}
+const PLANES={col:{p:new THREE.Plane(),c:new V3(0,0,0),eg:'column'},dist:{p:new THREE.Plane(),c:new V3(0,0,0),eg:'dist'},cyA:{p:new THREE.Plane(),c:new V3(.5,0,0),eg:'cyclone'},cyB:{p:new THREE.Plane(),c:new V3(-.5,0,0),eg:'cyclone'}};
+const parts={};
+function part(key,eg,anchor,plane){const g=new THREE.Group();EG[eg].add(g);parts[key]={key,group:g,anchor,plane,mats:[]};return g;}
+const GHOST=['shell','windbox','freeboard','skirt','gasIn','gasOut','cyclones','diplegs'];
+
+{const floor=new THREE.Mesh(new THREE.PlaneGeometry(80,80),new THREE.ShadowMaterial({opacity:.2}));floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;EG.ground.add(floor);
+ const gh=new THREE.GridHelper(24,48,0x7d8d99,0x7d8d99);gh.material.transparent=true;gh.material.opacity=.2;gh.position.y=.003;EG.ground.add(gh);
+ const pad=new THREE.Mesh(new THREE.CylinderGeometry(1.05,1.05,.08,48),std(0xa7a9a6,0,.9));pad.position.y=.04;pad.receiveShadow=true;EG.ground.add(pad);}
+
+/* ================= vessel ================= */
+function prof(r,dr){ /* windbox bottom head -> bed section -> cone -> freeboard -> top head */
+ const p=[],N=24;for(let i=0;i<=N;i++){const t=i/N*Math.PI/2;p.push(new V2(Math.max(1e-4,(r)*Math.sin(t)),1.3-(.3-dr)*Math.cos(t)));}
+ p.push(new V2(r,YC0));p.push(new V2(R2-(R1-r),YC1));p.push(new V2(R2-(R1-r),YT));
+ for(let i=1;i<=N;i++){const t=i/N*Math.PI/2;p.push(new V2(Math.max(1e-4,(R2-(R1-r))*Math.cos(t)),YT+(.35-dr)*Math.sin(t)));}return p;}
+{const g=part('shell','column',P(.62,15,4.6),'col');
+ add(g,new THREE.LatheGeometry(prof(R1,0),96),M.steel);add(g,new THREE.LatheGeometry(prof(R1-.018,.018),96),M.brushed);
+ cylY(g,R1+.02,YD-.03,YD+.03,M.steelDark,0,0,72,true);
+ pipe(g,new V3(0,YT+.3,0),new V3(0,YT+.6,0),.16,M.steel);flange(g,new V3(0,YT+.6,0),UP,.26,10);}
+{const g=part('windbox','column',P(.62,200,1.45),'col');
+ pipe(g,P(.55,180,1.5),P(.85,180,1.5),.16,M.steel);flange(g,P(.85,180,1.5),RAD(180),.26,10);
+ const lb=add(g,new THREE.CylinderGeometry(R1+.004,R1+.004,.5,72,1,true),M.jacket||M.steelDark,new V3(0,1.55,0));}
+{const g=part('freeboard','column',P(.97,60,7.9),'col');
+ cylY(g,R2+.01,YC1-.02,YC1+.02,M.steelDark,0,0,72,true);cylY(g,R2+.01,YT-.02,YT+.02,M.steelDark,0,0,72,true);}
+{const g=part('distributor','dist',new V3(.3,YD+.08,.2),'dist');
+ const plate=add(g,new THREE.CylinderGeometry(R1-.01,R1-.01,.03,64),M.steelDark,new V3(0,YD-.015,0));
+ for(let x=-.5;x<=.5;x+=.125)for(let z=-.5;z<=.5;z+=.125){if(x*x+z*z>.5*.5)continue;cylY(g,.012,YD,YD+.06,M.brushed,x,z,8);cylY(g,.028,YD+.06,YD+.075,M.brushed,x,z,12);}}
+{const g=part('bed','column',new V3(-.25,YD+.55,.3));
+ const env=add(g,new THREE.CylinderGeometry(R1-.03,R1-.03,LMF,48,1,true),new THREE.MeshBasicMaterial({color:0xe6b35c,transparent:true,opacity:0,depthWrite:false,side:THREE.DoubleSide}),new V3(0,YD+LMF/2,0));env.userData.bedEnv=1;}
+/* cyclones and diplegs */
+const CYC=[[.5,0],[-.5,0]];
+const CYT=8.86,CYB=CYT-4*DC,CYM=CYT-1.5*DC,RC=DC/2,RCB=.375*DC/2; /* roof, cone tip, cylinder/cone junction, radii */
+const cycWall=y=>y>=CYM?RC:RCB+(RC-RCB)*(y-CYB)/(CYM-CYB);
+{const g=part('cyclones','cyclone',new V3(.5,8.5,.3));
+ CYC.forEach(([x,z],ci)=>{const ms=M.steel.clone(),mb=M.brushed.clone();ms.userData.plane=mb.userData.plane=ci?'cyB':'cyA';
+  cylY(g,RC,CYM,CYT,ms,x,z,48,true);add(g,new THREE.CylinderGeometry(RC,RCB,CYM-CYB,48,1,true),ms,new V3(x,(CYM+CYB)/2,z));
+  const roof=add(g,new THREE.RingGeometry(CDE/2,RC,48),ms,new V3(x,CYT,z));roof.rotation.x=-Math.PI/2;
+  cylY(g,CDE/2,CYT-.5*DC,CYT+.12,mb,x,z,32,true); /* vortex finder */
+  const s=Math.sign(x);const dx=x+s*(RC-CB/2);
+  /* tangential rectangular inlet duct: open mouth facing the freeboard */
+  [[-1],[1]].forEach(([k])=>{const w=add(g,new THREE.PlaneGeometry(.42,CA),ms,new V3(dx+k*CB/2,CYT-CA/2,z-.21));w.rotation.y=Math.PI/2;});
+  [CYT,CYT-CA].forEach(y=>{const w=add(g,new THREE.PlaneGeometry(CB,.42),ms,new V3(dx,y,z-.21));w.rotation.x=Math.PI/2;});
+  cylY(g,RC+.012,CYM-.02,CYM+.02,ms,x,z,48,true);});
+ cylY(g,.26,CYT+.12,CYT+.2,M.brushed,0,0,32);pipe(g,new V3(-.5,CYT+.16,0),new V3(.5,CYT+.16,0),.11,M.brushed);pipe(g,new V3(0,CYT+.16,0),new V3(0,YT+.3,0),.13,M.brushed);}
+{const g=part('diplegs','cyclone',new V3(.62,5.0,.1));
+ CYC.forEach(([x,z],ci)=>{const mb=M.brushed.clone();mb.userData.plane=ci?'cyB':'cyA';const s=Math.sign(x);
+  cylY(g,.055,2.6,CYB+.02,mb,x,z,20,true);
+  const fl=add(g,new THREE.CylinderGeometry(.07,.07,.012,20),M.steelDark,new V3(x+s*.035,2.57,z));fl.rotation.z=s*.55;
+  cylY(g,.075,2.62,2.66,M.steelDark,x,z,20);});}
+/* cooling coils */
+{const g=part('coils','coils',P(.42,300,3.2));
+ [45,135,225,315].forEach(a=>{const a1=a-9,a2=a+9;
+  line(g,[P(1.15,a1,3.7),P(.4,a1,3.7),P(.4,a1,2.05),P(.4,a2,2.05),P(.4,a2,3.7),P(1.15,a2,3.7)],.04,M.coil,()=>COOLC,.55);
+  flange(g,P(1.15,a1,3.7),RAD(a1),.075,4,M.coilEnd);flange(g,P(1.15,a2,3.7),RAD(a2),.075,4,M.coilEnd);
+  pipe(g,P(.97,a1,3.7),P(1.07,a1,3.7),.043,M.blue);pipe(g,P(.97,a2,3.7),P(1.07,a2,3.7),.043,M.lblue);
+  arrow(g,P(1.3,a1,3.7),RAD(a1).negate(),M.blue);arrow(g,P(1.3,a2,3.7),RAD(a2),M.lblue);});
+}
+{const g=part('thermo','column',P(.8,30,3.4));[2.2,2.9,3.6,5.2].forEach(y=>{pipe(g,P(.3,30,y),P(.72,30,y),.016,M.steel);flange(g,P(.64,30,y),RAD(30),.055,4);pipe(g,P(.72,30,y),P(.84,30,y),.05,M.paintGrey);});}
+{const g=part('sight','column',P(.8,90,3.0));[2.5,3.6].forEach(y=>{pipe(g,P(.58,90,y),P(.7,90,y),.1,M.steel);flange(g,P(.71,90,y),RAD(90),.16,8);const gl=pipe(g,P(.725,90,y),P(.735,90,y),.09,M.glass);});}
+{const g=part('dp','column',P(1.0,330,4.2));
+ [1.95,6.0].forEach(y=>{pipe(g,P(.58,330,y),P(.9,330,y),.018,M.steel);});
+ const p=P(.9,330,0);pipe(g,new V3(p.x,1.95,p.z),new V3(p.x,3.95,p.z),.012,M.steel);pipe(g,new V3(p.x,6.0,p.z),new V3(p.x,4.2,p.z),.012,M.steel);
+ box(g,.18,.24,.14,new V3(p.x+.05,4.08,p.z-.03),M.paint);const d=add(g,new THREE.CylinderGeometry(.06,.06,.03,24),M.white,P(1.02,330,4.1));d.rotation.z=Math.PI/2;d.rotation.y=-330*deg;}
+{const g=part('skirt','column',P(.62,60,.5),'col');cylY(g,R1,.08,1.05,M.paintGrey,0,0,64,true);cylY(g,.74,.08,.12,M.paintGrey,0,0,64);
+ const d=add(g,new THREE.CircleGeometry(.18,32),M.black,P(.603,70,.5));d.lookAt(P(3,70,.5));d.scale.y=1.5;}
+{const g=part('platforms','column',P(1.35,130,5.8));const a0=100,a1=200;
+ [[5.2,R1],[8.6,R2]].forEach(([y,ri])=>{const ro=ri+.6;const pl=add(g,new THREE.RingGeometry(ri+.02,ro,64,1,a0*deg,(a1-a0)*deg),M.yellowPaint,new V3(0,y,0));pl.rotation.x=Math.PI/2;
+  for(let a=a0;a<=a1+.1;a+=12.5){const p=P(ro-.03,a,0);cylY(g,.015,y,y+.55,M.yellowPaint,p.x,p.z,8);}
+  [.3,.55].forEach(h=>{const t=add(g,new THREE.TorusGeometry(ro-.03,.014,6,72,(a1-a0)*deg),M.yellowPaint,new V3(0,y+h,0));t.rotation.x=Math.PI/2;t.rotation.z=a0*deg;});});
+ const la=160,lr=1.15,tg=new V3(-Math.sin(la*deg),0,Math.cos(la*deg));
+ [-1,1].forEach(s=>{const b=P(lr,la,0).addScaledVector(tg,s*.2);cylY(g,.018,.12,9.2,M.yellowPaint,b.x,b.z,8);});
+ for(let y=.4;y<9.2;y+=.3)pipe(g,P(lr,la,y).addScaledVector(tg,-.2),P(lr,la,y).addScaledVector(tg,.2),.012,M.yellowPaint,8);}
+
+/* gas supply and outlet */
+const BX=-2.6;
+{const g=part('gasIn','gas',new V3(-1.8,1.95,.2));
+ const vol=add(g,new THREE.CylinderGeometry(.42,.42,.3,40),M.paint,new V3(BX,.8,0));vol.rotation.x=Math.PI/2;
+ const inl=add(g,new THREE.CylinderGeometry(.18,.22,.25,32),M.paint,new V3(BX,.8,.27));inl.rotation.x=Math.PI/2;
+ box(g,.3,.26,.35,new V3(BX+.26,1.05,0),M.paint);const mo=add(g,new THREE.CylinderGeometry(.16,.16,.45,28),M.paint,new V3(BX,.8,-.42));mo.rotation.x=Math.PI/2;
+ box(g,.9,.08,1.2,new V3(BX,.04,-.1),M.paintGrey);box(g,.6,.3,.1,new V3(BX,.25,0),M.paintGrey);
+ line(g,[new V3(BX+.41,1.05,0),new V3(-1.3,1.05,0),new V3(-1.3,1.5,0),new V3(-.87,1.5,0)],.14,M.steel,()=>GASR,1.2);
+ ctrlValve(g,new V3(-1.3,1.28,0),UP,.12);flange(g,new V3(-1.8,1.05,0),new V3(1,0,0),.24,8);flange(g,new V3(-1.75,1.05,0),new V3(1,0,0),.24,8);band(g,new V3(-2.0,1.05,0),new V3(-2.1,1.05,0),.15,M.red);}
+{const g=part('gasOut','gas',new V3(.9,10.1,.15));
+ line(g,[new V3(0,YT+.6,0),new V3(0,10.0,0),new V3(1.6,10.0,0),new V3(1.6,9.2,0)],.13,M.steel,()=>GASP,1.3);band(g,new V3(.7,10,0),new V3(.85,10,0),.14,M.green||M.cyan);flange(g,new V3(1.6,9.2,0),UP,.22,8);}
+/* solids feed and withdrawal */
+{const g=part('feed','solids',new V3(1.7,4.9,.3));
+ const hp=add(g,new THREE.CylinderGeometry(.35,.35,.6,40,1,true),M.hopper,new V3(1.7,4.9,0));const cn=add(g,new THREE.CylinderGeometry(.35,.07,.4,40,1,true),M.hopper,new V3(1.7,4.4,0));
+ const top=add(g,new THREE.CircleGeometry(.35,40),M.hopper,new V3(1.7,5.2,0));top.rotation.x=-Math.PI/2;
+ const rv=add(g,new THREE.CylinderGeometry(.12,.12,.2,24),M.paint,new V3(1.7,4.05,0));rv.rotation.x=Math.PI/2;box(g,.12,.12,.12,new V3(1.7,4.05,.18),M.paint);
+ line(g,[new V3(1.7,3.95,0),new V3(1.7,3.4,0),new V3(.58,3.0,0)],.05,M.steel);
+ [[1.45,-.25],[1.95,-.25],[1.45,.25],[1.95,.25]].forEach(([x,z])=>box(g,.06,4.2,.06,new V3(x,2.1,z),M.paintGrey));}
+{const g=part('withdraw','solids',new V3(1.0,1.6,.25));
+ line(g,[P(.58,0,1.95),P(1.0,0,1.95),P(1.0,0,.6),P(1.8,0,.6)],.06,M.steel);box(g,.2,.14,.16,new V3(1.0,1.3,0),M.steelDark);box(g,.3,.05,.05,new V3(1.18,1.3,0),M.red);flange(g,new V3(1.8,.6,0),new V3(1,0,0),.13,6);}
+
+/* ================= finalize ================= */
+const pickables=[];let bedEnv=null;
+for(const key in parts){const pt=parts[key],cache=new Map();
+ pt.group.traverse(o=>{if(!o.isMesh)return;if(!cache.has(o.material)){const c=o.material.clone();cache.set(o.material,c);pt.mats.push(c);}
+  o.material=cache.get(o.material);o.userData.key=key;const tr=o.material.transparent;o.castShadow=!tr;o.receiveShadow=true;pickables.push(o);if(o.userData.bedEnv)bedEnv=o;});}
+
+/* ================= particles ================= */
+const SOLID=C(0xe6b35c),SOLID2=C(0xc98a3a),GASR=C(0xe23b32),GASP=C(0x22b45a),COOLC=C(0x1d5fd1);
+const BALL=(function(){const cv=document.createElement('canvas');cv.width=cv.height=64;const x=cv.getContext('2d');
+ const g=x.createRadialGradient(24,22,2,32,32,31);g.addColorStop(0,'#ffffff');g.addColorStop(.35,'#e6e6e6');g.addColorStop(.85,'#8a8a8a');g.addColorStop(1,'#5c5c5c');
+ x.fillStyle=g;x.beginPath();x.arc(32,32,30,0,Math.PI*2);x.fill();const t=new THREE.CanvasTexture(cv);t.encoding=THREE.sRGBEncoding;return t;})();
+function pts(n,size){const pos=new Float32Array(n*3),col=new Float32Array(n*3),g=new THREE.BufferGeometry();
+ g.setAttribute('position',new THREE.BufferAttribute(pos,3));g.setAttribute('color',new THREE.BufferAttribute(col,3));
+ const p=new THREE.Points(g,new THREE.PointsMaterial({vertexColors:true,size,map:BALL,alphaTest:.5,depthWrite:true}));p.frustumCulled=false;scene.add(p);return {p,pos,col,g};}
+function setC(o,i,c){o.col[i*3]=c.r;o.col[i*3+1]=c.g;o.col[i*3+2]=c.b;}
+const rnd=Math.random,tC=new THREE.Color();
+let running=false,U=0,Uvis=0;
+/* solids */
+const NS=14000,SPt=pts(NS,.045),sD=[];
+for(let i=0;i<NS;i++){let x,z;do{x=(rnd()*2-1)*.55;z=(rnd()*2-1)*.55;}while(x*x+z*z>.55*.55);
+ const d={hx:x,hz:z,hy:.02+rnd()*(LMF-.04),t:rnd()*Math.PI*2,th:Math.atan2(z,x),ri:.05+rnd()*.18,ro:.36+rnd()*.18,yf:.55+rnd()*.45,sp:.6+rnd()*.8,ph:rnd()*9,u:rnd(),mode:0};
+ sD.push(d);tC.copy(SOLID).lerp(SOLID2,rnd()*.6);setC(SPt,i,tC);}
+SPt.g.attributes.color.needsUpdate=true;
+/* gas tracer */
+const NGT=1800,GT=pts(NGT,.045),gD=[];
+for(let i=0;i<NGT;i++)gD.push({x:(rnd()*2-1)*.5,z:(rnd()*2-1)*.5,y:YD+rnd()*7,sp:.8+rnd()*.5,w:rnd()*9});
+/* cyclones: solids spiral down the wall into the dipleg; gas spirals down (outer vortex) and back up the core (inner vortex) */
+const NCY=1800,CYS=CYC.map(()=>pts(NCY,.04)),cyD=CYC.map(()=>{const a=[];for(let i=0;i<NCY;i++)a.push({u:Math.random(),gas:i%5<2,rr:Math.random(),ph:Math.random()*6.283,sp:.8+Math.random()*.4});return a;});
+function stepCyc(dt){const load=Uvis>UMF*1.05?Math.min(1,.18+.5*smooth((Uvis-UMF)/(UC-UMF))+.6*entr(Uvis)):0,gasOn=Uvis>1e-4,vk=.35+Uvis/UT*.8;
+ CYC.forEach(([cx,cz],ci)=>{const o=CYS[ci],D=cyD[ci],s=Math.sign(cx),dx=cx+s*(RC-CB/2);
+  for(let i=0;i<NCY;i++){const d=D[i];let x=0,y=-50,z=0,col=null;
+   const act=d.gas?gasOn:(d.rr<load);
+   if(act){if(d.gas){d.u+=dt*d.sp*vk*.28;if(d.u>=1)d.u-=1;const u=d.u;
+     if(u<.1){const v=u/.1;x=dx+(d.rr-.5)*CB*.8;z=cz-.42+.42*v;y=CYT-CA*(.15+.7*d.rr);}
+     else if(u<.5){const v=(u-.1)/.4,yy=CYT-CA*.5-(CYT-CA*.5-(CYM-.35))*v,rw=cycWall(yy)*(.72+.2*d.rr),a=(s>0?0:Math.PI)+s*v*4.5*6.283+d.ph*.1;x=cx+rw*Math.cos(a);z=cz+rw*Math.sin(a);y=yy;}
+     else if(u<.85){const v=(u-.5)/.35,yy=(CYM-.35)+(CYT-.5*DC-(CYM-.35))*v,rw=CDE/2*(.25+.55*d.rr),a=d.ph+s*v*5*6.283;x=cx+rw*Math.cos(a);z=cz+rw*Math.sin(a);y=yy;}
+     else{const v=(u-.85)/.15,rw=CDE/2*(.3+.5*d.rr),a=d.ph+s*(5+v*2)*6.283;x=cx+rw*Math.cos(a);z=cz+rw*Math.sin(a);y=CYT-.5*DC+(.62)*v;}
+     col=tC.copy(GASP);}
+    else{const spd=d.u<.55?.3:.07;d.u+=dt*d.sp*vk*spd*(.6+load);if(d.u>=1)d.u-=1;const u=d.u;
+     if(u<.08){const v=u/.08;x=dx+(d.rr-.5)*CB*.8;z=cz-.42+.42*v;y=CYT-CA*(.2+.6*d.rr);}
+     else if(u<.55){const v=(u-.08)/.47,yy=CYT-CA*.5-(CYT-CA*.5-CYB-.02)*v,rw=cycWall(yy)-.018-.012*d.rr,a=(s>0?0:Math.PI)+s*v*6*6.283;x=cx+rw*Math.cos(a);z=cz+rw*Math.sin(a);y=yy;}
+     else{const v=(u-.55)/.45,rw=.035*d.rr;x=cx+rw*Math.cos(d.ph);z=cz+rw*Math.sin(d.ph);y=CYB-(CYB-2.62)*v;}
+     col=tC.copy(SOLID).lerp(SOLID2,d.rr*.6);}}
+   o.pos[i*3]=x;o.pos[i*3+1]=y;o.pos[i*3+2]=z;if(col)setC(o,i,col);}
+  o.g.attributes.position.needsUpdate=true;o.g.attributes.color.needsUpdate=true;});}
+/* bubbles */
+const bubMat=new THREE.MeshStandardMaterial({color:C(0xd8f0ff),metalness:0,roughness:.05,transparent:true,opacity:.42,depthWrite:false});
+const bubs=[];for(let i=0;i<70;i++){const m=new THREE.Mesh(new THREE.SphereGeometry(1,20,14),bubMat);m.visible=false;m.userData={on:false};scene.add(m);bubs.push(m);}
+let bubT=0,simT=0;
+/* pipe flows */
+FLOWS.forEach(f=>{f.L=[0];for(let i=1;i<f.pts.length;i++)f.L.push(f.L[i-1]+f.pts[i].distanceTo(f.pts[i-1]));f.n=Math.max(12,Math.round(f.L[f.L.length-1]*40));});
+const CWF=FLOWS.filter(f=>f.colorFn()===COOLC),GF=FLOWS.filter(f=>f.colorFn()!==COOLC);
+const NFL=GF.reduce((a,f)=>a+f.n,0),FP=pts(NFL,.055),fD=[];
+GF.forEach((f,fi)=>{for(let i=0;i<f.n;i++)fD.push({f:fi,s:i/f.n*f.L[f.L.length-1]});});
+/* cooling water inside the coils: dense, always flowing, dark blue at the inlet turning lighter as it warms */
+const CWC=C(0x0b3fb0),CWH=C(0x7fc4ff);
+CWF.forEach(f=>{f.n=Math.round(f.L[f.L.length-1]*90);});
+const NCW=CWF.reduce((a,f)=>a+f.n,0),CWP=pts(NCW,.05),cwD=[];
+CWF.forEach((f,fi)=>{for(let i=0;i<f.n;i++)cwD.push({f:fi,s:i/f.n*f.L[f.L.length-1],o:[(Math.random()-.5)*.03,(Math.random()-.5)*.03,(Math.random()-.5)*.03]});});
+function stepCW(dt){for(let i=0;i<cwD.length;i++){const d=cwD[i],f=CWF[d.f],Lt=f.L[f.L.length-1];d.s=(d.s+dt*f.speed)%Lt;
+ let k=1;while(k<f.L.length-1&&f.L[k]<d.s)k++;const a=f.pts[k-1],b=f.pts[k],u=(d.s-f.L[k-1])/(f.L[k]-f.L[k-1]||1);
+ CWP.pos[i*3]=a.x+(b.x-a.x)*u+d.o[0];CWP.pos[i*3+1]=a.y+(b.y-a.y)*u+d.o[1];CWP.pos[i*3+2]=a.z+(b.z-a.z)*u+d.o[2];
+ tC.copy(CWC).lerp(CWH,d.s/Lt);setC(CWP,i,tC);}
+ CWP.g.attributes.position.needsUpdate=true;CWP.g.attributes.color.needsUpdate=true;}
+stepCW(0);
+function stepFlows(dt,gasK){for(let i=0;i<fD.length;i++){const d=fD[i],f=GF[d.f],Lt=f.L[f.L.length-1];const isGas=true;
+ d.s=(d.s+dt*f.speed*(isGas?gasK:1))%Lt;let k=1;while(k<f.L.length-1&&f.L[k]<d.s)k++;const a=f.pts[k-1],b=f.pts[k],u=(d.s-f.L[k-1])/(f.L[k]-f.L[k-1]||1);
+ FP.pos[i*3]=a.x+(b.x-a.x)*u;FP.pos[i*3+1]=a.y+(b.y-a.y)*u;FP.pos[i*3+2]=a.z+(b.z-a.z)*u;setC(FP,i,f.colorFn());}
+ FP.g.attributes.position.needsUpdate=true;FP.g.attributes.color.needsUpdate=true;}
+
+const smooth=v=>{v=Math.min(1,Math.max(0,v));return v*v*(3-2*v);};
+function stepSolids(dt){const r=Uvis/UMF,H=bedH(Uvis),circ=smooth((r-1)/3),jit=r>=.97?(.004+.02*smooth((r-.97)/2)+.03*smooth((Uvis-UC)/UC)):0,
+ splash=Uvis>1.3*UMF?(3+7*circ+10*smooth((Uvis-UC)/(UTR-UC))):0,ent=entr(Uvis)*60+(Uvis>UC?4:(Uvis>3*UMF?1.2:0)),exp=H/LMF;
+ const top=YD+H;
+ for(let i=0;i<NS;i++){const d=sD[i];let x,y,z;const slot=i%100;
+  if(slot>=100-ent){ /* entrained: rise through the freeboard to a cyclone inlet mouth, then re-enter the bed */
+   d.u+=dt*d.sp*.3*(.5+Uvis/UT);if(d.u>=1)d.u-=1;const c=CYC[i%2],s=Math.sign(c[0]),mx=c[0]+s*(RC-CB/2),u=d.u;
+   if(u<.8){const v=u/.8,e=v*v;x=d.hx+(mx-d.hx)*e;z=d.hz+(-.42-d.hz)*e;y=top+(CYT-CA/2-top)*v;}
+   else{x=0;y=-50;z=0;} /* inside the cyclone: shown by the cyclone particle systems */
+  }else{
+   const hy=YD+d.hy*exp;let hx=d.hx,hz=d.hz;
+   if(circ>0){d.t+=dt*d.sp*(.4+1.6*circ)*(1+Uvis/UT);d.th+=dt*.05;
+    const rm=(d.ri+d.ro)/2,ra=(d.ro-d.ri)/2,ym=YD+H*d.yf/2,ya=H*d.yf/2-.03;
+    const lr=rm-ra*Math.sin(d.t),ly=ym-ya*Math.cos(d.t);const lx=lr*Math.cos(d.th),lz=lr*Math.sin(d.th);
+    const s=circ;x=hx+(lx-hx)*s;y=hy+(ly-hy)*s;z=hz+(lz-hz)*s;}
+   else{x=hx;y=hy;z=hz;}
+   if(jit>0){d.ph+=dt*(8+20*circ);x+=Math.sin(d.ph*1.3+i)*jit;y+=Math.sin(d.ph*1.7+i*.7)*jit;z+=Math.cos(d.ph*1.1+i)*jit;}
+   if(slot<splash&&d.hy>LMF*.55){const a=Math.abs(Math.sin(simT*(1.2+d.sp)+d.ph*3));y=top-.05+a*(.25+.9*circ+.8*smooth((Uvis-UC)/(UTR-UC)));}
+   if(y>top+1.8)y=top+1.8;}
+  SPt.pos[i*3]=x;SPt.pos[i*3+1]=y;SPt.pos[i*3+2]=z;}
+ SPt.g.attributes.position.needsUpdate=true;}
+function stepGas(dt){const H=bedH(Uvis),top=YD+H,v=.4+3.2*Math.min(1,Uvis/UT);
+ for(let i=0;i<NGT;i++){const d=gD[i];const inBed=d.y<top;d.y+=dt*d.sp*v*(inBed?.8:1.1);d.w+=dt*6;
+  if(d.y>CYB+.4){d.y=YD+.02;let x,z;do{x=(rnd()*2-1)*.55;z=(rnd()*2-1)*.55;}while(x*x+z*z>.3);d.x=x;d.z=z;}
+  const rr=d.y>YC1?1.5:1;GT.pos[i*3]=d.x*rr+Math.sin(d.w)*.02;GT.pos[i*3+1]=d.y;GT.pos[i*3+2]=d.z*rr+Math.cos(d.w)*.02;
+  const f=Math.min(1,(d.y-YD)/Math.max(.3,H));tC.copy(GASR).lerp(GASP,f);setC(GT,i,tC);}
+ GT.g.attributes.position.needsUpdate=true;GT.g.attributes.color.needsUpdate=true;}
+function stepBubbles(dt){const r=Uvis/UMF,H=bedH(Uvis),top=YD+H;const turb=smooth((Uvis-UC)/(UTR-UC));
+ const rate=r>1.08&&Uvis<UTR?(5+16*smooth((r-1)/4)+22*turb):0;bubT+=dt*rate;
+ while(bubT>1){bubT-=1;const b=bubs.find(m=>!m.userData.on);if(!b)break;let x,z;do{x=(rnd()*2-1)*.45;z=(rnd()*2-1)*.45;}while(x*x+z*z>.2);
+  b.userData={on:true,x,z,y:YD+.05,s:.8+rnd()*.4};b.visible=true;}
+ bubs.forEach(b=>{const d=b.userData;if(!d.on)return;const h=d.y-YD,db=dBub(Uvis,h)*(1-.6*turb),ub=(Uvis-UMF)+.711*Math.sqrt(G*Math.max(db,.01));
+  d.y+=dt*d.s*ub*.9;d.x+=(0-d.x)*dt*.25;d.z+=(0-d.z)*dt*.25; /* bubbles drift toward the axis as they grow and coalesce */
+  const rad=Math.max(.02,db/2);b.position.set(d.x,d.y,d.z);b.scale.set(rad,rad*.8,rad);if(d.y>top-.02){d.on=false;b.visible=false;}});}
+
+/* ================= state & modes ================= */
+let mode='cut',exploded=false,explodeK=0,labelMode='num',selected=null,fly=null,lang='ar';
+const reduced=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function applyMode(){
+ for(const k in parts){const pt=parts[k];pt.mats.forEach(m=>{const pl_=m.userData.plane||pt.plane;m.clippingPlanes=(mode==='cut'&&pl_)?[PLANES[pl_].p]:[];m.clipShadows=true;
+  if(GHOST.includes(k)){const gh=mode==='ghost';if(!m.userData.b){m.userData.b=1;m.userData.t0=m.transparent;m.userData.o0=m.opacity;m.userData.dw=m.depthWrite;}
+   m.transparent=gh?true:m.userData.t0;m.opacity=gh?.13:m.userData.o0;m.depthWrite=gh?false:m.userData.dw;}m.needsUpdate=true;});}
+ [SPt,GT].forEach(o=>{o.p.material.clippingPlanes=mode==='cut'?[PLANES.col.p]:[];o.p.material.needsUpdate=true;});
+ CYS.forEach((o,ci)=>{o.p.material.clippingPlanes=mode==='cut'?[PLANES[ci?'cyB':'cyA'].p]:[];o.p.material.needsUpdate=true;});
+ bubMat.clippingPlanes=mode==='cut'?[PLANES.col.p]:[];bubMat.needsUpdate=true;
+ document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===mode));}
+applyMode();
+function setHighlight(k,on){if(!k)return;parts[k].mats.forEach(m=>{if(m.emissive){m.emissive=on?C(0xd9742a):new THREE.Color(0);m.emissiveIntensity=on?.5:0;}});
+ if(k==='bed'&&bedEnv){bedEnv.material.opacity=on?.18:0;}}
+
+/* ================= UI ================= */
+const L=()=>T[lang];
+const labelsEl=document.getElementById('labels'),cardEl=document.getElementById('card'),labelEls={};
+ORDER.forEach(k=>{const b=document.createElement('button');b.className='lbl';b.type='button';b.innerHTML=`<span class="num">${NUM[k]}</span><span class="t"></span>`;
+ b.onclick=e=>{e.stopPropagation();select(k);};labelsEl.appendChild(b);labelEls[k]=b;});
+function updateLabels(){ORDER.forEach(k=>{labelEls[k].querySelector('.t').textContent=INFO[k].ar;labelEls[k].setAttribute('aria-label',INFO[k].ar);});}
+function renderCard(){if(!selected){cardEl.innerHTML=L().pick;return;}const i=INFO[selected];
+ cardEl.innerHTML=`<div class="head"><span class="num">${NUM[selected]}</span><div><h2>${i.ar}</h2><p class="en">${i.en}</p></div></div><p>${i.d}</p>${i.n?`<p class="eq">${i.n}</p>`:''}<div class="act"><button id="bFocus">${L().focus}</button><button id="bClear">${L().clear}</button></div>`;
+ document.getElementById('bFocus').onclick=()=>focusPart(selected);document.getElementById('bClear').onclick=()=>select(null);}
+function select(k){if(selected){setHighlight(selected,false);labelEls[selected].classList.remove('on');}
+ selected=(k===selected)?null:k;
+ if(selected){setHighlight(selected,true);labelEls[selected].classList.add('on');if(INTERNAL.includes(selected)&&mode==='full'&&!exploded){mode='cut';applyMode();}}
+ renderCard();}
+function flyTo(pos,tgt){fly={p0:camera.position.clone(),t0:controls.target.clone(),p1:pos,t1:tgt,e:0,d:reduced?.001:.9};}
+function focusPart(k){const b=new THREE.Box3().setFromObject(parts[k].group),c=b.getCenter(new V3()),s=b.getSize(new V3()).length();
+ const dir=camera.position.clone().sub(controls.target).normalize();flyTo(c.clone().addScaledVector(dir,Math.max(1.6,s*1.4)),c);}
+function view(v){const t=HOME.tgt.clone(),f=exploded?1.15:1;const off=v==='front'?new V3(0,.5,15.5):v==='top'?new V3(0,18,.4):HOME.pos.clone().sub(HOME.tgt);flyTo(t.clone().add(off.multiplyScalar(f)),t);}
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>view(b.dataset.view));
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;applyMode();});
+function setDrag(m){const pan=m==='pan';controls.mouseButtons.LEFT=pan?THREE.MOUSE.PAN:THREE.MOUSE.ROTATE;controls.mouseButtons.RIGHT=pan?THREE.MOUSE.ROTATE:THREE.MOUSE.PAN;
+ controls.touches.ONE=pan?THREE.TOUCH.PAN:THREE.TOUCH.ROTATE;canvas.style.cursor=pan?'move':'';document.querySelectorAll('[data-drag]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.drag===m));}
+document.querySelectorAll('[data-drag]').forEach(b=>b.onclick=()=>setDrag(b.dataset.drag));
+const bExplode=document.getElementById('bExplode'),bLabels=document.getElementById('bLabels'),bRun=document.getElementById('bRun'),regEl=document.getElementById('regime');
+function syncExplode(){bExplode.setAttribute('aria-pressed',exploded);bExplode.textContent=exploded?L().assemble:L().explode;}
+bExplode.onclick=()=>{exploded=!exploded;syncExplode();view('iso');};
+function syncRun(){bRun.setAttribute('aria-pressed',running);bRun.textContent=running?L().stopRun:L().run;}
+function toCut(){if(exploded){exploded=false;syncExplode();}if(mode==='full'){mode='cut';applyMode();}}
+bRun.onclick=()=>{running=!running;syncRun();if(running)toCut();readouts();};
+const LM=['num','name','off'];function syncLabelsBtn(){bLabels.textContent=L().labels+L().LT[labelMode];}
+bLabels.onclick=()=>{labelMode=LM[(LM.indexOf(labelMode)+1)%3];syncLabelsBtn();labelsEl.classList.toggle('names',labelMode==='name');labelsEl.classList.toggle('off',labelMode==='off');};
+
+/* slider: 0-400 -> U/Umf 0-2 linear, 400-1000 -> 2-50 logarithmic */
+const uEl=document.getElementById('uu'),chartEl=document.getElementById('chart');
+const s2r=s=>s<=400?2*s/400:2*Math.pow(35,(s-400)/600),r2s=r=>r<=2?r/2*400:400+600*Math.log(r/2)/Math.log(35);
+document.querySelectorAll('[data-jump]').forEach(b=>b.onclick=()=>{uEl.value=Math.round(r2s(+b.dataset.jump));if(!running){running=true;syncRun();toCut();}readouts();});
+function chart(){const W=300,H=160,l=36,r=10,t=10,b=28,iw=W-l-r,ih=H-t-b,xm=5,ym=DPMF/1000*1.25;const X=v=>l+Math.min(v,xm)/xm*iw,Y=v=>t+(1-v/ym)*ih;
+ let p='';for(let i=0;i<=80;i++){const rr=i/80*xm;p+=(i?'L':'M')+X(rr).toFixed(1)+' '+Y(bedDP(rr*UMF)/1000).toFixed(1);}
+ const rr=running?U/UMF:0,cx=X(rr),cy=Y(running?bedDP(U)/1000:0),over=rr>xm;
+ const gy=[0,5,10,15,20].filter(v=>v<ym).map(v=>`<line x1="${l}" x2="${W-r}" y1="${Y(v)}" y2="${Y(v)}" stroke="currentColor" stroke-opacity=".12"/><text x="${l-5}" y="${Y(v)+3}" text-anchor="end">${v}</text>`).join('');
+ const gx=[0,1,2,3,4,5].map(v=>`<text x="${X(v)}" y="${H-14}" text-anchor="middle">${v}</text>`).join('');
+ chartEl.innerHTML=`<svg viewBox="0 0 ${W} ${H}" dir="ltr" role="img" aria-label="${L().chH}" style="color:var(--ink)">${gy}${gx}
+ <text x="${l+iw/2}" y="${H-2}" text-anchor="middle">${L().chX}</text><text x="10" y="${t+ih/2}" transform="rotate(-90 10 ${t+ih/2})" text-anchor="middle">${L().chY}</text>
+ <line x1="${X(1)}" x2="${X(1)}" y1="${t}" y2="${t+ih}" stroke="#7a4fc0" stroke-dasharray="4 3" stroke-width="1.5"/><text x="${X(1)+4}" y="${t+10}" style="fill:#7a4fc0;font-weight:600">U_mf</text>
+ <path d="${p}" fill="none" stroke="#1f78c8" stroke-width="2.5"/>
+ <circle cx="${cx}" cy="${cy}" r="6" fill="#e23b32" stroke="#fff" stroke-width="2"/>${over?`<text x="${W-r-2}" y="${cy-9}" text-anchor="end" style="fill:#e23b32">→ ${rr.toFixed(1)}</text>`:''}</svg>`;}
+function readouts(){const rr=s2r(+uEl.value);U=rr*UMF;const Ue=running?U:0;
+ document.getElementById('uOut').textContent=(U*100<10?(U*100).toFixed(2):(U*100).toFixed(1))+' cm/s';
+ const rg=regime(Ue),R=L().reg[rg];
+ document.getElementById('oReg').textContent=R[0];document.getElementById('oReg').style.direction=lang==='ar'?'rtl':'ltr';
+ document.getElementById('oUmf').textContent=(UMF*100).toFixed(2)+' cm/s';document.getElementById('oRatio').textContent=(Ue/UMF).toFixed(2);
+ document.getElementById('oUt').textContent=UT.toFixed(2)+' m/s';document.getElementById('oDP').textContent=(bedDP(Ue)/1000).toFixed(2)+' kPa';
+ document.getElementById('oH').textContent=bedH(Ue).toFixed(2)+' m';
+ document.getElementById('oUc').textContent=UC.toFixed(2)+' m/s';document.getElementById('oUtr').textContent=UTR.toFixed(2)+' m/s';
+ document.getElementById('oUmfE').textContent=(UMF_ERG*100).toFixed(2)+' cm/s';
+ document.getElementById('oDb').textContent=Ue>UMF?(dBub(Ue,LMF/2)*100).toFixed(1)+' cm':'–';
+ const cy=cycl(Ue);document.getElementById('oVi').textContent=cy.vi.toFixed(1)+' m/s';
+ document.getElementById('oD50').textContent=Ue>0?(cy.d50*1e6).toFixed(1)+' µm':'–';
+ document.getElementById('oEf1').textContent=Ue>0?(cy.eff(250e-6)*100).toFixed(2)+' %':'–';
+ document.getElementById('oEf2').textContent=Ue>0?(cy.eff(10e-6)*100).toFixed(1)+' %':'–';
+ document.getElementById('oCdp').textContent=Math.round(cy.dp)+' Pa';document.getElementById('oAr').textContent=Math.round(AR).toLocaleString('en-US');
+ regEl.style.background=R[2];regEl.innerHTML=`${R[0]}<small>${R[1]} · U_mf = ${(UMF*100).toFixed(1)} cm/s</small>`;
+ chart();}
+uEl.oninput=()=>{if(!running){running=true;syncRun();toCut();}readouts();};
+
+function setLang(l){lang=l;INFO=l==='ar'?INFO_AR:INFO_EN;document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';document.title=L().title;
+ document.querySelectorAll('[data-t]').forEach(el=>{el.innerHTML=L()[el.dataset.t];});
+ document.querySelectorAll('[data-lang-toggle]').forEach(b=>{b.textContent=L().other;b.lang=L().otherLang;});
+ updateLabels();renderCard();syncExplode();syncRun();syncLabelsBtn();readouts();
+ try{localStorage.setItem('fb-lang',l);}catch(e){}requestAnimationFrame(resize);}
+document.querySelectorAll('[data-lang-toggle]').forEach(b=>b.onclick=()=>setLang(lang==='ar'?'en':'ar'));
+
+/* picking */
+const ray=new THREE.Raycaster(),mouse=new V2();let downXY=null;
+canvas.addEventListener('pointerdown',e=>{downXY=[e.clientX,e.clientY];});
+canvas.addEventListener('pointerup',e=>{if(!downXY)return;const mv=Math.hypot(e.clientX-downXY[0],e.clientY-downXY[1]);downXY=null;if(mv>6)return;
+ const r=canvas.getBoundingClientRect();mouse.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(mouse,camera);
+ for(const h of ray.intersectObjects(pickables,false)){const k=h.object.userData.key,pt=parts[k];
+  if(mode==='ghost'&&GHOST.includes(k))continue;
+  const pl_=h.object.material.userData.plane||pt.plane;if(mode==='cut'&&pl_&&PLANES[pl_].p.distanceToPoint(h.point)<0)continue;
+  if(k!==selected)select(k);return;}
+ if(selected)select(null);});
+
+function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+{const ro=new ResizeObserver(resize);ro.observe(stage);ro.observe(canvas);}resize();
+try{const q=new URLSearchParams(location.search).get('lang'),sv=localStorage.getItem('fb-lang');if(q==='en'||q==='ar')lang=q;else if(sv==='en'||sv==='ar')lang=sv;}catch(e){}
+setLang(lang);
+stepSolids(0);
+
+/* loop */
+const clock=new THREE.Clock(),tmp=new V3(),dirH=new V3();const ease=u=>u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;
+function frame(){const dt=Math.min(clock.getDelta(),.05);simT+=dt;
+ if(fly){fly.e+=dt;const u=ease(Math.min(1,fly.e/fly.d));camera.position.lerpVectors(fly.p0,fly.p1,u);controls.target.lerpVectors(fly.t0,fly.t1,u);if(fly.e>=fly.d)fly=null;}
+ controls.update();
+ explodeK+=((exploded?1:0)-explodeK)*Math.min(1,dt*(reduced?60:4));const ek=explodeK;
+ for(const k in EG)EG[k].position.copy(EOFF[k]).multiplyScalar(ek);
+ const Ut=running?U:0;Uvis+=(Ut-Uvis)*Math.min(1,dt*2.5);if(Math.abs(Uvis-Ut)<1e-5)Uvis=Ut;
+ const on=ek<.04;SPt.p.visible=on;CYS.forEach(o=>o.p.visible=on&&running);GT.p.visible=on&&Uvis>1e-4;FP.p.visible=on&&running;CWP.p.visible=on;
+ if(on){stepCW(dt);stepSolids(dt);if(running)stepCyc(dt);if(Uvis>1e-4)stepGas(dt);stepBubbles(dt);if(running)stepFlows(dt,.4+Uvis/UT*2);}else bubs.forEach(b=>{b.visible=false;b.userData.on=false;});
+ dirH.subVectors(controls.target,camera.position);dirH.y=0;
+ if(dirH.lengthSq()>1e-4){dirH.normalize();for(const k in PLANES){const pl=PLANES[k];tmp.copy(pl.c).add(EG[pl.eg].position);pl.p.normal.copy(dirH);pl.p.constant=-dirH.dot(tmp);}}
+ renderer.render(scene,camera);
+ const cw=canvas.clientWidth,ch=canvas.clientHeight;
+ for(const k of ORDER){const el=labelEls[k],pt=parts[k];let show=true;
+  if(INTERNAL.includes(k)&&mode==='full'&&ek<.5&&k!==selected)show=false;
+  if(show){tmp.copy(pt.anchor);pt.group.localToWorld(tmp);tmp.project(camera);if(tmp.z>1||tmp.z<-1)show=false;}
+  if(!show){el.style.visibility='hidden';continue;}
+  el.style.visibility='visible';el.style.transform=`translate(${(tmp.x*.5+.5)*cw}px,${(-tmp.y*.5+.5)*ch}px) translate(-12px,-50%)`;}
+ requestAnimationFrame(frame);}
+/* ================= presenter: narrated guided tour (Arabic / English) ================= */
+(function(){
+const CFG={btn:"bRun",isOn:()=>running,tour:[[null, "السَّلامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ. أَنا الدُّكْتورْ ضِياءْ جُمْعَة جاسِمْ، تَدْريسِيٌّ في قِسْمِ الهَنْدَسَةِ الكيمْياوِيَّةِ وَالصِّناعاتِ النِّفْطِيَّةِ في كُلِّيَّةِ العَمارَةِ الجامِعَة، وَأُدَرِّسُ مادَّتَيِ انْتِقالِ الكُتْلَةِ وَتَصْميمِ المُفاعِلات. أَهْلاً بِكُمْ في هذا المُحاكي ثُلاثِيِّ الأَبْعادِ لِمُفاعِلِ الطَّبَقَةِ المُمَيَّعَة. سَأُعَرِّفُكُمْ عَلى أَجْزائِهِ الرَّئيسَة، ثُمَّ نُشاهِدُ مَعاً كَيْفَ تَتَحَوَّلُ الطَّبَقَةُ مِنْ ثابِتَةٍ إِلى مُمَيَّعَة.", "Hello and welcome. I am Doctor Dheyaa J. Jasim, a lecturer in the Department of Chemical Engineering and Petroleum Industries at Al-Amarah University College, where I teach Mass Transfer and Reactor Design. Welcome to this three-dimensional simulator of a fluidized bed reactor. I will introduce its main parts, and then we will watch together how the bed changes from fixed to fluidized."], ["windbox", "يَدْخُلُ الغازُ أَوَّلاً إِلى حُجْرَةِ التَّوْزيعِ في الأَسْفَل، فَيَتَوَزَّعُ ضَغْطُهُ بِالتَّساوي.", "Gas first enters the windbox at the bottom, where its pressure evens out."], ["distributor", "ثُمَّ يَصْعَدُ عَبْرَ لَوْحِ التَّوْزيع، الَّذي يَمْنَعُ سُقوطَ الجُسَيْماتِ إِلى الأَسْفَل.", "It then rises through the distributor plate, which stops particles falling below."], ["bed", "وَهذِهِ طَبَقَةُ جُسَيْماتِ المُحَفِّز. عِنْدَما تَصِلُ سُرْعَةُ الغازِ إِلى سُرْعَةِ التَّمْييعِ الدُّنْيا، يَتَساوى وَزْنُ الجُسَيْماتِ مَعَ قُوَّةِ سَحْبِ الغاز، فَتَتَصَرَّفُ الطَّبَقَةُ كَالسّائِل.", "This is the catalyst bed. When the gas velocity reaches the minimum fluidization velocity, the weight of the particles is balanced by the gas drag, and the bed behaves like a liquid."], ["coils", "في داخِلِ الطَّبَقَةِ مَلَفّاتُ التَّبْريد، يَجْري فيها الماءُ الأَزْرَقُ لِإِزالَةِ حَرارَةِ التَّفاعُل.", "Inside the bed are the cooling coils, carrying blue water to remove the heat of reaction."], ["freeboard", "فَوْقَ الطَّبَقَةِ مِنْطَقَةُ الفَصْل، يَتَّسِعُ قُطْرُها فَتَقِلُّ سُرْعَةُ الغاز، فَتَعودُ مُعْظَمُ الجُسَيْماتِ المَقْذوفَةِ إِلى الطَّبَقَة.", "Above the bed is the freeboard. Its diameter widens so the gas slows down, and most thrown-up particles fall back into the bed."], ["cyclones", "وَفي الأَعْلى الإِعْصارات. يَدورُ فيها الغاز، فَتُقْذَفُ الجُسَيْماتُ نَحْوَ الجِدارِ وَتَنْزِل، وَيَخْرُجُ الغازُ النَّظيفُ مِنَ الأَعْلى.", "At the top are the cyclones. The gas spins inside them, particles are thrown to the wall and fall, and clean gas leaves from the top."], ["diplegs", "وَتُعيدُ هذِهِ الأَنابيبُ الجُسَيْماتِ المَجْموعَةَ إِلى داخِلِ الطَّبَقَة.", "These diplegs return the collected particles into the bed."], ["dp", "أَمّا مُرْسِلُ فَرْقِ الضَّغْطِ فَهُوَ الجِهازُ الَّذي نُحَدِّدُ بِهِ سُرْعَةَ التَّمْييعِ الدُّنْيا عَمَلِيّاً.", "The differential pressure transmitter is the instrument we use to find the minimum fluidization velocity in practice."], [null, "الآنَ ارْفَعوا سُرْعَةَ الغازِ تَدْريجِيّاً، وَراقِبوا الطَّبَقَةَ وَمُنْحَنى هُبوطِ الضَّغْط: يَزْدادُ هُبوطُ الضَّغْطِ حَتّى سُرْعَةِ التَّمْييعِ الدُّنْيا ثُمَّ يَثْبُت، وَتَظْهَرُ الفُقاعات. بِالتَّوْفيقِ لِلْجَميع.", "Now raise the gas velocity step by step and watch the bed and the pressure-drop curve: pressure drop rises up to the minimum fluidization velocity, then levels off, and bubbles appear. Good luck to you all."]]};
+const strip=t=>t.replace(/[\u064B-\u0652\u0670]/g,'');
+const PUI={ar:{name:'د. ضياء جمعة جاسم',prev:'السابق',pause:'إيقاف مؤقت',resume:'متابعة',next:'التالي',close:'إغلاق',open:'شرح الدكتور ضياء',noVoice:'لا يتوفر صوت عربي في هذا المتصفح، لذلك يظهر الشرح مكتوباً فقط. جرّب Edge أو Chrome.',noMale:'لا يتوفر صوت عربي رجالي في هذا الجهاز، فاستُخدم أقرب صوت متاح بنبرة أخفض. جرّب Microsoft Edge (أصوات مثل حامد وشاكر) أو أضف صوتاً عربياً رجالياً من إعدادات النظام.'},
+ en:{name:'Dr. Dheyaa J. Jasim',prev:'Previous',pause:'Pause',resume:'Resume',next:'Next',close:'Close',open:'Tour with Dr. Dheyaa',noVoice:'No English voice is available in this browser, so the tour is shown as text only. Try Edge or Chrome.'}};
+const PU=()=>PUI[lang];
+const wrap=document.createElement('div');
+wrap.innerHTML=`<div class="presenter" id="presenter" hidden><div class="pv"><div class="ring"></div><img src="data:image/jpeg;base64,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" alt=""><div class="bars"><i></i><i></i><i></i><i></i><i></i></div></div>
+ <div class="pb"><div class="pn">x <span id="pStep"></span></div><div class="pt" id="pText"></div>
+ <div class="pc"><button id="pPrev" class="ic flip">⏮</button><button id="pPlay" class="ic">❚❚</button><button id="pNext" class="ic flip">⏭</button><button id="pClose" class="ic">✕</button></div><div class="pw" id="pWarn" hidden></div></div></div>
+ <button class="pbtn" id="pOpen"><img alt=""><span>▶</span></button>`;
+while(wrap.firstChild)stage.appendChild(wrap.firstChild);
+const presenter=document.getElementById('presenter'),pText=document.getElementById('pText'),pStep=document.getElementById('pStep'),pPlay=document.getElementById('pPlay'),pOpen=document.getElementById('pOpen'),pWarn=document.getElementById('pWarn');
+pOpen.querySelector('img').src=presenter.querySelector('.pv img').src;
+let tIdx=-1,tPaused=false,tTimer=null,tToken=0,arVoice=null,enVoice=null,arMale=false;
+const synth=window.speechSynthesis||null;
+function pickVoice(){if(!synth)return;const v=synth.getVoices();
+ const ar=v.filter(x=>/^ar/i.test(x.lang)),ML=/hamed|naayf|shakir|bassel|fahed|taim|rami|moaz|hamdan|\bali\b|saleh|laith|hedi|ismael|jamal|omar|abdullah|maged|majed|tarik|\bmale\b/i,FL=/zariyah|salma|hoda|rana|noura|sana|layla|laila|amal|hala|fatima|maryam|amany|amina|iman|mouna|reem|aysha|\bfemale\b/i,sa=x=>(ML.test(x.name)?100:0)-(FL.test(x.name)?100:0)+(/natural|neural|online/i.test(x.name)?8:0)+(/google/i.test(x.name)?2:0)+(/ar[-_]SA/i.test(x.lang)?1:0);arVoice=ar.sort((a,b)=>sa(b)-sa(a))[0]||null;arMale=!!(arVoice&&ML.test(arVoice.name)&&!FL.test(arVoice.name));
+ const en=v.filter(x=>/^en/i.test(x.lang)),se=x=>(/natural|neural|online/i.test(x.name)?8:0)+(/google/i.test(x.name)?4:0)+(/ryan|guy|george|daniel|david|arthur|male/i.test(x.name)?3:0)+(/en[-_]GB/i.test(x.lang)?2:0);
+ enVoice=en.sort((a,b)=>se(b)-se(a))[0]||null;}
+if(synth){pickVoice();synth.onvoiceschanged=pickVoice;}
+function chunks(t){return t.split(/(?<=[.،,:;!?؟])\s+/).reduce((a,s)=>{if(a.length&&(a[a.length-1]+' '+s).length<170)a[a.length-1]+=' '+s;else a.push(s);return a;},[]);}
+function speak(text,done){const tok=++tToken;presenter.classList.add('talking');const fin=()=>{if(tok!==tToken)return;presenter.classList.remove('talking');done();};
+ const vv=lang==='ar'?arVoice:enVoice;
+ if(synth&&vv){synth.cancel();if(lang==='ar'&&!arMale){pWarn.hidden=false;pWarn.textContent=PU().noMale;}const parts=chunks(text);let i=0;
+  const next=()=>{if(tok!==tToken)return;if(i>=parts.length){fin();return;}const u=new SpeechSynthesisUtterance(parts[i++]);u.voice=vv;u.lang=vv.lang;u.rate=lang==='ar'&&!arMale?.95:1;u.pitch=lang==='ar'&&!arMale?.72:1;
+   u.onend=()=>setTimeout(next,120);u.onerror=()=>setTimeout(next,120);synth.speak(u);};next();}
+ else{pWarn.hidden=false;pWarn.textContent=PU().noVoice;tTimer=setTimeout(fin,Math.max(5000,text.split(/\s+/).length*420));}}
+function showStep(i){clearTimeout(tTimer);if(synth)synth.cancel();pWarn.hidden=true;tIdx=i;const [k,ar,en]=CFG.tour[i],say=lang==='ar'?ar:en;
+ pText.textContent=lang==='ar'?strip(ar):en;pText.dir=lang==='ar'?'rtl':'ltr';pText.lang=lang;pStep.textContent='('+(i+1)+' / '+CFG.tour.length+')';pText.scrollTop=0;
+ if(k){if(selected!==k)select(k);focusPart(k);}else{if(selected)select(null);view('iso');}
+ if(!tPaused)speak(say,()=>{if(tIdx<CFG.tour.length-1)tTimer=setTimeout(()=>showStep(tIdx+1),700);});}
+function syncPresenter(){presenter.querySelector('.pn').firstChild.textContent=PU().name+' ';
+ [['pPrev',PU().prev],['pNext',PU().next],['pClose',PU().close]].forEach(([id,t])=>{const b=document.getElementById(id);b.title=t;b.setAttribute('aria-label',t);});
+ pPlay.textContent=tPaused?'▶':'❚❚';pPlay.title=tPaused?PU().resume:PU().pause;pPlay.setAttribute('aria-label',pPlay.title);pOpen.title=PU().open;pOpen.setAttribute('aria-label',PU().open);presenter.querySelector('.pv img').alt=PU().name;}
+function startTour(){presenter.hidden=false;pOpen.hidden=true;stage.classList.add('tour');tPaused=false;syncPresenter();if(mode==='full'){mode='cut';applyMode();}showStep(0);}
+function stopTour(){tToken++;clearTimeout(tTimer);if(synth)synth.cancel();presenter.classList.remove('talking');presenter.hidden=true;pOpen.hidden=false;stage.classList.remove('tour');}
+document.getElementById('pNext').onclick=()=>{if(tIdx<CFG.tour.length-1)showStep(tIdx+1);};
+document.getElementById('pPrev').onclick=()=>{if(tIdx>0)showStep(tIdx-1);};
+document.getElementById('pClose').onclick=stopTour;pOpen.onclick=startTour;
+pPlay.onclick=()=>{tPaused=!tPaused;syncPresenter();if(tPaused){tToken++;clearTimeout(tTimer);if(synth)synth.cancel();presenter.classList.remove('talking');}else showStep(tIdx);};
+const runBtn=document.getElementById(CFG.btn),oldRun=runBtn.onclick;
+runBtn.onclick=e=>{if(oldRun)oldRun.call(runBtn,e);if(CFG.isOn())startTour();else stopTour();};
+const oldSetLang=setLang;setLang=function(l){oldSetLang(l);syncPresenter();if(!presenter.hidden&&tIdx>=0)showStep(tIdx);};
+syncPresenter();
+})();
+
+loadingEl.remove();requestAnimationFrame(frame);
+})();
+
+</script>
+</body>
+</html>

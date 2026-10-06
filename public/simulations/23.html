@@ -1,0 +1,878 @@
+<!doctype html>
+<!-- © 2026 Dr. Dheyaa J. Jasim (د. ضياء جمعة جاسم), Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College. Work ID: DJJ-VLAB-BOUNDARY_LAYER-2026. All rights reserved. For educational use; no republication or sale without written permission. -->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Dr. Dheyaa J. Jasim (د. ضياء جمعة جاسم)">
+<meta name="copyright" content="© 2026 Dr. Dheyaa J. Jasim. All rights reserved.">
+<meta name="dcterms.rights" content="All rights reserved. For educational use; no republication or sale without written permission.">
+<meta name="dcterms.identifier" content="DJJ-VLAB-BOUNDARY_LAYER-2026">
+<script type="application/ld+json" data-ip="djj">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "محاكي طبقة التركيز الحدية | Concentration Boundary Layer", "identifier": "DJJ-VLAB-BOUNDARY_LAYER-2026", "inLanguage": ["ar", "en"], "copyrightYear": 2026, "author": {"@type": "Person", "name": "Dr. Dheyaa J. Jasim", "alternateName": "د. ضياء جمعة جاسم", "affiliation": {"@type": "CollegeOrUniversity", "name": "Al-Amarah University College", "department": "Department of Chemical Engineering and Petroleum Industries"}}, "copyrightHolder": {"@type": "Person", "name": "Dr. Dheyaa J. Jasim"}, "usageInfo": "All rights reserved. For educational use; no republication or sale without written permission."}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>محاكي طبقة التركيز الحدية | Concentration Boundary Layer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e4eaee; --stage-a:#f3f6f8; --stage-b:#d2dce2; --panel:#f7f9fa; --ink:#1b2830; --muted:#5a6a75;
+  --line:#c9d4db; --chip:#ffffff; --accent:#b85f1e; --accent-ink:#ffffff; --cool:#2f76b3; --tint:#edf2f5;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#11171c; --stage-a:#223039; --stage-b:#10161b; --panel:#172027; --ink:#e1e8ed; --muted:#94a4af;
+    --line:#2c3a44; --chip:#21303a; --accent:#e0873d; --accent-ink:#1a1108; --cool:#5d9fd5; --tint:#1e2a32;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11171c; --stage-a:#223039; --stage-b:#10161b; --panel:#172027; --ink:#e1e8ed; --muted:#94a4af;
+  --line:#2c3a44; --chip:#21303a; --accent:#e0873d; --accent-ink:#1a1108; --cool:#5d9fd5; --tint:#1e2a32;
+}
+html{height:100%; scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0; height:100%; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans Arabic","Segoe UI",Tahoma,"Noto Sans Arabic",Arial,sans-serif; font-size:15px; line-height:1.7}
+button{font:inherit; color:inherit}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+.app{display:grid; grid-template-columns:minmax(300px,370px) 1fr; height:100%}
+.panel{background:var(--panel); border-inline-end:1px solid var(--line); overflow-y:auto; display:flex; flex-direction:column}
+.ph{padding:22px 22px 14px}
+.ph h1{margin:0; font-size:21px; line-height:1.4; font-weight:700}
+.ph .sub{margin:2px 0 0; color:var(--muted); font-size:13.5px; direction:ltr; text-align:right}
+
+.card{margin:0 16px; padding:16px 18px; background:var(--tint); border-radius:12px; border:1px solid var(--line)}
+.card h2{margin:0; font-size:18px; font-weight:600; line-height:1.45}
+.card .en{margin:0 0 8px; color:var(--muted); font-size:13px; direction:ltr; text-align:right}
+.card p{margin:6px 0}
+.card .eq{margin-top:10px; padding:8px 10px; border-inline-start:3px solid var(--accent); background:var(--panel); border-radius:0 6px 6px 0; font-size:14px; unicode-bidi:plaintext}
+.card .head{display:flex; gap:10px; align-items:flex-start}
+.card .head .num{flex:none; margin-top:3px}
+.card .act{margin-top:12px; display:flex; gap:8px; flex-wrap:wrap}
+.card .act button{background:var(--chip); border:1px solid var(--line); border-radius:8px; padding:5px 12px; cursor:pointer; font-size:13.5px}
+.card .act button:hover{border-color:var(--accent)}
+
+.num{display:inline-grid; place-items:center; width:24px; height:24px; border-radius:50%; font-size:12.5px; font-weight:600;
+  background:var(--chip); border:1.5px solid var(--ink); line-height:1; font-variant-numeric:tabular-nums}
+
+.mix{padding:18px 22px 6px}
+.mix h3,.parts h3{margin:0 0 6px; font-size:15px; font-weight:600}
+.rpm{display:flex; align-items:center; gap:12px}
+.rpm input{flex:1; accent-color:var(--accent)}
+.rpm output{min-width:86px; font-weight:600; font-variant-numeric:tabular-nums}
+.readout{display:grid; grid-template-columns:1fr auto; gap:2px 12px; margin:10px 0 4px; font-size:14px}
+.readout dt{color:var(--muted)}
+.readout dd{margin:0; font-weight:600; font-variant-numeric:tabular-nums; direction:ltr; text-align:left}
+.fine{font-size:12.5px; color:var(--muted); margin:6px 0 0}
+
+.parts{padding:14px 14px 8px}
+.parts h3{padding:10px 8px 2px; color:var(--muted); font-size:13px}
+.parts ul{list-style:none; margin:0; padding:0}
+.parts li button{display:flex; align-items:center; gap:10px; width:100%; text-align:right; background:none; border:0;
+  padding:5px 8px; border-radius:8px; cursor:pointer; font-size:14.5px}
+.parts li button:hover{background:var(--tint)}
+.parts li button[aria-current="true"]{background:var(--tint); box-shadow:inset -3px 0 0 var(--accent)}
+.parts li button[aria-current="true"] .num{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.lang{display:inline-block; cursor:pointer; background:none; font:inherit; margin-top:8px; font-size:13.5px; color:var(--accent); text-decoration:none; border:1px solid var(--line); border-radius:8px; padding:2px 10px}
+.lang:hover{border-color:var(--accent)}
+.credit{margin-top:auto; padding:14px 22px 20px; font-size:12.5px; color:var(--muted); border-top:1px solid var(--line)}
+.credit b{color:var(--ink); font-weight:600}
+
+.stage{position:relative; overflow:hidden; background:radial-gradient(ellipse 70% 65% at 50% 42%, var(--stage-a), var(--stage-b))}
+#c{display:block; width:100%; height:100%; touch-action:none; cursor:grab}
+#c:active{cursor:grabbing}
+.labels{position:absolute; inset:0; pointer-events:none}
+.lbl{direction:ltr; position:absolute; left:0; top:0; pointer-events:auto; display:flex; align-items:center; gap:6px; padding:0; border:0; background:none; cursor:pointer; white-space:nowrap}
+.lbl .t{direction:rtl; display:none; background:var(--chip); border:1px solid var(--line); border-radius:6px; padding:1px 8px; font-size:12.5px; box-shadow:0 1px 3px rgba(20,30,40,.18)}
+.labels.names .lbl .t,.lbl.on .t{display:inline-block}
+.lbl .num{box-shadow:0 1px 3px rgba(20,30,40,.25)}
+.lbl.on .num{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.lbl.on .t{border-color:var(--accent)}
+.labels.off .lbl:not(.on){display:none}
+
+.ovl{position:absolute; top:14px; inset-inline-start:16px; pointer-events:none; display:flex; flex-direction:column; align-items:flex-start; gap:8px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 12px; background:color-mix(in srgb,var(--panel) 82%,transparent); border:1px solid var(--line); border-radius:10px; padding:5px 12px; font-size:13px}
+.legend span{display:inline-flex; align-items:center; gap:6px}
+.legend i{width:11px; height:11px; border-radius:50%; display:inline-block; box-shadow:0 0 0 1.5px rgba(255,255,255,.7)}
+.legend b{font-weight:500}
+.tb.rx{background:#1f8a4c; color:#fff; border-color:#1f8a4c; font-weight:600}
+.tb.rx[aria-pressed="true"]{background:#b3362b; border-color:#b3362b; color:#fff}
+.rxbar{display:flex; height:12px; border-radius:6px; overflow:hidden; margin:8px 0 4px; background:var(--line)}
+.rxbar div{transition:width .25s linear}
+.brand{ background:color-mix(in srgb,var(--panel) 82%,transparent); border:1px solid var(--line); border-inline-start:4px solid var(--accent); border-radius:10px; padding:8px 14px 9px}
+.brand .who{font-size:17px; font-weight:700; line-height:1.4}
+.brand .en{font-size:13px; color:var(--muted); direction:ltr; text-align:right}
+.brand .org{font-size:12.5px; color:var(--muted)}
+.hint{position:absolute; top:14px; inset-inline-end:16px; max-width:300px; font-size:13px; color:var(--muted); pointer-events:none}
+.toolbar{position:absolute; bottom:14px; inset-inline:14px; display:flex; flex-wrap:wrap; gap:8px; justify-content:center; pointer-events:none}
+.toolbar > *{pointer-events:auto}
+.tb{background:var(--chip); border:1px solid var(--line); border-radius:9px; padding:6px 13px; cursor:pointer; font-size:13.5px; box-shadow:0 1px 3px rgba(20,30,40,.12)}
+.tb:hover{border-color:var(--accent)}
+.tb[aria-pressed="true"]{background:var(--ink); color:var(--panel); border-color:var(--ink)}
+.seg{display:inline-flex; background:var(--chip); border:1px solid var(--line); border-radius:9px; padding:2px; box-shadow:0 1px 3px rgba(20,30,40,.12)}
+.seg button{border:0; background:none; padding:4px 11px; border-radius:7px; cursor:pointer; font-size:13.5px}
+.seg button[aria-pressed="true"]{background:var(--ink); color:var(--panel)}
+.loading{position:absolute; inset:0; display:grid; place-items:center; color:var(--muted); font-size:15px; padding:20px; text-align:center}
+
+html[dir="ltr"] .ph .sub,html[dir="ltr"] .card .en,html[dir="ltr"] .brand .en{direction:rtl; text-align:left}
+html[dir="ltr"] .readout dd{text-align:right}
+html[dir="rtl"] #oReg{direction:rtl}
+html[dir="ltr"] .parts li button{text-align:left}
+html[dir="ltr"] .parts li button[aria-current="true"]{box-shadow:inset 3px 0 0 var(--accent)}
+html[dir="ltr"] .lbl .t{direction:ltr}
+html[dir="ltr"] .card .eq{border-radius:0 6px 6px 0}
+html[dir="rtl"] .card .eq{border-radius:6px 0 0 6px}
+@media (max-width:820px){
+  html,body{height:auto}
+  .app{grid-template-columns:1fr; height:auto}
+  .stage{order:-1; height:66svh; min-height:380px}
+  .panel{border-inline-end:0; overflow:visible}
+  .hint{display:none}
+  .ovl{top:10px; inset-inline-start:10px}
+  .brand{padding:6px 10px}
+  .legend{font-size:12px; padding:4px 9px}
+  .brand .who{font-size:15px}
+  .brand .org{display:none}
+  .toolbar{bottom:10px; gap:6px}
+  .tb,.seg button{font-size:12.5px}
+}
+.prof-h{margin-top:14px !important}
+.prof{display:grid; grid-template-columns:auto 1fr auto; gap:3px 8px; align-items:center; font-size:12.5px; font-variant-numeric:tabular-nums}
+.prof .k{color:var(--muted)}
+.prof .tr{height:9px; background:var(--line); border-radius:5px; overflow:hidden}
+.prof .tr div{height:100%; border-radius:5px; transition:width .3s}
+.prof .v{direction:ltr}
+.legend i.grad{width:34px; border-radius:6px; background:linear-gradient(90deg,#f2c21b,#e23b32)}
+html[dir="rtl"] .legend i.grad{background:linear-gradient(270deg,#f2c21b,#e23b32)}
+.legend i.bub{background:transparent; box-shadow:inset 0 0 0 2px #e9844a}
+@media (max-width:820px){
+  .stage{height:auto; min-height:0; display:flex; flex-direction:column}
+  #c{height:60svh; min-height:340px; flex:none}
+  .toolbar{position:static; inset:auto; padding:10px 10px 12px; background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+  .labels{bottom:auto; height:max(60svh,340px)}
+}
+.tb.fl{border-color:#b3362b; color:#b3362b; font-weight:600}
+.tb.fl[aria-pressed="true"]{background:#b3362b; color:#fff}
+.fwarn{background:#b3362b; color:#fff; border-radius:10px; padding:6px 12px; font-size:13.5px; font-weight:600; max-width:340px; box-shadow:0 2px 8px rgba(120,20,10,.3)}
+.fwarn[hidden]{display:none}
+.card.fcard{border-color:#b3362b; border-inline-start:4px solid #b3362b}
+.card.fcard h2{color:#b3362b}
+.card ul{margin:6px 0; padding-inline-start:20px}
+.card li{margin:2px 0}
+.card h4{margin:10px 0 2px; font-size:14.5px}
+#chart svg{width:100%; height:auto; display:block}
+#chart text{font-size:10px; fill:var(--muted); font-family:inherit}
+.ch-leg{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--muted); margin-top:4px}
+.ch-leg i{display:inline-block; width:16px; height:3px; border-radius:2px; vertical-align:middle; margin-inline-end:5px}
+.fwarn.ok{background:#1f8a4c}
+.legend i.sw{width:34px; border-radius:6px; background:linear-gradient(90deg,#ff3b1f,#1f5fff)}
+.legend i.gw{width:34px; border-radius:6px; background:linear-gradient(90deg,#9be38a,#f4f4f4)}
+html[dir="rtl"] .legend i.sw{background:linear-gradient(270deg,#ff3b1f,#1f5fff)}
+html[dir="rtl"] .legend i.gw{background:linear-gradient(270deg,#9be38a,#f4f4f4)}
+.pkseg{display:flex; width:100%}
+.pkseg button{flex:1; padding:6px 3px; font-size:12.5px}
+#chart2 svg{width:100%;height:auto;display:block;margin-top:8px}#chart2 text{font-size:10px;fill:var(--muted);font-family:inherit}
+#chart svg,#chart2 svg,#chart3 svg{width:100%;height:auto;display:block;margin-top:8px}#chart text,#chart2 text,#chart3 text{font-size:10px;fill:var(--muted);font-family:inherit}
+.fwarn.bad{background:#c8352e}
+.presenter{position:absolute; top:12px; inset-inline-end:12px; width:min(290px,calc(100% - 24px)); display:flex; gap:9px; align-items:flex-start; background:color-mix(in srgb,var(--panel) 94%,transparent); border:1px solid var(--line); border-radius:12px; padding:8px 9px; box-shadow:0 4px 16px rgba(10,20,30,.2); z-index:5}
+.presenter[hidden]{display:none}
+.pv{position:relative; flex:none; width:52px; height:52px}
+.pv img{width:52px; height:52px; border-radius:50%; object-fit:cover; object-position:50% 30%; position:relative; z-index:1; border:2px solid var(--panel)}
+.pv .ring{position:absolute; inset:-3px; border-radius:50%; background:conic-gradient(#1f8a4c,#1f78c8,#1f8a4c); opacity:.35}
+.presenter.talking .pv img{animation:talk 2.4s ease-in-out infinite}
+.presenter.talking .pv .ring{opacity:1; animation:spin 3s linear infinite}
+@keyframes talk{0%,100%{transform:translateY(0) scale(1)}25%{transform:translateY(-1px) scale(1.02) rotate(-.6deg)}50%{transform:translateY(0) scale(1.005)}75%{transform:translateY(-1px) scale(1.015) rotate(.6deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pv .bars{position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); display:flex; gap:2px; z-index:2; background:var(--panel); border-radius:6px; padding:2px 4px; border:1px solid var(--line)}
+.pv .bars i{display:block; width:2px; height:4px; background:#1f8a4c; border-radius:2px}
+.presenter.talking .bars i{animation:bar .9s ease-in-out infinite}
+.presenter.talking .bars i:nth-child(2){animation-delay:.15s}.presenter.talking .bars i:nth-child(3){animation-delay:.3s}.presenter.talking .bars i:nth-child(4){animation-delay:.45s}.presenter.talking .bars i:nth-child(5){animation-delay:.6s}
+@keyframes bar{0%,100%{height:3px}50%{height:10px}}
+.pb{flex:1; min-width:0}
+.pn{font-weight:700; font-size:12.5px; line-height:1.3}
+.pn span{font-weight:500; color:var(--muted); font-size:11.5px; margin-inline-start:4px}
+.pt{font-size:12.5px; line-height:1.6; margin:3px 0 5px; max-height:4.9em; overflow-y:auto}
+.pc{display:flex; gap:4px}
+.pc .ic{background:var(--chip); border:1px solid var(--line); border-radius:7px; width:28px; height:24px; padding:0; font-size:11px; line-height:1; cursor:pointer}
+.pc .ic:hover{border-color:var(--accent)}
+html[dir="rtl"] .pc .flip{transform:scaleX(-1)}
+.pw{margin-top:4px; font-size:11px; color:#c0621c}
+.pbtn{position:absolute; top:12px; inset-inline-end:12px; z-index:5; width:46px; height:46px; border-radius:50%; padding:0; border:2px solid #1f8a4c; background:var(--panel); cursor:pointer; box-shadow:0 3px 10px rgba(10,20,30,.2)}
+.pbtn img{width:100%; height:100%; border-radius:50%; object-fit:cover; object-position:50% 30%}
+.pbtn span{position:absolute; bottom:-3px; inset-inline-end:-3px; width:18px; height:18px; border-radius:50%; background:#1f8a4c; color:#fff; font-size:9px; display:grid; place-items:center}
+.pbtn[hidden]{display:none}
+.stage.tour .hint{display:none}
+@media (max-width:820px){.presenter{top:8px; inset-inline-end:8px; width:min(270px,calc(100% - 16px))}.pbtn{top:8px}.stage.tour .ovl{display:none}}
+.stage .hint{inset-inline-end:70px}
+.wm{position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:6;pointer-events:none;user-select:none;font:600 11px/1.2 "IBM Plex Sans Arabic",system-ui,sans-serif;color:#fff;opacity:.5;text-shadow:0 0 3px rgba(0,0,0,.85),0 0 1px #000;white-space:nowrap;letter-spacing:.2px}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="panel">
+    <header class="ph">
+      <h1 data-t="h1"></h1>
+      <p class="sub" data-t="sub"></p>
+      <button class="lang" data-lang-toggle>English</button>
+    </header>
+    <section class="card" id="card" aria-live="polite"></section>
+    <section class="mix">
+      <h3 data-t="opSys"></h3>
+      <div class="seg pkseg" role="group">
+        <button data-sys="0" aria-pressed="true"></button>
+        <button data-sys="1" aria-pressed="false"></button>
+        <button data-sys="2" aria-pressed="false"></button>
+      </div>
+      <h3 data-t="opU" style="margin-top:12px"></h3>
+      <div class="rpm"><input type="range" id="uu" min="0" max="100" step="1" value="41" aria-label="Free-stream velocity"><output id="uuOut">–</output></div>
+      <h3 data-t="opL" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="ll" min="10" max="100" step="5" value="30" aria-label="Plate length"><output id="llOut">–</output></div>
+      <h3 data-t="opRc" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="rc" min="5" max="6.5" step="0.05" value="5.7" aria-label="Critical Reynolds number"><output id="rcOut">–</output></div>
+      <h3 data-t="opDf" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="df" min="-1" max="1" step="0.05" value="0" aria-label="Diffusivity factor"><output id="dfOut">–</output></div>
+      <h3 data-t="opXp" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="xp" min="5" max="100" step="1" value="60" aria-label="Probe position"><output id="xpOut">–</output></div>
+      <h3 data-t="opTe" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="te" min="0" max="100" step="1" value="0" aria-label="Exposure time"><output id="teOut">–</output></div>
+      <h3 data-t="opN" style="margin-top:10px"></h3>
+      <div class="rpm"><input type="range" id="np" min="2000" max="24000" step="1000" value="14000" aria-label="Number of solute particles"><output id="npOut">–</output></div>
+      <dl class="readout">
+        <dt data-t="dRe"></dt><dd id="oRe">–</dd>
+        <dt data-t="dSc"></dt><dd id="oSc">–</dd>
+        <dt data-t="dDel"></dt><dd id="oDel">–</dd>
+        <dt data-t="dSh"></dt><dd id="oSh">–</dd>
+        <dt data-t="dRate"></dt><dd id="oRate">–</dd>
+        <dt data-t="dLoc"></dt><dd id="oLoc">–</dd>
+        <dt data-t="dEro"></dt><dd id="oEro">–</dd>
+        <dt data-t="dK"></dt><dd id="oK">–</dd>
+      </dl>
+      <h3 class="prof-h" data-t="chH"></h3>
+      <div id="chart"></div>
+      <div id="chart2"></div>
+      <div id="chart3"></div>
+      <p class="fine" data-t="fine"></p>
+    </section>
+    <footer class="credit" data-t="credit"></footer>
+  </aside>
+  <main class="stage" id="stage">
+    <canvas id="c" aria-label="3D concentration boundary layer on a flat plate"></canvas>
+<div class="wm" aria-hidden="true">© 2026 د. ضياء جمعة جاسم · Dr. Dheyaa J. Jasim</div>
+    <div class="labels" id="labels"></div>
+    <div class="ovl">
+      <div class="brand"><div class="who" data-t="who"></div><div class="en" data-t="whoAlt"></div><div class="org" data-t="org"></div></div>
+      <div class="fwarn" id="fwarn" hidden></div>
+      <div class="legend" aria-hidden="true">
+        <span><i style="background:linear-gradient(90deg,#ff6d00,#ffd600,#00e5ff)"></i><b data-t="lgS"></b></span>
+        <span><i style="background:linear-gradient(90deg,#37474f,#78909c)"></i><b data-t="lgT"></b></span>
+        <span><i style="background:linear-gradient(90deg,#1a237e,#00838f,#7cb342,#fb8c00,#d50000)"></i><b data-t="lgM"></b></span>
+        <span><i style="background:#7e57c2"></i><b data-t="lgV"></b></span>
+      </div>
+    </div>
+    <div class="hint" data-t="hint"></div>
+    <div class="toolbar">
+      <button class="tb rx" id="bRun" aria-pressed="false"></button>
+      <button class="tb" id="bTurb"></button>
+      <button class="tb" id="bReset"></button>
+      
+      <button class="tb" data-lang-toggle>English</button>
+      <div class="seg" role="group">
+        <button data-drag="rotate" aria-pressed="true" data-t="dRot"></button>
+        <button data-drag="pan" aria-pressed="false" data-t="dPan"></button>
+      </div>
+      <div class="seg" role="group">
+        <button data-mode="full" aria-pressed="false" data-t="full"></button>
+        <button data-mode="cut" aria-pressed="true" data-t="cut"></button>
+        <button data-mode="ghost" aria-pressed="false" data-t="ghost"></button>
+      </div>
+      <button class="tb" id="bExplode" aria-pressed="false"></button>
+      <button class="tb" id="bLabels"></button>
+      <div class="seg" role="group">
+        <button data-view="iso" data-t="iso"></button>
+        <button data-view="front" data-t="front"></button>
+        <button data-view="top" data-t="top"></button>
+      </div>
+    </div>
+    <div class="loading" id="loading">جارٍ تحميل النموذج… Loading…</div>
+  </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+const loadingEl=document.getElementById('loading');
+if(!window.THREE||!THREE.OrbitControls){loadingEl.textContent='تعذّر تحميل مكتبة الرسم ثلاثي الأبعاد. تحقق من الاتصال بالإنترنت ثم أعد تحميل الصفحة. / The 3D library could not load; check your connection and reload.';return;}
+
+/* ---------- Blasius similarity solution: f''' + ½ f f'' = 0, f(0)=f'(0)=0, f'(∞)=1 (RK4 + shooting on f''(0)) ---------- */
+const BLH=5e-4,BLN=16000,BLE0=1.7207876575; /* grid step, nodes (η_max = 8), displacement constant: f → η − 1.72079 */
+const BLS=(function(){const f=new Float64Array(BLN+1),fp=new Float64Array(BLN+1),fpp=new Float64Array(BLN+1);
+ function run(a,store){let y0=0,y1=0,y2=a;if(store){f[0]=0;fp[0]=0;fpp[0]=a;}
+  const d=(p,q,r)=>[q,r,-.5*p*r];
+  for(let i=0;i<BLN;i++){const h=BLH;let k1=d(y0,y1,y2),k2=d(y0+h/2*k1[0],y1+h/2*k1[1],y2+h/2*k1[2]),k3=d(y0+h/2*k2[0],y1+h/2*k2[1],y2+h/2*k2[2]),k4=d(y0+h*k3[0],y1+h*k3[1],y2+h*k3[2]);
+   y0+=h/6*(k1[0]+2*k2[0]+2*k3[0]+k4[0]);y1+=h/6*(k1[1]+2*k2[1]+2*k3[1]+k4[1]);y2+=h/6*(k1[2]+2*k2[2]+2*k3[2]+k4[2]);if(store){f[i+1]=y0;fp[i+1]=y1;fpp[i+1]=y2;}}
+  return y1;}
+ let lo=.3,hi=.37;for(let i=0;i<60;i++){const m=(lo+hi)/2;if(run(m,false)>1)hi=m;else lo=m;}const a=(lo+hi)/2;run(a,true);
+ let e99=0;for(let i=0;i<=BLN;i++){if(fp[i]>=.99){e99=i*BLH-(fp[i]-.99)/((fp[i]-fp[i-1])||1)*BLH;break;}}
+ return {f,fp,fpp,fpp0:a,eta99:e99};})();
+/* f and f' at any η (linear interpolation, analytic beyond η = 8) */
+function blF(eta){if(eta>=8)return [eta-BLE0,1];const x=eta/BLH,i=Math.floor(x),t=x-i;return [BLS.f[i]+(BLS.f[i+1]-BLS.f[i])*t,BLS.fp[i]+(BLS.fp[i+1]-BLS.fp[i])*t];}
+/* species equation θ'' + ½ Sc f θ' = 0, θ(0)=0, θ(∞)=1  →  θ' = θ'(0)·exp(−½ Sc ∫ f dη);  c̃ = 1 − θ is the dimensionless concentration (1 at the wall) */
+function species(Sc){const eta=[],F=[],g=[];let Fc=0,gi=1,int=0;const th=[];
+ for(let i=0;i<=BLN;i++){const e=i*BLH,fv=BLS.f[i];if(i>0){Fc+=.5*(BLS.f[i-1]+fv)*BLH;}const gv=Math.exp(-.5*Sc*Fc);eta.push(e);g.push(gv);if(i>0)int+=.5*(g[i-1]+gv)*BLH;th.push(int);}
+ let e=8,Fe=Fc,prevg=g[BLN];const h2=.02;
+ for(let k=0;k<4000;k++){const e2=e+h2,f1=e-BLE0,f2=e2-BLE0;Fe+=.5*(f1+f2)*h2;const gv=Math.exp(-.5*Sc*Fe);int+=.5*(prevg+gv)*h2;eta.push(e2);g.push(gv);th.push(int);prevg=gv;e=e2;if(gv<1e-13)break;}
+ const tot=th[th.length-1],n=eta.length,thn=new Float64Array(n);for(let i=0;i<n;i++)thn[i]=th[i]/tot;
+ let e99=eta[n-1];for(let i=1;i<n;i++){if(thn[i]>=.99){e99=eta[i-1]+(.99-thn[i-1])/(thn[i]-thn[i-1])*(eta[i]-eta[i-1]);break;}}
+ return {eta:Float64Array.from(eta),th:thn,thp0:1/tot,eta99:e99,n};}
+function cAt(sp,e){ /* c̃(η) by binary search */ if(e<=0)return 1;const n=sp.n;if(e>=sp.eta[n-1])return 0;let lo=0,hi=n-1;while(hi-lo>1){const m=(lo+hi)>>1;if(sp.eta[m]<=e)lo=m;else hi=m;}const t=(e-sp.eta[lo])/(sp.eta[hi]-sp.eta[lo]);return 1-(sp.th[lo]+(sp.th[hi]-sp.th[lo])*t);}
+/* ---------- the physical situation ---------- */
+const SYS=[{id:'ba',nu:.893e-6,D:1.0e-9,Cs:3.4,rhoS:1266,U0:.4,Umin:.1,Umax:3,col:0xff6d00,plate:0xd1b48c,fluid:'water'},
+ {id:'nap',nu:1.562e-5,D:6.2e-6,Cs:5.5e-4,rhoS:1145,U0:5,Umin:1,Umax:40,col:0xffd600,plate:0x9e8f84,fluid:'air'},
+ {id:'h2o',nu:1.562e-5,D:2.6e-5,Cs:.023,rhoS:997,U0:5,Umin:1,Umax:40,col:0x00e5ff,plate:0x4aa3df,fluid:'air'}];
+const KAPPA=.41,SCT=.9;
+function mkEnv(p){const Sc=p.nu/p.D,sp=species(Sc),xcr=p.Recr*p.nu/p.U,Sc13=Math.cbrt(Sc);
+ const E={...p,Sc,sp,xcr,Sc13,ReL:p.U*p.L/p.nu,alpha:1};
+ if(xcr<p.L){ /* one calibration factor on the eddy viscosity so that the turbulent profile reproduces the correlation Sh_x at the middle of the turbulent part */
+  const xr=.5*(xcr+p.L),target=.0296*Math.pow(p.U*xr/p.nu,.8)*Sc13;let lo=Math.log(.02),hi=Math.log(60);
+  for(let i=0;i<40;i++){const m=.5*(lo+hi);E.alpha=Math.exp(m);if(turbProfile(E,xr,120).ShModel<target)lo=m;else hi=m;}E.alpha=Math.exp(.5*(lo+hi));}
+ prepStep(E);return E;}
+function turbPars(E,x){const Rex=E.U*x/E.nu,Cf=.0592*Math.pow(Rex,-.2),us=E.U*Math.sqrt(Cf/2),dT=.37*x*Math.pow(Rex,-.2);return {Rex,Cf,us,dT};}
+/* eddy diffusivity (van Driest inner law, Klebanoff intermittency) used only in the turbulent part of the plate */
+function Deff(E,tp,y){const yp=y*tp.us/E.nu,inner=KAPPA*tp.us*y*Math.pow(1-Math.exp(-yp/26),2),cap=.09*tp.us*tp.dT,g=1/(1+5.5*Math.pow(y/tp.dT,6));return E.D+(E.alpha||1)*Math.min(inner,cap)*g/SCT;}
+/* constant-flux concentration profile in the turbulent layer: c̃(y) = 1 − Φ(y)/Φ(δ_T), Φ(y) = ∫ dy/D_eff */
+function turbProfile(E,x,n){const tp=turbPars(E,x),ys=new Float64Array(n+1),phi=new Float64Array(n+1),ymax=1.15*tp.dT;let acc=0,yprev=0,dprev=1/E.D;
+ for(let i=0;i<=n;i++){const y=ymax*Math.pow(i/n,2.2);ys[i]=y;if(i>0){const dv=1/Deff(E,tp,y);acc+=.5*(dprev+dv)*(y-yprev);dprev=dv;yprev=y;}phi[i]=acc;}
+ const ptot=phi[n],c=new Float64Array(n+1),u=new Float64Array(n+1);for(let i=0;i<=n;i++){c[i]=Math.max(0,1-phi[i]/ptot);u[i]=E.U*Math.min(1,Math.pow(ys[i]/tp.dT,1/7));}
+ let d01=ys[n];for(let i=1;i<=n;i++){if(c[i]<=.01){d01=ys[i-1]+(c[i-1]-.01)/((c[i-1]-c[i])||1)*(ys[i]-ys[i-1]);break;}}
+ return {y:ys,c,u,dT:tp.dT,dC:d01,ShModel:x/(E.D*ptot),us:tp.us};}
+const smooth=t=>t<=0?0:t>=1?1:t*t*(3-2*t);
+/* local quantities along the plate */
+function local(E,x){x=Math.max(x,1e-9);const lam=x<E.xcr,Rex=E.U*x/E.nu,sq=Math.sqrt(E.nu*x/E.U);
+ const dLam=BLS.eta99*sq,dcLam=E.sp.eta99*sq,tp=turbPars(E,x);
+ const Sh=lam?E.sp.thp0*Math.sqrt(Rex):.0296*Math.pow(Rex,.8)*E.Sc13,k=Sh*E.D/x;
+ let d=dLam,dc=dcLam;if(!lam){const w=smooth((x-E.xcr)/(.15*E.xcr));let dcT=tp.dT;d=(1-w)*dLam+w*tp.dT;dc=(1-w)*dcLam+w*dcT*.97;}
+ return {x,lam,Rex,Sh,k,delta:d,deltaC:dc,N:k*(E.Cs-E.Cinf),us:tp.us};}
+/* plate average Sh_L = ∫ Sh_x dx / x  (laminar part + turbulent part) and the standard closed form for comparison */
+function avgSh(E){const L=E.L,xc=Math.min(L,E.xcr),ReC=E.U*xc/E.nu,ReL=E.U*L/E.nu;let sh=2*E.sp.thp0*Math.sqrt(ReC);if(L>E.xcr)sh+=.037*E.Sc13*(Math.pow(ReL,.8)-Math.pow(ReC,.8));return sh;}
+const erodeDepth=(E,x,tSec)=>local(E,x).N/E.rhoS*tSec;
+/* ---------- Lagrangian particle model: advection with the local velocity + Brownian/eddy diffusion, reflecting wall, wall source ∝ local flux ---------- */
+function gauss(){let u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+function fluxCDF(E,K){ /* cumulative of the wall flux N(x) ∝ Sh_x/x on a grid in √x, to sample injection points */ const xs=new Float64Array(K+1),cs=new Float64Array(K+1);let acc=0,pv=0,px=0;
+ for(let i=0;i<=K;i++){const x=E.L*Math.pow(i/K,2);xs[i]=x;if(i>0){const w=local(E,Math.max(x,1e-9)).Sh/Math.max(x,1e-9),wm=local(E,.5*(x+px)+1e-12).Sh/(.5*(x+px)+1e-12);acc+=(x-px)*wm;}px=x;cs[i]=acc;}
+ for(let i=0;i<=K;i++)cs[i]/=acc;return {xs,cs,total:acc};}
+function sampleX(cdf){const r=Math.random();let lo=0,hi=cdf.cs.length-1;while(hi-lo>1){const m=(lo+hi)>>1;if(cdf.cs[m]<=r)lo=m;else hi=m;}const t=(r-cdf.cs[lo])/((cdf.cs[hi]-cdf.cs[lo])||1);return cdf.xs[lo]+(cdf.xs[hi]-cdf.xs[lo])*t;}
+function stepOne(E,P,i,dt,ymax){let x=P.x[i],y=P.y[i];x=Math.max(x,1e-7);let u,dy;
+ if(x<E.xcr){const eta=y*Math.sqrt(E.U/(E.nu*x)),ff=blF(eta),fp=ff[1],v=Math.min(.5*Math.sqrt(E.nu*E.U/x)*(eta*fp-ff[0]),20*E.U);u=E.U*fp;dy=v*dt+Math.sqrt(2*E.D*dt)*gauss();}
+ else{const tp=turbPars(E,x);u=E.U*Math.min(1,Math.pow(Math.max(y,1e-9)/tp.dT,1/7));const d0=Deff(E,tp,y),e=Math.max(1e-7,.01*Math.max(y,1e-5)),dd=(Deff(E,tp,y+e)-Deff(E,tp,Math.max(0,y-e)))/(y+e-Math.max(0,y-e));
+  dy=dd*dt+Math.sqrt(2*d0*dt)*gauss();const lim=.5*Math.max(y,2e-5);dy=Math.max(-lim,Math.min(lim+1e-6,dy));}
+ y+=dy;if(y<0)y=-y;P.x[i]=P.x[i]+u*dt;P.y[i]=y;return (P.x[i]>E.L||y>ymax)?false:true;}
+/* ---------- steady-state sampler: places particles exactly according to the analytic concentration field ---------- */
+function buildSampler(E,K){K=K||80;const xs=new Float64Array(K+1),mass=new Float64Array(K+1),tabs=[],bet=(function(){let b=0;const sp=E.sp;for(let i=1;i<sp.n;i++)b+=.5*((1-sp.th[i-1])+(1-sp.th[i]))*(sp.eta[i]-sp.eta[i-1]);return b;})();
+ /* laminar: shared η-CDF of c̃ */
+ const sp=E.sp,ecdf=new Float64Array(sp.n);{let a=0;ecdf[0]=0;for(let i=1;i<sp.n;i++){a+=.5*((1-sp.th[i-1])+(1-sp.th[i]))*(sp.eta[i]-sp.eta[i-1]);ecdf[i]=a;}for(let i=0;i<sp.n;i++)ecdf[i]/=a;}
+ for(let k=0;k<=K;k++){const x=Math.max(1e-9,E.L*Math.pow(k/K,1.6));xs[k]=x;if(x<E.xcr){mass[k]=bet*Math.sqrt(E.nu*x/E.U);tabs.push(null);}
+  else{const tp=turbProfile(E,x,100);let m=0;const cd=new Float64Array(101);for(let i=1;i<=100;i++){m+=.5*(tp.c[i-1]+tp.c[i])*(tp.y[i]-tp.y[i-1]);cd[i]=m;}for(let i=0;i<=100;i++)cd[i]/=m||1;mass[k]=m;tabs.push({y:tp.y,cd});}}
+ const cm=new Float64Array(K+1);for(let k=1;k<=K;k++)cm[k]=cm[k-1]+.5*(mass[k-1]+mass[k])*(xs[k]-xs[k-1]);const tot=cm[K];for(let k=0;k<=K;k++)cm[k]/=tot;
+ return {xs,mass,tabs,ecdf,sp,cm,K,total:tot,bet};}
+function sampleSteady(E,S){const r=Math.random();let lo=0,hi=S.K;while(hi-lo>1){const m=(lo+hi)>>1;if(S.cm[m]<=r)lo=m;else hi=m;}const t=(r-S.cm[lo])/((S.cm[hi]-S.cm[lo])||1),x=S.xs[lo]+(S.xs[hi]-S.xs[lo])*t,u=Math.random();
+ if(x<E.xcr){let a=0,b=S.sp.n-1;while(b-a>1){const m=(a+b)>>1;if(S.ecdf[m]<=u)a=m;else b=m;}const f=(u-S.ecdf[a])/((S.ecdf[b]-S.ecdf[a])||1),eta=S.sp.eta[a]+(S.sp.eta[b]-S.sp.eta[a])*f;return [x,eta*Math.sqrt(E.nu*x/E.U)];}
+ const tb=S.tabs[t<.5?lo:hi]||S.tabs[lo]||S.tabs[hi];if(!tb){return [x,0];}let a=0,b=100;while(b-a>1){const m=(a+b)>>1;if(tb.cd[m]<=u)a=m;else b=m;}const f=(u-tb.cd[a])/((tb.cd[b]-tb.cd[a])||1);return [x,tb.y[a]+(tb.y[b]-tb.y[a])*f];}
+/* injection rate (particles per second) that keeps N particles alive in the laminar steady state */
+function injRate(E,S,N){const nS=N/S.total;const f=fluxCDF(E,200);return nS*E.D*(f.total*0+1)*0+ nS*(function(){let a=0;const K=400;let px=0;for(let i=1;i<=K;i++){const x=E.L*Math.pow(i/K,2),xm=.5*(x+px)+1e-12;a+=(x-px)*local(E,xm).Sh*E.D/xm;px=x;}return a;})();}
+/* ---------- allocation-free stepping of all particles (same equations as stepOne, with tables for the turbulent geometry) ---------- */
+const GT=(function(){const a=new Float64Array(16384);let m=0;for(let i=0;i<a.length;i++){a[i]=gauss();m+=a[i];}m/=a.length;let v=0;for(let i=0;i<a.length;i++){a[i]-=m;v+=a[i]*a[i];}v=Math.sqrt(v/a.length);for(let i=0;i<a.length;i++)a[i]/=v;return a;})();
+function prepStep(E){const K=512,us=new Float64Array(K+1),dT=new Float64Array(K+1);for(let i=0;i<=K;i++){const tp=turbPars(E,Math.max(1e-6,E.L*i/K));us[i]=tp.us;dT[i]=tp.dT;}E.tab={K,us,dT};E.k1=Math.sqrt(E.U/E.nu);E.kv=.5*Math.sqrt(E.nu*E.U);return E;}
+function Dloc(al,D,nu,us,dT,y){const yp=y*us/nu,ex=1-Math.exp(-yp/26),inner=KAPPA*us*y*ex*ex,cap=.09*us*dT,m=inner<cap?inner:cap,r=y/dT,r3=r*r*r,g=1/(1+5.5*r3*r3);return D+al*m*g/SCT;}
+function stepAll(E,P,alive,N,dt,ymax,free,stride,phase){stride=stride||1;phase=phase||0;const U=E.U,nu=E.nu,D=E.D,xcr=E.xcr,L=E.L,k1=E.k1,kv=E.kv,fa=BLS.f,fpa=BLS.fp,invH=1/BLH,tab=E.tab,K=tab.K,al=E.alpha||1,sD=Math.sqrt(2*D*dt),rnd=Math.random,PX=P.x,PY=P.y;let killed=0;
+ for(let i=phase;i<N;i+=stride){if(!alive[i])continue;let x=PX[i],y=PY[i];if(x<1e-7)x=1e-7;let u,dy;
+  if(x<xcr){const sx=1/Math.sqrt(x),eta=y*k1*sx;let f,fp;if(eta>=8){f=eta-BLE0;fp=1;}else{const xx=eta*invH,j=xx|0,t=xx-j;f=fa[j]+(fa[j+1]-fa[j])*t;fp=fpa[j]+(fpa[j+1]-fpa[j])*t;}
+   let v=kv*sx*(eta*fp-f);if(v>20*U)v=20*U;u=U*fp;dy=v*dt+sD*GT[(rnd()*16384)|0];}
+  else{const xx=x/L*K;let j=xx|0;if(j>=K)j=K-1;const t=xx-j,us=tab.us[j]+(tab.us[j+1]-tab.us[j])*t,dT=tab.dT[j]+(tab.dT[j+1]-tab.dT[j])*t,r=(y>1e-9?y:1e-9)/dT;u=U*(r>=1?1:Math.pow(r,.14285714285714285));
+   const e=Math.max(1e-7,.01*(y>1e-5?y:1e-5)),yp1=y+e,ym1=y>e?y-e:0,dp=Dloc(al,D,nu,us,dT,yp1),dm=Dloc(al,D,nu,us,dT,ym1),d0=.5*(dp+dm),dd=(dp-dm)/(yp1-ym1);
+   dy=dd*dt+Math.sqrt(2*d0*dt)*GT[(rnd()*16384)|0];const lim=.5*(y>2e-5?y:2e-5);if(dy<-lim)dy=-lim;else if(dy>lim+1e-6)dy=lim+1e-6;}
+  y+=dy;if(y<0)y=-y;x=PX[i]+u*dt;PX[i]=x;PY[i]=y;if(x>L||y>ymax){alive[i]=0;free.push(i);killed++;}}
+ return killed;}
+
+
+let SI=0,UV=41,LCM=30,RCL=5.7,DFL=0,XPR=60,TEH=0,running=true,selected=null,dirty=true;const PORTS=[];
+let E=null,SMP=null,SX=1,SY=1,STT=1,INJ=0,CTRL=1,EF=1,EROS=null,YW0=2.65;
+const XL=8,YMAXS=2.3;
+
+/* ================= content ================= */
+const INFO_AR={
+ plate:{ar:'اللوح القابل للذوبان',en:'The soluble plate',d:'لوح رقيق حاد الحافة الأمامية موازٍ للتيار، مصبوب من مادة تذوب أو تتبخر (حمض البنزويك في الماء، أو النفثالين في الهواء). عند سطحه يكون التركيز ثابتاً عند قيمة التشبع C_s، وبعيداً عنه C_∞. يتغير ارتفاع السطح مع الزمن بمقدار يتناسب مع التدفق الموضعي، فتظهر الحافة الأمامية أكثر تآكلاً لأن معامل انتقال الكتلة هناك أكبر. هذا هو أساس طريقة قياس k بتسامي النفثالين.',n:'N_A(x) = k_x·(C_s − C_∞) ، dh/dt = N_A/ρ_s'},
+ test:{ar:'قسم الاختبار',en:'Test section',d:'قناة مقطعها مستطيل من الأكريليك الشفاف يحيط باللوح. يتكون على اللوح طبقة حدية للسرعة سمكها δ تنمو مع √x في الجريان الصفحي. يبدأ في الوقت نفسه انتشار المذاب من السطح فيكوّن طبقة حدية للتركيز سمكها δ_c. تخضع العلاقة بين السمكين لعدد شميت: في السوائل (Sc ≈ 900) تكون الطبقة الحدية للتركيز أرق بكثير من طبقة السرعة، وفي الغازات (Sc ≈ 1) متقاربتين.',n:'δ ≈ 4.91·x/√Re_x ، δ_c/δ ≈ Sc^(−1/3)'},
+ cond:{ar:'قفص التسوية والمنخل والتضييق',en:'Flow conditioning',d:'تُنتج هذه المجموعة جريانا منتظم السرعة قليل الاضطراب عند مدخل القسم. خلية العسل تزيل الدوامات الكبيرة، والمناخل تُنعّم ما تبقى من تفاوت السرعة، ثم يسرّع التضييق التيار ويجعل ملفه أكثر انتظاماً. شدة اضطراب التيار الحر هي ما يحدد رقم رينولدز الحرج للانتقال إلى الاضطراب: نحو 5×10⁵ في تيار هادئ، وأقل بكثير مع الاضطراب.',n:'Re_cr = U·x_cr / ν ≈ 5×10⁵'},
+ diffuser:{ar:'المنفث',en:'Diffuser',d:'قطاع يتسع تدريجياً بعد قسم الاختبار يخفض سرعة التيار ويستعيد جزءاً من الضغط قبل الخروج إلى خط العودة، فتنخفض خسائر الطاقة وتقل قدرة المضخة المطلوبة. زاوية الاتساع صغيرة لمنع انفصال الجريان.',n:''},
+ ret:{ar:'خط العودة والقياس',en:'Return line and flowmeter',d:'أنبوب يعيد المائع من مخرج النفق إلى مدخله ليبقى النظام مغلقاً، وفيه صمام وقياس تدفق كهرومغناطيسي. في الاختبارات بالماء يبقى المحلول في حلقة مغلقة، فيرتفع تركيزه ببطء؛ لذلك يجب أن تكون الكمية كبيرة حتى يبقى C_∞ قريباً من الصفر أثناء القياس.',n:'Q = U·A'},
+ drive:{ar:'المضخة المحورية',en:'Axial pump',d:'مضخة محورية (أو مروحة في نفق الهواء) تدفع المائع في الحلقة، ويتحكم محوّل التردد بسرعة دورانها فتتغير سرعة التيار الحر U. تتناسب سمكا الطبقتين الحديتين عكسياً مع √U، ويتناسب معامل انتقال الكتلة الصفحي مع √U.',n:'k ∝ U^(1/2) (صفحي) ، k ∝ U^(4/5) (مضطرب)'},
+ traverse:{ar:'ماسحة القياس والمسبار',en:'Traverse and probe',d:'عربة على سكتين فوق القسم تحمل مسبارا رفيعا ينزل إلى الطبقة الحدية. يقيس مسبار الموصلية (في الماء) أو أنبوب سحب (في الغاز) التركيز، ويقيس مسبار آخر السرعة. بتحريك المسبار رأسياً يُرسم توزيع السرعة والتركيز عند الموضع x. بجواره يظهر توزيعا السرعة (بنفسجي) والتركيز (بلون المذاب) عند ذلك الموضع.',n:'u(y)/U = f′(η) ، C̃ = 1 − θ(η)'},
+ panel:{ar:'لوحة التحكم',en:'Control cabinet',d:'خزانة فيها محوّل التردد وشاشة تعرض سرعة التيار ورقم رينولدز وعدد شميت وعدد شيروود المتوسط ومعامل انتقال الكتلة، وفي أسفلها منحنى k_x على طول اللوح. يتحكم المشغل بالسرعة من هنا ويراقب أن الجريان ثابت.',n:'Sh_L = k̄·L / D'}
+};
+const INFO_EN={
+ plate:{ar:'The soluble plate',en:'اللوح القابل للذوبان',d:'A thin plate with a sharp leading edge parallel to the stream, cast from a material that dissolves or evaporates (benzoic acid in water, naphthalene in air). At its surface the concentration is constant at the saturation value C_s, and far from it C_∞. The height of the surface changes with time in proportion to the local flux, so the leading edge erodes most because the mass-transfer coefficient is largest there. This is the basis of the naphthalene-sublimation method of measuring k.',n:'N_A(x) = k_x·(C_s − C_∞), dh/dt = N_A/ρ_s'},
+ test:{ar:'Test section',en:'قسم الاختبار',d:'A rectangular channel of clear acrylic around the plate. A velocity boundary layer of thickness δ grows on the plate, as √x in laminar flow. At the same time the solute diffuses from the surface and forms a concentration boundary layer of thickness δ_c. The relation between the two thicknesses is governed by the Schmidt number: in liquids (Sc ≈ 900) the concentration layer is much thinner than the velocity layer, and in gases (Sc ≈ 1) they are similar.',n:'δ ≈ 4.91·x/√Re_x, δ_c/δ ≈ Sc^(−1/3)'},
+ cond:{ar:'Flow conditioning',en:'قفص التسوية والمنخل والتضييق',d:'This group produces a flow of uniform velocity and low turbulence at the entrance to the section. The honeycomb removes large eddies, the screens smooth what remains of the velocity variation, and the contraction accelerates the stream and makes its profile more uniform. The free-stream turbulence level sets the critical Reynolds number for transition to turbulence: about 5×10⁵ in a quiet stream, and much less with turbulence.',n:'Re_cr = U·x_cr / ν ≈ 5×10⁵'},
+ diffuser:{ar:'Diffuser',en:'المنفث',d:'A gradually widening section after the test section that lowers the stream speed and recovers some of the pressure before it enters the return line, so energy losses and the required pump power fall. The divergence angle is small to prevent flow separation.',n:''},
+ ret:{ar:'Return line and flowmeter',en:'خط العودة والقياس',d:'A pipe that returns the fluid from the tunnel exit to its entrance so that the system stays closed, with a valve and an electromagnetic flowmeter. In water tests the solution stays in a closed loop and its concentration rises slowly, so the inventory must be large enough for C_∞ to stay near zero during a measurement.',n:'Q = U·A'},
+ drive:{ar:'Axial pump',en:'المضخة المحورية',d:'An axial pump (or a fan in an air tunnel) drives the fluid round the loop, and the variable-frequency converter sets its speed so the free-stream velocity U changes. The thicknesses of both boundary layers vary inversely with √U, and the laminar mass-transfer coefficient is proportional to √U.',n:'k ∝ U^(1/2) (laminar), k ∝ U^(4/5) (turbulent)'},
+ traverse:{ar:'Traverse and probe',en:'ماسحة القياس والمسبار',d:'A carriage on two rails above the section carries a slender probe that reaches into the boundary layer. A conductivity probe (in water) or a sampling tube (in gas) measures the concentration, and another probe measures the velocity. Moving the probe vertically traces the velocity and concentration distributions at position x. Beside it appear the velocity (violet) and concentration (the colour of the solute) distributions at that position.',n:'u(y)/U = f′(η), C̃ = 1 − θ(η)'},
+ panel:{ar:'Control cabinet',en:'Control cabinet',d:'A cabinet holding the variable-frequency converter and a screen that shows the stream speed, Reynolds number, Schmidt number, mean Sherwood number and mass-transfer coefficient, with the curve of k_x along the plate below. The operator sets the speed here and checks that the flow is steady.',n:'Sh_L = k̄·L / D'}
+};
+let INFO=INFO_AR;
+const ORDER=['plate','test','cond','diffuser','ret','drive','traverse','panel'];const NUM={};ORDER.forEach((k,i)=>NUM[k]=i+1);const INTERNAL=[];
+const T={
+ ar:{title:'محاكي طبقة التركيز الحدية',h1:'طبقة التركيز الحدية فوق لوح مستوٍ',sub:'Concentration Boundary Layer on a Flat Plate: Pohlhausen Solution, Re, Sc and Sh',
+  opSys:'المذاب والمائع',sys0:'حمض البنزويك في الماء',sys1:'النفثالين في الهواء',sys2:'بخار الماء في الهواء',opU:'سرعة التيار الحر U',opL:'طول اللوح L',opRc:'رقم رينولدز الحرج للانتقال (Re_cr)',opDf:'معامل الانتشار D (نسبة إلى المرجع)',opXp:'موضع المسبار x (نسبة من L)',opTe:'مدة التعرض للحت',
+  dRe:'Re_L ، موضع الانتقال إلى الاضطراب x_cr',dSc:'عدد شميت Sc = ν/D ، ν ، D',dDel:'عند نهاية اللوح: δ ، δ_c ، النسبة δ_c/δ (Sc^(−1/3))',dSh:'Sh_L المتوسط (الحل الدقيق) ، الصيغة الشائعة',dRate:'k المتوسط ، معدل النقل لكل متر من عرض اللوح',dLoc:'عند المسبار: Re_x ، Sh_x ، k_x ، δ_c',dEro:'عمق التآكل بعد المدة: عند الحافة الأمامية ، عند المسبار ، عند النهاية',dK:'تكبير الرسم الرأسي ، تكبير مقياس التآكل',
+  turb:'تهيئة انتقال مبكر (Re_cr = 10⁵ وسرعة تجعله عند 40% من اللوح)',reset:'إعادة القيم الأصلية',
+  chH:'سمك الطبقتين الحديتين على طول اللوح',chX:'المسافة x من الحافة الأمامية',chY:'السمك (mm)',chK:'معامل انتقال الكتلة الموضعي k_x',chKx:'x (m)',chKy:'k_x (m/s)',chP:'توزيع السرعة والتركيز عند موضع المسبار',chPx:'u/U ، C̃',chPy:'الارتفاع y (mm)',
+  cD:'طبقة السرعة δ',cDc:'طبقة التركيز δ_c',cCr:'x_cr',cKx:'k_x',cKm:'k المتوسط',cU:'السرعة u/U',cC:'التركيز C̃ = (C − C_∞)/(C_s − C_∞)',
+  fine:'مسألة الطبقة الحدية الصفحية فوق لوح مستوٍ بحافة أمامية حادة وتركيز سطحي ثابت. تُحل معادلة بلازيوس f‴ + ½ f f″ = 0 (f(0) = f′(0) = 0 ، f′(∞) = 1) بطريقة رانج–كوتا مع التصويب على f″(0) = 0.33206، ثم معادلة المذاب θ″ + ½ Sc f θ′ = 0 بالتكامل المباشر θ′ = θ′(0)·exp(−½ Sc ∫f dη)، فينتج التركيز C̃ = 1 − θ(η) مع η = y√(U/νx) ومعامل الانتقال Sh_x = θ′(0)·√Re_x. تطابق قيم θ′(0) المحسوبة قيم بلازيوس–بولهاوزن المنشورة بفرق أقل من 0.03% عند Sc = 0.7 و1 و7 و10 و100، ويصبح θ′(0) = 0.3387·Sc^(1/3) عند Sc الكبير، أي أن العلاقة الشائعة 0.332·Sc^(1/3) تقلل المعامل بنحو 2% عندما Sc ≥ 100. سمك الطبقة الحدية للسرعة δ = 4.91·√(νx/U) وللتركيز η₉₉(Sc)·√(νx/U). المنطقة المضطربة: Sh_x = 0.0296·Re_x^(4/5)·Sc^(1/3) (صالحة للمدى 0.6 < Sc < 60)، و δ_T = 0.37·x·Re_x^(−1/5)، والانتقال يُفترض مفاجئاً عند Re_cr، وبه Sh_L = 0.664·Re_cr^(1/2) + 0.037·(Re_L^(4/5) − Re_cr^(4/5)) مضروباً في Sc^(1/3). الجزيئات المرسومة تتحرك بمعادلة لاغرانجية (انجراف بسرعة الجريان + انتشار برونيّ، وانعكاس عند الجدار، ومصدر جداري يتناسب مع التدفق الموضعي): في الجريان الصفحي تطابق توزيع التركيز التحليلي بخطأ متوسط نحو 1% عند Sc = 2.5، ويبقى التوزيع التحليلي ثابتاً عند تشغيلها عليه في الماء (Sc = 893)، ويطابق معدل الحقن اللازم الصيغة التحليلية بفرق 0.4%. في المنطقة المضطربة يُستعمل انتشار دوامي (لزوجة فان درايست) مُعايَر بعامل واحد ليطابق العلاقة عند منتصف المنطقة (يتفق معها ±7%)، وهو تمثيل توضيحي. المقاييس: الرسم الرأسي مضخَّم بعامل معلن (K) لتظهر الطبقة الحدية، ومقياس التآكل منفصل ويُضبط ليبلغ أقصى عمق نحو 0.26 وحدة. الخصائص عند 25 °C: حمض البنزويك في الماء ν = 0.893×10⁻⁶ m²/s ، D = 1.0×10⁻⁹ ، C_s = 3.4 kg/m³ ؛ النفثالين في الهواء ν = 1.562×10⁻⁵ ، D = 6.2×10⁻⁶ ، C_s = 5.5×10⁻⁴ ؛ بخار الماء في الهواء D = 2.6×10⁻⁵ ، C_s = 0.023. الافتراضات: تيار حر منتظم بلا انحدار ضغط، وخصائص ثابتة، وتركيز تيار حر C_∞ = 0، وإهمال أثر تغير شكل السطح بالتآكل في الجريان. في الجريان المضطرب يكون للتقريب الدوامي والانتقال المفاجئ أثر على الشكل فقط، أما الأرقام فمن العلاقات المنشورة.',
+  credit:'إعداد: <b>د. ضياء جمعة جاسم</b> (Dheyaa J. Jasim)<br>قسم الهندسة الكيمياوية والصناعات النفطية، كلية العمارة الجامعة<br>© 2026 د. ضياء جمعة جاسم. جميع الحقوق محفوظة. للاستخدام التعليمي؛ لا يجوز إعادة النشر أو البيع دون إذن كتابي.',
+  who:'إعداد: د. ضياء جمعة جاسم',whoAlt:'Dr. Dheyaa J. Jasim',org:'قسم الهندسة الكيمياوية والصناعات النفطية، كلية العمارة الجامعة',
+  lgS:'جزيئات المذاب (لون كل نظام)',lgT:'جزيئات تتبّع الجريان (أغمق = أبطأ)',lgM:'خريطة التركيز C̃: 0 ← 1',lgV:'حدّ الطبقة الحدية للسرعة وأسهم السرعة',
+  hint:'اسحب بالزر الأيسر للتدوير وبالزر الأيمن لتحريك الجهاز، واستخدم العجلة للتكبير والتصغير، وانقر على أي جزء لمعرفة وظيفته.',
+  dRot:'تدوير',dPan:'تحريك',full:'كامل',cut:'مقطع',ghost:'شفاف',iso:'منظور',front:'أمامي',top:'علوي',other:'English',otherLang:'en',
+  pick:'<h2>كيف تتكوّن طبقة التركيز الحدية؟</h2><p>يمر المائع فوق لوح مصبوب من مادة تذوب. عند السطح يكون التركيز ثابتاً (C_s) وبعيداً عنه صفراً، فينتشر المذاب من الجدار إلى التيار الذي يحمله مع الجريان. هكذا تنشأ طبقة رقيقة سمكها δ_c يتغير التركيز فيها كله، وتنمو مع المسافة من الحافة الأمامية.</p><p>لاحظ أن طبقة التركيز في الماء أرق بنحو عشر مرات من طبقة السرعة (Sc كبير)، وأن معامل انتقال الكتلة أكبر ما يكون عند الحافة الأمامية حيث الطبقة أرق، وأنه يقفز عند الانتقال إلى الاضطراب.</p>',
+  focus:'تقريب الكاميرا من الجزء',clear:'إلغاء التحديد',explode:'تفكيك الأجزاء',assemble:'تجميع الأجزاء',run:'تشغيل الجريان',stopRun:'إيقاف مؤقت',
+  wLam:'جريان صفحي على اللوح كله (Re_L = {r}): δ_c/δ = {q}، و Sh_L = {s}.',wNoTr:'Re_L أقل من Re_cr فلا يحدث انتقال؛ لرؤيته عند 40% من اللوح ارفع السرعة إلى نحو {u} m/s أو زد الطول.',opN:'عدد جزيئات المذاب',wMix:'الانتقال إلى الاضطراب عند x = {x} cm: يقفز k_x إلى {j} أضعاف قيمته قبل الانتقال.',
+  wSc:'⚠ Sc = {s} أكبر من 60: علاقة الجريان المضطرب (Sc^(1/3)) خارج مداها، فالأرقام المضطربة تقريبية.',wLow:'Sc = {s} أقل من 0.6: لا تصح العلاقة 0.332·Sc^(1/3) هنا، والمحاكي يستعمل الحل العددي الدقيق.',wAll:'اللوح كله مضطرب تقريباً: Re_cr منخفض.',
+  labels:'الملصقات: ',LT:{num:'أرقام',name:'أسماء',off:'مخفية'}},
+ en:{title:'Concentration Boundary Layer Simulator',h1:'Concentration Boundary Layer on a Flat Plate',sub:'الطبقة الحدية للتركيز: حل بولهاوزن وأعداد رينولدز وشميت وشيروود',
+  opSys:'Solute and fluid',sys0:'Benzoic acid in water',sys1:'Naphthalene in air',sys2:'Water vapour in air',opU:'Free-stream velocity U',opL:'Plate length L',opRc:'Critical Reynolds number for transition (Re_cr)',opDf:'Diffusivity D (relative to the reference)',opXp:'Probe position x (fraction of L)',opTe:'Erosion exposure time',
+  dRe:'Re_L, position of transition to turbulence x_cr',dSc:'Schmidt number Sc = ν/D, ν, D',dDel:'At the end of the plate: δ, δ_c, ratio δ_c/δ (Sc^(−1/3))',dSh:'Mean Sh_L (exact solution), common correlation',dRate:'Mean k, transfer rate per metre of plate width',dLoc:'At the probe: Re_x, Sh_x, k_x, δ_c',dEro:'Erosion depth after the exposure: at the leading edge, at the probe, at the end',dK:'Vertical exaggeration, erosion scale',
+  turb:'Set early transition (Re_cr = 10⁵ and a speed that puts it at 40% of the plate)',reset:'Restore the default values',
+  chH:'Thickness of the two boundary layers along the plate',chX:'Distance x from the leading edge',chY:'Thickness (mm)',chK:'Local mass-transfer coefficient k_x',chKx:'x (m)',chKy:'k_x (m/s)',chP:'Velocity and concentration distributions at the probe',chPx:'u/U, C̃',chPy:'Height y (mm)',
+  cD:'Velocity layer δ',cDc:'Concentration layer δ_c',cCr:'x_cr',cKx:'k_x',cKm:'Mean k',cU:'Velocity u/U',cC:'Concentration C̃ = (C − C_∞)/(C_s − C_∞)',
+  fine:'The problem is the laminar boundary layer over a flat plate with a sharp leading edge and constant surface concentration. Blasius’s equation f‴ + ½ f f″ = 0 (f(0) = f′(0) = 0, f′(∞) = 1) is solved by Runge–Kutta with shooting on f″(0) = 0.33206, and then the species equation θ″ + ½ Sc f θ′ = 0 by direct integration θ′ = θ′(0)·exp(−½ Sc ∫f dη), giving the concentration C̃ = 1 − θ(η) with η = y√(U/νx) and the transfer coefficient Sh_x = θ′(0)·√Re_x. The computed θ′(0) agrees with the published Blasius–Pohlhausen values to better than 0.03% at Sc = 0.7, 1, 7, 10 and 100, and tends to 0.3387·Sc^(1/3) at large Sc, so the common correlation 0.332·Sc^(1/3) underestimates the coefficient by about 2% when Sc ≥ 100. The velocity boundary-layer thickness is δ = 4.91·√(νx/U) and the concentration thickness η₉₉(Sc)·√(νx/U). Turbulent part: Sh_x = 0.0296·Re_x^(4/5)·Sc^(1/3) (valid for 0.6 < Sc < 60) and δ_T = 0.37·x·Re_x^(−1/5), with transition assumed abrupt at Re_cr, which gives Sh_L = 0.664·Re_cr^(1/2) + 0.037·(Re_L^(4/5) − Re_cr^(4/5)) times Sc^(1/3). The drawn particles move by a Lagrangian equation (advection with the local velocity + Brownian diffusion, reflection at the wall and a wall source proportional to the local flux): in laminar flow they reproduce the analytic concentration distribution with a mean error of about 1% at Sc = 2.5, the analytic distribution stays stationary when they are run on it in water (Sc = 893), and the injection rate they need matches the analytic formula to 0.4%. In the turbulent part an eddy diffusivity (van Driest viscosity) is used, calibrated by a single factor to reproduce the correlation at the middle of the part (it agrees within ±7%), and it is an illustrative representation. Scales: the vertical drawing is exaggerated by a stated factor (K) so the boundary layer can be seen, and the erosion scale is separate and set so that the largest depth is about 0.26 units. Properties at 25 °C: benzoic acid in water ν = 0.893×10⁻⁶ m²/s, D = 1.0×10⁻⁹, C_s = 3.4 kg/m³; naphthalene in air ν = 1.562×10⁻⁵, D = 6.2×10⁻⁶, C_s = 5.5×10⁻⁴; water vapour in air D = 2.6×10⁻⁵, C_s = 0.023. Assumptions: uniform free stream without a pressure gradient, constant properties, free-stream concentration C_∞ = 0, and neglect of the effect on the flow of the surface shape changing by erosion. In turbulent flow the eddy approximation and the abrupt transition affect the picture only; the numbers are from the published correlations.',
+  credit:'Prepared by <b>Dr. Dheyaa J. Jasim</b><br>Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College<br>© 2026 Dr. Dheyaa J. Jasim. All rights reserved. For educational use; no republication or sale without written permission.',
+  who:'Prepared by Dr. Dheyaa J. Jasim',whoAlt:'د. ضياء جمعة جاسم',org:'Department of Chemical Engineering and Petroleum Industries, Al-Amarah University College',
+  lgS:'Solute particles (colour of each system)',lgT:'Flow tracers (darker = slower)',lgM:'Concentration map C̃: 0 → 1',lgV:'Velocity boundary-layer edge and velocity arrows',
+  hint:'Left-drag to rotate, right-drag to move the unit, scroll to zoom in and out, and click any part to see its function.',
+  dRot:'Rotate',dPan:'Move',full:'Whole',cut:'Cutaway',ghost:'X-ray',iso:'Perspective',front:'Front',top:'Top',other:'العربية',otherLang:'ar',
+  pick:'<h2>How does a concentration boundary layer form?</h2><p>The fluid flows over a plate cast from a material that dissolves. At the surface the concentration is constant (C_s) and far from it zero, so the solute diffuses from the wall into the stream, which carries it along. A thin layer of thickness δ_c forms in which all the change of concentration takes place, and it grows with distance from the leading edge.</p><p>Notice that in water the concentration layer is about ten times thinner than the velocity layer (large Sc), that the mass-transfer coefficient is largest at the leading edge where the layer is thinnest, and that it jumps at the transition to turbulence.</p>',
+  focus:'Zoom to this part',clear:'Clear selection',explode:'Explode parts',assemble:'Assemble parts',run:'Run the flow',stopRun:'Pause',
+  wLam:'Laminar flow over the whole plate (Re_L = {r}): δ_c/δ = {q}, and Sh_L = {s}.',wNoTr:'Re_L is below Re_cr so there is no transition; to see it at 40% of the plate raise the speed to about {u} m/s or lengthen the plate.',opN:'Number of solute particles',wMix:'Transition to turbulence at x = {x} cm: k_x jumps to {j} times its value before transition.',
+  wSc:'⚠ Sc = {s} is above 60: the turbulent correlation (Sc^(1/3)) is outside its range, so the turbulent numbers are approximate.',wLow:'Sc = {s} is below 0.6: the correlation 0.332·Sc^(1/3) does not hold here, and the simulator uses the exact numerical solution.',wAll:'The plate is almost entirely turbulent: Re_cr is low.',
+  labels:'Labels: ',LT:{num:'numbers',name:'names',off:'hidden'}}
+};
+
+/* ================= renderer ================= */
+const V3=THREE.Vector3,V2=THREE.Vector2,UP=new V3(0,1,0);
+const C=h=>new THREE.Color(h).convertSRGBToLinear();
+const stage=document.getElementById('stage'),canvas=document.getElementById('c');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.shadowMap.enabled=true;renderer.localClippingEnabled=true;renderer.setClearColor(0,0);
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(36,1,.05,160);
+const HOME={pos:new V3(5.8,5.6,16.5),tgt:new V3(4.6,2.0,0)};camera.position.copy(HOME.pos);
+const controls=new THREE.OrbitControls(camera,canvas);
+controls.target.copy(HOME.tgt);controls.enableDamping=true;controls.dampingFactor=.08;controls.minDistance=1;controls.maxDistance=44;
+controls.enablePan=true;controls.screenSpacePanning=true;controls.panSpeed=1.1;
+controls.mouseButtons={LEFT:THREE.MOUSE.ROTATE,MIDDLE:THREE.MOUSE.DOLLY,RIGHT:THREE.MOUSE.PAN};
+controls.touches={ONE:THREE.TOUCH.ROTATE,TWO:THREE.TOUCH.DOLLY_PAN};
+canvas.addEventListener('contextmenu',e=>e.preventDefault());controls.update();
+(function(){const pm=new THREE.PMREMGenerator(renderer),es=new THREE.Scene();
+ const g=new THREE.SphereGeometry(20,48,24),pos=g.attributes.position,cols=[];
+ const lo=new THREE.Color(0x4a525a),mid=new THREE.Color(0xb8c2ca),hi=new THREE.Color(0xf2f6f9);
+ for(let i=0;i<pos.count;i++){const y=pos.getY(i)/20;const c=y<0?lo.clone().lerp(mid,y+1):mid.clone().lerp(hi,y);cols.push(c.r,c.g,c.b);}
+ g.setAttribute('color',new THREE.Float32BufferAttribute(cols,3));es.add(new THREE.Mesh(g,new THREE.MeshBasicMaterial({side:THREE.BackSide,vertexColors:true})));
+ const pl=(w,h,p,k)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(k,k,k),side:THREE.DoubleSide}));m.position.copy(p);m.lookAt(0,0,0);es.add(m);};
+ pl(14,4,new V3(0,14,6),3.2);pl(6,10,new V3(-15,4,-4),2.2);pl(6,10,new V3(15,5,2),1.6);
+ scene.environment=pm.fromScene(es,.04).texture;pm.dispose();})();
+scene.add(new THREE.HemisphereLight(0xeef3f7,0x3a4550,.55));
+const sun=new THREE.DirectionalLight(0xffffff,1.2);sun.position.set(8,16,10);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);
+Object.assign(sun.shadow.camera,{left:-8,right:8,top:11,bottom:-5,near:1,far:50});sun.shadow.camera.updateProjectionMatrix();sun.shadow.bias=-.0004;sun.shadow.normalBias=.03;scene.add(sun);
+const fill=new THREE.DirectionalLight(0xdfe8ff,.35);fill.position.set(-8,5,-6);scene.add(fill);
+
+
+const std=(hex,met,rough,extra)=>new THREE.MeshStandardMaterial(Object.assign({color:C(hex),metalness:met,roughness:rough,side:THREE.DoubleSide},extra||{}));
+const M={steel:std(0xd4dbe0,.9,.25),steelDark:std(0x8e989f,.85,.36),brushed:std(0xb9c2c9,.85,.4),
+ paint:std(0x2f5f86,.25,.48),paintGrey:std(0x5b6873,.35,.55),yellowPaint:std(0xd9a91c,.2,.5),black:std(0x2b3035,.3,.6),
+ red:std(0xb3362b,.2,.42),orange:std(0xc9772c,.2,.45),blue:std(0x2f7fe6,.2,.45),purple:std(0x7b2fbf,.2,.45),grey:std(0x9aa3aa,.2,.5),white:std(0xf3f3ee,0,.5),
+ ceramic:std(0xd8d2c6,0,.75),saddleC:std(0xeae6dc,0,.6),gasBand:std(0xff6a00,.2,.45),cyan:std(0x14c8f0,.2,.45),navy:std(0x1a2cb0,.2,.45),glass:std(0x9fd6ea,0,.05,{transparent:true,opacity:.42})};
+const meshTex=(function(){const cv=document.createElement('canvas');cv.width=cv.height=64;const x=cv.getContext('2d');x.fillStyle='#8f989f';x.fillRect(0,0,64,64);
+ x.strokeStyle='#d9dfe3';x.lineWidth=1.2;for(let i=-64;i<128;i+=5){x.beginPath();x.moveTo(i,0);x.lineTo(i+64,64);x.stroke();x.beginPath();x.moveTo(i,64);x.lineTo(i+64,0);x.stroke();}
+ const t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(6,6);t.encoding=THREE.sRGBEncoding;return t;})();
+M.mesh=new THREE.MeshStandardMaterial({map:meshTex,metalness:.6,roughness:.6,side:THREE.DoubleSide});
+
+function add(g,geo,mat,pos){const m=new THREE.Mesh(geo,mat);if(pos)m.position.copy(pos);g.add(m);return m;}
+function cylY(g,r,y0,y1,mat,x,z,seg,open){return add(g,new THREE.CylinderGeometry(r,r,y1-y0,seg||40,1,!!open),mat,new V3(x||0,(y0+y1)/2,z||0));}
+function pipe(g,p1,p2,r,mat,seg){const d=new V3().subVectors(p2,p1),L=d.length();const m=add(g,new THREE.CylinderGeometry(r,r,L,seg||24),mat);m.position.copy(p1).addScaledVector(d,.5);m.quaternion.setFromUnitVectors(UP,d.normalize());return m;}
+function ball(g,p,r,mat){return add(g,new THREE.SphereGeometry(r,24,16),mat,p);}
+function box(g,w,h,d,p,mat,ry){const m=add(g,new THREE.BoxGeometry(w,h,d),mat,p);if(ry)m.rotation.y=ry;return m;}
+function flange(g,p,dir,rd,n,mat){const f=new THREE.Group();f.position.copy(p);f.quaternion.setFromUnitVectors(UP,dir.clone().normalize());
+ add(f,new THREE.CylinderGeometry(rd,rd,.035,40),mat||M.steel);const bg=new THREE.CylinderGeometry(.01,.01,.07,8);
+ for(let i=0;i<n;i++){const a=(i+.5)/n*Math.PI*2;add(f,bg,M.steelDark,new V3(Math.cos(a)*rd*.8,0,Math.sin(a)*rd*.8));}g.add(f);return f;}
+const FLOWS=[];
+function line(g,pts,r,mat,colorFn,speed){for(let i=0;i<pts.length-1;i++)pipe(g,pts[i],pts[i+1],r,mat);for(let i=1;i<pts.length-1;i++)ball(g,pts[i],r,mat);if(colorFn)FLOWS.push({pts,colorFn,speed:speed||.9});}
+function band(g,p1,p2,r,mat){pipe(g,p1,p2,r,mat);}
+function arrow(g,p,dir,mat){const a=add(g,new THREE.ConeGeometry(.07,.16,20),mat,p);a.quaternion.setFromUnitVectors(UP,dir.clone().normalize());return a;}
+function valve(g,p,dir,r){ball(g,p,r*1.9,M.steel);const d=dir.clone().normalize();flange(g,p.clone().addScaledVector(d,r*2.2),d,r*2,6);flange(g,p.clone().addScaledVector(d,-r*2.2),d,r*2,6);
+ cylY(g,r*.35,p.y,p.y+r*4,M.steelDark,p.x,p.z,12);box(g,r*7,r*.5,r*.8,new V3(p.x,p.y+r*4,p.z),M.red);}
+function ctrlValve(g,p,dir,r){ball(g,p,r*1.9,M.steel);const d=dir.clone().normalize();flange(g,p.clone().addScaledVector(d,r*2.2),d,r*2,6);flange(g,p.clone().addScaledVector(d,-r*2.2),d,r*2,6);
+ const up=Math.abs(d.y)>.9?new V3(1,0,0):UP;const top=p.clone().addScaledVector(up,r*5);pipe(g,p,top,r*.4,M.steelDark,12);
+ const dm=add(g,new THREE.SphereGeometry(r*3,28,14,0,Math.PI*2,0,Math.PI/2),M.paint,top);dm.quaternion.setFromUnitVectors(UP,up);dm.scale.y=.55;}
+function pump(g,x,z,y,mat){box(g,.34,.06,.95,new V3(x,.03,z+.3),M.paintGrey);
+ const v=add(g,new THREE.CylinderGeometry(.17,.17,.13,32),mat,new V3(x,y,z));v.rotation.x=Math.PI/2;
+ pipe(g,new V3(x,y,z-.06),new V3(x,y,z-.2),.05,M.steel);flange(g,new V3(x,y,z-.2),new V3(0,0,1),.1,4);pipe(g,new V3(x,y+.1,z),new V3(x,y+.24,z),.045,M.steel);
+ const br=add(g,new THREE.CylinderGeometry(.07,.09,.18,20),M.paintGrey,new V3(x,y,z+.16));br.rotation.x=Math.PI/2;
+ const cp=add(g,new THREE.CylinderGeometry(.05,.05,.07,16),M.orange,new V3(x,y,z+.29));cp.rotation.x=Math.PI/2;
+ const mo=add(g,new THREE.CylinderGeometry(.14,.14,.4,28),mat,new V3(x,y,z+.53));mo.rotation.x=Math.PI/2;
+ const fc=add(g,new THREE.CylinderGeometry(.13,.14,.08,28),M.paintGrey,new V3(x,y,z+.76));fc.rotation.x=Math.PI/2;
+ box(g,.1,.1,.12,new V3(x,y+.17,z+.5),mat);[-1,1].forEach(s=>box(g,.05,y-.1,.3,new V3(x+s*.1,(y-.1)/2+.06,z+.5),M.paintGrey));box(g,.08,y-.12,.08,new V3(x,(y-.12)/2+.06,z),M.paintGrey);}
+function vesselProfile(r,hd,y0,y1){const pts=[],N=32;for(let i=0;i<=N;i++){const t=i/N*Math.PI/2;pts.push(new V2(Math.max(1e-4,r*Math.sin(t)),y0-hd*Math.cos(t)));}
+ pts.push(new V2(r,y1));for(let i=1;i<=N;i++){const t=i/N*Math.PI/2;pts.push(new V2(Math.max(1e-4,r*Math.cos(t)),y1+hd*Math.sin(t)));}return pts;}
+
+function cylX(g,r,x0,x1,mat,y,z,seg,open){const m=add(g,new THREE.CylinderGeometry(r,r,x1-x0,seg||40,1,!!open),mat,new V3((x0+x1)/2,y,z||0));m.rotation.z=Math.PI/2;return m;}
+const bx=(g,x0,x1,y0,y1,z0,z1,mat)=>box(g,x1-x0,y1-y0,z1-z0,new V3((x0+x1)/2,(y0+y1)/2,(z0+z1)/2),mat);
+M.acrylic=std(0xb3e5fc,.05,.05,{transparent:true,opacity:.15,depthWrite:false,side:THREE.DoubleSide});M.frame=std(0x5f6b73,.5,.5);M.coreM=std(0x546e7a,.6,.35);
+const cutPlane=new THREE.Plane(new V3(0,0,-1),.001);
+const parts={};const root=new THREE.Group();scene.add(root);
+function part(key,anchor,plane){const g=new THREE.Group();root.add(g);parts[key]={key,group:g,anchor,plane,mats:[]};return g;}
+const FLOORY=-2.3;
+{const floor=new THREE.Mesh(new THREE.PlaneGeometry(90,90),new THREE.ShadowMaterial({opacity:.18}));floor.rotation.x=-Math.PI/2;floor.position.y=FLOORY-.04;floor.receiveShadow=true;scene.add(floor);
+ const sl=new THREE.Mesh(new THREE.BoxGeometry(26.5,.08,7.6),std(0xa9aba8,0,.9));sl.position.set(3.7,FLOORY-.04,.2);sl.receiveShadow=true;scene.add(sl);}
+const route=(g,pts,rad,mat)=>{line(g,pts,rad,mat);pts.slice(1,-1).forEach(p=>ball(g,p,rad*1.04,mat));};
+const PATH={};
+/* ---------- fixed geometry of the rig ---------- */
+const TS={x0:-1.0,x1:9.4,y0:1.0,y1:5.0,z:1.2},CH={y0:.3,y1:5.7},YC=3.0;
+const P_OUT=new V3(13.0,-.2,0),P_IN=new V3(-4.8,-.2,0),PUMP_IN=new V3(4.0,-1.6,0),PUMP_OUT=new V3(2.0,-1.6,0),FM_IN=new V3(-.6,-1.6,0),FM_OUT=new V3(-1.4,-1.6,0);
+function hollow(g,x0,x1,y0,y1,z0,z1,t,mat){bx(g,x0,x1,y1,y1+t,z0-t,z1+t,mat);bx(g,x0,x1,y0-t,y0,z0-t,z1+t,mat);bx(g,x0,x1,y0,y1,z1,z1+t,mat);bx(g,x0,x1,y0,y1,z0-t,z0,mat);}
+function slant(g,xa,ya,xb,yb,w,mat){const L=Math.hypot(xb-xa,yb-ya),m=box(g,L,.1,w,new V3((xa+xb)/2,(ya+yb)/2,0),mat);m.rotation.z=Math.atan2(yb-ya,xb-xa);return m;}
+function sideWall(g,pts,z,mat){const sh=new THREE.Shape();pts.forEach((p,i)=>i?sh.lineTo(p[0],p[1]):sh.moveTo(p[0],p[1]));const m=new THREE.Mesh(new THREE.ExtrudeGeometry(sh,{depth:.1,bevelEnabled:false}),mat);m.position.z=z;g.add(m);return m;}
+function gridTex(cell,col,w,h){const cv=document.createElement('canvas');cv.width=w||128;cv.height=h||256;const x=cv.getContext('2d');x.clearRect(0,0,cv.width,cv.height);x.strokeStyle=col;x.lineWidth=2;
+ for(let i=0;i<=cv.width;i+=cell){x.beginPath();x.moveTo(i,0);x.lineTo(i,cv.height);x.stroke();}for(let j=0;j<=cv.height;j+=cell){x.beginPath();x.moveTo(0,j);x.lineTo(cv.width,j);x.stroke();}const t=new THREE.CanvasTexture(cv);return t;}
+/* ---------- conditioning: settling chamber with honeycomb and screens, then the contraction ---------- */
+{const g=part('cond',new V3(-4.6,5.9,.7),true);
+ hollow(g,-6.2,-3.4,CH.y0,CH.y1,-TS.z,TS.z,.1,M.paintGrey);bx(g,-6.3,-6.2,CH.y0-.1,CH.y1+.1,-TS.z-.1,TS.z+.1,M.paintGrey);
+ const hc=new THREE.Mesh(new THREE.PlaneGeometry(2*TS.z,CH.y1-CH.y0),new THREE.MeshBasicMaterial({map:gridTex(16,'#263238',256,256),transparent:true,side:THREE.DoubleSide}));hc.rotation.y=Math.PI/2;hc.position.set(-5.7,YC,0);g.add(hc);
+ bx(g,-5.85,-5.55,CH.y0,CH.y1,-TS.z,-TS.z+.03,M.steelDark);bx(g,-5.85,-5.55,CH.y0,CH.y1,TS.z-.03,TS.z,M.steelDark);
+ [-4.5,-4.05].forEach(x=>{const sc=new THREE.Mesh(new THREE.PlaneGeometry(2*TS.z,CH.y1-CH.y0),new THREE.MeshBasicMaterial({map:gridTex(6,'#455a64',256,256),transparent:true,opacity:.8,side:THREE.DoubleSide}));sc.rotation.y=Math.PI/2;sc.position.set(x,YC,0);g.add(sc);});
+ slant(g,-3.4,CH.y1+.05,TS.x0,TS.y1+.05,2*TS.z+.2,M.paintGrey);slant(g,-3.4,CH.y0-.05,TS.x0,TS.y0-.05,2*TS.z+.2,M.paintGrey);
+ [TS.z,-TS.z-.1].forEach(z=>sideWall(g,[[-3.4,CH.y0],[TS.x0,TS.y0],[TS.x0,TS.y1],[-3.4,CH.y1]],z,M.paintGrey));
+ cylY(g,.55,P_IN.y,CH.y0,M.steel,P_IN.x,0,28);flange(g,P_IN,UP,.85,12);}
+/* ---------- test section (acrylic), rails and frame, the soluble plate with its holder ---------- */
+let PLATE_MAT=null,LAYER=null,HEAT=null,FLUID=null;
+{const g=part('test',new V3(9.3,4.4,.9),true);
+ hollow(g,TS.x0,TS.x1,TS.y0,TS.y1,-TS.z,TS.z,.1,M.acrylic);
+ [TS.x0,TS.x1].forEach(x=>{bx(g,x-.08,x+.08,TS.y0-.2,TS.y1+.2,-TS.z-.2,-TS.z-.05,M.steelDark);bx(g,x-.08,x+.08,TS.y0-.2,TS.y1+.2,TS.z+.05,TS.z+.2,M.steelDark);bx(g,x-.08,x+.08,TS.y1+.05,TS.y1+.2,-TS.z-.2,TS.z+.2,M.steelDark);bx(g,x-.08,x+.08,TS.y0-.2,TS.y0-.05,-TS.z-.2,TS.z+.2,M.steelDark);});
+ FLUID=add(g,new THREE.BoxGeometry(TS.x1-TS.x0,TS.y1-TS.y0,2*TS.z),new THREE.MeshStandardMaterial({color:C(0x4fc3f7),transparent:true,opacity:.07,depthWrite:false,roughness:.1}),new V3((TS.x0+TS.x1)/2,(TS.y0+TS.y1)/2,0));
+ /* supports under the section and the legs of the whole rig */
+ [1.0,8.4].forEach(x=>{[1,-1].forEach(sz=>bx(g,x-.08,x+.08,FLOORY,TS.y0-.2,sz*1.45-.08,sz*1.45+.08,M.frame));bx(g,x-.08,x+.08,TS.y0-.45,TS.y0-.3,-1.45,1.45,M.frame);});
+ [-5.6,-2.0,12.9].forEach(x=>{[1,-1].forEach(sz=>bx(g,x-.08,x+.08,FLOORY,CH.y0-.1,sz*1.45-.08,sz*1.45+.08,M.frame));bx(g,x-.08,x+.08,-.55,-.4,-1.45,1.45,M.frame);});
+ [1,-1].forEach(sz=>bx(g,-5.6,12.9,-.55,-.4,sz*1.45-.04,sz*1.45+.04,M.frame));
+ /* the plate: stainless core, soluble layer (rebuilt as it erodes), brackets from the side walls */
+ {const gp=part('plate',new V3(4.0,3.4,.9),true);bx(gp,0,XL,2.1,2.35,-1.0,1.0,M.coreM);[1.2,6.8].forEach(x=>{bx(gp,x-.1,x+.1,2.15,2.3,-TS.z,-1.0,M.steelDark);bx(gp,x-.1,x+.1,2.15,2.3,1.0,TS.z,M.steelDark);});
+  PLATE_MAT=new THREE.MeshStandardMaterial({color:C(0xd1b48c),roughness:.7,metalness:0});LAYER=new THREE.Mesh(new THREE.BoxGeometry(1,1,1),PLATE_MAT);gp.add(LAYER);}
+ /* rails and traverse above the section */
+ [1,-1].forEach(sz=>{cylX(g,.05,-.6,9.2,M.steel,5.55,sz*.9,10);[-.6,9.2].forEach(x=>cylY(g,.06,TS.y1+.2,5.6,M.steel,x,sz*.9,10));});}
+let CAR=null,PROBE=null,TIP=null,PROF=null,PRU=null,PRC=null;
+{const g=part('traverse',new V3(4.0,5.9,0));
+ CAR=new THREE.Group();g.add(CAR);box(CAR,.8,.35,2.1,new V3(0,5.55,0),M.paint);box(CAR,.5,.2,.3,new V3(0,5.8,0),M.blue);cylY(CAR,.06,5.55,5.62,M.steelDark,0,0,12);
+ PROBE=add(CAR,new THREE.CylinderGeometry(.035,.035,1,10),M.steelDark,new V3(0,4,0));TIP=add(CAR,new THREE.SphereGeometry(.06,12,8),M.orange,new V3(0,2.9,0));
+ /* the distributions at the probe station are drawn as 3D curves */
+ PRU=new THREE.Line(new THREE.BufferGeometry(),new THREE.LineBasicMaterial({color:0x7e57c2}));PRC=new THREE.Line(new THREE.BufferGeometry(),new THREE.LineBasicMaterial({color:0xff6d00}));PRU.frustumCulled=false;PRC.frustumCulled=false;scene.add(PRU);scene.add(PRC);}
+/* ---------- diffuser and outlet box ---------- */
+{const g=part('diffuser',new V3(11.0,5.4,.7),true);
+ slant(g,TS.x1,TS.y1+.05,12.4,CH.y1+.05,2*TS.z+.2,M.paintGrey);slant(g,TS.x1,TS.y0-.05,12.4,CH.y0-.05,2*TS.z+.2,M.paintGrey);
+ [TS.z,-TS.z-.1].forEach(z=>sideWall(g,[[TS.x1,TS.y0],[12.4,CH.y0],[12.4,CH.y1],[TS.x1,TS.y1]],z,M.paintGrey));
+ hollow(g,12.4,13.6,CH.y0,CH.y1,-TS.z,TS.z,.1,M.paintGrey);bx(g,13.6,13.7,CH.y0-.1,CH.y1+.1,-TS.z-.1,TS.z+.1,M.paintGrey);
+ cylY(g,.55,P_OUT.y,CH.y0,M.steel,P_OUT.x,0,28);flange(g,P_OUT,UP,.85,12);cylY(g,.06,CH.y1,CH.y1+.5,M.steel,13.2,.5,10);valve(g,new V3(13.2,CH.y1+.25,.5),UP,.06);}
+/* ---------- return line: outlet → valve → axial pump → electromagnetic flowmeter → inlet ---------- */
+{const g=part('ret',new V3(9.8,-1.0,.8));
+ route(g,[P_OUT,new V3(13.0,-1.6,0),PUMP_IN],.55,M.steel);valve(g,new V3(9.5,-1.6,0),new V3(1,0,0),.62);
+ pipe(g,PUMP_OUT,FM_IN,.55,M.steel);cylX(g,.7,FM_OUT.x,FM_IN.x,M.blue,-1.6,0,32);flange(g,FM_IN,new V3(1,0,0),.85,12);flange(g,FM_OUT,new V3(1,0,0),.85,12);box(g,.5,.4,.5,new V3(-1.0,-.75,0),M.black);
+ route(g,[FM_OUT,new V3(-4.8,-1.6,0),P_IN],.55,M.steel);
+ PATH.ret=[P_OUT,new V3(13.0,-1.6,0),PUMP_IN,PUMP_OUT,FM_IN,FM_OUT,new V3(-4.8,-1.6,0),P_IN,new V3(-4.8,CH.y0+.3,0)];}
+/* ---------- axial pump with motor and terminal box ---------- */
+const CAB={x:8.5,z:2.5};
+{const g=part('drive',new V3(3.0,.7,.9));
+ cylX(g,.75,PUMP_OUT.x,PUMP_IN.x,M.blue,-1.6,0,40);flange(g,PUMP_IN,new V3(1,0,0),.9,12);flange(g,PUMP_OUT,new V3(1,0,0),.9,12);
+ cylY(g,.45,-.85,.15,M.paint,3.0,0,32);for(let k=0;k<10;k++)cylY(g,.47,-.8+k*.09,-.78+k*.09,M.steelDark,3.0,0,28);box(g,.4,.3,.3,new V3(3.0,-.35,.6),M.black);
+ cylY(g,.4,.15,.25,M.steelDark,3.0,0,28);
+ const cb=[new V3(CAB.x-.75,-.3,CAB.z),new V3(3.0,-.3,CAB.z),new V3(3.0,-.3,.75)];route(g,cb,.04,M.black);flange(g,cb[0],new V3(1,0,0),.07,6);flange(g,cb[2],new V3(0,0,1),.07,6);}
+/* ---------- control cabinet with a live screen ---------- */
+const scrCv=document.createElement('canvas');scrCv.width=460;scrCv.height=320;const scrTex=new THREE.CanvasTexture(scrCv);scrTex.encoding=THREE.sRGBEncoding;
+{const g=part('panel',new V3(CAB.x,.2,CAB.z+.6));
+ box(g,1.5,2.0,.9,new V3(CAB.x,FLOORY+1.0,CAB.z),M.paintGrey);box(g,1.5,.1,.9,new V3(CAB.x,FLOORY+2.05,CAB.z),M.steelDark);
+ box(g,1.3,.9,.04,new V3(CAB.x,FLOORY+1.35,CAB.z+.47),M.black);add(g,new THREE.PlaneGeometry(1.22,.82),new THREE.MeshBasicMaterial({map:scrTex}),new V3(CAB.x,FLOORY+1.35,CAB.z+.495));
+ [-.45,0,.45].forEach((x,k)=>{const kn=add(g,new THREE.CylinderGeometry(.07,.07,.06,20),M.black,new V3(CAB.x+x,FLOORY+.55,CAB.z+.48));kn.rotation.x=Math.PI/2;add(g,new THREE.SphereGeometry(.03,10,8),new THREE.MeshBasicMaterial({color:[0x00e676,0xffd600,0xff1744][k]}),new V3(CAB.x+x,FLOORY+.3,CAB.z+.47));});}
+const pickables=[];
+function finalize(){for(const key in parts){const pt=parts[key],cache=new Map();pt.group.traverse(o=>{if(!o.isMesh&&!o.isLine)return;if(o.isLine)return;if(!cache.has(o.material)){const c=o.material.clone();cache.set(o.material,c);pt.mats.push(c);}
+ o.material=cache.get(o.material);o.userData.key=key;o.castShadow=!o.material.transparent;o.receiveShadow=true;pickables.push(o);});}}
+/* plate parts keep their own material reference for colour changes */
+window.__PORTS=PORTS;
+/* ---------- dynamic overlays: concentration map, velocity-layer edge, concentration-layer edge, velocity arrows, plate erosion ---------- */
+const heatCv=document.createElement('canvas');heatCv.width=512;heatCv.height=192;const heatTex=new THREE.CanvasTexture(heatCv);heatTex.encoding=THREE.sRGBEncoding;
+HEAT=new THREE.Mesh(new THREE.PlaneGeometry(XL,YMAXS,200,1),new THREE.MeshBasicMaterial({map:heatTex,transparent:true,side:THREE.DoubleSide,depthWrite:false}));HEAT.position.z=-.003;HEAT.renderOrder=2;HEAT.userData.key='test';scene.add(HEAT);
+const EDGEV=new THREE.Mesh(new THREE.BufferGeometry(),new THREE.MeshBasicMaterial({color:0x7e57c2})),EDGEC=new THREE.Mesh(new THREE.BufferGeometry(),new THREE.MeshBasicMaterial({color:0xff6d00}));scene.add(EDGEV);scene.add(EDGEC);EDGEV.frustumCulled=false;EDGEC.frustumCulled=false;
+const NAR=9,STN=[.1,.25,.4,.55,.7,.85,1.0],ARL=new THREE.LineSegments(new THREE.BufferGeometry(),new THREE.LineBasicMaterial({color:0x7e57c2}));ARL.frustumCulled=false;scene.add(ARL);
+const ARH=new THREE.InstancedMesh(new THREE.ConeGeometry(.045,.12,8),new THREE.MeshBasicMaterial({color:0x7e57c2}),STN.length*NAR);ARH.frustumCulled=false;scene.add(ARH);
+finalize();
+/* ================= particles ================= */
+const BALL=(function(){const cv=document.createElement('canvas');cv.width=cv.height=64;const x=cv.getContext('2d');
+ const g=x.createRadialGradient(24,22,2,32,32,31);g.addColorStop(0,'#ffffff');g.addColorStop(.35,'#e6e6e6');g.addColorStop(.85,'#8a8a8a');g.addColorStop(1,'#5c5c5c');
+ x.fillStyle=g;x.beginPath();x.arc(32,32,30,0,Math.PI*2);x.fill();const t=new THREE.CanvasTexture(cv);t.encoding=THREE.sRGBEncoding;return t;})();
+function pts(n,size){const pos=new Float32Array(n*3),col=new Float32Array(n*3),g=new THREE.BufferGeometry();
+ g.setAttribute('position',new THREE.BufferAttribute(pos,3));g.setAttribute('color',new THREE.BufferAttribute(col,3));
+ const p=new THREE.Points(g,new THREE.PointsMaterial({vertexColors:true,size,map:BALL,alphaTest:.5,depthWrite:true}));p.frustumCulled=false;scene.add(p);return {p,pos,col,g};}
+const rnd=Math.random;
+/* solute particles (Lagrangian model) and flow tracers */
+let N0=14000;const NPM=36000,SP=pts(NPM,.042),PP={x:new Float64Array(NPM),y:new Float64Array(NPM)},PZ=new Float32Array(NPM),alive=new Uint8Array(NPM);let free=[],nAlive=0,carry=0;
+const NTR=2600,TR=pts(NTR,.04),tD=[];for(let i=0;i<NTR;i++){let y=1.1+rnd()*3.8;if(y>2.05&&y<2.75)y=2.8+rnd()*2.1;tD.push({x:-1+rnd()*10.3,y,z:(rnd()-.5)*2.2,w:.9+rnd()*.2});}
+const CSLOW=C(0x37474f),CFAST=C(0x78909c);
+const _c=new THREE.Color(),_p=new V3(),_m=new THREE.Matrix4(),_q=new THREE.Quaternion(),_s=new V3();
+/* the surface height along the plate (erodes with time); xs in scene units */
+const NEP=121;let eros=new Float64Array(NEP);
+function ywall(xs){if(!EROS)return YW0;const t=Math.min(NEP-1,Math.max(0,xs/XL*(NEP-1))),i=Math.min(NEP-2,Math.floor(t)),f=t-i;return YW0-(EROS[i]+(EROS[i+1]-EROS[i])*f);}
+const sysOf=()=>SYS[SI];
+function uOf(){const s=sysOf();return s.Umin*Math.pow(s.Umax/s.Umin,UV/100);}
+/* rebuild everything that depends on the situation */
+function rebuild(){const s=sysOf(),U=uOf(),L=LCM/100,Dd=s.D*Math.pow(10,DFL),Recr=Math.pow(10,RCL);
+ E=mkEnv({U,nu:s.nu,D:Dd,L,Recr,Cs:s.Cs,Cinf:0,rhoS:s.rhoS});SMP=buildSampler(E,80);SX=XL/L;SY=.8/(BLS.eta99*Math.sqrt(s.nu*L/s.U0));
+ const tc=Math.min(30,Math.max(6,14*Math.pow(s.U0/U,.25)));STT=(L/U)/tc;INJ=injRate(E,SMP,N0);CTRL=1;LVE=INJ;
+ LAYER.material.color.set(s.plate).convertSRGBToLinear();FLUID.visible=s.fluid==='water';
+ PRC.material.color.set(s.col);EDGEC.material.color.set(s.col);
+ /* erosion */
+ const tsec=TEH*3600*(s.fluid==='water'?1:1);let emax=0;const raw=new Float64Array(NEP);for(let i=0;i<NEP;i++){const xph=Math.max(1e-6,L*Math.pow(i/(NEP-1),1.0));raw[i]=erodeDepth(E,i===0?L*1e-4:xph,tsec);if(raw[i]>emax)emax=raw[i];}
+ EF=emax>0?.26/(emax*SY):1;EROS=new Float64Array(NEP);for(let i=0;i<NEP;i++)EROS[i]=Math.min(.29,raw[i]*SY*EF);
+ /* particles: sample the analytic steady field */
+ free=[];for(let i=NPM-1;i>=0;i--)free.push(i);alive.fill(0);nAlive=0;for(let k=0;k<N0;k++){const i=free.pop(),[x,y]=sampleSteady(E,SMP);PP.x[i]=x;PP.y[i]=y;PZ[i]=(rnd()-.5)*1.9;alive[i]=1;nAlive++;}
+ rebuildPlate();paintHeat();updateEdges();updateArrows();updateProbe();dirty=false;}
+function rebuildPlate(){const sh=new THREE.Shape();sh.moveTo(0,2.35);sh.lineTo(XL,2.35);for(let i=NEP-1;i>=0;i--)sh.lineTo(XL*i/(NEP-1),YW0-EROS[i]);sh.lineTo(0,2.35);
+ LAYER.geometry.dispose();LAYER.geometry=new THREE.ExtrudeGeometry(sh,{depth:2.0,bevelEnabled:false});LAYER.position.z=-1.0;
+ const hp=HEAT.geometry.attributes.position;for(let c=0;c<=200;c++){const xs=c/200*XL,yw=ywall(xs);hp.setXYZ(c,xs-XL/2+XL/2,yw+YMAXS,0);hp.setXYZ(201+c,xs,yw,0);}hp.needsUpdate=true;HEAT.position.x=0;}
+const CM=[[0,[26,35,126]],[.25,[0,131,143]],[.5,[124,179,66]],[.75,[251,140,0]],[1,[213,0,0]]];
+function cmap(v,o){v=Math.min(1,Math.max(0,v));let k=1;while(k<CM.length-1&&CM[k][0]<v)k++;const a=CM[k-1],b=CM[k],f=(v-a[0])/(b[0]-a[0]);for(let c=0;c<3;c++)o[c]=a[1][c]+(b[1][c]-a[1][c])*f;}
+function profAt(xph){ /* c̃(y) and u(y)/U at a physical position as arrays over the physical height (metres) */
+ const n=120,y=new Float64Array(n+1),c=new Float64Array(n+1),u=new Float64Array(n+1);
+ if(xph<E.xcr){const sq=Math.sqrt(E.nu*xph/E.U),ymax=1.5*Math.max(E.sp.eta99*sq,BLS.eta99*sq);for(let i=0;i<=n;i++){const yy=ymax*i/n,eta=yy/sq,ff=blF(eta);y[i]=yy;c[i]=cAt(E.sp,eta);u[i]=ff[1];}return {y,c,u};}
+ const tb=turbProfile(E,xph,n);for(let i=0;i<=n;i++){y[i]=tb.y[i];c[i]=tb.c[i];u[i]=tb.u[i]/E.U;}return {y,c,u};}
+function paintHeat(){let prevPr=null;const ctx=heatCv.getContext('2d'),W=512,Hh=192,img=ctx.createImageData(W,Hh),d=img.data,ymaxPh=YMAXS/SY,rgb=[0,0,0];
+ for(let ix=0;ix<W;ix++){const xph=Math.max(1e-6,(ix+.5)/W*E.L);let pr=prevPr;if(xph>=E.xcr){if(ix%2===0||!prevPr)pr=prevPr=turbProfile(E,xph,100);}else prevPr=null;const sq=Math.sqrt(E.nu*xph/E.U);
+  for(let iy=0;iy<Hh;iy++){const yph=(1-(iy+.5)/Hh)*ymaxPh;let c;
+   if(!pr)c=cAt(E.sp,yph/sq);else{let a=0,b=100;while(b-a>1){const m=(a+b)>>1;if(pr.y[m]<=yph)a=m;else b=m;}c=yph>=pr.y[100]?0:pr.c[a]+(pr.c[b]-pr.c[a])*((yph-pr.y[a])/((pr.y[b]-pr.y[a])||1));}
+   cmap(c,rgb);const k=(iy*W+ix)*4;d[k]=rgb[0];d[k+1]=rgb[1];d[k+2]=rgb[2];d[k+3]=c<.012?0:Math.min(255,35+220*Math.pow(c,.55));}}
+ ctx.putImageData(img,0,0);heatTex.needsUpdate=true;}
+function tubeFrom(pts_,r){const cv=new THREE.CatmullRomCurve3(pts_);return new THREE.TubeGeometry(cv,pts_.length*2,r,6,false);}
+function updateEdges(){const pv=[],pc=[];for(let i=1;i<=100;i++){const xph=E.L*Math.pow(i/100,1.3),xs=xph*SX,lc=local(E,xph),yw=ywall(xs);pv.push(new V3(xs,yw+Math.min(YMAXS-.02,lc.delta*SY),.0));pc.push(new V3(xs,yw+Math.min(YMAXS-.02,lc.deltaC*SY),.0));}
+ EDGEV.geometry.dispose();EDGEC.geometry.dispose();EDGEV.geometry=tubeFrom(pv,.014);EDGEC.geometry=tubeFrom(pc,.02);}
+function updateArrows(){const seg=[],qs=[];let n=0;
+ STN.forEach((fr,si)=>{const xph=E.L*fr,xs=xph*SX,lc=local(E,xph),yw=ywall(xs),sq=Math.sqrt(E.nu*xph/E.U);
+  for(let j=0;j<NAR;j++){const yph=lc.delta*1.12*(j+.5)/NAR;let u;if(xph<E.xcr)u=blF(yph/sq)[1];else u=Math.min(1,Math.pow(yph/lc.delta,1/7));const ln=.55*u+.02,ys=yw+yph*SY;seg.push(xs,ys,0,xs+ln,ys,0);_p.set(xs+ln,ys,0);_q.setFromAxisAngle(new V3(0,0,1),-Math.PI/2);_s.set(1,1,1);_m.compose(_p,_q,_s);ARH.setMatrixAt(n++,_m);}});
+ ARL.geometry.dispose();const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(new Float32Array(seg),3));ARL.geometry=g;ARH.instanceMatrix.needsUpdate=true;}
+function updateProbe(){const xph=E.L*XPR/100,xs=xph*SX,lc=local(E,xph),yw=ywall(xs),yt=yw+Math.min(YMAXS-.05,lc.deltaC*SY);CAR.position.x=xs;PROBE.scale.y=5.55-yt;PROBE.position.y=(5.55+yt)/2;TIP.position.y=yt;
+ const pr=profAt(xph),pu=[],pc=[];for(let i=0;i<=120;i++){const ys=yw+pr.y[i]*SY;if(ys>yw+YMAXS)break;pu.push(xs+pr.u[i]*.9,ys,.0);pc.push(xs+pr.c[i]*.9,ys,.0);}
+ PRU.geometry.dispose();PRC.geometry.dispose();const a=new THREE.BufferGeometry(),b=new THREE.BufferGeometry();a.setAttribute('position',new THREE.BufferAttribute(new Float32Array(pu),3));b.setAttribute('position',new THREE.BufferAttribute(new Float32Array(pc),3));PRU.geometry=a;PRC.geometry=b;}
+/* ================= motion ================= */
+function stepSolute(dtReal){const dtp=dtReal*STT;const n=Math.max(1,Math.ceil(dtp/(.01*E.L/E.U))),h=dtp/n,ymaxP=YMAXS/SY;let left=0;
+ for(let k=0;k<n;k++){ /* wall source: the measured outflow (feed-forward) plus a slow correction toward the target population */
+  const rate=Math.max(0,LVE+(N0-nAlive)/(8*STT));carry+=rate*h;let m=Math.floor(carry);carry-=m;
+  for(let j=0;j<m&&free.length;j++){const i=free.pop();PP.x[i]=sampleX(FCDF);PP.y[i]=0;PZ[i]=(rnd()-.5)*1.9;alive[i]=1;nAlive++;}
+  const stride=N0>12000?2:1;PAR^=1;const kl=stepAll(E,PP,alive,NPM,h*stride,ymaxP,free,stride,stride>1?PAR:0);nAlive-=kl;left+=kl;}
+ LVE+=.05*(left/dtp-LVE);}
+let FCDF=null,LVE=0,PAR=0;
+function writeSolute(){const col=_c.set(sysOf().col).convertSRGBToLinear();
+ for(let i=0;i<NPM;i++){if(!alive[i]){SP.pos[i*3+1]=-50;continue;}const xs=PP.x[i]*SX;SP.pos[i*3]=xs;SP.pos[i*3+1]=ywall(xs)+PP.y[i]*SY;SP.pos[i*3+2]=PZ[i];SP.col[i*3]=col.r;SP.col[i*3+1]=col.g;SP.col[i*3+2]=col.b;}
+ SP.g.attributes.position.needsUpdate=true;SP.g.attributes.color.needsUpdate=true;}
+function stepTracers(dtReal){const dtp=dtReal*STT,s=E;
+ for(let i=0;i<NTR;i++){const d=tD[i];let u=s.U,v=0,fr=1;const xph=d.x/SX;
+  if(d.x>0&&d.x<XL&&d.y>ywall(d.x)-.001){const yph=Math.max(0,(d.y-ywall(d.x))/SY);
+   if(xph<s.xcr){const sq=Math.sqrt(s.nu*xph/s.U),eta=yph/sq,ff=blF(eta);u=s.U*ff[1];v=Math.min(.5*Math.sqrt(s.nu*s.U/xph)*(eta*ff[1]-ff[0]),5*s.U);fr=ff[1];}
+   else{const tp=turbPars(s,xph);fr=Math.min(1,Math.pow(Math.max(yph,1e-9)/tp.dT,1/7));u=s.U*fr;const d0=Deff(s,tp,yph),e=Math.max(1e-7,.01*Math.max(yph,1e-5)),dd=(Deff(s,tp,yph+e)-Deff(s,tp,Math.max(0,yph-e)))/(yph+e-Math.max(0,yph-e));
+    let dy=dd*dtp+Math.sqrt(2*d0*dtp)*(rnd()+rnd()+rnd()-1.5)*2;const lim=.5*Math.max(yph,2e-5);dy=Math.max(-lim,Math.min(lim+1e-6,dy));v=dy/dtp;}}
+  if(running){d.x+=u*SX*dtp;d.y+=v*SY*dtp;if(d.x>0&&d.x<XL&&d.y<ywall(d.x)+.002)d.y=ywall(d.x)+.002+rnd()*.001;}
+  if(d.x>9.3||d.y>4.95){d.x=-1;d.y=1.1+rnd()*3.8;if(d.y>2.1&&d.y<2.7)d.y=2.8+rnd()*2;d.z=(rnd()-.5)*2.2;}
+  TR.pos[i*3]=d.x;TR.pos[i*3+1]=d.y;TR.pos[i*3+2]=d.z;_c.copy(CSLOW).lerp(CFAST,fr);TR.col[i*3]=_c.r;TR.col[i*3+1]=_c.g;TR.col[i*3+2]=_c.b;}
+ TR.g.attributes.position.needsUpdate=true;TR.g.attributes.color.needsUpdate=true;}
+function drawScreen(){if(!E)return;const x=scrCv.getContext('2d'),W=460,Hh=320,s=sysOf();x.fillStyle='#07131b';x.fillRect(0,0,W,Hh);
+ x.fillStyle='#9fd3ea';x.font='bold 15px sans-serif';x.fillText('MASS TRANSFER TUNNEL T-12',14,22);x.fillStyle=running?'#69f0ae':'#ffd54f';x.fillText(running?'RUN':'HOLD',385,22);
+ const row=(l,v,y,c)=>{x.fillStyle='#7fa3b5';x.font='13px sans-serif';x.fillText(l,14,y);x.fillStyle=c||'#e8f5ff';x.font='bold 15px monospace';x.fillText(v,170,y);};
+ const sh=avgSh(E);row('U',E.U.toFixed(2)+' m/s',46);row('Re_L',E.ReL.toExponential(2),66);row('Sc',E.Sc.toFixed(1),86);row('Sh_L',sh.toFixed(0),106);row('k mean',(sh*E.D/E.L).toExponential(2)+' m/s',126);
+ x.strokeStyle='#1d3a4a';x.lineWidth=1;x.strokeRect(14,146,432,160);x.strokeStyle='#ff9100';x.lineWidth=2;x.beginPath();let first=true,kmax=0,kmin=1e9;const ks=[];
+ for(let i=1;i<=60;i++){const xph=E.L*i/60,k=local(E,xph).k;ks.push(Math.log10(k));kmax=Math.max(kmax,Math.log10(k));kmin=Math.min(kmin,Math.log10(k));}
+ ks.forEach((lk,i)=>{const px=14+(i/59)*432,py=300-(lk-kmin)/((kmax-kmin)||1)*140;if(i===0)x.moveTo(px,py);else x.lineTo(px,py);});x.stroke();
+ x.fillStyle='#7fa3b5';x.font='11px sans-serif';x.fillText('k_x along the plate (log)',18,160);scrTex.needsUpdate=true;}
+
+/* ================= modes ================= */
+let mode='cut',fly=null,lang='ar',labelMode='num';
+const reduced=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function applyMode(){
+ for(const k in parts){const pt=parts[k];pt.mats.forEach(m=>{if(m.userData.o0===undefined){m.userData.o0=m.opacity;m.userData.t0=m.transparent;m.userData.dw=m.depthWrite;}
+  const shell=m.userData.t0&&m.userData.o0<.4,gh=mode==='ghost'&&(k==='cond'||k==='diffuser'||k==='test'||k==='drive'||k==='ret');
+  m.transparent=gh?true:m.userData.t0;m.opacity=gh?(shell?.05:.14):m.userData.o0;m.depthWrite=gh?false:m.userData.dw;
+  m.clippingPlanes=(mode==='cut'&&pt.plane)?[cutPlane]:[];m.clipShadows=true;m.needsUpdate=true;});}
+ [SP,TR].forEach(o=>{o.p.material.clippingPlanes=mode==='cut'?[cutPlane]:[];o.p.material.needsUpdate=true;});
+ document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===mode));}
+function setHighlight(k,on){if(!k||!parts[k])return;parts[k].mats.forEach(m=>{if(m.emissive&&m.emissiveIntensity!==undefined){m.emissive=on?C(0xd9742a):new THREE.Color(0);m.emissiveIntensity=on?.45:0;}});}
+
+/* ================= UI ================= */
+const L_=()=>T[lang];
+const labelsEl=document.getElementById('labels'),cardEl=document.getElementById('card'),labelEls={};
+ORDER.forEach(k=>{const b=document.createElement('button');b.className='lbl';b.type='button';b.innerHTML=`<span class="num">${NUM[k]}</span><span class="t"></span>`;
+ b.onclick=e=>{e.stopPropagation();select(k);};labelsEl.appendChild(b);labelEls[k]=b;});
+function updateLabels(){ORDER.forEach(k=>{labelEls[k].querySelector('.t').textContent=INFO[k].ar;labelEls[k].setAttribute('aria-label',INFO[k].ar);});}
+function renderCard(){if(!selected){cardEl.innerHTML=L_().pick;return;}const i=INFO[selected];
+ cardEl.innerHTML=`<div class="head"><span class="num">${NUM[selected]}</span><div><h2>${i.ar}</h2><p class="en">${i.en}</p></div></div><p>${i.d}</p>${i.n?`<p class="eq">${i.n}</p>`:''}<div class="act"><button id="bFocus">${L_().focus}</button><button id="bClear">${L_().clear}</button></div>`;
+ document.getElementById('bFocus').onclick=()=>focusPart(selected);document.getElementById('bClear').onclick=()=>select(null);}
+function select(k){if(selected){setHighlight(selected,false);labelEls[selected].classList.remove('on');}selected=(k===selected)?null:k;
+ if(selected){setHighlight(selected,true);labelEls[selected].classList.add('on');}renderCard();}
+function flyTo(p_,tgt){fly={p0:camera.position.clone(),t0:controls.target.clone(),p1:p_,t1:tgt,e:0,d:reduced?.001:.9};}
+function focusPart(k){const pt=parts[k];const b=new THREE.Box3().setFromObject(pt.group),c=b.isEmpty()?pt.anchor.clone():b.getCenter(new V3()),s=b.isEmpty()?3:b.getSize(new V3()).length(),dir=camera.position.clone().sub(controls.target).normalize();flyTo(c.clone().addScaledVector(dir,Math.max(2.8,s*1.0)),c);}
+function view(v){const t=HOME.tgt.clone();const off=v==='front'?new V3(0,.6,19):v==='top'?new V3(0,21,.1):HOME.pos.clone().sub(HOME.tgt);flyTo(t.clone().add(off),t);}
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>view(b.dataset.view));
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;applyMode();});
+function setDrag(m){const pan=m==='pan';controls.mouseButtons.LEFT=pan?THREE.MOUSE.PAN:THREE.MOUSE.ROTATE;controls.mouseButtons.RIGHT=pan?THREE.MOUSE.ROTATE:THREE.MOUSE.PAN;
+ controls.touches.ONE=pan?THREE.TOUCH.PAN:THREE.TOUCH.ROTATE;canvas.style.cursor=pan?'move':'';document.querySelectorAll('[data-drag]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.drag===m));}
+document.querySelectorAll('[data-drag]').forEach(b=>b.onclick=()=>setDrag(b.dataset.drag));
+const E_=id=>document.getElementById(id),bExplode=E_('bExplode'),bLabels=E_('bLabels'),bRun=E_('bRun'),bTurb=E_('bTurb'),bReset=E_('bReset'),fwarn=E_('fwarn');
+if(bExplode)bExplode.style.display='none';
+const uuEl=E_('uu'),llEl=E_('ll'),rcEl=E_('rc'),dfEl=E_('df'),xpEl=E_('xp'),teEl=E_('te'),npEl=E_('np'),chartEl=E_('chart'),chart2El=E_('chart2'),chart3El=E_('chart3');
+function syncBtns(){bRun.setAttribute('aria-pressed',running);bRun.textContent=running?L_().stopRun:L_().run;bTurb.textContent=L_().turb;bReset.textContent=L_().reset;
+ document.querySelectorAll('[data-sys]').forEach(b=>{b.textContent=L_()['sys'+b.dataset.sys];b.setAttribute('aria-pressed',+b.dataset.sys===SI);});}
+bRun.onclick=()=>{running=!running;syncBtns();};
+function setUFromSys(){const s=sysOf();uuEl.value=100*Math.log(s.U0/s.Umin)/Math.log(s.Umax/s.Umin);}
+function resetDefaults(){UV=+(100*Math.log(sysOf().U0/sysOf().Umin)/Math.log(sysOf().Umax/sysOf().Umin)).toFixed(1);uuEl.value=UV;llEl.value=30;rcEl.value=5.7;dfEl.value=0;xpEl.value=60;teEl.value=0;npEl.value=14000;dirty=true;readouts();}
+bReset.onclick=resetDefaults;bTurb.onclick=()=>{const s=sysOf(),Rc=1e5,L=LCM/100,Un=Rc*s.nu/(.4*L),Uc=Math.min(s.Umax,Math.max(s.Umin,Un));rcEl.value=5;uuEl.value=Math.min(100,Math.max(0,100*Math.log(Uc/s.Umin)/Math.log(s.Umax/s.Umin)));dirty=true;readouts();};
+document.querySelectorAll('[data-sys]').forEach(b=>b.onclick=()=>{SI=+b.dataset.sys;setUFromSys();dfEl.value=0;dirty=true;syncBtns();readouts();});
+const LM=['num','name','off'];function syncLabelsBtn(){bLabels.textContent=L_().labels+L_().LT[labelMode];}
+bLabels.onclick=()=>{labelMode=LM[(LM.indexOf(labelMode)+1)%3];syncLabelsBtn();labelsEl.classList.toggle('names',labelMode==='name');labelsEl.classList.toggle('off',labelMode==='off');};
+const fmtE=v=>v.toExponential(2);
+function charts(){if(!E)return;const W=300,l=38,r=10,iw=W-l-r,s=sysOf();
+ /* thickness along the plate */
+ {const Hh=150,t=8,b=26,ih=Hh-t-b,N=60,dl=[],dc=[];let mx=0;for(let i=1;i<=N;i++){const lc=local(E,E.L*i/N);dl.push(lc.delta);dc.push(lc.deltaC);mx=Math.max(mx,lc.delta,lc.deltaC);}
+  const X=u=>l+u*iw,Y=v=>t+(1-Math.min(1,v/mx))*ih;let p1='',p2='';dl.forEach((v,i)=>{p1+=(i?'L':'M')+X((i+1)/N).toFixed(1)+' '+Y(v).toFixed(1);});dc.forEach((v,i)=>{p2+=(i?'L':'M')+X((i+1)/N).toFixed(1)+' '+Y(v).toFixed(1);});
+  const xc=E.xcr<E.L?`<line x1="${X(E.xcr/E.L)}" x2="${X(E.xcr/E.L)}" y1="${t}" y2="${t+ih}" stroke="#c8352e" stroke-dasharray="4 3"/>`:'';
+  chartEl.innerHTML=`<svg viewBox="0 0 ${W} ${Hh}" dir="ltr" role="img" aria-label="${L_().chH}" style="color:var(--ink)">${[0,.5,1].map(f=>`<line x1="${l}" x2="${W-r}" y1="${Y(mx*f)}" y2="${Y(mx*f)}" stroke="currentColor" stroke-opacity=".12"/><text x="${l-4}" y="${Y(mx*f)+3}" text-anchor="end">${(mx*f*1e3).toFixed(2)}</text>`).join('')}
+  ${[0,.5,1].map(f=>`<text x="${X(f)}" y="${Hh-12}" text-anchor="middle">${(E.L*f*100).toFixed(0)} cm</text>`).join('')}<text x="${l+iw/2}" y="${Hh-1}" text-anchor="middle">${L_().chX}</text>${xc}
+  <path d="${p1}" fill="none" stroke="#7e57c2" stroke-width="2.6"/><path d="${p2}" fill="none" stroke="#${s.col.toString(16).padStart(6,'0')}" stroke-width="2.6"/>
+  <line x1="${X(XPR/100)}" x2="${X(XPR/100)}" y1="${t}" y2="${t+ih}" stroke="currentColor" stroke-opacity=".4" stroke-dasharray="2 3"/></svg>
+  <div class="ch-leg"><span><i style="background:#7e57c2"></i>${L_().cD}</span><span><i style="background:#${s.col.toString(16).padStart(6,'0')}"></i>${L_().cDc}</span>${E.xcr<E.L?`<span><i style="background:#c8352e"></i>${L_().cCr}</span>`:''}</div>`;}
+ /* local coefficient (log–log) */
+ {const Hh=150,t=8,b=26,ih=Hh-t-b,N=70,x0=Math.log10(E.L*.02),x1=Math.log10(E.L);let kmin=1e9,kmax=0;const ks=[];for(let i=0;i<=N;i++){const x=Math.pow(10,x0+(x1-x0)*i/N),k=local(E,x).k;ks.push([x,k]);kmin=Math.min(kmin,k);kmax=Math.max(kmax,k);}
+  const lk0=Math.floor(Math.log10(kmin)),lk1=Math.ceil(Math.log10(kmax)),X=lx=>l+(lx-x0)/(x1-x0)*iw,Y=lk=>t+(1-(lk-lk0)/(lk1-lk0||1))*ih;let p='';ks.forEach(([x,k],i)=>{p+=(i?'L':'M')+X(Math.log10(x)).toFixed(1)+' '+Y(Math.log10(k)).toFixed(1);});
+  const km=avgSh(E)*E.D/E.L;const xc=E.xcr<E.L?`<line x1="${X(Math.log10(E.xcr))}" x2="${X(Math.log10(E.xcr))}" y1="${t}" y2="${t+ih}" stroke="#c8352e" stroke-dasharray="4 3"/>`:'';
+  let tk='';for(let e=lk0;e<=lk1;e++)tk+=`<line x1="${l}" x2="${W-r}" y1="${Y(e)}" y2="${Y(e)}" stroke="currentColor" stroke-opacity=".12"/><text x="${l-4}" y="${Y(e)+3}" text-anchor="end">1e${e}</text>`;
+  chart2El.innerHTML=`<svg viewBox="0 0 ${W} ${Hh}" dir="ltr" role="img" aria-label="${L_().chK}" style="color:var(--ink)">${tk}${[x0,(x0+x1)/2,x1].map(v=>`<text x="${X(v)}" y="${Hh-12}" text-anchor="middle">${Math.pow(10,v).toPrecision(2)}</text>`).join('')}<text x="${l+iw/2}" y="${Hh-1}" text-anchor="middle">${L_().chKx} (log)</text>${xc}
+  <line x1="${l}" x2="${W-r}" y1="${Y(Math.log10(km))}" y2="${Y(Math.log10(km))}" stroke="#1f8a4c" stroke-dasharray="5 3"/><path d="${p}" fill="none" stroke="#ff6d00" stroke-width="2.6"/>
+  <line x1="${X(Math.log10(E.L*XPR/100))}" x2="${X(Math.log10(E.L*XPR/100))}" y1="${t}" y2="${t+ih}" stroke="currentColor" stroke-opacity=".4" stroke-dasharray="2 3"/></svg>
+  <div class="ch-leg"><span><i style="background:#ff6d00"></i>${L_().cKx}</span><span><i style="background:#1f8a4c"></i>${L_().cKm}</span>${E.xcr<E.L?`<span><i style="background:#c8352e"></i>${L_().cCr}</span>`:''}</div>`;}
+ /* profiles at the probe */
+ {const Hh=150,t=8,b=26,ih=Hh-t-b,xph=E.L*XPR/100,pr=profAt(xph),ym=pr.y[pr.y.length-1],X=v=>l+v*iw,Y=v=>t+(1-v/ym)*ih;let pu='',pc='';
+  for(let i=0;i<pr.y.length;i++){pu+=(i?'L':'M')+X(pr.u[i]).toFixed(1)+' '+Y(pr.y[i]).toFixed(1);pc+=(i?'L':'M')+X(pr.c[i]).toFixed(1)+' '+Y(pr.y[i]).toFixed(1);}
+  chart3El.innerHTML=`<svg viewBox="0 0 ${W} ${Hh}" dir="ltr" role="img" aria-label="${L_().chP}" style="color:var(--ink)">${[0,.5,1].map(f=>`<line x1="${l}" x2="${W-r}" y1="${Y(ym*f)}" y2="${Y(ym*f)}" stroke="currentColor" stroke-opacity=".12"/><text x="${l-4}" y="${Y(ym*f)+3}" text-anchor="end">${(ym*f*1e3).toFixed(2)}</text>`).join('')}
+  ${[0,.5,1].map(f=>`<text x="${X(f)}" y="${Hh-12}" text-anchor="middle">${f}</text>`).join('')}<text x="${l+iw/2}" y="${Hh-1}" text-anchor="middle">${L_().chPx}</text>
+  <path d="${pu}" fill="none" stroke="#7e57c2" stroke-width="2.6"/><path d="${pc}" fill="none" stroke="#${s.col.toString(16).padStart(6,'0')}" stroke-width="2.6"/></svg>
+  <div class="ch-leg"><span><i style="background:#7e57c2"></i>${L_().cU}</span><span><i style="background:#${s.col.toString(16).padStart(6,'0')}"></i>${L_().cC}</span></div>`;}}
+function readouts(){N0=+npEl.value;UV=+uuEl.value;LCM=+llEl.value;RCL=+rcEl.value;DFL=+dfEl.value;XPR=+xpEl.value;TEH=+teEl.value;
+ const s=sysOf();rebuild();FCDF=fluxCDF(E,300);const set=(id,t)=>E_(id).textContent=t;const L=E.L,xph=L*XPR/100,lcL=local(E,L),lcP=local(E,xph),sh=avgSh(E),km=sh*E.D/L,fm=Math.pow(2,0);
+ set('npOut',String(N0));set('uuOut',E.U.toFixed(E.U<1?2:1)+' m/s');set('llOut',LCM+' cm');set('rcOut','Re_cr = '+Math.pow(10,RCL).toExponential(1));set('dfOut','× '+Math.pow(10,DFL).toFixed(2));set('xpOut',(XPR)+'% ('+(xph*100).toFixed(1)+' cm)');set('teOut',TEH+' h');
+ set('oRe',E.ReL.toExponential(2)+' ، '+(E.xcr<L?(E.xcr*100).toFixed(1)+' cm':(lang==='ar'?'لا يوجد (صفحي)':'none (laminar)')));
+ set('oSc',E.Sc.toFixed(E.Sc<10?2:0)+' ، '+E.nu.toExponential(2)+' ، '+E.D.toExponential(2));
+ set('oDel',(lcL.delta*1e3).toFixed(2)+' mm ، '+(lcL.deltaC*1e3).toFixed(2)+' mm ، '+(lcL.deltaC/lcL.delta).toFixed(3)+' ('+Math.pow(E.Sc,-1/3).toFixed(3)+')');
+ const corr=E.xcr>=L?.664*Math.sqrt(E.ReL)*E.Sc13:(Math.abs(E.Recr-5e5)<1?(.037*Math.pow(E.ReL,.8)-871)*E.Sc13:NaN);
+ set('oSh',sh.toFixed(sh<100?1:0)+' ، '+(isFinite(corr)?corr.toFixed(corr<100?1:0):'–'));
+ set('oRate',km.toExponential(2)+' m/s ، '+(km*L*(E.Cs-E.Cinf)*3.6e6).toFixed(km*L*E.Cs*3.6e6<10?3:1)+' g/h·m');
+ set('oLoc',lcP.Rex.toExponential(1)+' ، '+lcP.Sh.toFixed(lcP.Sh<100?1:0)+' ، '+lcP.k.toExponential(2)+' m/s ، '+(lcP.deltaC*1e3).toFixed(2)+' mm');
+ const ts=TEH*3600,eL=erodeDepth(E,Math.max(1e-4*L,1e-6),ts),eP=erodeDepth(E,xph,ts),eE=erodeDepth(E,L,ts),fu=v=>v<1e-3?(v*1e6).toFixed(1)+' µm':(v*1e3).toFixed(3)+' mm';
+ set('oEro',TEH===0?'0':(fu(erodeDepth(E,.02*L,ts))+' ('+(lang==='ar'?'عند 2% من L':'at 2% of L')+') ، '+fu(eP)+' ، '+fu(eE)));
+ set('oK','× '+(SY/SX).toFixed(0)+' ، × '+(EF).toFixed(EF<10?2:0));
+ let w;const jump=E.xcr<L?local(E,E.xcr*1.0001).k/local(E,E.xcr*.9999).k:1;
+ if(E.xcr<L&&E.Sc>60)w=['mid',L_().wSc.replace('{s}',E.Sc.toFixed(0))];
+ else if(E.Sc<.6)w=['mid',L_().wLow.replace('{s}',E.Sc.toFixed(2))];
+ else if(E.xcr<.25*L)w=['mid',L_().wAll];
+ else if(E.xcr<L)w=['',L_().wMix.replace('{x}',(E.xcr*100).toFixed(1)).replace('{j}',jump.toFixed(1))];
+ else{const un=E.Recr*E.nu/(.4*L);w=['ok',L_().wLam.replace('{r}',E.ReL.toExponential(1)).replace('{q}',(lcL.deltaC/lcL.delta).toFixed(2)).replace('{s}',sh.toFixed(0))+(E.ReL<E.Recr?' '+L_().wNoTr.replace('{u}',un.toFixed(un<10?2:1)):'')];}
+ fwarn.hidden=false;fwarn.className='fwarn'+(w[0]?' '+w[0]:'');if(w[0]==='')fwarn.style.background='#1f78c8';else fwarn.style.background='';fwarn.textContent=w[1];
+ charts();drawScreen();}
+let lastRb=-1e9,rbT=null;function queueRead(){const now=(window.performance||Date).now();if(now-lastRb>150){lastRb=now;readouts();}else{clearTimeout(rbT);rbT=setTimeout(()=>{lastRb=(window.performance||Date).now();readouts();},160);}}
+[uuEl,llEl,rcEl,dfEl,xpEl,teEl,npEl].forEach(e=>e.oninput=()=>{dirty=true;queueRead();});
+
+function setLang(l){lang=l;INFO=l==='ar'?INFO_AR:INFO_EN;document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';document.title=L_().title;
+ document.querySelectorAll('[data-t]').forEach(el=>{el.innerHTML=L_()[el.dataset.t];});
+ document.querySelectorAll('[data-lang-toggle]').forEach(b=>{b.textContent=L_().other;b.lang=L_().otherLang;});
+ updateLabels();renderCard();syncBtns();syncLabelsBtn();readouts();
+ try{localStorage.setItem('bl-lang',l);}catch(e){}requestAnimationFrame(resize);}
+document.querySelectorAll('[data-lang-toggle]').forEach(b=>b.onclick=()=>setLang(lang==='ar'?'en':'ar'));
+
+const ray=new THREE.Raycaster(),mouse=new V2();let downXY=null;
+canvas.addEventListener('pointerdown',e=>{downXY=[e.clientX,e.clientY];});
+canvas.addEventListener('pointerup',e=>{if(!downXY)return;const mv=Math.hypot(e.clientX-downXY[0],e.clientY-downXY[1]);downXY=null;if(mv>6)return;
+ const r=canvas.getBoundingClientRect();mouse.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(mouse,camera);
+ for(const h of ray.intersectObjects(pickables,false)){const k=h.object.userData.key,pt=parts[k];if(!pt)continue;if(mode==='cut'&&pt.plane&&cutPlane.distanceToPoint(h.point)<0)continue;if(k!==selected)select(k);return;}
+ if(selected)select(null);});
+
+function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+{const ro=new ResizeObserver(resize);ro.observe(stage);ro.observe(canvas);}resize();
+try{const q=new URLSearchParams(location.search).get('lang'),sv=localStorage.getItem('bl-lang');if(q==='en'||q==='ar')lang=q;else if(sv==='en'||sv==='ar')lang=sv;}catch(e){}
+resetDefaults();applyMode();setLang(lang);
+
+const clock=new THREE.Clock(),tmp=new V3();let rt=0;const ease=u=>u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;
+function frame(){const dt=Math.min(clock.getDelta(),.05);
+ if(fly){fly.e+=dt;const u=ease(Math.min(1,fly.e/fly.d));camera.position.lerpVectors(fly.p0,fly.p1,u);controls.target.lerpVectors(fly.t0,fly.t1,u);if(fly.e>=fly.d)fly=null;}
+ controls.update();
+ if(running)stepSolute(dt);writeSolute();stepTracers(dt);
+ rt+=dt;if(rt>.5){rt=0;drawScreen();}
+ renderer.render(scene,camera);
+ const cw=canvas.clientWidth,ch=canvas.clientHeight;
+ for(const k of ORDER){const el=labelEls[k],pt=parts[k];let show=true;if(INTERNAL.includes(k)&&mode==='full'&&k!==selected)show=false;
+  if(show){tmp.copy(pt.anchor);tmp.project(camera);if(tmp.z>1||tmp.z<-1)show=false;}
+  if(!show){el.style.visibility='hidden';continue;}el.style.visibility='visible';el.style.transform=`translate(${(tmp.x*.5+.5)*cw}px,${(-tmp.y*.5+.5)*ch}px) translate(-12px,-50%)`;}
+ requestAnimationFrame(frame);}
+/* ================= presenter: narrated guided tour (Arabic / English) ================= */
+(function(){
+const CFG={btn:"bRun",isOn:()=>running,tour:[[null, "السَّلامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ. أَنا الدُّكْتورْ ضِياءْ جُمْعَة جاسِمْ، تَدْريسِيٌّ في قِسْمِ الهَنْدَسَةِ الكيمْياوِيَّةِ وَالصِّناعاتِ النِّفْطِيَّةِ في كُلِّيَّةِ العَمارَةِ الجامِعَة، وَأُدَرِّسُ مادَّتَيِ انْتِقالِ الكُتْلَةِ وَتَصْميمِ المُفاعِلات. أَهْلاً بِكُمْ في هذا المُحاكي ثُلاثِيِّ الأَبْعادِ لِطَبَقَةِ التَّرْكيزِ الحَدِّيَّة. سَأُعَرِّفُكُمْ عَلى أَجْزائِهِ الرَّئيسَة، ثُمَّ نُشاهِدُ مَعاً كَيْفَ يَنْتَقِلُ المُذابُ مِنْ سَطْحِ لَوْحٍ إِلى مائِعٍ يَجْري فَوْقَه.", "Hello and welcome. I am Doctor Dheyaa J. Jasim, a lecturer in the Department of Chemical Engineering and Petroleum Industries at Al-Amarah University College, where I teach Mass Transfer and Reactor Design. Welcome to this three-dimensional simulator of the concentration boundary layer. I will introduce its main parts, and then we will watch together how a solute moves from a plate surface into the fluid flowing over it."], ["plate", "هذا لَوْحٌ مَصْبوبٌ مِنْ مادَّةٍ تَذوب. عِنْدَ سَطْحِهِ يَكونُ التَّرْكيزُ ثابِتاً عِنْدَ قيمَةِ التَّشَبُّع، وَبَعيداً عَنْهُ صِفْراً. فَيَنْتَقِلُ المُذابُ مِنَ الجِدارِ إِلى التَّيّارِ الَّذي يَحْمِلُهُ مَعَ الجَرَيان.", "This is a plate cast from a material that dissolves. At its surface the concentration is constant at the saturation value, and far from it zero. So the solute moves from the wall into the stream, which carries it along."], ["cond", "تُهَيِّئُ هذِهِ المَجْموعَةُ جَرَياناً مُنْتَظِمَ السُّرْعَةِ قَليلَ الاضْطِراب، يَبْدَأُ بَعْدَها فَوْقَ حافَّةِ اللَّوْحِ الأَمامِيَّةِ الحادَّة.", "This group prepares a flow of uniform velocity and low turbulence, which then begins over the sharp leading edge of the plate."], ["test", "في قِسْمِ الاخْتِبارِ تَنْمو طَبَقَتانِ حَدِّيَّتان: طَبَقَةُ السُّرْعَةِ بِاللَّوْنِ البَنَفْسَجِيّ، وَطَبَقَةُ التَّرْكيزِ بِلَوْنِ المُذاب. وَسُمْكُهُما يَتَناسَبُ مَعَ جَذْرِ المَسافَةِ مِنَ الحافَّةِ الأَمامِيَّة. وَفي الماءِ تَكونُ طَبَقَةُ التَّرْكيزِ أَرَقَّ بِنَحْوِ عَشْرِ مَرّات، لِأَنَّ عَدَدَ شْميتْ كَبير.", "In the test section two boundary layers grow: the velocity layer in violet, and the concentration layer in the colour of the solute. Their thickness is proportional to the square root of the distance from the leading edge. In water the concentration layer is about ten times thinner, because the Schmidt number is large."], ["traverse", "وَهذِهِ المَسّاحَةُ تُنْزِلُ مِسْباراً إِلى الطَّبَقَةِ الحَدِّيَّةِ لِتَقيسَ التَّرْكيزَ وَالسُّرْعَة. وَبِجِوارِها تَظْهَرُ مُنْحَنَياتُ التَّوْزيعِ عِنْدَ ذلِكَ المَوْضِع.", "This traverse lowers a probe into the boundary layer to measure the concentration and the velocity. Beside it appear the distribution curves at that position."], ["drive", "وَتُحَرِّكُ هذِهِ المِضَخَّةُ المُحورِيَّةُ المائِعَ في الحَلْقَةِ المُغْلَقَة، وَيُغَيِّرُ مُحَوِّلُ التَّرَدُّدِ سُرْعَةَ التَّيّارِ الحُرّ. كُلَّما زادَتِ السُّرْعَةُ رَقَّتِ الطَّبَقَةُ الحَدِّيَّةُ وَزادَ مُعامِلُ انْتِقالِ الكُتْلَة.", "This axial pump drives the fluid round the closed loop, and the frequency converter changes the free-stream speed. The faster the flow, the thinner the boundary layer and the larger the mass-transfer coefficient."], ["panel", "وَتَعْرِضُ لَوْحَةُ التَّحَكُّمِ رَقْمَ رينولْدز وَعَدَدَ شيروودِ المُتَوَسِّط، وَمُنْحَنى مُعامِلِ الانْتِقالِ الجُزْئِيِّ عَلى طولِ اللَّوْح.", "The control panel shows the Reynolds number, the mean Sherwood number, and the curve of the local transfer coefficient along the plate."], [null, "جَرِّبوا الآنَ: ارْفَعوا سُرْعَةَ التَّيّارِ وَلاحِظوا الطَّبَقَةَ الحَدِّيَّةَ تَرِقّ. وَبَدِّلوا إِلى النَّفْثالينِ في الهَواء لِتَرَوْا أَنَّ الطَّبَقَتَيْنِ تَتَقارَبان. وَخَفِّضوا رَقْمَ رينولْدزِ الحَرِجَ لِتَرَوْا قَفْزَةَ مُعامِلِ الانْتِقالِ عِنْدَ الاضْطِراب. وَحَرِّكوا المَسْبارَ على طولِ اللَّوْح. بِالتَّوْفيقِ لِلْجَميع.", "Now try it yourselves: raise the stream speed and watch the boundary layer thin. Switch to naphthalene in air to see the two layers become similar. Lower the critical Reynolds number to see the jump of the transfer coefficient at transition. And move the probe along the plate. Good luck to you all."]]};
+const strip=t=>t.replace(/[\u064B-\u0652\u0670]/g,'');
+const PUI={ar:{name:'د. ضياء جمعة جاسم',prev:'السابق',pause:'إيقاف مؤقت',resume:'متابعة',next:'التالي',close:'إغلاق',open:'شرح الدكتور ضياء',noVoice:'لا يتوفر صوت عربي في هذا المتصفح، لذلك يظهر الشرح مكتوباً فقط. جرّب Edge أو Chrome.',noMale:'لا يتوفر صوت عربي رجالي في هذا الجهاز، فاستُخدم أقرب صوت متاح بنبرة أخفض. جرّب Microsoft Edge (أصوات مثل حامد وشاكر) أو أضف صوتاً عربياً رجالياً من إعدادات النظام.'},
+ en:{name:'Dr. Dheyaa J. Jasim',prev:'Previous',pause:'Pause',resume:'Resume',next:'Next',close:'Close',open:'Tour with Dr. Dheyaa',noVoice:'No English voice is available in this browser, so the tour is shown as text only. Try Edge or Chrome.'}};
+const PU=()=>PUI[lang];
+const wrap=document.createElement('div');
+wrap.innerHTML=`<div class="presenter" id="presenter" hidden><div class="pv"><div class="ring"></div><img src="data:image/jpeg;base64,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" alt=""><div class="bars"><i></i><i></i><i></i><i></i><i></i></div></div>
+ <div class="pb"><div class="pn">x <span id="pStep"></span></div><div class="pt" id="pText"></div>
+ <div class="pc"><button id="pPrev" class="ic flip">⏮</button><button id="pPlay" class="ic">❚❚</button><button id="pNext" class="ic flip">⏭</button><button id="pClose" class="ic">✕</button></div><div class="pw" id="pWarn" hidden></div></div></div>
+ <button class="pbtn" id="pOpen"><img alt=""><span>▶</span></button>`;
+while(wrap.firstChild)stage.appendChild(wrap.firstChild);
+const presenter=document.getElementById('presenter'),pText=document.getElementById('pText'),pStep=document.getElementById('pStep'),pPlay=document.getElementById('pPlay'),pOpen=document.getElementById('pOpen'),pWarn=document.getElementById('pWarn');
+pOpen.querySelector('img').src=presenter.querySelector('.pv img').src;
+let tIdx=-1,tPaused=false,tTimer=null,tToken=0,arVoice=null,enVoice=null,arMale=false;
+const synth=window.speechSynthesis||null;
+function pickVoice(){if(!synth)return;const v=synth.getVoices();
+ const ar=v.filter(x=>/^ar/i.test(x.lang)),ML=/hamed|naayf|shakir|bassel|fahed|taim|rami|moaz|hamdan|\bali\b|saleh|laith|hedi|ismael|jamal|omar|abdullah|maged|majed|tarik|\bmale\b/i,FL=/zariyah|salma|hoda|rana|noura|sana|layla|laila|amal|hala|fatima|maryam|amany|amina|iman|mouna|reem|aysha|\bfemale\b/i,sa=x=>(ML.test(x.name)?100:0)-(FL.test(x.name)?100:0)+(/natural|neural|online/i.test(x.name)?8:0)+(/google/i.test(x.name)?2:0)+(/ar[-_]SA/i.test(x.lang)?1:0);arVoice=ar.sort((a,b)=>sa(b)-sa(a))[0]||null;arMale=!!(arVoice&&ML.test(arVoice.name)&&!FL.test(arVoice.name));
+ const en=v.filter(x=>/^en/i.test(x.lang)),se=x=>(/natural|neural|online/i.test(x.name)?8:0)+(/google/i.test(x.name)?4:0)+(/ryan|guy|george|daniel|david|arthur|male/i.test(x.name)?3:0)+(/en[-_]GB/i.test(x.lang)?2:0);
+ enVoice=en.sort((a,b)=>se(b)-se(a))[0]||null;}
+if(synth){pickVoice();synth.onvoiceschanged=pickVoice;}
+function chunks(t){return t.split(/(?<=[.،,:;!?؟])\s+/).reduce((a,s)=>{if(a.length&&(a[a.length-1]+' '+s).length<170)a[a.length-1]+=' '+s;else a.push(s);return a;},[]);}
+function speak(text,done){const tok=++tToken;presenter.classList.add('talking');const fin=()=>{if(tok!==tToken)return;presenter.classList.remove('talking');done();};
+ const vv=lang==='ar'?arVoice:enVoice;
+ if(synth&&vv){synth.cancel();if(lang==='ar'&&!arMale){pWarn.hidden=false;pWarn.textContent=PU().noMale;}const parts=chunks(text);let i=0;
+  const next=()=>{if(tok!==tToken)return;if(i>=parts.length){fin();return;}const u=new SpeechSynthesisUtterance(parts[i++]);u.voice=vv;u.lang=vv.lang;u.rate=lang==='ar'&&!arMale?.95:1;u.pitch=lang==='ar'&&!arMale?.72:1;
+   u.onend=()=>setTimeout(next,120);u.onerror=()=>setTimeout(next,120);synth.speak(u);};next();}
+ else{pWarn.hidden=false;pWarn.textContent=PU().noVoice;tTimer=setTimeout(fin,Math.max(5000,text.split(/\s+/).length*420));}}
+function showStep(i){clearTimeout(tTimer);if(synth)synth.cancel();pWarn.hidden=true;tIdx=i;const [k,ar,en]=CFG.tour[i],say=lang==='ar'?ar:en;
+ pText.textContent=lang==='ar'?strip(ar):en;pText.dir=lang==='ar'?'rtl':'ltr';pText.lang=lang;pStep.textContent='('+(i+1)+' / '+CFG.tour.length+')';pText.scrollTop=0;
+ if(k){if(selected!==k)select(k);focusPart(k);}else{if(selected)select(null);view('iso');}
+ if(!tPaused)speak(say,()=>{if(tIdx<CFG.tour.length-1)tTimer=setTimeout(()=>showStep(tIdx+1),700);});}
+function syncPresenter(){presenter.querySelector('.pn').firstChild.textContent=PU().name+' ';
+ [['pPrev',PU().prev],['pNext',PU().next],['pClose',PU().close]].forEach(([id,t])=>{const b=document.getElementById(id);b.title=t;b.setAttribute('aria-label',t);});
+ pPlay.textContent=tPaused?'▶':'❚❚';pPlay.title=tPaused?PU().resume:PU().pause;pPlay.setAttribute('aria-label',pPlay.title);pOpen.title=PU().open;pOpen.setAttribute('aria-label',PU().open);presenter.querySelector('.pv img').alt=PU().name;}
+function startTour(){presenter.hidden=false;pOpen.hidden=true;stage.classList.add('tour');tPaused=false;syncPresenter();if(mode==='full'){mode='cut';applyMode();}showStep(0);}
+function stopTour(){tToken++;clearTimeout(tTimer);if(synth)synth.cancel();presenter.classList.remove('talking');presenter.hidden=true;pOpen.hidden=false;stage.classList.remove('tour');}
+document.getElementById('pNext').onclick=()=>{if(tIdx<CFG.tour.length-1)showStep(tIdx+1);};
+document.getElementById('pPrev').onclick=()=>{if(tIdx>0)showStep(tIdx-1);};
+document.getElementById('pClose').onclick=stopTour;pOpen.onclick=startTour;
+pPlay.onclick=()=>{tPaused=!tPaused;syncPresenter();if(tPaused){tToken++;clearTimeout(tTimer);if(synth)synth.cancel();presenter.classList.remove('talking');}else showStep(tIdx);};
+const runBtn=document.getElementById(CFG.btn),oldRun=runBtn.onclick;
+runBtn.onclick=e=>{if(oldRun)oldRun.call(runBtn,e);if(CFG.isOn())startTour();else stopTour();};
+const oldSetLang=setLang;setLang=function(l){oldSetLang(l);syncPresenter();if(!presenter.hidden&&tIdx>=0)showStep(tIdx);};
+syncPresenter();
+})();
+
+loadingEl.remove();requestAnimationFrame(frame);
+})();
+
+</script>
+</body>
+</html>
