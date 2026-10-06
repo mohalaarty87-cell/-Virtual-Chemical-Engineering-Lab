@@ -21,6 +21,7 @@
     font-family: 'Cairo', 'Tajawal', system-ui, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
+    background: #06101f;
   }
 }
 
