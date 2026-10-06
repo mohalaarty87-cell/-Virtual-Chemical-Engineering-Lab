@@ -5,7 +5,6 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "prebuild": "cat public/vcl-bg-0.b64 public/vcl-bg-1.b64 | base64 -d > public/vcl-bg.jpg",
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
