@@ -1,0 +1,6 @@
+{
+  "name": "المختبر الافتراضي للهندسة الكيمياوية | Virtual Chemical Engineering Lab",
+  "description": "منصة تعليمية متطورة تضم 31 محاكياً تفاعلياً ثلاثي الأبعاد لمقرري تصميم المفاعلات وانتقال الكتلة والسيطرة - إشراف وإعداد ENG ALAA MOHAMMED",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
