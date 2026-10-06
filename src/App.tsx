@@ -211,18 +211,11 @@ export default function App() {
 
   return (
     <div className="min-h-screen relative overflow-hidden flex flex-col font-cairo">
-      {/* Background Animated Gradient */}
-      <div className="fixed inset-0 -z-20 bg-gradient-to-br from-[#0a0e27] via-[#101642] to-[#070a1e] pointer-events-none transition-colors"></div>
-
-      {/* Grid Pattern */}
-      <div
-        className="fixed inset-0 -z-10 pointer-events-none opacity-20"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(0, 212, 255, 0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 212, 255, 0.15) 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
-        }}
-      ></div>
+      {/* User-provided full-page background */}
+      <div className="fixed inset-0 -z-30 pointer-events-none bg-[#06101f]">
+        <div className="absolute inset-0 bg-[url('/vcl-bg.jpg')] bg-cover bg-center bg-fixed opacity-100"></div>
+        <div className="absolute inset-0 bg-slate-950/45"></div>
+      </div>
 
       {/* Header */}
       <Header
