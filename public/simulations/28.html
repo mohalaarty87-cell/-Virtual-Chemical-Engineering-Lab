@@ -698,8 +698,8 @@ function frame(){const dt=Math.min(clock.getDelta(),.05);
 (function(){
 const CFG={btn:"bRx",isOn:()=>reacting,tour:[[null, "السَّلامُ عَلَيْكُمْ وَرَحْمَةُ اللهِ. أَنا المُهَنْدِسُ عَلاءُ مُحَمَّد، مِنْ قِسْمِ هَنْدَسَةِ المَوادِ في جامِعَةِ البَصْرَة. أَهْلاً بِكُمْ في هذا المُحاكي ثُلاثِيِّ الأَبْعادِ لِلْمُفاعِلِ الأُنْبوبِيّ. سَأُعَرِّفُكُمْ عَلى أَجْزائِهِ الرَّئيسَة، ثُمَّ نُشاهِدُ مَعاً كَيْفَ يَتَغَيَّرُ التَّرْكيزُ عَلى طولِ الأُنْبوب.", "Hello and welcome. I am Engineer Alaa Mohammed from the Department of Materials Engineering at the University of Basrah. Welcome to this three-dimensional simulator of the plug flow reactor. I will introduce its main parts, and then we will watch together how concentration changes along the tube."], ["tankA", "هذانِ خَزّانا المادَّتَيْنِ المُتَفاعِلَتَيْن: الأَحْمَرُ لِلْمادَّةِ الأُولى، وَالأَصْفَرُ لِلثّانِيَة.", "These are the two feed tanks: red for the first reactant and yellow for the second."], ["pumps", "تَسْحَبُ كُلُّ مِضَخَّةٍ مِنْ خَزّانِها، وَيَقيسُ الرّوتاميتَرُ مُعَدَّلَ التَّدَفُّق.", "Each pump draws from its tank, and the rotameter measures the flow rate."], ["tee", "يَلْتَقي التَّيّارانِ هُنا قَبْلَ دُخولِ المُفاعِلِ مُباشَرَة.", "The two streams meet here just before entering the reactor."], ["mixer", "وَفي بِدايَةِ الأُنْبوبِ الخَلّاطُ السّاكِن، يَخْلِطُ المادَّتَيْنِ خَلْطاً سَريعاً دونَ أَجْزاءٍ مُتَحَرِّكَة.", "At the start of the tube is the static mixer, which blends the two reactants quickly with no moving parts."], ["tube", "هذا أُنْبوبُ المُفاعِل. في الجَرَيانِ السَّدادِيِّ تَتَحَرَّكُ الشَّرائِحُ بِسُرْعَةٍ واحِدَة، فَيَتَناقَصُ تَرْكيزُ المادَّةِ المُتَفاعِلَةِ تَدْريجِيّاً عَلى طولِ الأُنْبوب، عَلى خِلافِ المُفاعِلِ الخَزّانِيّ.", "This is the reactor tube. In plug flow the slices move at one velocity, so reactant concentration falls gradually along the tube, unlike in a stirred tank."], ["jacket", "حَوْلَ الأُنْبوبِ القَميصُ الحَرارِيّ، يَجْري فيهِ ماءُ التَّبْريدِ بِعَكْسِ اتِّجاهِ الخَليط.", "Around the tube is the jacket, where cooling water flows against the direction of the mixture."], ["thermo", "وَهذِهِ مِجَسّاتُ الحَرارَةِ وَنِقاطُ أَخْذِ العَيِّناتِ عَلى طولِ المُفاعِل، نَرْسُمُ بِها مُنْحَنى التَّحْويلِ مَعَ الطّول.", "These are the temperature sensors and sampling points along the reactor, used to plot conversion against length."], ["outlet", "وَفي النِّهايَةِ يَخْرُجُ النّاتِجُ الأَخْضَرُ عَبْرَ صِمامِ الضَّغْطِ الخَلْفِيّ، وَمَعَهُ بَعْضُ المادَّةِ الَّتي لَمْ تَتَفاعَل.", "At the end the green product leaves through the back-pressure valve, together with some unreacted material."], [null, "غَيِّروا زَمَنَ المُكوث، وَقارِنوا تَحْويلَ المُفاعِلِ الأُنْبوبِيِّ بِالخَزّانِيّ، ثُمَّ جَرِّبوا زِرَّ الجَرَيانِ الطَّباقِيِّ لِتَرَوْا أَثَرَ تَوْزيعِ السُّرْعَة. بِالتَّوْفيقِ لِلْجَميع.", "Change the space time and compare the tubular reactor with the stirred tank, then try the laminar flow button to see the effect of the velocity profile. Good luck to you all."]]};
 const strip=t=>t.replace(/[\u064B-\u0652\u0670]/g,'');
-const PUI={ar:{name:'المهندس علاء محمد',prev:'السابق',pause:'إيقاف مؤقت',resume:'متابعة',next:'التالي',close:'إغلاق',open:'شرح المهندس علاء محمد',noVoice:'لا يتوفر صوت عربي في هذا المتصفح، لذلك يظهر الشرح مكتوباً فقط. جرّب Edge أو Chrome.',noMale:'لا يتوفر صوت عربي رجالي في هذا الجهاز، فاستُخدم أقرب صوت متاح بنبرة أخفض. جرّب Microsoft Edge (أصوات مثل حامد وشاكر) أو أضف صوتاً عربياً رجالياً من إعدادات النظام.'},
- en:{name:'Engineer Alaa Mohammed',prev:'Previous',pause:'Pause',resume:'Resume',next:'Next',close:'Close',open:'Tour with Eng. Alaa Mohammed',noVoice:'No English voice is available in this browser, so the tour is shown as text only. Try Edge or Chrome.'}};
+const PUI={ar:{name:'المهندس علاء محمد',prev:'السابق',pause:'إيقاف مؤقت',resume:'متابعة',next:'التالي',close:'إغلاق',open:'شرح المهندس علاء محمد',,noMale:'لا يمكن تأكيد نوع الصوت العربي المتاح؛ استُخدم كما هو دون خفض النبرة. يمكنك اختيار صوت رجالي من إعدادات الجهاز.'},
+ en:{name:'Engineer Alaa Mohammed',prev:'Previous',pause:'Pause',resume:'Resume',next:'Next',close:'Close',open:'Tour with Eng. Alaa Mohammed',}};
 const PU=()=>PUI[lang];
 const wrap=document.createElement('div');
 wrap.innerHTML=`<div class="presenter" id="presenter" hidden><div class="pv"><div class="ring"></div><img src="profile.png" alt=""><div class="bars"><i></i><i></i><i></i><i></i><i></i></div></div>
@@ -709,20 +709,27 @@ wrap.innerHTML=`<div class="presenter" id="presenter" hidden><div class="pv"><di
 while(wrap.firstChild)stage.appendChild(wrap.firstChild);
 const presenter=document.getElementById('presenter'),pText=document.getElementById('pText'),pStep=document.getElementById('pStep'),pPlay=document.getElementById('pPlay'),pOpen=document.getElementById('pOpen'),pWarn=document.getElementById('pWarn');
 pOpen.querySelector('img').src=presenter.querySelector('.pv img').src;
-let tIdx=-1,tPaused=false,tTimer=null,tToken=0,arVoice=null,enVoice=null,arMale=false;
+let tIdx=-1,tPaused=false,tTimer=null,tToken=0,arVoice=null,enVoice=null,arMaleHint=false;
 const synth=window.speechSynthesis||null;
 function pickVoice(){if(!synth)return;const v=synth.getVoices();
- const ar=v.filter(x=>/^ar/i.test(x.lang)),ML=/hamed|naayf|shakir|bassel|fahed|taim|rami|moaz|hamdan|\bali\b|saleh|laith|hedi|ismael|jamal|omar|abdullah|maged|majed|tarik|\bmale\b/i,FL=/zariyah|salma|hoda|rana|noura|sana|layla|laila|amal|hala|fatima|maryam|amany|amina|iman|mouna|reem|aysha|\bfemale\b/i,sa=x=>(ML.test(x.name)?100:0)-(FL.test(x.name)?100:0)+(/natural|neural|online/i.test(x.name)?8:0)+(/google/i.test(x.name)?2:0)+(/ar[-_]SA/i.test(x.lang)?1:0);arVoice=ar.sort((a,b)=>sa(b)-sa(a))[0]||null;arMale=!!(arVoice&&ML.test(arVoice.name)&&!FL.test(arVoice.name));
- const en=v.filter(x=>/^en/i.test(x.lang)),se=x=>(/natural|neural|online/i.test(x.name)?8:0)+(/google/i.test(x.name)?4:0)+(/ryan|guy|george|daniel|david|arthur|male/i.test(x.name)?3:0)+(/en[-_]GB/i.test(x.lang)?2:0);
+ const ar=v.filter(x=>/^ar(?:[-_]|$)/i.test(x.lang)),ML=/hamed|naayf|shakir|bassel|fahed|taim|rami|moaz|hamdan|\bali\b|saleh|laith|hedi|ismael|jamal|omar|abdullah|maged|majed|tarik|\bmale\b/i,FL=/zariyah|salma|hoda|rana|noura|sana|layla|laila|amal|hala|fatima|maryam|amany|amina|iman|mouna|reem|aysha|\bfemale\b/i,sa=x=>(ML.test(x.name)?100:0)-(FL.test(x.name)?100:0)+(/natural|neural|online/i.test(x.name)?8:0)+(/google/i.test(x.name)?2:0)+(/ar[-_]SA/i.test(x.lang)?1:0);arVoice=ar.sort((a,b)=>sa(b)-sa(a))[0]||null;arMaleHint=!!(arVoice&&ML.test(arVoice.name)&&!FL.test(arVoice.name));
+ const en=v.filter(x=>/^en(?:[-_]|$)/i.test(x.lang)),se=x=>(/natural|neural|online/i.test(x.name)?8:0)+(/google/i.test(x.name)?4:0)+(/ryan|guy|george|daniel|david|arthur|male/i.test(x.name)?3:0)+(/en[-_]GB/i.test(x.lang)?2:0);
  enVoice=en.sort((a,b)=>se(b)-se(a))[0]||null;}
-if(synth){pickVoice();synth.onvoiceschanged=pickVoice;}
+if(synth){pickVoice();if(synth.addEventListener)synth.addEventListener('voiceschanged',pickVoice);else synth.onvoiceschanged=pickVoice;}
 function chunks(t){return t.split(/(?<=[.،,:;!?؟])\s+/).reduce((a,s)=>{if(a.length&&(a[a.length-1]+' '+s).length<170)a[a.length-1]+=' '+s;else a.push(s);return a;},[]);}
 function speak(text,done){const tok=++tToken;presenter.classList.add('talking');const fin=()=>{if(tok!==tToken)return;presenter.classList.remove('talking');done();};
- const vv=lang==='ar'?arVoice:enVoice;
- if(synth&&vv){synth.cancel();if(lang==='ar'&&!arMale){pWarn.hidden=false;pWarn.textContent=PU().noMale;}const parts=chunks(text);let i=0;
-  const next=()=>{if(tok!==tToken)return;if(i>=parts.length){fin();return;}const u=new SpeechSynthesisUtterance(parts[i++]);u.voice=vv;u.lang=vv.lang;u.rate=lang==='ar'&&!arMale?.95:1;u.pitch=lang==='ar'&&!arMale?.72:1;
-   u.onend=()=>setTimeout(next,120);u.onerror=()=>setTimeout(next,120);synth.speak(u);};next();}
- else{pWarn.hidden=false;pWarn.textContent=PU().noVoice;tTimer=setTimeout(fin,Math.max(5000,text.split(/\s+/).length*420));}}
+ const parts=chunks(text);let i=0,voiceWait=0;
+ const next=()=>{if(tok!==tToken)return;if(!synth){pWarn.hidden=false;pWarn.textContent=PU().noVoice;tTimer=setTimeout(fin,Math.max(5000,text.split(/\s+/).length*420));return;}
+  pickVoice();const vv=lang==='ar'?arVoice:enVoice;
+  if(!vv&&voiceWait++<20){pWarn.hidden=false;pWarn.textContent=lang==='ar'?'جارٍ تحميل الأصوات العربية من الجهاز…':'Loading device voices…';tTimer=setTimeout(next,500);return;}
+  if(!vv){pWarn.hidden=false;pWarn.textContent=PU().noVoice;}
+  else if(lang==='ar'&&!arMaleHint){pWarn.hidden=false;pWarn.textContent=PU().noMale;}
+  else pWarn.hidden=true;
+  if(i>=parts.length){fin();return;}synth.cancel();const part=parts[i++];
+  const queuePart=voice=>{if(tok!==tToken)return;const u=new SpeechSynthesisUtterance(part);if(voice)u.voice=voice;u.lang=voice?.lang||(lang==='ar'?'ar-SA':'en-US');u.rate=1;u.pitch=1;
+   u.onend=()=>setTimeout(next,120);u.onerror=()=>{if(voice)queuePart(null);else setTimeout(next,120);};try{synth.speak(u);}catch{if(voice)queuePart(null);else setTimeout(next,120);}};
+  queuePart(vv||null);};
+ next();}
 function showStep(i){clearTimeout(tTimer);if(synth)synth.cancel();pWarn.hidden=true;tIdx=i;const [k,ar,en]=CFG.tour[i],say=lang==='ar'?ar:en;
  pText.textContent=lang==='ar'?strip(ar):en;pText.dir=lang==='ar'?'rtl':'ltr';pText.lang=lang;pStep.textContent='('+(i+1)+' / '+CFG.tour.length+')';pText.scrollTop=0;
  if(k){if(selected!==k)select(k);focusPart(k);}else{if(selected)select(null);view('iso');}
