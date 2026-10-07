@@ -67,7 +67,7 @@ export const AuthorModal: React.FC<AuthorModalProps> = ({
             <CheckCircle2 className="w-5 h-5 text-cyan-400 inline" />
           </h2>
           <div className="text-xs text-cyan-300 font-medium mt-0.5">
-            {lang === 'ar' ? 'المهندس علاء محمد' : 'Chemical Engineering Specialist'}
+            {lang === 'ar' ? 'المهندس علاء محمد' : 'Materials Engineering Specialist'}
           </div>
 
           <div className="space-y-3 mt-4 text-slate-300 text-xs sm:text-sm">
@@ -75,8 +75,8 @@ export const AuthorModal: React.FC<AuthorModalProps> = ({
               <Building2 className="w-4 h-4 text-cyan-400 shrink-0" />
               <span>
                 {lang === 'ar'
-                  ? 'قسم الهندسة الكيمياوية'
-                  : 'Department of Chemical Engineering'}
+                  ? 'قسم هندسة المواد'
+                  : 'Department of Materials Engineering'}
               </span>
             </div>
 

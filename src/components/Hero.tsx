@@ -37,8 +37,8 @@ export const Hero: React.FC<HeroProps> = ({ lang, totalSimulators }) => {
         <span className="flex items-center gap-1.5">
           <Building2 className="w-4 h-4 text-cyan-400" />
           {lang === 'ar'
-            ? 'قسم الهندسة الكيمياوية'
-            : 'Department of Chemical Engineering'}
+            ? 'قسم هندسة المواد'
+            : 'Department of Materials Engineering'}
         </span>
         <span className="text-slate-600">·</span>
         <span className="flex items-center gap-1.5">
