@@ -311,7 +311,7 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
         {/* Modal Actions Footer */}
         <div className="px-6 py-4 border-t border-slate-800 bg-slate-950/80 flex flex-wrap items-center justify-between gap-3">
           <div className="text-xs text-slate-400 flex items-center gap-2">
-            <span className="font-semibold text-cyan-400">ENG ALAA MOHAMMED</span>
+            <span className="font-semibold text-cyan-400">Engineer Alaa Mohammed</span>
             <span>·</span>
             <span>جامعة البصرة 2026</span>
           </div>

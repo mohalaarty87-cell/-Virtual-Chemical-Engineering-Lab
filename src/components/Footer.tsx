@@ -16,7 +16,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenAuthorInfo }) => {
           VIRTUAL CHEM LAB
         </div>
 
-        {/* Written Copyright - User Request: ENG ALAA MOHAMMED */}
+        {/* Written Copyright - User Request: Engineer Alaa Mohammed */}
         <div className="flex flex-wrap items-center justify-center gap-2 text-sm text-slate-300 font-medium">
           <span>{lang === 'ar' ? 'جميع الحقوق محفوظة' : 'All Rights Reserved'}</span>
           <span>© 2026</span>
@@ -28,7 +28,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenAuthorInfo }) => {
             }}
             className="font-bold text-cyan-400 hover:text-cyan-300 hover:underline transition"
           >
-            ENG. ALAA MOHAMMED
+            Engineer Alaa Mohammed
           </button>
         </div>
 
@@ -37,8 +37,8 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenAuthorInfo }) => {
           <Building2 className="w-3.5 h-3.5 text-cyan-400 inline" />
           <span>
             {lang === 'ar'
-              ? 'قسم الهندسة الكيمياوية والصناعات النفطية - جامعة البصرة'
-              : 'Chemical Engineering & Petroleum Industries Dept. - University of Basrah'}
+              ? 'قسم الهندسة الكيمياوية - جامعة البصرة'
+              : 'Department of Chemical Engineering - University of Basrah'}
           </span>
         </div>
 

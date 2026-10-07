@@ -63,7 +63,7 @@ export const AuthorModal: React.FC<AuthorModalProps> = ({
           </div>
 
           <h2 className="text-xl font-black text-white flex items-center gap-2">
-            <span>ENG. ALAA MOHAMMED</span>
+            <span>Engineer Alaa Mohammed</span>
             <CheckCircle2 className="w-5 h-5 text-cyan-400 inline" />
           </h2>
           <div className="text-xs text-cyan-300 font-medium mt-0.5">
@@ -75,8 +75,8 @@ export const AuthorModal: React.FC<AuthorModalProps> = ({
               <Building2 className="w-4 h-4 text-cyan-400 shrink-0" />
               <span>
                 {lang === 'ar'
-                  ? 'قسم الهندسة الكيمياوية والصناعات النفطية'
-                  : 'Dept. of Chemical Engineering & Petroleum Industries'}
+                  ? 'قسم الهندسة الكيمياوية'
+                  : 'Department of Chemical Engineering'}
               </span>
             </div>
 
@@ -106,7 +106,7 @@ export const AuthorModal: React.FC<AuthorModalProps> = ({
           </div>
 
           <div className="mt-5 flex items-center justify-between text-xs text-slate-400 pt-3 border-t border-slate-800">
-            <span className="font-mono">© 2026 ENG ALAA MOHAMMED</span>
+            <span className="font-mono">© 2026 Engineer Alaa Mohammed</span>
             <button
               onClick={() => {
                 sfx.playClick();

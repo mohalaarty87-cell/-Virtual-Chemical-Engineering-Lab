@@ -20,8 +20,8 @@ export const Hero: React.FC<HeroProps> = ({ lang, totalSimulators }) => {
         <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
         <span>
           {lang === 'ar'
-            ? 'منصة تعليمية متقدمة | إشراف وإعداد ENG ALAA MOHAMMED'
-            : 'Advanced Virtual Lab | Supervised by ENG ALAA MOHAMMED'}
+            ? 'منصة تعليمية متقدمة | إشراف وإعداد Engineer Alaa Mohammed'
+            : 'Advanced Virtual Lab | Supervised by Engineer Alaa Mohammed'}
         </span>
       </div>
 
@@ -37,8 +37,8 @@ export const Hero: React.FC<HeroProps> = ({ lang, totalSimulators }) => {
         <span className="flex items-center gap-1.5">
           <Building2 className="w-4 h-4 text-cyan-400" />
           {lang === 'ar'
-            ? 'قسم الهندسة الكيمياوية والصناعات النفطية'
-            : 'Dept. of Chemical Engineering & Petroleum Industries'}
+            ? 'قسم الهندسة الكيمياوية'
+            : 'Department of Chemical Engineering'}
         </span>
         <span className="text-slate-600">·</span>
         <span className="flex items-center gap-1.5">
@@ -63,8 +63,8 @@ export const Hero: React.FC<HeroProps> = ({ lang, totalSimulators }) => {
           <Volume2 className="w-4 h-4 text-cyan-400 animate-pulse" />
           <span>
             {lang === 'ar'
-              ? 'الاستماع إلى الترحيب والتعريف الصوتي (ENG ALAA MOHAMMED)'
-              : 'Listen to Voice Welcome by ENG ALAA MOHAMMED'}
+              ? 'الاستماع إلى الترحيب والتعريف الصوتي (Engineer Alaa Mohammed)'
+              : 'Listen to Voice Welcome by Engineer Alaa Mohammed'}
           </span>
         </button>
       </div>
