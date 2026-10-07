@@ -49,10 +49,6 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
       lang === 'ar' ? `جارٍ فتح ${simulator.title_ar}` : `Opening ${simulator.title_en}`,
       lang
     );
-    if (isLocalSimulation) {
-      document.getElementById(`simulation-${simulator.id}`)?.scrollIntoView({ behavior: 'smooth' });
-      return;
-    }
     window.open(simulator.url, '_blank', 'noopener,noreferrer');
   };
 
